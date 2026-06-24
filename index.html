@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Chaliko Car Hire Limited — Reliable Car Rental in Zambia</title>
+  <meta name="description" content="Chaliko Car Hire Limited offers affordable, reliable car rental services across Zambia. Book your perfect vehicle today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="img/fav.png?v=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar__inner">
+    <a href="index.html" class="navbar__logo">
+      <div class="navbar__logo-name">CHALIKO</div>
+      <span class="navbar__logo-sub">Car Hire Limited</span>
+    </a>
+    <ul class="navbar__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="fleet.html">Our Fleet</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="navbar__actions">
+      <a href="tel:+260971000000" class="navbar__phone">
+        <i data-feather="phone"></i> +260 971 000 000
+      </a>
+      <div class="navbar__divider"></div>
+      <a href="booking.html" class="btn btn-primary" style="padding: 10px 20px;">Book Now</a>
+    </div>
+    <button class="navbar__hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="fleet.html">Our Fleet</a>
+    <a href="booking.html">Book Now</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__grid">
+      <div class="hero__content">
+        <div class="hero__badge">Zambia's Trusted Car Hire Service</div>
+        <h1>Drive With<br><em>Confidence</em><br>&amp; Comfort</h1>
+        <p class="hero__lead">Premium vehicles at competitive rates. Whether for business, travel, or leisure — Chaliko has the perfect car for you.</p>
+        <div class="hero__actions">
+          <a href="fleet.html" class="btn btn-primary btn-lg">Browse Our Fleet</a>
+          <a href="booking.html" class="btn btn-outline btn-lg">Book Now</a>
+        </div>
+        <div class="hero__trust">
+          <div class="hero__trust-item">
+            <strong>500+</strong>
+            <span>Happy Clients</span>
+          </div>
+          <div class="hero__trust-divider"></div>
+          <div class="hero__trust-item">
+            <strong>50+</strong>
+            <span>Vehicles</span>
+          </div>
+          <div class="hero__trust-divider"></div>
+          <div class="hero__trust-item">
+            <strong>10+</strong>
+            <span>Years</span>
+          </div>
+          <div class="hero__trust-divider"></div>
+          <div class="hero__trust-item">
+            <strong>6</strong>
+            <span>Cities</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__search-card">
+        <div class="search-card-title">Find Your Vehicle</div>
+        <form id="quickSearch">
+          <div class="search-field">
+            <label for="searchLocation">Location</label>
+            <select id="searchLocation">
+              <option value="Lusaka">Lusaka</option>
+              <option value="Ndola">Ndola</option>
+              <option value="Kitwe">Kitwe</option>
+              <option value="Livingstone">Livingstone</option>
+              <option value="Kabwe">Kabwe</option>
+            </select>
+          </div>
+          <div class="search-row">
+            <div class="search-field">
+              <label for="searchPickup">Pick-up Date</label>
+              <input type="date" id="searchPickup" />
+            </div>
+            <div class="search-field">
+              <label for="searchDropoff">Drop-off Date</label>
+              <input type="date" id="searchDropoff" />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 8px;">Search Available Cars</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stats-strip__grid">
+      <div class="stat">
+        <div class="stat__number">500<em>+</em></div>
+        <div class="stat__label">Happy Clients</div>
+      </div>
+      <div class="stat">
+        <div class="stat__number">50<em>+</em></div>
+        <div class="stat__label">Vehicles Available</div>
+      </div>
+      <div class="stat">
+        <div class="stat__number">10<em>+</em></div>
+        <div class="stat__label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat__number">5.0<em></em></div>
+        <div class="stat__label">Customer Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section">
+  <div class="container">
+    <p class="section-label">Why Chaliko</p>
+    <h2 class="section-title">More Than Just a Car Rental</h2>
+    <p class="section-sub">We go beyond renting cars — we deliver an exceptional experience from booking to drop-off.</p>
+    <div class="features__grid">
+      <div class="feature-card anim-fade">
+        <div class="feature-card__icon"><i data-feather="shield"></i></div>
+        <h3>Fully Insured Vehicles</h3>
+        <p>Every vehicle in our fleet is comprehensively insured, giving you complete peace of mind on every journey.</p>
+      </div>
+      <div class="feature-card anim-fade">
+        <div class="feature-card__icon"><i data-feather="tag"></i></div>
+        <h3>Competitive Pricing</h3>
+        <p>Transparent, no-hidden-fee pricing. Get the best value for money with our flexible daily and weekly rates.</p>
+      </div>
+      <div class="feature-card anim-fade">
+        <div class="feature-card__icon"><i data-feather="tool"></i></div>
+        <h3>Well-Maintained Fleet</h3>
+        <p>Our vehicles are regularly serviced and inspected to ensure top condition before every hire.</p>
+      </div>
+      <div class="feature-card anim-fade">
+        <div class="feature-card__icon"><i data-feather="map-pin"></i></div>
+        <h3>Nationwide Coverage</h3>
+        <p>We operate across major cities in Zambia including Lusaka, Ndola, Kitwe, and Livingstone.</p>
+      </div>
+      <div class="feature-card anim-fade">
+        <div class="feature-card__icon"><i data-feather="headphones"></i></div>
+        <h3>24/7 Support</h3>
+        <p>Our dedicated customer support team is available around the clock to assist whenever you need help.</p>
+      </div>
+      <div class="feature-card anim-fade">
+        <div class="feature-card__icon"><i data-feather="zap"></i></div>
+        <h3>Fast &amp; Easy Booking</h3>
+        <p>Book online in minutes or call us directly. Quick approvals and flexible pick-up arrangements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED FLEET -->
+<section class="section section--alt">
+  <div class="container">
+    <p class="section-label">Popular Vehicles</p>
+    <h2 class="section-title">Choose Your Ride</h2>
+    <p class="section-sub">A selection of our most popular vehicles, available for hire across Zambia.</p>
+    <div class="fleet__grid">
+
+      <div class="car-card anim-fade" data-category="economy">
+        <div class="car-card__img">
+          <span class="car-card__category">Economy</span>
+          <img src="img/vitz.jpg" alt="Toyota Vitz" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Toyota Vitz</div>
+          <div class="car-card__make">Toyota &middot; 2022 &middot; Manual</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 5 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Petrol</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K80 <span>/ day</span></div>
+            <a href="booking.html?car=Toyota Vitz" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card anim-fade" data-category="sedan">
+        <div class="car-card__img">
+          <span class="car-card__category">Sedan</span>
+          <img src="img/corolla.jpeg" alt="Toyota Corolla" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Toyota Corolla</div>
+          <div class="car-card__make">Toyota &middot; 2023 &middot; Automatic</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 5 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Petrol</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K100 <span>/ day</span></div>
+            <a href="booking.html?car=Toyota Corolla" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card anim-fade" data-category="suv">
+        <div class="car-card__img">
+          <span class="car-card__category">SUV</span>
+          <img src="img/rav4.jpeg" alt="Toyota RAV4" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Toyota RAV4</div>
+          <div class="car-card__make">Toyota &middot; 2023 &middot; Automatic</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 5 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Petrol</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K150 <span>/ day</span></div>
+            <a href="booking.html?car=Toyota RAV4" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="fleet.html" class="btn btn-green btn-lg">View Full Fleet <i data-feather="arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="container">
+    <p class="section-label">The Process</p>
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-sub">Getting your rental car with Chaliko is straightforward — four simple steps.</p>
+    <div class="steps__grid">
+      <div class="steps__connector"></div>
+      <div class="step anim-fade">
+        <div class="step__num">1</div>
+        <h3>Choose a Vehicle</h3>
+        <p>Browse our fleet and select the car that suits your needs and budget.</p>
+      </div>
+      <div class="step anim-fade">
+        <div class="step__num">2</div>
+        <h3>Make a Booking</h3>
+        <p>Fill in your details, pick-up date and location, then submit your booking.</p>
+      </div>
+      <div class="step anim-fade">
+        <div class="step__num">3</div>
+        <h3>Get Confirmation</h3>
+        <p>We confirm by call or email and prepare your vehicle for collection.</p>
+      </div>
+      <div class="step anim-fade">
+        <div class="step__num">4</div>
+        <h3>Hit the Road</h3>
+        <p>Collect your car and enjoy your journey with full support from our team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section--alt">
+  <div class="container">
+    <p class="section-label">Testimonials</p>
+    <h2 class="section-title">What Our Clients Say</h2>
+    <p class="section-sub">Don't just take our word for it — here is what customers say about us.</p>
+    <div class="testimonials__grid">
+      <div class="testimonial-card anim-fade">
+        <div class="testimonial-stars">
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"Excellent service. The car was clean, well-maintained, and the whole process was seamless. Will definitely hire from Chaliko again."</p>
+        <div class="testimonial-card__author">
+          <div class="author-avatar">BM</div>
+          <div class="author-info">
+            <strong>Bwalya Mulenga</strong>
+            <span>Lusaka, Zambia</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card anim-fade">
+        <div class="testimonial-stars">
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"Very professional team and great prices. I hired a Land Cruiser for a safari trip and it performed flawlessly on all terrain."</p>
+        <div class="testimonial-card__author">
+          <div class="author-avatar">TK</div>
+          <div class="author-info">
+            <strong>Thandiwe Kapata</strong>
+            <span>Livingstone, Zambia</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card anim-fade">
+        <div class="testimonial-stars">
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>"Quick booking, friendly staff, and fair rates. I recommend Chaliko to anyone needing a reliable hire car in Zambia."</p>
+        <div class="testimonial-card__author">
+          <div class="author-avatar">CM</div>
+          <div class="author-info">
+            <strong>Chanda Mutale</strong>
+            <span>Ndola, Zambia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ready to Hit the Road?</h2>
+    <p>Book your vehicle today and experience the Chaliko difference.</p>
+    <div class="btn-actions">
+      <a href="booking.html" class="btn btn-primary btn-lg">Book a Car Now</a>
+      <a href="contact.html" class="btn btn-outline btn-lg">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer__top">
+    <div class="footer__brand">
+      <div>
+        <div class="footer__brand-name">CHALIKO</div>
+        <span class="footer__brand-sub">Car Hire Limited</span>
+      </div>
+      <p>Your trusted car hire partner in Zambia. Reliable, affordable, and quality vehicle rental services for every need.</p>
+      <div class="footer__social">
+        <a href="#" class="social-btn" aria-label="Facebook"><i data-feather="facebook"></i></a>
+        <a href="#" class="social-btn" aria-label="Instagram"><i data-feather="instagram"></i></a>
+        <a href="#" class="social-btn" aria-label="Twitter"><i data-feather="twitter"></i></a>
+        <a href="#" class="social-btn" aria-label="LinkedIn"><i data-feather="linkedin"></i></a>
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fleet.html">Our Fleet</a></li>
+        <li><a href="booking.html">Book a Car</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Vehicle Types</h4>
+      <ul>
+        <li><a href="fleet.html">Economy Cars</a></li>
+        <li><a href="fleet.html">Sedans</a></li>
+        <li><a href="fleet.html">SUVs &amp; 4x4s</a></li>
+        <li><a href="fleet.html">Pickup Trucks</a></li>
+        <li><a href="fleet.html">Vans &amp; Minibuses</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+260971000000"><i data-feather="phone"></i> +260 971 000 000</a></li>
+        <li><a href="mailto:info@chalikocarihre.co.zm"><i data-feather="mail"></i> info@chalikocarihre.co.zm</a></li>
+        <li><a href="contact.html"><i data-feather="map-pin"></i> Lusaka, Zambia</a></li>
+        <li><span><i data-feather="clock"></i> Mon–Sat: 7am – 7pm</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <span>&copy; 2024 Chaliko Car Hire Limited. All rights reserved.</span>
+    <span>Proudly Zambian</span>
+  </div>
+</footer>
+
+<button id="scrollTop" aria-label="Scroll to top"><i data-feather="chevron-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

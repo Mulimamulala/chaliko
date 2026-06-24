@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Contact Us — Chaliko Car Hire Limited</title>
+  <meta name="description" content="Get in touch with Chaliko Car Hire Limited. Available Mon–Sat, 7am–7pm across Zambia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="img/fav.png?v=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar__inner">
+    <a href="index.html" class="navbar__logo">
+      <div class="navbar__logo-name">CHALIKO</div>
+      <span class="navbar__logo-sub">Car Hire Limited</span>
+    </a>
+    <ul class="navbar__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="fleet.html">Our Fleet</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="navbar__actions">
+      <a href="tel:+260971000000" class="navbar__phone">
+        <i data-feather="phone"></i> +260 971 000 000
+      </a>
+      <div class="navbar__divider"></div>
+      <a href="booking.html" class="btn btn-primary" style="padding: 10px 20px;">Book Now</a>
+    </div>
+    <button class="navbar__hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="fleet.html">Our Fleet</a>
+    <a href="booking.html">Book Now</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>&rsaquo;</span>
+      <span>Contact</span>
+    </div>
+    <h1>Get In Touch</h1>
+    <p>We are here to help. Reach out via phone, email, or the form below.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div>
+        <p class="section-label">Contact Information</p>
+        <h2 class="section-title" style="font-size: var(--text-3xl); margin-bottom: var(--sp-8);">How to Reach Us</h2>
+
+        <div class="contact-info">
+          <div class="contact-info-card">
+            <div class="contact-info-card__icon"><i data-feather="phone"></i></div>
+            <div>
+              <h4>Phone</h4>
+              <p>
+                <a href="tel:+260971000000">+260 971 000 000</a><br />
+                <a href="tel:+260961000000">+260 961 000 000</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-info-card__icon"><i data-feather="mail"></i></div>
+            <div>
+              <h4>Email</h4>
+              <p>
+                <a href="mailto:info@chalikocarihre.co.zm">info@chalikocarihre.co.zm</a><br />
+                <a href="mailto:bookings@chalikocarihre.co.zm">bookings@chalikocarihre.co.zm</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-info-card__icon"><i data-feather="map-pin"></i></div>
+            <div>
+              <h4>Head Office</h4>
+              <p>Plot 1234, Cairo Road<br />Lusaka, Zambia</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-info-card__icon"><i data-feather="clock"></i></div>
+            <div>
+              <h4>Business Hours</h4>
+              <p>
+                Monday – Friday: 7:00 AM – 7:00 PM<br />
+                Saturday: 8:00 AM – 5:00 PM<br />
+                Sunday: Emergency support only
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-placeholder">
+          <i data-feather="map-pin"></i>
+          <div>
+            <strong>Chaliko Car Hire — Lusaka HQ</strong>
+            <p>Plot 1234, Cairo Road, Lusaka, Zambia</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h2>Send Us a Message</h2>
+        <p>Fill in the form and we will get back to you within a few hours.</p>
+
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactFirst">First Name</label>
+              <input type="text" id="contactFirst" placeholder="Bwalya" required />
+            </div>
+            <div class="form-group">
+              <label for="contactLast">Last Name</label>
+              <input type="text" id="contactLast" placeholder="Mulenga" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactPhone">Phone Number</label>
+              <input type="tel" id="contactPhone" placeholder="+260 97X XXX XXX" />
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" placeholder="you@example.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contactSubject">Subject</label>
+            <select id="contactSubject" required>
+              <option value="">— Select a subject —</option>
+              <option value="booking">Booking Enquiry</option>
+              <option value="fleet">Fleet / Vehicle Information</option>
+              <option value="pricing">Pricing &amp; Rates</option>
+              <option value="corporate">Corporate Account</option>
+              <option value="complaint">Complaint / Feedback</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" placeholder="Tell us how we can help you..." required style="min-height: 140px;"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;">
+            Send Message <i data-feather="send"></i>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES -->
+<section class="section section--alt">
+  <div class="container">
+    <p class="section-label">Our Locations</p>
+    <h2 class="section-title">Find Us in Zambia</h2>
+    <p class="section-sub">Visit one of our branches or contact your nearest location directly.</p>
+    <div class="features__grid">
+      <div class="feature-card anim-fade">
+        <div class="feature-card__icon"><i data-feather="home"></i></div>
+        <h3>Lusaka (Head Office)</h3>
+        <p>Plot 1234, Cairo Road, Lusaka<br /><a href="tel:+260971000000" style="color: var(--color-primary); font-weight: 600;">+260 971 000 000</a><br />Mon–Sat: 7am – 7pm</p>
+      </div>
+      <div class="feature-card anim-fade">
+        <div class="feature-card__icon"><i data-feather="map-pin"></i></div>
+        <h3>Ndola</h3>
+        <p>Plot 567, Broadway, Ndola<br /><a href="tel:+260972000000" style="color: var(--color-primary); font-weight: 600;">+260 972 000 000</a><br />Mon–Sat: 8am – 6pm</p>
+      </div>
+      <div class="feature-card anim-fade">
+        <div class="feature-card__icon"><i data-feather="map-pin"></i></div>
+        <h3>Livingstone</h3>
+        <p>Plot 89, Mosi-oa-Tunya Rd<br /><a href="tel:+260973000000" style="color: var(--color-primary); font-weight: 600;">+260 973 000 000</a><br />Mon–Sat: 7am – 7pm</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Quick answers to the questions we hear most often.</p>
+    <div style="max-width: 760px; display: flex; flex-direction: column; gap: var(--sp-3);">
+
+      <details>
+        <summary>
+          What documents do I need to hire a car?
+          <div class="faq-indicator"><i data-feather="plus"></i></div>
+        </summary>
+        <div class="faq-answer">You need a valid driver's licence (Zambian or international), a national ID or passport, and a completed booking form. A refundable security deposit is also required at pick-up.</div>
+      </details>
+
+      <details>
+        <summary>
+          Can I get a car delivered to my location or the airport?
+          <div class="faq-indicator"><i data-feather="plus"></i></div>
+        </summary>
+        <div class="faq-answer">Yes. We offer airport and hotel delivery in Lusaka. Delivery to other locations may attract a small surcharge. Please mention this when making your booking.</div>
+      </details>
+
+      <details>
+        <summary>
+          Is insurance included in the hire price?
+          <div class="faq-indicator"><i data-feather="plus"></i></div>
+        </summary>
+        <div class="faq-answer">Yes, all vehicles come with comprehensive third-party insurance. We also offer additional collision damage waiver (CDW) coverage for extra peace of mind.</div>
+      </details>
+
+      <details>
+        <summary>
+          Can I hire a car with a driver?
+          <div class="faq-indicator"><i data-feather="plus"></i></div>
+        </summary>
+        <div class="faq-answer">Absolutely. We offer a chauffeur option for an additional K50 per day. Our drivers are experienced, professional, and familiar with routes across Zambia.</div>
+      </details>
+
+      <details>
+        <summary>
+          What is your cancellation policy?
+          <div class="faq-indicator"><i data-feather="plus"></i></div>
+        </summary>
+        <div class="faq-answer">Cancellations made at least 48 hours before the scheduled pick-up are free of charge. Cancellations within 48 hours may incur a 20% fee. No-shows are charged in full.</div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <h2>Still Have Questions?</h2>
+    <p>Call us or send a message — our team is ready to assist you.</p>
+    <div class="btn-actions">
+      <a href="tel:+260971000000" class="btn btn-primary btn-lg">Call Now</a>
+      <a href="booking.html" class="btn btn-outline btn-lg">Book a Car</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__top">
+    <div class="footer__brand">
+      <div>
+        <div class="footer__brand-name">CHALIKO</div>
+        <span class="footer__brand-sub">Car Hire Limited</span>
+      </div>
+      <p>Your trusted car hire partner in Zambia. Reliable, affordable, and quality vehicle rental services for every need.</p>
+      <div class="footer__social">
+        <a href="#" class="social-btn" aria-label="Facebook"><i data-feather="facebook"></i></a>
+        <a href="#" class="social-btn" aria-label="Instagram"><i data-feather="instagram"></i></a>
+        <a href="#" class="social-btn" aria-label="Twitter"><i data-feather="twitter"></i></a>
+        <a href="#" class="social-btn" aria-label="LinkedIn"><i data-feather="linkedin"></i></a>
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fleet.html">Our Fleet</a></li>
+        <li><a href="booking.html">Book a Car</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Vehicle Types</h4>
+      <ul>
+        <li><a href="fleet.html">Economy Cars</a></li>
+        <li><a href="fleet.html">Sedans</a></li>
+        <li><a href="fleet.html">SUVs &amp; 4x4s</a></li>
+        <li><a href="fleet.html">Pickup Trucks</a></li>
+        <li><a href="fleet.html">Vans &amp; Minibuses</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+260971000000"><i data-feather="phone"></i> +260 971 000 000</a></li>
+        <li><a href="mailto:info@chalikocarihre.co.zm"><i data-feather="mail"></i> info@chalikocarihre.co.zm</a></li>
+        <li><a href="contact.html"><i data-feather="map-pin"></i> Lusaka, Zambia</a></li>
+        <li><span><i data-feather="clock"></i> Mon–Sat: 7am – 7pm</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <span>&copy; 2024 Chaliko Car Hire Limited. All rights reserved.</span>
+    <span>Proudly Zambian</span>
+  </div>
+</footer>
+
+<button id="scrollTop" aria-label="Scroll to top"><i data-feather="chevron-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Our Fleet — Chaliko Car Hire Limited</title>
+  <meta name="description" content="Browse Chaliko's full fleet of economy cars, sedans, SUVs, 4x4s, pickups and vans available for hire across Zambia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="img/fav.png?v=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar__inner">
+    <a href="index.html" class="navbar__logo">
+      <div class="navbar__logo-name">CHALIKO</div>
+      <span class="navbar__logo-sub">Car Hire Limited</span>
+    </a>
+    <ul class="navbar__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="fleet.html">Our Fleet</a></li>
+      <li><a href="booking.html">Book Now</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="navbar__actions">
+      <a href="tel:+260971000000" class="navbar__phone">
+        <i data-feather="phone"></i> +260 971 000 000
+      </a>
+      <div class="navbar__divider"></div>
+      <a href="booking.html" class="btn btn-primary" style="padding: 10px 20px;">Book Now</a>
+    </div>
+    <button class="navbar__hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="fleet.html">Our Fleet</a>
+    <a href="booking.html">Book Now</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>&rsaquo;</span>
+      <span>Our Fleet</span>
+    </div>
+    <h1>Our Vehicle Fleet</h1>
+    <p>From budget-friendly compacts to luxury 4x4s — choose from our range of well-maintained vehicles.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="fleet-filters">
+      <button class="filter-btn active" data-filter="all">All Vehicles</button>
+      <button class="filter-btn" data-filter="economy">Economy</button>
+      <button class="filter-btn" data-filter="sedan">Sedan</button>
+      <button class="filter-btn" data-filter="suv">SUV</button>
+      <button class="filter-btn" data-filter="4x4">4x4 / Off-Road</button>
+      <button class="filter-btn" data-filter="pickup">Pickup Truck</button>
+      <button class="filter-btn" data-filter="van">Van</button>
+      <button class="filter-btn" data-filter="luxury">Luxury</button>
+    </div>
+
+    <div class="fleet__grid">
+
+      <div class="car-card anim-fade" data-category="economy">
+        <div class="car-card__img">
+          <span class="car-card__category">Economy</span>
+          <img src="img/vitz.jpg" alt="Toyota Vitz" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Toyota Vitz</div>
+          <div class="car-card__make">Toyota &middot; 2022 &middot; Manual</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 5 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Petrol</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K80 <span>/ day</span></div>
+            <a href="booking.html?car=Toyota Vitz" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card anim-fade" data-category="economy">
+        <div class="car-card__img">
+          <span class="car-card__category">Economy</span>
+          <img src="img/swift.jpeg" alt="Suzuki Swift" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Suzuki Swift</div>
+          <div class="car-card__make">Suzuki &middot; 2021 &middot; Manual</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 5 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Petrol</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K75 <span>/ day</span></div>
+            <a href="booking.html?car=Suzuki Swift" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card anim-fade" data-category="sedan">
+        <div class="car-card__img">
+          <span class="car-card__category">Sedan</span>
+          <img src="img/corolla.jpeg" alt="Toyota Corolla" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Toyota Corolla</div>
+          <div class="car-card__make">Toyota &middot; 2023 &middot; Automatic</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 5 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Petrol</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K100 <span>/ day</span></div>
+            <a href="booking.html?car=Toyota Corolla" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card anim-fade" data-category="sedan">
+        <div class="car-card__img">
+          <span class="car-card__category">Sedan</span>
+          <img src="img/civic.jpeg" alt="Honda Civic" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Honda Civic</div>
+          <div class="car-card__make">Honda &middot; 2022 &middot; Automatic</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 5 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Petrol</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K110 <span>/ day</span></div>
+            <a href="booking.html?car=Honda Civic" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card anim-fade" data-category="suv">
+        <div class="car-card__img">
+          <span class="car-card__category">SUV</span>
+          <img src="img/rav4.jpeg" alt="Toyota RAV4" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Toyota RAV4</div>
+          <div class="car-card__make">Toyota &middot; 2023 &middot; Automatic</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 5 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Petrol</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K150 <span>/ day</span></div>
+            <a href="booking.html?car=Toyota RAV4" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card anim-fade" data-category="suv">
+        <div class="car-card__img">
+          <span class="car-card__category">SUV</span>
+          <img src="img/xtrail.jpeg" alt="Nissan X-Trail" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Nissan X-Trail</div>
+          <div class="car-card__make">Nissan &middot; 2022 &middot; Automatic</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 7 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Petrol</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K160 <span>/ day</span></div>
+            <a href="booking.html?car=Nissan X-Trail" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card anim-fade" data-category="4x4">
+        <div class="car-card__img">
+          <span class="car-card__category">4x4</span>
+          <img src="img/landcruiser.webp" alt="Toyota Land Cruiser" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Toyota Land Cruiser</div>
+          <div class="car-card__make">Toyota &middot; 2023 &middot; Automatic</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 8 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Diesel</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K250 <span>/ day</span></div>
+            <a href="booking.html?car=Toyota Land Cruiser" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card anim-fade" data-category="4x4">
+        <div class="car-card__img">
+          <span class="car-card__category">4x4</span>
+          <img src="img/pajero.jpeg" alt="Mitsubishi Pajero" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Mitsubishi Pajero</div>
+          <div class="car-card__make">Mitsubishi &middot; 2022 &middot; Automatic</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 7 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Diesel</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K210 <span>/ day</span></div>
+            <a href="booking.html?car=Mitsubishi Pajero" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card anim-fade" data-category="pickup">
+        <div class="car-card__img">
+          <span class="car-card__category">Pickup</span>
+          <img src="img/hilux.jpeg" alt="Toyota Hilux" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Toyota Hilux</div>
+          <div class="car-card__make">Toyota &middot; 2023 &middot; Manual</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 5 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Diesel</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K180 <span>/ day</span></div>
+            <a href="booking.html?car=Toyota Hilux" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card anim-fade" data-category="pickup">
+        <div class="car-card__img">
+          <span class="car-card__category">Pickup</span>
+          <img src="img/ranger.jpeg" alt="Ford Ranger" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Ford Ranger</div>
+          <div class="car-card__make">Ford &middot; 2023 &middot; Automatic</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 5 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Diesel</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K200 <span>/ day</span></div>
+            <a href="booking.html?car=Ford Ranger" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card anim-fade" data-category="van">
+        <div class="car-card__img">
+          <span class="car-card__category">Van</span>
+          <img src="img/hiace.jpeg" alt="Toyota Hiace" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Toyota Hiace</div>
+          <div class="car-card__make">Toyota &middot; 2022 &middot; Manual</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 14 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Diesel</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K220 <span>/ day</span></div>
+            <a href="booking.html?car=Toyota Hiace Van" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="car-card anim-fade" data-category="luxury">
+        <div class="car-card__img">
+          <span class="car-card__category">Luxury</span>
+          <img src="img/mercedes.jpg" alt="Mercedes C-Class" />
+        </div>
+        <div class="car-card__body">
+          <div class="car-card__name">Mercedes C-Class</div>
+          <div class="car-card__make">Mercedes-Benz &middot; 2023 &middot; Automatic</div>
+          <div class="car-card__specs">
+            <span class="spec"><i data-feather="users"></i> 5 Seats</span>
+            <span class="spec"><i data-feather="droplet"></i> Petrol</span>
+            <span class="spec"><i data-feather="wind"></i> A/C</span>
+          </div>
+          <div class="car-card__footer">
+            <div class="car-card__price">K280 <span>/ day</span></div>
+            <a href="booking.html?car=Mercedes C-Class" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.82rem;">Book</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <p class="section-label">Requirements</p>
+    <h2 class="section-title">What You Need to Hire</h2>
+    <p class="section-sub">A few simple requirements to get you on the road safely and legally.</p>
+    <div class="features__grid">
+      <div class="feature-card anim-fade">
+        <div class="feature-card__icon"><i data-feather="credit-card"></i></div>
+        <h3>Valid Driver's Licence</h3>
+        <p>A valid Zambian or international driver's licence is required. Minimum age of 23 years for most vehicle classes.</p>
+      </div>
+      <div class="feature-card anim-fade">
+        <div class="feature-card__icon"><i data-feather="user"></i></div>
+        <h3>National ID / Passport</h3>
+        <p>A valid national identity card or passport for identity verification at the time of pick-up.</p>
+      </div>
+      <div class="feature-card anim-fade">
+        <div class="feature-card__icon"><i data-feather="dollar-sign"></i></div>
+        <h3>Security Deposit</h3>
+        <p>A refundable security deposit is required at collection. The amount varies by vehicle class and duration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <h2>Can't Find What You Need?</h2>
+    <p>Contact us — we may have additional vehicles available or can arrange something tailored to you.</p>
+    <div class="btn-actions">
+      <a href="contact.html" class="btn btn-primary btn-lg">Get in Touch</a>
+      <a href="booking.html" class="btn btn-outline btn-lg">Book Now</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__top">
+    <div class="footer__brand">
+      <div>
+        <div class="footer__brand-name">CHALIKO</div>
+        <span class="footer__brand-sub">Car Hire Limited</span>
+      </div>
+      <p>Your trusted car hire partner in Zambia. Reliable, affordable, and quality vehicle rental services for every need.</p>
+      <div class="footer__social">
+        <a href="#" class="social-btn" aria-label="Facebook"><i data-feather="facebook"></i></a>
+        <a href="#" class="social-btn" aria-label="Instagram"><i data-feather="instagram"></i></a>
+        <a href="#" class="social-btn" aria-label="Twitter"><i data-feather="twitter"></i></a>
+        <a href="#" class="social-btn" aria-label="LinkedIn"><i data-feather="linkedin"></i></a>
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fleet.html">Our Fleet</a></li>
+        <li><a href="booking.html">Book a Car</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Vehicle Types</h4>
+      <ul>
+        <li><a href="fleet.html">Economy Cars</a></li>
+        <li><a href="fleet.html">Sedans</a></li>
+        <li><a href="fleet.html">SUVs &amp; 4x4s</a></li>
+        <li><a href="fleet.html">Pickup Trucks</a></li>
+        <li><a href="fleet.html">Vans &amp; Minibuses</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+260971000000"><i data-feather="phone"></i> +260 971 000 000</a></li>
+        <li><a href="mailto:info@chalikocarihre.co.zm"><i data-feather="mail"></i> info@chalikocarihre.co.zm</a></li>
+        <li><a href="contact.html"><i data-feather="map-pin"></i> Lusaka, Zambia</a></li>
+        <li><span><i data-feather="clock"></i> Mon–Sat: 7am – 7pm</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <span>&copy; 2024 Chaliko Car Hire Limited. All rights reserved.</span>
+    <span>Proudly Zambian</span>
+  </div>
+</footer>
+
+<button id="scrollTop" aria-label="Scroll to top"><i data-feather="chevron-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
