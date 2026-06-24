@@ -246,16 +246,16 @@ h1,h2,h3,h4,h5 { font-family: var(--font-display); line-height: 1.12; letter-spa
     radial-gradient(ellipse at 15% 60%, rgba(26,107,64,0.4) 0%, transparent 55%),
     radial-gradient(ellipse at 80% 20%, rgba(8,35,24,0.6) 0%, transparent 50%);
   min-height: 100vh;
-  display: flex;
-  align-items: center;
+  /* top: navbar (64px) + visual top breathing room; bottom: less to balance the trust-strip weight */
+  padding: calc(64px + 14vh) 0 10vh;
 }
 
 .hero__container {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding-top: var(--sp-20);
-  padding-bottom: var(--sp-20);
+  padding-left: clamp(var(--sp-6), 18vw, 22vw);
+  padding-right: clamp(var(--sp-6), 6vw, 9vw);
 }
 .hero__content {
   max-width: 520px;
@@ -314,11 +314,11 @@ h1,h2,h3,h4,h5 { font-family: var(--font-display); line-height: 1.12; letter-spa
 }
 .hero__car-image img {
   position: absolute;
-  width: 58%;
+  width: 80%;
   height: auto;
-  right: -4%;
+  right: -18%;
   top: 50%;
-  transform: translateY(-56%);
+  transform: translateY(-52%);
   filter: drop-shadow(0 40px 80px rgba(0,0,0,0.55));
 }
 /* All-edge fade overlay */
@@ -328,7 +328,7 @@ h1,h2,h3,h4,h5 { font-family: var(--font-display); line-height: 1.12; letter-spa
   inset: 0;
   background:
     /* left: strong fade to protect text */
-    linear-gradient(to right,  var(--green-900) 0%, rgba(8,35,24,0.85) 30%, transparent 55%),
+    linear-gradient(to right,  var(--green-900) 0%, rgba(8,35,24,0.95) 38%, transparent 62%),
     /* right bleed */
     linear-gradient(to left,   var(--green-900) 0%, transparent 10%),
     /* top fade */
