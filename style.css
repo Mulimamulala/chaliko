@@ -876,8 +876,8 @@ details[open] .faq-indicator .feather { transform: rotate(45deg); }
 @media (max-width: 768px) {
   .navbar__links, .navbar__actions { display: none; }
   .navbar__hamburger { display: flex; }
-  .hero__car-image { opacity: 0.25; }
-  .hero__car-image img { width: 100%; right: -10%; }
+  .hero__car-image { display: none; }
+  .hero__container { padding-left: var(--sp-6); padding-right: var(--sp-6); }
   .hero { padding: var(--sp-16) 0; min-height: auto; }
   .features__grid { grid-template-columns: 1fr; }
   .fleet__grid { grid-template-columns: 1fr; }
