@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About Chaliko Car Hire Limited — Zambia's trusted car hire company serving clients across six cities with a premium fleet and exceptional service.">
+    <meta name="description"
+        content="About Chaliko Car Hire Limited — Zambia's trusted car hire company serving clients across six cities with a premium fleet and exceptional service.">
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.svg">
     <title>About Us — Chaliko Car Hire Limited</title>
     <link rel="stylesheet" href="assets/css/plugins/plugins.css">
@@ -12,17 +13,75 @@
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/rt-icon.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <style>.main-nav.active > a { color: #FF3600 !important; }</style>
     <style>
-        .single-car-list-item .car-image img { width: 100%; height: auto; object-fit: contain; display: block; }
-        .rts-footer-area { background: #111827 !important; background-image: none !important; }
-        .rts-footer-area * { color: #e5e7eb; }
-        .rts-footer-area a { color: #d1d5db; }
-        .rts-footer-area a:hover { color: #FF3600; }
-        .rts-footer-area .title { color: #ffffff !important; }
-        .rts-footer-area .desc { color: #9ca3af; }
-        .copyright-area { background: #0d131e !important; }
-        .copyright-area p, .copyright-area a { color: #9ca3af; }
+        .main-nav.active>a {
+            color: #FF3600 !important;
+        }
+    </style>
+    <style>
+        .single-car-list-item .car-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .rts-footer-area {
+            background: #111827 !important;
+            background-image: none !important;
+        }
+
+        .rts-footer-area * {
+            color: #e5e7eb;
+        }
+
+        .rts-footer-area a {
+            color: #d1d5db;
+        }
+
+        .rts-footer-area a:hover {
+            color: #FF3600;
+        }
+
+        .rts-footer-area .title {
+            color: #ffffff !important;
+        }
+
+        .rts-footer-area .desc {
+            color: #9ca3af;
+        }
+
+        .footer-contact-grid {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-contact-grid li {
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .footer-contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                column-gap: 24px;
+                row-gap: 24px;
+            }
+
+            .footer-contact-grid li {
+                margin-bottom: 0;
+            }
+        }
+
+        .copyright-area {
+            background: #0d131e !important;
+        }
+
+        .copyright-area p,
+        .copyright-area a {
+            color: #9ca3af;
+        }
     </style>
 
 </head>
@@ -47,7 +106,9 @@
     <div id="anywhere-home"></div>
     <div class="progress-wrap">
         <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;"></path>
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
+            </path>
         </svg>
     </div>
 
@@ -57,23 +118,33 @@
             <div class="container">
                 <div class="inner">
                     <div class="logo-area">
-                        <a href="index.html" style="text-decoration:none;display:flex;flex-direction:column;line-height:1.2;">
+                        <a href="index.html"
+                            style="text-decoration:none;display:flex;flex-direction:column;line-height:1.2;">
                             <span style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;">CHALIKO</span>
-                            <span style="font-size:9px;color:rgba(255,255,255,0.65);letter-spacing:2px;text-transform:uppercase;">Car Hire Limited</span>
+                            <span
+                                style="font-size:9px;color:rgba(255,255,255,0.65);letter-spacing:2px;text-transform:uppercase;">Car
+                                Hire Limited</span>
                         </a>
                     </div>
                     <div class="get-touch-area">
                         <div class="map-area">
                             <div class="icon"><i class="fa-sharp fa-solid fa-phone"></i></div>
-                            <div class="text"><p>Call Us Now</p><a href="tel:+260971000000">+260 971 000 000</a></div>
+                            <div class="text">
+                                <p>Call Us Now</p><a href="tel:+260971000000">+260 971 000 000</a>
+                            </div>
                         </div>
                         <div class="map-area">
                             <div class="icon"><i class="fa-solid fa-envelope"></i></div>
-                            <div class="text"><p>Email Us</p><a href="mailto:info@chalikocarihire.co.zm">info@chalikocarihire.co.zm</a></div>
+                            <div class="text">
+                                <p>Email Us</p><a
+                                    href="mailto:info@chalikocarihire.co.zm">info@chalikocarihire.co.zm</a>
+                            </div>
                         </div>
                         <div class="map-area">
                             <div class="icon"><i class="fa-sharp fa-solid fa-location-dot"></i></div>
-                            <div class="text"><p>Our Location</p><a href="#">Cairo Road, Lusaka, Zambia</a></div>
+                            <div class="text">
+                                <p>Our Location</p><a href="#">Cairo Road, Lusaka, Zambia</a>
+                            </div>
                         </div>
                     </div>
                     <div class="button-area">
@@ -99,13 +170,15 @@
                             <div class="bottom d-flex align-items-center justify-content-between">
                                 <div class="logo-area">
                                     <a href="index.html" style="text-decoration:none;">
-                                        <span style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;">CHALIKO</span>
+                                        <span
+                                            style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;">CHALIKO</span>
                                     </a>
                                 </div>
                                 <div class="nav-area">
                                     <ul>
                                         <li class="main-nav"><a class="main-menu" href="index.html">Home</a></li>
-                                        <li class="main-nav active"><a class="main-menu main-menu-ls" href="about.html">About Us</a></li>
+                                        <li class="main-nav active"><a class="main-menu main-menu-ls"
+                                                href="about.html">About Us</a></li>
                                         <li class="main-nav"><a class="main-menu" href="fleet.html">Our Fleet</a></li>
                                         <li class="main-nav"><a class="main-menu" href="book.html">Book Now</a></li>
                                         <li class="main-nav"><a class="main-menu" href="contact.html">Contact</a></li>
@@ -161,11 +234,21 @@
                         <div class="about-right-content-area">
                             <div class="rts-section-title">
                                 <span class="subtitle wow fadeInUp" data-wow-delay="0.1s">Our Story</span>
-                                <h2 class="heading-title text-uppercase rts-slide-anim">Built on Trust,<br>Driven by <span>Service</span></h2>
+                                <h2 class="heading-title text-uppercase rts-slide-anim">Built on Trust,<br>Driven by
+                                    <span>Service</span></h2>
                             </div>
-                            <p class="desc wow fadeInUp" data-wow-delay="0.2s">Chaliko Car Hire Limited was founded with one clear goal: to make reliable and affordable vehicle rental accessible to every Zambian and visitor to our beautiful country. Over the years, we have grown from a humble fleet into one of Zambia's most trusted car hire companies, serving clients across six major cities and beyond.</p>
-                            <p class="desc wow fadeInUp" data-wow-delay="0.3s">We serve individuals, families, corporate clients, NGOs, and tourists — delivering tailored solutions for every need, whether a quick city commute or a cross-country safari adventure. Our team is dedicated to ensuring that every client drives away with confidence and peace of mind.</p>
-                            <p class="desc wow fadeInUp" data-wow-delay="0.35s">From our base in Lusaka, we operate across Ndola, Kitwe, Livingstone, Kabwe, and Chipata. Wherever your journey takes you in Zambia, Chaliko is with you every kilometre of the way.</p>
+                            <p class="desc wow fadeInUp" data-wow-delay="0.2s">Chaliko Car Hire Limited was founded with
+                                one clear goal: to make reliable and affordable vehicle rental accessible to every
+                                Zambian and visitor to our beautiful country. Over the years, we have grown from a
+                                humble fleet into one of Zambia's most trusted car hire companies, serving clients
+                                across six major cities and beyond.</p>
+                            <p class="desc wow fadeInUp" data-wow-delay="0.3s">We serve individuals, families, corporate
+                                clients, NGOs, and tourists — delivering tailored solutions for every need, whether a
+                                quick city commute or a cross-country safari adventure. Our team is dedicated to
+                                ensuring that every client drives away with confidence and peace of mind.</p>
+                            <p class="desc wow fadeInUp" data-wow-delay="0.35s">From our base in Lusaka, we operate
+                                across Ndola, Kitwe, Livingstone, Kabwe, and Chipata. Wherever your journey takes you in
+                                Zambia, Chaliko is with you every kilometre of the way.</p>
                             <a href="fleet.html" class="rts__btn mt--45 wow fadeInUp" data-wow-delay="0.4s">
                                 <div class="rts__btn__wrap">
                                     <span class="rts__btn__txt-one">Browse Our Fleet</span>
@@ -185,7 +268,8 @@
                             </div>
                             <div class="about-counter-area">
                                 <div class="inner">
-                                    <h3 class="counter-no"><span class="counter">10</span><span class="count-plus">+</span></h3>
+                                    <h3 class="counter-no"><span class="counter">10</span><span
+                                            class="count-plus">+</span></h3>
                                     <p>Years of Service</p>
                                 </div>
                             </div>
@@ -239,57 +323,69 @@
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <div class="why-choose-item-two wow fadeInUp" data-wow-delay="0.1s" style="display:flex;flex-direction:column;align-items:flex-start;padding:32px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
+                    <div class="why-choose-item-two wow fadeInUp" data-wow-delay="0.1s"
+                        style="display:flex;flex-direction:column;align-items:flex-start;padding:32px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
                         <div class="inner-icon mb--20">
                             <div class="icon"><img src="assets/images/icon/why-1.svg" alt="Mission icon"></div>
                         </div>
                         <h3 class="title" style="font-size:18px;font-weight:700;margin-bottom:12px;">Our Mission</h3>
-                        <p class="desc">To provide safe, reliable, and affordable vehicle hire that empowers clients to travel with confidence across Zambia.</p>
+                        <p class="desc">To provide safe, reliable, and affordable vehicle hire that empowers clients to
+                            travel with confidence across Zambia.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="why-choose-item-two wow fadeInUp" data-wow-delay="0.2s" style="display:flex;flex-direction:column;align-items:flex-start;padding:32px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
+                    <div class="why-choose-item-two wow fadeInUp" data-wow-delay="0.2s"
+                        style="display:flex;flex-direction:column;align-items:flex-start;padding:32px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
                         <div class="inner-icon mb--20">
                             <div class="icon"><img src="assets/images/icon/why-2.svg" alt="Vision icon"></div>
                         </div>
                         <h3 class="title" style="font-size:18px;font-weight:700;margin-bottom:12px;">Our Vision</h3>
-                        <p class="desc">To become Zambia's leading car hire company, renowned for exceptional service, vehicle quality, and customer care.</p>
+                        <p class="desc">To become Zambia's leading car hire company, renowned for exceptional service,
+                            vehicle quality, and customer care.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="why-choose-item-two wow fadeInUp" data-wow-delay="0.3s" style="display:flex;flex-direction:column;align-items:flex-start;padding:32px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
+                    <div class="why-choose-item-two wow fadeInUp" data-wow-delay="0.3s"
+                        style="display:flex;flex-direction:column;align-items:flex-start;padding:32px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
                         <div class="inner-icon mb--20">
                             <div class="icon"><img src="assets/images/icon/why-3.svg" alt="Integrity icon"></div>
                         </div>
                         <h3 class="title" style="font-size:18px;font-weight:700;margin-bottom:12px;">Integrity</h3>
-                        <p class="desc">Transparent pricing, honest communication, no hidden charges — ever. We mean what we say and deliver what we promise.</p>
+                        <p class="desc">Transparent pricing, honest communication, no hidden charges — ever. We mean
+                            what we say and deliver what we promise.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="why-choose-item-two wow fadeInUp" data-wow-delay="0.4s" style="display:flex;flex-direction:column;align-items:flex-start;padding:32px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
+                    <div class="why-choose-item-two wow fadeInUp" data-wow-delay="0.4s"
+                        style="display:flex;flex-direction:column;align-items:flex-start;padding:32px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
                         <div class="inner-icon mb--20">
                             <div class="icon"><img src="assets/images/icon/why-4.svg" alt="Excellence icon"></div>
                         </div>
                         <h3 class="title" style="font-size:18px;font-weight:700;margin-bottom:12px;">Excellence</h3>
-                        <p class="desc">We hold the highest standards for vehicle maintenance, cleanliness, and service at every touchpoint — from booking to drop-off.</p>
+                        <p class="desc">We hold the highest standards for vehicle maintenance, cleanliness, and service
+                            at every touchpoint — from booking to drop-off.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="why-choose-item-two wow fadeInUp" data-wow-delay="0.5s" style="display:flex;flex-direction:column;align-items:flex-start;padding:32px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
+                    <div class="why-choose-item-two wow fadeInUp" data-wow-delay="0.5s"
+                        style="display:flex;flex-direction:column;align-items:flex-start;padding:32px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
                         <div class="inner-icon mb--20">
                             <div class="icon"><img src="assets/images/icon/why-1.svg" alt="Safety icon"></div>
                         </div>
                         <h3 class="title" style="font-size:18px;font-weight:700;margin-bottom:12px;">Safety First</h3>
-                        <p class="desc">Every vehicle is comprehensively insured and regularly serviced. Your safety is paramount — we never compromise on it.</p>
+                        <p class="desc">Every vehicle is comprehensively insured and regularly serviced. Your safety is
+                            paramount — we never compromise on it.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="why-choose-item-two wow fadeInUp" data-wow-delay="0.6s" style="display:flex;flex-direction:column;align-items:flex-start;padding:32px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
+                    <div class="why-choose-item-two wow fadeInUp" data-wow-delay="0.6s"
+                        style="display:flex;flex-direction:column;align-items:flex-start;padding:32px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
                         <div class="inner-icon mb--20">
                             <div class="icon"><img src="assets/images/icon/why-2.svg" alt="Community icon"></div>
                         </div>
                         <h3 class="title" style="font-size:18px;font-weight:700;margin-bottom:12px;">Community</h3>
-                        <p class="desc">As a proudly Zambian business, we are committed to the local economy and the communities we serve across every city we operate in.</p>
+                        <p class="desc">As a proudly Zambian business, we are committed to the local economy and the
+                            communities we serve across every city we operate in.</p>
                     </div>
                 </div>
             </div>
@@ -306,43 +402,63 @@
             </div>
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6">
-                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s" style="background:#fff;border-radius:8px;padding:36px 24px;border:1px solid #f0f0f0;">
-                        <div style="width:80px;height:80px;border-radius:50%;background:#FF3600;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s"
+                        style="background:#fff;border-radius:8px;padding:36px 24px;border:1px solid #f0f0f0;">
+                        <div
+                            style="width:80px;height:80px;border-radius:50%;background:#FF3600;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
                             <span style="font-size:24px;font-weight:800;color:#fff;letter-spacing:1px;">MC</span>
                         </div>
                         <h3 style="font-size:18px;font-weight:700;margin-bottom:6px;">Moses Chaliko</h3>
-                        <span style="font-size:13px;color:#FF3600;font-weight:600;letter-spacing:0.5px;">Founder &amp; CEO</span>
-                        <p style="font-size:14px;color:#666;margin-top:12px;line-height:1.6;">The visionary behind Chaliko, Moses has spent over a decade building a car hire company that Zambians can truly trust.</p>
+                        <span style="font-size:13px;color:#FF3600;font-weight:600;letter-spacing:0.5px;">Founder &amp;
+                            CEO</span>
+                        <p style="font-size:14px;color:#666;margin-top:12px;line-height:1.6;">The visionary behind
+                            Chaliko, Moses has spent over a decade building a car hire company that Zambians can truly
+                            trust.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="text-center wow fadeInUp" data-wow-delay="0.2s" style="background:#fff;border-radius:8px;padding:36px 24px;border:1px solid #f0f0f0;">
-                        <div style="width:80px;height:80px;border-radius:50%;background:#FF3600;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.2s"
+                        style="background:#fff;border-radius:8px;padding:36px 24px;border:1px solid #f0f0f0;">
+                        <div
+                            style="width:80px;height:80px;border-radius:50%;background:#FF3600;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
                             <span style="font-size:24px;font-weight:800;color:#fff;letter-spacing:1px;">GB</span>
                         </div>
                         <h3 style="font-size:18px;font-weight:700;margin-bottom:6px;">Grace Banda</h3>
-                        <span style="font-size:13px;color:#FF3600;font-weight:600;letter-spacing:0.5px;">Operations Manager</span>
-                        <p style="font-size:14px;color:#666;margin-top:12px;line-height:1.6;">Grace keeps every part of the Chaliko operation running smoothly, coordinating logistics across all six cities with precision.</p>
+                        <span style="font-size:13px;color:#FF3600;font-weight:600;letter-spacing:0.5px;">Operations
+                            Manager</span>
+                        <p style="font-size:14px;color:#666;margin-top:12px;line-height:1.6;">Grace keeps every part of
+                            the Chaliko operation running smoothly, coordinating logistics across all six cities with
+                            precision.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="text-center wow fadeInUp" data-wow-delay="0.3s" style="background:#fff;border-radius:8px;padding:36px 24px;border:1px solid #f0f0f0;">
-                        <div style="width:80px;height:80px;border-radius:50%;background:#FF3600;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.3s"
+                        style="background:#fff;border-radius:8px;padding:36px 24px;border:1px solid #f0f0f0;">
+                        <div
+                            style="width:80px;height:80px;border-radius:50%;background:#FF3600;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
                             <span style="font-size:24px;font-weight:800;color:#fff;letter-spacing:1px;">DP</span>
                         </div>
                         <h3 style="font-size:18px;font-weight:700;margin-bottom:6px;">David Phiri</h3>
-                        <span style="font-size:13px;color:#FF3600;font-weight:600;letter-spacing:0.5px;">Fleet Manager</span>
-                        <p style="font-size:14px;color:#666;margin-top:12px;line-height:1.6;">David oversees every vehicle in the Chaliko fleet, ensuring each car is maintained to the highest standard of safety and cleanliness.</p>
+                        <span style="font-size:13px;color:#FF3600;font-weight:600;letter-spacing:0.5px;">Fleet
+                            Manager</span>
+                        <p style="font-size:14px;color:#666;margin-top:12px;line-height:1.6;">David oversees every
+                            vehicle in the Chaliko fleet, ensuring each car is maintained to the highest standard of
+                            safety and cleanliness.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="text-center wow fadeInUp" data-wow-delay="0.4s" style="background:#fff;border-radius:8px;padding:36px 24px;border:1px solid #f0f0f0;">
-                        <div style="width:80px;height:80px;border-radius:50%;background:#FF3600;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.4s"
+                        style="background:#fff;border-radius:8px;padding:36px 24px;border:1px solid #f0f0f0;">
+                        <div
+                            style="width:80px;height:80px;border-radius:50%;background:#FF3600;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
                             <span style="font-size:24px;font-weight:800;color:#fff;letter-spacing:1px;">NM</span>
                         </div>
                         <h3 style="font-size:18px;font-weight:700;margin-bottom:6px;">Natasha Mwale</h3>
-                        <span style="font-size:13px;color:#FF3600;font-weight:600;letter-spacing:0.5px;">Client Relations</span>
-                        <p style="font-size:14px;color:#666;margin-top:12px;line-height:1.6;">Natasha is dedicated to making every client feel valued — from first enquiry through to the end of their hire and beyond.</p>
+                        <span style="font-size:13px;color:#FF3600;font-weight:600;letter-spacing:0.5px;">Client
+                            Relations</span>
+                        <p style="font-size:14px;color:#666;margin-top:12px;line-height:1.6;">Natasha is dedicated to
+                            making every client feel valued — from first enquiry through to the end of their hire and
+                            beyond.</p>
                     </div>
                 </div>
             </div>
@@ -359,24 +475,39 @@
             </div>
             <div class="row g-5 align-items-stretch">
                 <div class="col-lg-4 col-md-6">
-                    <div class="single-car-list-item wow fadeInUp" data-wow-delay="0.1s" style="padding:36px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
-                        <div style="font-size:56px;font-weight:900;color:#FF3600;line-height:1;margin-bottom:16px;opacity:0.12;font-family:'Arial Black',sans-serif;">01</div>
-                        <h3 class="title" style="font-size:20px;font-weight:700;margin-bottom:12px;">Recognised Service Quality</h3>
-                        <p class="desc">Acknowledged by clients and peers alike for consistently outstanding service across all locations. Our reputation is built on results, not promises.</p>
+                    <div class="single-car-list-item wow fadeInUp" data-wow-delay="0.1s"
+                        style="padding:36px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
+                        <div
+                            style="font-size:56px;font-weight:900;color:#FF3600;line-height:1;margin-bottom:16px;opacity:0.12;font-family:'Arial Black',sans-serif;">
+                            01</div>
+                        <h3 class="title" style="font-size:20px;font-weight:700;margin-bottom:12px;">Recognised Service
+                            Quality</h3>
+                        <p class="desc">Acknowledged by clients and peers alike for consistently outstanding service
+                            across all locations. Our reputation is built on results, not promises.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="single-car-list-item wow fadeInUp" data-wow-delay="0.2s" style="padding:36px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
-                        <div style="font-size:56px;font-weight:900;color:#FF3600;line-height:1;margin-bottom:16px;opacity:0.12;font-family:'Arial Black',sans-serif;">02</div>
-                        <h3 class="title" style="font-size:20px;font-weight:700;margin-bottom:12px;">Thorough Vehicle Inspections</h3>
-                        <p class="desc">Every vehicle undergoes a detailed inspection before and after each hire to guarantee safety and cleanliness. You always receive a car that is fully road-ready.</p>
+                    <div class="single-car-list-item wow fadeInUp" data-wow-delay="0.2s"
+                        style="padding:36px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
+                        <div
+                            style="font-size:56px;font-weight:900;color:#FF3600;line-height:1;margin-bottom:16px;opacity:0.12;font-family:'Arial Black',sans-serif;">
+                            02</div>
+                        <h3 class="title" style="font-size:20px;font-weight:700;margin-bottom:12px;">Thorough Vehicle
+                            Inspections</h3>
+                        <p class="desc">Every vehicle undergoes a detailed inspection before and after each hire to
+                            guarantee safety and cleanliness. You always receive a car that is fully road-ready.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="single-car-list-item wow fadeInUp" data-wow-delay="0.3s" style="padding:36px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
-                        <div style="font-size:56px;font-weight:900;color:#FF3600;line-height:1;margin-bottom:16px;opacity:0.12;font-family:'Arial Black',sans-serif;">03</div>
-                        <h3 class="title" style="font-size:20px;font-weight:700;margin-bottom:12px;">Corporate Account Solutions</h3>
-                        <p class="desc">Dedicated account managers and special rates for businesses with ongoing hire requirements. Streamlined billing, priority availability, and tailored agreements.</p>
+                    <div class="single-car-list-item wow fadeInUp" data-wow-delay="0.3s"
+                        style="padding:36px;background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:100%;">
+                        <div
+                            style="font-size:56px;font-weight:900;color:#FF3600;line-height:1;margin-bottom:16px;opacity:0.12;font-family:'Arial Black',sans-serif;">
+                            03</div>
+                        <h3 class="title" style="font-size:20px;font-weight:700;margin-bottom:12px;">Corporate Account
+                            Solutions</h3>
+                        <p class="desc">Dedicated account managers and special rates for businesses with ongoing hire
+                            requirements. Streamlined billing, priority availability, and tailored agreements.</p>
                     </div>
                 </div>
             </div>
@@ -414,91 +545,103 @@
             <div class="row g-5">
 
                 <!-- Brand column -->
-                <div class="col-lg-4 col-md-6">
-                    <a href="index.html" style="text-decoration:none;display:inline-flex;flex-direction:column;line-height:1.1;margin-bottom:20px;">
+                <div class="col-lg-6 col-md-6">
+                    <a href="index.html"
+                        style="text-decoration:none;display:inline-flex;flex-direction:column;line-height:1.1;margin-bottom:20px;">
                         <span style="font-size:28px;font-weight:900;letter-spacing:4px;color:#fff;">CHALIKO</span>
-                        <span style="font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:3px;text-transform:uppercase;">Car Hire Limited</span>
+                        <span
+                            style="font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:3px;text-transform:uppercase;">Car
+                            Hire Limited</span>
                     </a>
-                    <p style="color:#94a3b8;font-size:14px;line-height:1.8;margin-bottom:28px;">Zambia's trusted car hire company. Premium insured vehicles available across Lusaka, Ndola, Kitwe, Livingstone, Kabwe and Chipata.</p>
+                    <p style="color:#94a3b8;font-size:14px;line-height:1.8;margin-bottom:28px;max-width:420px;">Zambia's trusted car
+                        hire company. Premium insured vehicles available across Lusaka, Ndola, Kitwe, Livingstone, Kabwe
+                        and Chipata.</p>
                     <!-- Social -->
                     <div style="display:flex;gap:10px;">
-                        <a href="#" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='#FF3600'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                        <a href="#"
+                            style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                            onmouseover="this.style.background='#FF3600'"
+                            onmouseout="this.style.background='rgba(255,255,255,0.07)'">
                             <i class="fa-brands fa-facebook-f" style="color:#fff;font-size:13px;"></i>
                         </a>
-                        <a href="#" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='#FF3600'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                        <a href="#"
+                            style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                            onmouseover="this.style.background='#FF3600'"
+                            onmouseout="this.style.background='rgba(255,255,255,0.07)'">
                             <i class="fa-brands fa-instagram" style="color:#fff;font-size:13px;"></i>
                         </a>
-                        <a href="#" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='#FF3600'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                        <a href="#"
+                            style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                            onmouseover="this.style.background='#FF3600'"
+                            onmouseout="this.style.background='rgba(255,255,255,0.07)'">
                             <i class="fa-brands fa-twitter" style="color:#fff;font-size:13px;"></i>
                         </a>
-                        <a href="#" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='#FF3600'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                        <a href="#"
+                            style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                            onmouseover="this.style.background='#FF3600'"
+                            onmouseout="this.style.background='rgba(255,255,255,0.07)'">
                             <i class="fa-brands fa-linkedin-in" style="color:#fff;font-size:13px;"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Quick Links -->
-                <div class="col-lg-2 col-md-6 col-6">
-                    <h4 style="color:#fff;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid #FF3600;display:inline-block;">Pages</h4>
-                    <ul style="list-style:none;padding:0;margin:0;">
-                        <li style="margin-bottom:12px;"><a href="index.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Home</a></li>
-                        <li style="margin-bottom:12px;"><a href="about.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>About Us</a></li>
-                        <li style="margin-bottom:12px;"><a href="fleet.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Our Fleet</a></li>
-                        <li style="margin-bottom:12px;"><a href="book.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Book a Car</a></li>
-                        <li style="margin-bottom:12px;"><a href="contact.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Contact</a></li>
-                    </ul>
-                </div>
-
-                <!-- Vehicle Types -->
-                <div class="col-lg-2 col-md-6 col-6">
-                    <h4 style="color:#fff;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid #FF3600;display:inline-block;">Fleet</h4>
-                    <ul style="list-style:none;padding:0;margin:0;">
-                        <li style="margin-bottom:12px;"><a href="fleet.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Economy</a></li>
-                        <li style="margin-bottom:12px;"><a href="fleet.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Sedan</a></li>
-                        <li style="margin-bottom:12px;"><a href="fleet.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>SUV</a></li>
-                        <li style="margin-bottom:12px;"><a href="fleet.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>4x4 / Off-Road</a></li>
-                        <li style="margin-bottom:12px;"><a href="fleet.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Luxury</a></li>
-                    </ul>
-                </div>
-
                 <!-- Contact Info -->
-                <div class="col-lg-4 col-md-6">
-                    <h4 style="color:#fff;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid #FF3600;display:inline-block;">Get In Touch</h4>
-                    <ul style="list-style:none;padding:0;margin:0;">
-                        <li style="display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;">
-                            <div style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+                <div class="col-lg-6 col-md-6">
+                    <h4
+                        style="color:#fff;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid #FF3600;display:inline-block;">
+                        Get In Touch</h4>
+                    <ul class="footer-contact-grid">
+                        <li style="display:flex;gap:14px;align-items:flex-start;">
+                            <div
+                                style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
                                 <i class="fa-solid fa-phone" style="color:#fff;font-size:13px;"></i>
                             </div>
                             <div>
-                                <p style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Call Us</p>
-                                <a href="tel:+260971000000" style="color:#e2e8f0;font-size:15px;font-weight:600;text-decoration:none;">+260 971 000 000</a>
-                            </div>
-                        </li>
-                        <li style="display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;">
-                            <div style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
-                                <i class="fa-solid fa-envelope" style="color:#fff;font-size:13px;"></i>
-                            </div>
-                            <div>
-                                <p style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Email</p>
-                                <a href="mailto:info@chalikocarihire.co.zm" style="color:#e2e8f0;font-size:14px;font-weight:600;text-decoration:none;">info@chalikocarihire.co.zm</a>
-                            </div>
-                        </li>
-                        <li style="display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;">
-                            <div style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
-                                <i class="fa-solid fa-location-dot" style="color:#fff;font-size:13px;"></i>
-                            </div>
-                            <div>
-                                <p style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Location</p>
-                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Cairo Road, Lusaka, Zambia</span>
+                                <p
+                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    Call Us</p>
+                                <a href="tel:+260971000000"
+                                    style="color:#e2e8f0;font-size:15px;font-weight:600;text-decoration:none;">+260 971
+                                    000 000</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
-                            <div style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+                            <div
+                                style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+                                <i class="fa-solid fa-envelope" style="color:#fff;font-size:13px;"></i>
+                            </div>
+                            <div>
+                                <p
+                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    Email</p>
+                                <a href="mailto:info@chalikocarihire.co.zm"
+                                    style="color:#e2e8f0;font-size:14px;font-weight:600;text-decoration:none;">info@chalikocarihire.co.zm</a>
+                            </div>
+                        </li>
+                        <li style="display:flex;gap:14px;align-items:flex-start;">
+                            <div
+                                style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+                                <i class="fa-solid fa-location-dot" style="color:#fff;font-size:13px;"></i>
+                            </div>
+                            <div>
+                                <p
+                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    Location</p>
+                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Cairo Road, Lusaka,
+                                    Zambia</span>
+                            </div>
+                        </li>
+                        <li style="display:flex;gap:14px;align-items:flex-start;">
+                            <div
+                                style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
                                 <i class="fa-regular fa-clock" style="color:#fff;font-size:13px;"></i>
                             </div>
                             <div>
-                                <p style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Hours</p>
-                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Mon – Sat: 7:00 AM – 7:00 PM</span>
+                                <p
+                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    Hours</p>
+                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Mon – Sat: 7:00 AM – 7:00
+                                    PM</span>
                             </div>
                         </li>
                     </ul>
@@ -510,11 +653,17 @@
         <!-- Divider -->
         <div style="border-top:1px solid rgba(255,255,255,0.07);margin-top:56px;">
             <div class="container">
-                <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:24px 0;">
-                    <p style="color:#475569;font-size:13px;margin:0;">&copy; 2026 Chaliko Car Hire Limited. All Rights Reserved..</p>
+                <div
+                    style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:24px 0;">
+                    <p style="color:#475569;font-size:13px;margin:0;">&copy; 2026 Chaliko Car Hire Limited. All Rights
+                        Reserved..</p>
                     <div style="display:flex;gap:24px;">
-                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Privacy Policy</a>
-                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Terms of Use</a>
+                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;"
+                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Privacy
+                            Policy</a>
+                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;"
+                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Terms of
+                            Use</a>
                     </div>
                 </div>
             </div>
@@ -563,4 +712,5 @@
     <script src="assets/js/vendor/waypoint.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>

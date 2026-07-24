@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact Chaliko Car Hire Limited. Call, email, or message us — we respond within 2 hours, Monday to Saturday.">
+    <meta name="description"
+        content="Contact Chaliko Car Hire Limited. Call, email, or message us — we respond within 2 hours, Monday to Saturday.">
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.svg">
     <title>Contact Us — Chaliko Car Hire Limited</title>
     <link rel="stylesheet" href="assets/css/plugins/plugins.css">
@@ -12,17 +13,75 @@
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/rt-icon.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <style>.main-nav.active > a { color: #FF3600 !important; }</style>
     <style>
-        .single-car-list-item .car-image img { width: 100%; height: auto; object-fit: contain; display: block; }
-        .rts-footer-area { background: #111827 !important; background-image: none !important; }
-        .rts-footer-area * { color: #e5e7eb; }
-        .rts-footer-area a { color: #d1d5db; }
-        .rts-footer-area a:hover { color: #FF3600; }
-        .rts-footer-area .title { color: #ffffff !important; }
-        .rts-footer-area .desc { color: #9ca3af; }
-        .copyright-area { background: #0d131e !important; }
-        .copyright-area p, .copyright-area a { color: #9ca3af; }
+        .main-nav.active>a {
+            color: #FF3600 !important;
+        }
+    </style>
+    <style>
+        .single-car-list-item .car-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .rts-footer-area {
+            background: #111827 !important;
+            background-image: none !important;
+        }
+
+        .rts-footer-area * {
+            color: #e5e7eb;
+        }
+
+        .rts-footer-area a {
+            color: #d1d5db;
+        }
+
+        .rts-footer-area a:hover {
+            color: #FF3600;
+        }
+
+        .rts-footer-area .title {
+            color: #ffffff !important;
+        }
+
+        .rts-footer-area .desc {
+            color: #9ca3af;
+        }
+
+        .footer-contact-grid {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-contact-grid li {
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .footer-contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                column-gap: 24px;
+                row-gap: 24px;
+            }
+
+            .footer-contact-grid li {
+                margin-bottom: 0;
+            }
+        }
+
+        .copyright-area {
+            background: #0d131e !important;
+        }
+
+        .copyright-area p,
+        .copyright-area a {
+            color: #9ca3af;
+        }
     </style>
 
 </head>
@@ -47,7 +106,9 @@
     <div id="anywhere-home"></div>
     <div class="progress-wrap">
         <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;"></path>
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
+            </path>
         </svg>
     </div>
 
@@ -57,23 +118,33 @@
             <div class="container">
                 <div class="inner">
                     <div class="logo-area">
-                        <a href="index.html" style="text-decoration:none;display:flex;flex-direction:column;line-height:1.2;">
+                        <a href="index.html"
+                            style="text-decoration:none;display:flex;flex-direction:column;line-height:1.2;">
                             <span style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;">CHALIKO</span>
-                            <span style="font-size:9px;color:rgba(255,255,255,0.65);letter-spacing:2px;text-transform:uppercase;">Car Hire Limited</span>
+                            <span
+                                style="font-size:9px;color:rgba(255,255,255,0.65);letter-spacing:2px;text-transform:uppercase;">Car
+                                Hire Limited</span>
                         </a>
                     </div>
                     <div class="get-touch-area">
                         <div class="map-area">
                             <div class="icon"><i class="fa-sharp fa-solid fa-phone"></i></div>
-                            <div class="text"><p>Call Us Now</p><a href="tel:+260971000000">+260 971 000 000</a></div>
+                            <div class="text">
+                                <p>Call Us Now</p><a href="tel:+260971000000">+260 971 000 000</a>
+                            </div>
                         </div>
                         <div class="map-area">
                             <div class="icon"><i class="fa-solid fa-envelope"></i></div>
-                            <div class="text"><p>Email Us</p><a href="mailto:info@chalikocarihire.co.zm">info@chalikocarihire.co.zm</a></div>
+                            <div class="text">
+                                <p>Email Us</p><a
+                                    href="mailto:info@chalikocarihire.co.zm">info@chalikocarihire.co.zm</a>
+                            </div>
                         </div>
                         <div class="map-area">
                             <div class="icon"><i class="fa-sharp fa-solid fa-location-dot"></i></div>
-                            <div class="text"><p>Our Location</p><a href="#">Cairo Road, Lusaka, Zambia</a></div>
+                            <div class="text">
+                                <p>Our Location</p><a href="#">Cairo Road, Lusaka, Zambia</a>
+                            </div>
                         </div>
                     </div>
                     <div class="button-area">
@@ -99,7 +170,8 @@
                             <div class="bottom d-flex align-items-center justify-content-between">
                                 <div class="logo-area">
                                     <a href="index.html" style="text-decoration:none;">
-                                        <span style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;">CHALIKO</span>
+                                        <span
+                                            style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;">CHALIKO</span>
                                     </a>
                                 </div>
                                 <div class="nav-area">
@@ -108,7 +180,8 @@
                                         <li class="main-nav"><a class="main-menu" href="about.html">About Us</a></li>
                                         <li class="main-nav"><a class="main-menu" href="fleet.html">Our Fleet</a></li>
                                         <li class="main-nav"><a class="main-menu" href="book.html">Book Now</a></li>
-                                        <li class="main-nav active"><a class="main-menu main-menu-ls" href="contact.html">Contact</a></li>
+                                        <li class="main-nav active"><a class="main-menu main-menu-ls"
+                                                href="contact.html">Contact</a></li>
                                     </ul>
                                 </div>
                                 <div class="bottom-right">
@@ -162,54 +235,68 @@
                     <div class="rts-section-title mb--36">
                         <span class="subtitle wow fadeInUp" data-wow-delay="0.1s">Get In Touch</span>
                         <h2 class="heading-title rts-slide-anim">We Are Here<br>to <span>Help You</span></h2>
-                        <p class="desc mt--16">Reach out via phone, email, or the form. Our team responds within 2 hours during business hours.</p>
+                        <p class="desc mt--16">Reach out via phone, email, or the form. Our team responds within 2 hours
+                            during business hours.</p>
                     </div>
 
                     <div class="row g-3">
                         <div class="col-6">
-                            <div style="display:flex;flex-direction:column;gap:12px;padding:24px;background:#f8f8f8;border-radius:12px;height:100%;">
-                                <div style="width:44px;height:44px;background:#FF3600;border-radius:10px;display:flex;align-items:center;justify-content:center;">
+                            <div
+                                style="display:flex;flex-direction:column;gap:12px;padding:24px;background:#f8f8f8;border-radius:12px;height:100%;">
+                                <div
+                                    style="width:44px;height:44px;background:#FF3600;border-radius:10px;display:flex;align-items:center;justify-content:center;">
                                     <i class="fa-solid fa-phone" style="color:white;font-size:16px;"></i>
                                 </div>
                                 <div>
                                     <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Call Us</h3>
-                                    <a href="tel:+260971000000" style="color:#333;font-size:14px;display:block;margin-bottom:4px;">+260 971 000 000</a>
+                                    <a href="tel:+260971000000"
+                                        style="color:#333;font-size:14px;display:block;margin-bottom:4px;">+260 971 000
+                                        000</a>
                                     <p style="font-size:12px;color:#888;margin:0;">Mon–Sat, 7am–7pm</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div style="display:flex;flex-direction:column;gap:12px;padding:24px;background:#f8f8f8;border-radius:12px;height:100%;">
-                                <div style="width:44px;height:44px;background:#FF3600;border-radius:10px;display:flex;align-items:center;justify-content:center;">
+                            <div
+                                style="display:flex;flex-direction:column;gap:12px;padding:24px;background:#f8f8f8;border-radius:12px;height:100%;">
+                                <div
+                                    style="width:44px;height:44px;background:#FF3600;border-radius:10px;display:flex;align-items:center;justify-content:center;">
                                     <i class="fa-solid fa-envelope" style="color:white;font-size:16px;"></i>
                                 </div>
                                 <div>
                                     <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Email Us</h3>
-                                    <a href="mailto:info@chalikocarihire.co.zm" style="color:#333;font-size:13px;display:block;word-break:break-all;margin-bottom:4px;">info@chalikocarihire.co.zm</a>
+                                    <a href="mailto:info@chalikocarihire.co.zm"
+                                        style="color:#333;font-size:13px;display:block;word-break:break-all;margin-bottom:4px;">info@chalikocarihire.co.zm</a>
                                     <p style="font-size:12px;color:#888;margin:0;">Reply within 2 hours</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div style="display:flex;flex-direction:column;gap:12px;padding:24px;background:#f8f8f8;border-radius:12px;height:100%;">
-                                <div style="width:44px;height:44px;background:#FF3600;border-radius:10px;display:flex;align-items:center;justify-content:center;">
+                            <div
+                                style="display:flex;flex-direction:column;gap:12px;padding:24px;background:#f8f8f8;border-radius:12px;height:100%;">
+                                <div
+                                    style="width:44px;height:44px;background:#FF3600;border-radius:10px;display:flex;align-items:center;justify-content:center;">
                                     <i class="fa-solid fa-location-dot" style="color:white;font-size:16px;"></i>
                                 </div>
                                 <div>
                                     <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Visit Us</h3>
-                                    <p style="color:#333;font-size:14px;margin-bottom:4px;">Cairo Road, Lusaka, Zambia</p>
+                                    <p style="color:#333;font-size:14px;margin-bottom:4px;">Cairo Road, Lusaka, Zambia
+                                    </p>
                                     <p style="font-size:12px;color:#888;margin:0;">Walk-ins welcome</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-6">
-                            <div style="display:flex;flex-direction:column;gap:12px;padding:24px;background:#f8f8f8;border-radius:12px;height:100%;">
-                                <div style="width:44px;height:44px;background:#FF3600;border-radius:10px;display:flex;align-items:center;justify-content:center;">
+                            <div
+                                style="display:flex;flex-direction:column;gap:12px;padding:24px;background:#f8f8f8;border-radius:12px;height:100%;">
+                                <div
+                                    style="width:44px;height:44px;background:#FF3600;border-radius:10px;display:flex;align-items:center;justify-content:center;">
                                     <i class="fa-solid fa-clock" style="color:white;font-size:16px;"></i>
                                 </div>
                                 <div>
                                     <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;">Opening Hours</h3>
-                                    <p style="color:#333;font-size:14px;margin-bottom:4px;">Mon – Sat: 7:00 AM – 7:00 PM</p>
+                                    <p style="color:#333;font-size:14px;margin-bottom:4px;">Mon – Sat: 7:00 AM – 7:00 PM
+                                    </p>
                                     <p style="font-size:12px;color:#888;margin:0;">Sunday: Closed</p>
                                 </div>
                             </div>
@@ -219,25 +306,32 @@
 
                 <!-- Right: Contact Form -->
                 <div class="col-lg-6">
-                    <div class="rts-contact-form" style="padding:40px;background:#fff;border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.08);">
+                    <div class="rts-contact-form"
+                        style="padding:40px;background:#fff;border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.08);">
                         <h3 class="title" style="font-size:24px;margin-bottom:8px;">Send Us a Message</h3>
-                        <p style="margin-bottom:28px;opacity:0.7;">Fill in the form and our team will get back to you within 2 hours.</p>
+                        <p style="margin-bottom:28px;opacity:0.7;">Fill in the form and our team will get back to you
+                            within 2 hours.</p>
                         <form action="#" class="contact-form-area">
                             <div class="single-input">
-                                <span class="icon"><i class="fa-regular fa-user" style="font-size:14px;color:#555;"></i></span>
+                                <span class="icon"><i class="fa-regular fa-user"
+                                        style="font-size:14px;color:#555;"></i></span>
                                 <input type="text" name="name" placeholder="Your Full Name" required>
                             </div>
                             <div class="single-input">
-                                <span class="icon"><i class="fa-regular fa-envelope" style="font-size:14px;color:#555;"></i></span>
+                                <span class="icon"><i class="fa-regular fa-envelope"
+                                        style="font-size:14px;color:#555;"></i></span>
                                 <input type="email" name="email" placeholder="your@email.com" required>
                             </div>
                             <div class="single-input">
-                                <span class="icon"><i class="fa-solid fa-phone" style="font-size:14px;color:#555;"></i></span>
+                                <span class="icon"><i class="fa-solid fa-phone"
+                                        style="font-size:14px;color:#555;"></i></span>
                                 <input type="tel" name="phone" placeholder="+260 97X XXX XXX">
                             </div>
                             <div class="single-input">
-                                <span class="icon"><i class="fa-regular fa-list" style="font-size:14px;color:#555;"></i></span>
-                                <select name="subject" style="width:100%;padding:14px 14px 14px 44px;border:1px solid #eee;border-radius:8px;font-size:14px;color:#555;background:#fff;">
+                                <span class="icon"><i class="fa-regular fa-list"
+                                        style="font-size:14px;color:#555;"></i></span>
+                                <select name="subject"
+                                    style="width:100%;padding:14px 14px 14px 44px;border:1px solid #eee;border-radius:8px;font-size:14px;color:#555;background:#fff;">
                                     <option value="" disabled selected>Select a Subject&hellip;</option>
                                     <option>Booking Enquiry</option>
                                     <option>Vehicle Availability</option>
@@ -248,10 +342,14 @@
                                 </select>
                             </div>
                             <div class="single-input">
-                                <span class="icon"><i class="fa-regular fa-comment" style="font-size:14px;color:#555;"></i></span>
-                                <textarea name="message" placeholder="Tell us how we can help&hellip;" rows="5" required></textarea>
+                                <span class="icon"><i class="fa-regular fa-comment"
+                                        style="font-size:14px;color:#555;"></i></span>
+                                <textarea name="message" placeholder="Tell us how we can help&hellip;" rows="5"
+                                    required></textarea>
                             </div>
-                            <button class="rts-btn-send" type="submit" style="width:100%;padding:16px;background:#FF3600;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:8px;">Send Message</button>
+                            <button class="rts-btn-send" type="submit"
+                                style="width:100%;padding:16px;background:#FF3600;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:8px;">Send
+                                Message</button>
                         </form>
                     </div>
                 </div>
@@ -279,78 +377,96 @@
                         <!-- FAQ 1 -->
                         <div class="accordion-item">
                             <div class="accordion-header" id="faq1">
-                                <h3 class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faqItem1" aria-expanded="true" aria-controls="faqItem1">
+                                <h3 class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faqItem1"
+                                    aria-expanded="true" aria-controls="faqItem1">
                                     Do I need a credit card to book?
                                     <span class="inner-shape"><span class="inner-radius"></span></span>
                                 </h3>
                             </div>
                             <div id="faqItem1" class="accordion-collapse collapse show" data-bs-parent="#rts-accordion">
-                                <div class="accordion-body">No. We accept mobile money (MTN/Airtel), bank transfer, cash at pick-up, and debit/credit cards. A 30% deposit confirms your reservation — the balance is payable at collection.</div>
+                                <div class="accordion-body">No. We accept mobile money (MTN/Airtel), bank transfer, cash
+                                    at pick-up, and debit/credit cards. A 30% deposit confirms your reservation — the
+                                    balance is payable at collection.</div>
                             </div>
                         </div>
 
                         <!-- FAQ 2 -->
                         <div class="accordion-item">
                             <div class="accordion-header" id="faq2">
-                                <h3 class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faqItem2" aria-expanded="false" aria-controls="faqItem2">
+                                <h3 class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faqItem2" aria-expanded="false" aria-controls="faqItem2">
                                     What is the minimum rental period?
                                     <span class="inner-shape"><span class="inner-radius"></span></span>
                                 </h3>
                             </div>
                             <div id="faqItem2" class="accordion-collapse collapse" data-bs-parent="#rts-accordion">
-                                <div class="accordion-body">The minimum rental period is one day (24 hours). We also offer discounted weekly and monthly rates for longer hires — contact us for a tailored quote.</div>
+                                <div class="accordion-body">The minimum rental period is one day (24 hours). We also
+                                    offer discounted weekly and monthly rates for longer hires — contact us for a
+                                    tailored quote.</div>
                             </div>
                         </div>
 
                         <!-- FAQ 3 -->
                         <div class="accordion-item">
                             <div class="accordion-header" id="faq3">
-                                <h3 class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faqItem3" aria-expanded="false" aria-controls="faqItem3">
+                                <h3 class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faqItem3" aria-expanded="false" aria-controls="faqItem3">
                                     Can I drive to other countries?
                                     <span class="inner-shape"><span class="inner-radius"></span></span>
                                 </h3>
                             </div>
                             <div id="faqItem3" class="accordion-collapse collapse" data-bs-parent="#rts-accordion">
-                                <div class="accordion-body">Cross-border travel is permitted but requires prior approval from Chaliko Car Hire Limited and an additional cross-border fee. Please inform us at the time of booking so we can arrange the necessary documentation.</div>
+                                <div class="accordion-body">Cross-border travel is permitted but requires prior approval
+                                    from Chaliko Car Hire Limited and an additional cross-border fee. Please inform us
+                                    at the time of booking so we can arrange the necessary documentation.</div>
                             </div>
                         </div>
 
                         <!-- FAQ 4 -->
                         <div class="accordion-item">
                             <div class="accordion-header" id="faq4">
-                                <h3 class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faqItem4" aria-expanded="false" aria-controls="faqItem4">
+                                <h3 class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faqItem4" aria-expanded="false" aria-controls="faqItem4">
                                     What documents do I need to hire a vehicle?
                                     <span class="inner-shape"><span class="inner-radius"></span></span>
                                 </h3>
                             </div>
                             <div id="faqItem4" class="accordion-collapse collapse" data-bs-parent="#rts-accordion">
-                                <div class="accordion-body">You will need a valid driver's licence (Zambian or international; minimum age 23), a national ID or passport, and the funds for the security deposit. All documents are verified at collection.</div>
+                                <div class="accordion-body">You will need a valid driver's licence (Zambian or
+                                    international; minimum age 23), a national ID or passport, and the funds for the
+                                    security deposit. All documents are verified at collection.</div>
                             </div>
                         </div>
 
                         <!-- FAQ 5 -->
                         <div class="accordion-item">
                             <div class="accordion-header" id="faq5">
-                                <h3 class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faqItem5" aria-expanded="false" aria-controls="faqItem5">
+                                <h3 class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faqItem5" aria-expanded="false" aria-controls="faqItem5">
                                     Is fuel included in the rental price?
                                     <span class="inner-shape"><span class="inner-radius"></span></span>
                                 </h3>
                             </div>
                             <div id="faqItem5" class="accordion-collapse collapse" data-bs-parent="#rts-accordion">
-                                <div class="accordion-body">No. All vehicles are provided with a full tank and must be returned full. A fuel surcharge option is available at collection if you prefer us to handle refuelling on return.</div>
+                                <div class="accordion-body">No. All vehicles are provided with a full tank and must be
+                                    returned full. A fuel surcharge option is available at collection if you prefer us
+                                    to handle refuelling on return.</div>
                             </div>
                         </div>
 
                         <!-- FAQ 6 -->
                         <div class="accordion-item">
                             <div class="accordion-header" id="faq6">
-                                <h3 class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faqItem6" aria-expanded="false" aria-controls="faqItem6">
+                                <h3 class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faqItem6" aria-expanded="false" aria-controls="faqItem6">
                                     Can I add a professional driver?
                                     <span class="inner-shape"><span class="inner-radius"></span></span>
                                 </h3>
                             </div>
                             <div id="faqItem6" class="accordion-collapse collapse" data-bs-parent="#rts-accordion">
-                                <div class="accordion-body">Yes. We can arrange a vetted, professional driver for an additional K50 per day. Advance notice is appreciated so we can assign the right person for your journey.</div>
+                                <div class="accordion-body">Yes. We can arrange a vetted, professional driver for an
+                                    additional K50 per day. Advance notice is appreciated so we can assign the right
+                                    person for your journey.</div>
                             </div>
                         </div>
 
@@ -366,7 +482,8 @@
         <div class="container">
             <div class="cta-inner">
                 <h2 class="title">Your Journey Awaits.</h2>
-                <p style="color:rgba(255,255,255,0.8);margin-bottom:24px;">Browse our fleet today and find the perfect vehicle for your trip across Zambia.</p>
+                <p style="color:rgba(255,255,255,0.8);margin-bottom:24px;">Browse our fleet today and find the perfect
+                    vehicle for your trip across Zambia.</p>
                 <a href="fleet.html" class="rts__btn btn-primary">
                     <div class="rts__btn__wrap">
                         <span class="rts__btn__txt-one">Browse Our Fleet</span>
@@ -390,91 +507,103 @@
             <div class="row g-5">
 
                 <!-- Brand column -->
-                <div class="col-lg-4 col-md-6">
-                    <a href="index.html" style="text-decoration:none;display:inline-flex;flex-direction:column;line-height:1.1;margin-bottom:20px;">
+                <div class="col-lg-6 col-md-6">
+                    <a href="index.html"
+                        style="text-decoration:none;display:inline-flex;flex-direction:column;line-height:1.1;margin-bottom:20px;">
                         <span style="font-size:28px;font-weight:900;letter-spacing:4px;color:#fff;">CHALIKO</span>
-                        <span style="font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:3px;text-transform:uppercase;">Car Hire Limited</span>
+                        <span
+                            style="font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:3px;text-transform:uppercase;">Car
+                            Hire Limited</span>
                     </a>
-                    <p style="color:#94a3b8;font-size:14px;line-height:1.8;margin-bottom:28px;">Zambia's trusted car hire company. Premium insured vehicles available across Lusaka, Ndola, Kitwe, Livingstone, Kabwe and Chipata.</p>
+                    <p style="color:#94a3b8;font-size:14px;line-height:1.8;margin-bottom:28px;max-width:420px;">Zambia's trusted car
+                        hire company. Premium insured vehicles available across Lusaka, Ndola, Kitwe, Livingstone, Kabwe
+                        and Chipata.</p>
                     <!-- Social -->
                     <div style="display:flex;gap:10px;">
-                        <a href="#" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='#FF3600'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                        <a href="#"
+                            style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                            onmouseover="this.style.background='#FF3600'"
+                            onmouseout="this.style.background='rgba(255,255,255,0.07)'">
                             <i class="fa-brands fa-facebook-f" style="color:#fff;font-size:13px;"></i>
                         </a>
-                        <a href="#" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='#FF3600'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                        <a href="#"
+                            style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                            onmouseover="this.style.background='#FF3600'"
+                            onmouseout="this.style.background='rgba(255,255,255,0.07)'">
                             <i class="fa-brands fa-instagram" style="color:#fff;font-size:13px;"></i>
                         </a>
-                        <a href="#" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='#FF3600'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                        <a href="#"
+                            style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                            onmouseover="this.style.background='#FF3600'"
+                            onmouseout="this.style.background='rgba(255,255,255,0.07)'">
                             <i class="fa-brands fa-twitter" style="color:#fff;font-size:13px;"></i>
                         </a>
-                        <a href="#" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='#FF3600'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                        <a href="#"
+                            style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
+                            onmouseover="this.style.background='#FF3600'"
+                            onmouseout="this.style.background='rgba(255,255,255,0.07)'">
                             <i class="fa-brands fa-linkedin-in" style="color:#fff;font-size:13px;"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Quick Links -->
-                <div class="col-lg-2 col-md-6 col-6">
-                    <h4 style="color:#fff;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid #FF3600;display:inline-block;">Pages</h4>
-                    <ul style="list-style:none;padding:0;margin:0;">
-                        <li style="margin-bottom:12px;"><a href="index.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Home</a></li>
-                        <li style="margin-bottom:12px;"><a href="about.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>About Us</a></li>
-                        <li style="margin-bottom:12px;"><a href="fleet.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Our Fleet</a></li>
-                        <li style="margin-bottom:12px;"><a href="book.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Book a Car</a></li>
-                        <li style="margin-bottom:12px;"><a href="contact.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Contact</a></li>
-                    </ul>
-                </div>
-
-                <!-- Vehicle Types -->
-                <div class="col-lg-2 col-md-6 col-6">
-                    <h4 style="color:#fff;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid #FF3600;display:inline-block;">Fleet</h4>
-                    <ul style="list-style:none;padding:0;margin:0;">
-                        <li style="margin-bottom:12px;"><a href="fleet.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Economy</a></li>
-                        <li style="margin-bottom:12px;"><a href="fleet.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Sedan</a></li>
-                        <li style="margin-bottom:12px;"><a href="fleet.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>SUV</a></li>
-                        <li style="margin-bottom:12px;"><a href="fleet.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>4x4 / Off-Road</a></li>
-                        <li style="margin-bottom:12px;"><a href="fleet.html" style="color:#94a3b8;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#94a3b8'"><i class="fa-solid fa-chevron-right" style="font-size:10px;color:#FF3600;"></i>Luxury</a></li>
-                    </ul>
-                </div>
-
                 <!-- Contact Info -->
-                <div class="col-lg-4 col-md-6">
-                    <h4 style="color:#fff;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid #FF3600;display:inline-block;">Get In Touch</h4>
-                    <ul style="list-style:none;padding:0;margin:0;">
-                        <li style="display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;">
-                            <div style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+                <div class="col-lg-6 col-md-6">
+                    <h4
+                        style="color:#fff;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid #FF3600;display:inline-block;">
+                        Get In Touch</h4>
+                    <ul class="footer-contact-grid">
+                        <li style="display:flex;gap:14px;align-items:flex-start;">
+                            <div
+                                style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
                                 <i class="fa-solid fa-phone" style="color:#fff;font-size:13px;"></i>
                             </div>
                             <div>
-                                <p style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Call Us</p>
-                                <a href="tel:+260971000000" style="color:#e2e8f0;font-size:15px;font-weight:600;text-decoration:none;">+260 971 000 000</a>
-                            </div>
-                        </li>
-                        <li style="display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;">
-                            <div style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
-                                <i class="fa-solid fa-envelope" style="color:#fff;font-size:13px;"></i>
-                            </div>
-                            <div>
-                                <p style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Email</p>
-                                <a href="mailto:info@chalikocarihire.co.zm" style="color:#e2e8f0;font-size:14px;font-weight:600;text-decoration:none;">info@chalikocarihire.co.zm</a>
-                            </div>
-                        </li>
-                        <li style="display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;">
-                            <div style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
-                                <i class="fa-solid fa-location-dot" style="color:#fff;font-size:13px;"></i>
-                            </div>
-                            <div>
-                                <p style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Location</p>
-                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Cairo Road, Lusaka, Zambia</span>
+                                <p
+                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    Call Us</p>
+                                <a href="tel:+260971000000"
+                                    style="color:#e2e8f0;font-size:15px;font-weight:600;text-decoration:none;">+260 971
+                                    000 000</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
-                            <div style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+                            <div
+                                style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+                                <i class="fa-solid fa-envelope" style="color:#fff;font-size:13px;"></i>
+                            </div>
+                            <div>
+                                <p
+                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    Email</p>
+                                <a href="mailto:info@chalikocarihire.co.zm"
+                                    style="color:#e2e8f0;font-size:14px;font-weight:600;text-decoration:none;">info@chalikocarihire.co.zm</a>
+                            </div>
+                        </li>
+                        <li style="display:flex;gap:14px;align-items:flex-start;">
+                            <div
+                                style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+                                <i class="fa-solid fa-location-dot" style="color:#fff;font-size:13px;"></i>
+                            </div>
+                            <div>
+                                <p
+                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    Location</p>
+                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Cairo Road, Lusaka,
+                                    Zambia</span>
+                            </div>
+                        </li>
+                        <li style="display:flex;gap:14px;align-items:flex-start;">
+                            <div
+                                style="width:36px;height:36px;background:#FF3600;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
                                 <i class="fa-regular fa-clock" style="color:#fff;font-size:13px;"></i>
                             </div>
                             <div>
-                                <p style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Hours</p>
-                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Mon – Sat: 7:00 AM – 7:00 PM</span>
+                                <p
+                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    Hours</p>
+                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Mon – Sat: 7:00 AM – 7:00
+                                    PM</span>
                             </div>
                         </li>
                     </ul>
@@ -486,11 +615,17 @@
         <!-- Divider -->
         <div style="border-top:1px solid rgba(255,255,255,0.07);margin-top:56px;">
             <div class="container">
-                <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:24px 0;">
-                    <p style="color:#475569;font-size:13px;margin:0;">&copy; 2026 Chaliko Car Hire Limited. All Rights Reserved..</p>
+                <div
+                    style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:24px 0;">
+                    <p style="color:#475569;font-size:13px;margin:0;">&copy; 2026 Chaliko Car Hire Limited. All Rights
+                        Reserved..</p>
                     <div style="display:flex;gap:24px;">
-                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Privacy Policy</a>
-                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Terms of Use</a>
+                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;"
+                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Privacy
+                            Policy</a>
+                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;"
+                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Terms of
+                            Use</a>
                     </div>
                 </div>
             </div>
