@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Book a car with Chaliko Car Hire Limited. Reserve your vehicle online in minutes — fast confirmation within 2 hours.">
+        content="Book a car with Chaliko Car Hire Limited. Reserve your vehicle online in minutes, fast confirmation within 2 hours.">
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.svg">
-    <title>Book a Car — Chaliko Car Hire Limited</title>
+    <title>Book a Car, Chaliko Car Hire Limited</title>
     <link rel="stylesheet" href="assets/css/plugins/plugins.css">
     <link rel="stylesheet" href="assets/css/plugins/magnifying-popup.css">
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
@@ -19,9 +19,43 @@
         }
     </style>
     <style>
+        .header-one .header-top .inner .get-touch-area {
+            gap: 32px;
+        }
+
+        .header-one .header-top .inner .get-touch-area .map-area .text a,
+        .header-one .header-top .inner .get-touch-area .map-area .text p {
+            white-space: nowrap;
+        }
+
+        .header-one .header-top .inner .button-area .rts__btn__txt-one,
+        .header-one .header-top .inner .button-area .rts__btn__txt-two {
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1440px) {
+            .header-one .header-top .inner .get-touch-area {
+                gap: 20px;
+            }
+        }
+    </style>
+    <style>
+        .single-car-list-item .car-image {
+            height: 220px;
+            background: #fff;
+        }
+
+        .single-car-list-item .content .car-list-service {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 12px;
+            column-gap: 12px;
+            margin-bottom: 70px;
+        }
+
         .single-car-list-item .car-image img {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: contain;
             display: block;
         }
@@ -82,7 +116,83 @@
         .copyright-area a {
             color: #9ca3af;
         }
+
+        .whatsapp-fab {
+            position: fixed;
+            right: 26px;
+            bottom: 92px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            z-index: 9999;
+            transition: transform 0.2s ease;
+        }
+
+        .whatsapp-fab:hover {
+            transform: scale(1.08);
+        }
+
+        .whatsapp-fab i {
+            color: #fff;
+            font-size: 28px;
+        }
     </style>
+
+    <link rel="canonical" href="https://chalikocarihire.co.zm/book.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Chaliko Car Hire Limited">
+    <meta property="og:locale" content="en_ZM">
+    <meta property="og:title" content="Book a Car, Chaliko Car Hire Limited">
+    <meta property="og:description" content="Book a car with Chaliko Car Hire Limited. Reserve your vehicle online in minutes, fast confirmation within 2 hours.">
+    <meta property="og:url" content="https://chalikocarihire.co.zm/book.html">
+    <meta property="og:image" content="https://chalikocarihire.co.zm/assets/images/banner/5.jpg">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Book a Car, Chaliko Car Hire Limited">
+    <meta name="twitter:description" content="Book a car with Chaliko Car Hire Limited. Reserve your vehicle online in minutes, fast confirmation within 2 hours.">
+    <meta name="twitter:image" content="https://chalikocarihire.co.zm/assets/images/banner/5.jpg">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutoRental",
+        "@id": "https://chalikocarihire.co.zm/#business",
+        "name": "Chaliko Car Hire Limited",
+        "url": "https://chalikocarihire.co.zm/",
+        "telephone": "+260979517732",
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia",
+        "email": "chalikocarhire@yahoo.com",
+        "image": "https://chalikocarihire.co.zm/assets/images/banner/5.jpg",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Plot No. 14, Manchinchi Road, Northmead",
+            "addressLocality": "Lusaka",
+            "addressCountry": "ZM"
+        },
+        "areaServed": [
+            { "@type": "City", "name": "Lusaka" },
+            { "@type": "City", "name": "Ndola" },
+            { "@type": "City", "name": "Kitwe" },
+            { "@type": "City", "name": "Livingstone" },
+            { "@type": "City", "name": "Kabwe" },
+            { "@type": "City", "name": "Chipata" }
+        ],
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "07:00",
+            "closes": "19:00"
+        }
+    }
+    </script>
 
 </head>
 
@@ -137,21 +247,21 @@
                             <div class="icon"><i class="fa-sharp fa-solid fa-phone"></i></div>
                             <div class="text">
                                 <p>Call Us Now</p>
-                                <a href="tel:+260971000000">+260 971 000 000</a>
+                                <a href="tel:+260979517732">+260 979 517 732</a>
                             </div>
                         </div>
                         <div class="map-area">
                             <div class="icon"><i class="fa-solid fa-envelope"></i></div>
                             <div class="text">
                                 <p>Email Us</p>
-                                <a href="mailto:info@chalikocarihire.co.zm">info@chalikocarihire.co.zm</a>
+                                <a href="mailto:chalikocarhire@yahoo.com">chalikocarhire@yahoo.com</a>
                             </div>
                         </div>
                         <div class="map-area">
                             <div class="icon"><i class="fa-sharp fa-solid fa-location-dot"></i></div>
                             <div class="text">
                                 <p>Our Location</p>
-                                <a href="#">Cairo Road, Lusaka, Zambia</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia" target="_blank" rel="noopener">No. 14, Manchinchi Rd., Lusaka</a>
                             </div>
                         </div>
                     </div>
@@ -247,12 +357,13 @@
                         <p style="opacity:0.65;margin-bottom:32px;">Fill in your details below. We'll confirm your
                             booking within 2 hours by phone or email.</p>
 
-                        <form id="bookingForm" action="#" method="post">
+                        <form id="contact-form" action="mailer.php" method="post">
+                            <input type="hidden" name="form_type" value="Booking Request">
 
                             <!-- STEP 1: Vehicle & Dates -->
                             <h4
                                 style="font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#FF3600;margin-bottom:20px;padding-bottom:8px;border-bottom:2px solid #FF3600;">
-                                Step 1 — Vehicle &amp; Dates</h4>
+                                Step 1, Vehicle &amp; Dates</h4>
 
                             <div class="row g-4" style="margin-bottom:24px;">
                                 <div class="col-md-12">
@@ -261,20 +372,27 @@
                                     <select name="vehicle" required
                                         style="width:100%;padding:14px 16px;border:1px solid #ddd;border-radius:8px;font-size:14px;background:#fff;">
                                         <option value="" disabled selected>Choose a vehicle…</option>
-                                        <option value="Toyota Vitz">Toyota Vitz — Economy (K80/day)</option>
-                                        <option value="Suzuki Swift">Suzuki Swift — Economy (K75/day)</option>
-                                        <option value="Toyota Corolla">Toyota Corolla — Sedan (K100/day)</option>
-                                        <option value="Honda Civic">Honda Civic — Sedan (K110/day)</option>
-                                        <option value="Toyota RAV4">Toyota RAV4 — SUV (K150/day)</option>
-                                        <option value="Nissan X-Trail">Nissan X-Trail — SUV (K160/day)</option>
-                                        <!--
-                                        <option value="Toyota Land Cruiser">Toyota Land Cruiser — 4x4 (K250/day)</option>
-                                        <option value="Mitsubishi Pajero">Mitsubishi Pajero — 4x4 (K210/day)</option>
-                                        <option value="Toyota Hilux">Toyota Hilux — Pickup (K180/day)</option>
-                                        <option value="Ford Ranger">Ford Ranger — Pickup (K200/day)</option>
-                                        <option value="Toyota Hiace Van">Toyota Hiace Van — Van (K220/day)</option>
-                                        <option value="Mercedes C-Class">Mercedes C-Class — Luxury (K280/day)</option>
-                                        -->
+                                        <optgroup label="Sedans">
+                                            <option value="Toyota Allion">Toyota Allion</option>
+                                            <option value="Toyota Mark X">Toyota Mark X</option>
+                                            <option value="Lexus IS250">Lexus IS250</option>
+                                        </optgroup>
+                                        <optgroup label="Hatchbacks">
+                                            <option value="Honda Fit">Honda Fit</option>
+                                        </optgroup>
+                                        <optgroup label="SUVs">
+                                            <option value="Mitsubishi Pajero">Mitsubishi Pajero</option>
+                                            <option value="Mitsubishi Shogun">Mitsubishi Shogun</option>
+                                            <option value="Toyota Fortuner">Toyota Fortuner</option>
+                                        </optgroup>
+                                        <optgroup label="4x4 Vehicles">
+                                            <option value="Toyota Hilux">Toyota Hilux</option>
+                                            <option value="Ford Ranger">Ford Ranger</option>
+                                        </optgroup>
+                                        <optgroup label="Buses &amp; Vans">
+                                            <option value="Toyota Quantum">Toyota Quantum</option>
+                                            <option value="Mitsubishi Rosa">Mitsubishi Rosa</option>
+                                        </optgroup>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
@@ -325,14 +443,13 @@
                                 <input type="checkbox" name="add_driver" id="add_driver"
                                     style="width:18px;height:18px;flex-shrink:0;">
                                 <label for="add_driver" style="margin:0;cursor:pointer;font-weight:500;">Add a
-                                    professional driver <span
-                                        style="color:#FF3600;font-weight:600;">(+K50/day)</span></label>
+                                    professional driver</label>
                             </div>
 
                             <!-- STEP 2: Personal Details -->
                             <h4
                                 style="font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#FF3600;margin-bottom:20px;padding-bottom:8px;border-bottom:2px solid #FF3600;">
-                                Step 2 — Your Details</h4>
+                                Step 2, Your Details</h4>
 
                             <div class="row g-4" style="margin-bottom:24px;">
                                 <div class="col-md-6">
@@ -349,7 +466,7 @@
                                 <div class="col-md-6">
                                     <label style="font-weight:600;margin-bottom:6px;display:block;">Email Address
                                         *</label>
-                                    <input type="email" name="email" placeholder="you@example.com" required
+                                    <input type="email" id="email" name="email" placeholder="you@example.com" required
                                         style="width:100%;padding:14px 16px;border:1px solid #ddd;border-radius:8px;font-size:14px;">
                                 </div>
                                 <div class="col-md-6">
@@ -368,55 +485,13 @@
                                 </div>
                             </div>
 
-                            <!-- STEP 3: Payment -->
-                            <h4
-                                style="font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#FF3600;margin-bottom:20px;padding-bottom:8px;border-bottom:2px solid #FF3600;">
-                                Step 3 — Payment Method</h4>
-
-                            <p style="opacity:0.7;margin-bottom:16px;font-size:14px;">A 30% deposit is required to
-                                confirm your booking. Choose your preferred payment method:</p>
-
-                            <div class="row g-3" style="margin-bottom:28px;">
-                                <div class="col-6 col-md-3">
-                                    <label
-                                        style="display:block;padding:16px 12px;border:2px solid #ddd;border-radius:8px;text-align:center;cursor:pointer;transition:all 0.2s;font-size:13px;font-weight:500;">
-                                        <input type="radio" name="payment_method" value="mobile_money"
-                                            style="display:block;margin:0 auto 8px;">
-                                        Mobile Money<br><span style="font-size:11px;opacity:0.6;">MTN / Airtel</span>
-                                    </label>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <label
-                                        style="display:block;padding:16px 12px;border:2px solid #ddd;border-radius:8px;text-align:center;cursor:pointer;transition:all 0.2s;font-size:13px;font-weight:500;">
-                                        <input type="radio" name="payment_method" value="bank_transfer"
-                                            style="display:block;margin:0 auto 8px;">
-                                        Bank Transfer
-                                    </label>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <label
-                                        style="display:block;padding:16px 12px;border:2px solid #ddd;border-radius:8px;text-align:center;cursor:pointer;transition:all 0.2s;font-size:13px;font-weight:500;">
-                                        <input type="radio" name="payment_method" value="cash"
-                                            style="display:block;margin:0 auto 8px;">
-                                        Cash at Pick-Up
-                                    </label>
-                                </div>
-                                <div class="col-6 col-md-3">
-                                    <label
-                                        style="display:block;padding:16px 12px;border:2px solid #ddd;border-radius:8px;text-align:center;cursor:pointer;transition:all 0.2s;font-size:13px;font-weight:500;">
-                                        <input type="radio" name="payment_method" value="card"
-                                            style="display:block;margin:0 auto 8px;">
-                                        Debit / Credit Card
-                                    </label>
-                                </div>
-                            </div>
-
                             <button type="submit" class="rts__btn btn-primary"
                                 style="width:100%;padding:18px;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;background:#FF3600;color:#fff;border:none;border-radius:8px;cursor:pointer;">
                                 Submit Booking Request <i class="fa-light fa-arrow-right"></i>
                             </button>
                             <p style="text-align:center;margin-top:12px;font-size:13px;opacity:0.6;">We'll confirm your
                                 booking within 2 hours by phone or email.</p>
+                            <div id="form-messages" style="text-align:center;margin-top:12px;font-size:14px;font-weight:600;"></div>
 
                         </form>
                     </div>
@@ -435,16 +510,12 @@
                                 <li style="display:flex;gap:12px;margin-bottom:16px;align-items:flex-start;">
                                     <i class="fa-solid fa-shield-check"
                                         style="color:#FF3600;margin-top:2px;flex-shrink:0;"></i>
-                                    <span style="font-size:14px;">Fully insured vehicles — drive with peace of
+                                    <span style="font-size:14px;">Fully insured vehicles, drive with peace of
                                         mind</span>
                                 </li>
                                 <li style="display:flex;gap:12px;margin-bottom:16px;align-items:flex-start;">
                                     <i class="fa-solid fa-bolt" style="color:#FF3600;margin-top:2px;flex-shrink:0;"></i>
                                     <span style="font-size:14px;">Fast 2-hour booking confirmation</span>
-                                </li>
-                                <li style="display:flex;gap:12px;margin-bottom:16px;align-items:flex-start;">
-                                    <i class="fa-solid fa-tag" style="color:#FF3600;margin-top:2px;flex-shrink:0;"></i>
-                                    <span style="font-size:14px;">Transparent pricing — no hidden fees</span>
                                 </li>
                                 <li style="display:flex;gap:12px;margin-bottom:16px;align-items:flex-start;">
                                     <i class="fa-solid fa-headset"
@@ -462,18 +533,22 @@
                         <!-- Need Help -->
                         <div style="background:#FF3600;padding:28px;border-radius:16px;color:#fff;">
                             <h4 style="font-size:16px;font-weight:700;margin-bottom:16px;">Need Help Booking?</h4>
-                            <p style="opacity:0.9;font-size:14px;margin-bottom:20px;">Call us directly and our team will
+                            <p style="font-size:14px;margin-bottom:20px;">Call us directly and our team will
                                 guide you through the process.</p>
-                            <a href="tel:+260971000000"
+                            <a href="tel:+260979517732"
                                 style="display:flex;align-items:center;gap:10px;color:#fff;font-size:18px;font-weight:700;text-decoration:none;margin-bottom:12px;">
-                                <i class="fa-solid fa-phone"></i> +260 971 000 000
+                                <i class="fa-solid fa-phone"></i> +260 979 517 732
                             </a>
-                            <a href="mailto:info@chalikocarihire.co.zm"
-                                style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.85);font-size:14px;text-decoration:none;">
-                                <i class="fa-solid fa-envelope"></i> info@chalikocarihire.co.zm
+                            <a href="https://wa.me/260965517732" target="_blank" rel="noopener"
+                                style="display:flex;align-items:center;gap:10px;color:#fff;font-size:15px;font-weight:600;text-decoration:none;margin-bottom:12px;">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp: +260 965 517 732
+                            </a>
+                            <a href="mailto:chalikocarhire@yahoo.com"
+                                style="display:flex;align-items:center;gap:10px;color:#fff;font-size:14px;text-decoration:none;">
+                                <i class="fa-solid fa-envelope"></i> chalikocarhire@yahoo.com
                             </a>
                             <hr style="border-color:rgba(255,255,255,0.2);margin:20px 0;">
-                            <p style="opacity:0.8;font-size:13px;margin:0;">Mon – Sat: 7:00 AM – 7:00 PM</p>
+                            <p style="font-size:13px;margin:0;">Mon – Sat: 7:00 AM – 7:00 PM</p>
                         </div>
 
                         <!-- Hire Requirements -->
@@ -553,10 +628,10 @@
                         style="text-decoration:none;display:inline-flex;flex-direction:column;line-height:1.1;margin-bottom:20px;">
                         <span style="font-size:28px;font-weight:900;letter-spacing:4px;color:#fff;">CHALIKO</span>
                         <span
-                            style="font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:3px;text-transform:uppercase;">Car
+                            style="font-size:10px;color:#fff;letter-spacing:3px;text-transform:uppercase;">Car
                             Hire Limited</span>
                     </a>
-                    <p style="color:#94a3b8;font-size:14px;line-height:1.8;margin-bottom:28px;max-width:420px;">Zambia's trusted car
+                    <p style="color:#fff;font-size:14px;line-height:1.8;margin-bottom:28px;max-width:420px;">Zambia's trusted car
                         hire company. Premium insured vehicles available across Lusaka, Ndola, Kitwe, Livingstone, Kabwe
                         and Chipata.</p>
                     <!-- Social -->
@@ -601,11 +676,12 @@
                             </div>
                             <div>
                                 <p
-                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Call Us</p>
-                                <a href="tel:+260971000000"
-                                    style="color:#e2e8f0;font-size:15px;font-weight:600;text-decoration:none;">+260 971
-                                    000 000</a>
+                                <a href="tel:+260979517732"
+                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;">+260 979 517 732</a>
+                                <a href="tel:+260965517732"
+                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;margin-top:2px;">+260 965 517 732</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
@@ -615,10 +691,10 @@
                             </div>
                             <div>
                                 <p
-                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Email</p>
-                                <a href="mailto:info@chalikocarihire.co.zm"
-                                    style="color:#e2e8f0;font-size:14px;font-weight:600;text-decoration:none;">info@chalikocarihire.co.zm</a>
+                                <a href="mailto:chalikocarhire@yahoo.com"
+                                    style="color:#fff;font-size:14px;font-weight:600;text-decoration:none;">chalikocarhire@yahoo.com</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
@@ -628,10 +704,9 @@
                             </div>
                             <div>
                                 <p
-                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Location</p>
-                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Cairo Road, Lusaka,
-                                    Zambia</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia" target="_blank" rel="noopener" style="color:#fff;font-size:14px;font-weight:600;text-decoration:none;">Plot No. 14, Manchinchi Road, Northmead, Lusaka, Zambia</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
@@ -641,9 +716,9 @@
                             </div>
                             <div>
                                 <p
-                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Hours</p>
-                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Mon – Sat: 7:00 AM – 7:00
+                                <span style="color:#fff;font-size:14px;font-weight:600;">Mon – Sat: 7:00 AM – 7:00
                                     PM</span>
                             </div>
                         </li>
@@ -658,14 +733,14 @@
             <div class="container">
                 <div
                     style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:24px 0;">
-                    <p style="color:#475569;font-size:13px;margin:0;">&copy; 2026 Chaliko Car Hire Limited. All Rights
+                    <p style="color:#fff;font-size:13px;margin:0;">&copy; 2026 Chaliko Car Hire Limited. All Rights
                         Reserved..</p>
                     <div style="display:flex;gap:24px;">
-                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;"
-                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Privacy
+                        <a href="#" style="color:#fff;font-size:13px;text-decoration:none;"
+                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#fff'">Privacy
                             Policy</a>
-                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;"
-                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Terms of
+                        <a href="#" style="color:#fff;font-size:13px;text-decoration:none;"
+                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#fff'">Terms of
                             Use</a>
                     </div>
                 </div>
@@ -698,6 +773,11 @@
         </div>
     </div>
     <!-- mobile sidebar end -->
+
+    <a href="https://wa.me/260965517732?text=Hi%20Chaliko%2C%20I%27d%20like%20to%20ask%20about..."
+        target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Chat with us on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <script src="assets/js/plugins/jquery.js"></script>
     <script src="assets/js/plugins/jquery-ui.js"></script>

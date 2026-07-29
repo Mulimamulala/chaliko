@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Chaliko Car Hire Limited — Zambia's premier car rental company. Premium, fully insured vehicles available across Lusaka, Ndola, Livingstone and beyond.">
+        content="Chaliko Car Hire Limited, Zambia's premier car rental company. Premium, fully insured vehicles available across Lusaka, Ndola, Livingstone and beyond.">
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.svg">
-    <title>Chaliko Car Hire Limited — Premium Car Rental in Zambia</title>
+    <title>Chaliko Car Hire Limited, Premium Car Rental in Zambia</title>
     <link rel="stylesheet" href="assets/css/plugins/plugins.css">
     <link rel="stylesheet" href="assets/css/plugins/magnifying-popup.css">
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
@@ -19,9 +19,43 @@
         }
     </style>
     <style>
+        .header-one .header-top .inner .get-touch-area {
+            gap: 32px;
+        }
+
+        .header-one .header-top .inner .get-touch-area .map-area .text a,
+        .header-one .header-top .inner .get-touch-area .map-area .text p {
+            white-space: nowrap;
+        }
+
+        .header-one .header-top .inner .button-area .rts__btn__txt-one,
+        .header-one .header-top .inner .button-area .rts__btn__txt-two {
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1440px) {
+            .header-one .header-top .inner .get-touch-area {
+                gap: 20px;
+            }
+        }
+    </style>
+    <style>
+        .single-car-list-item .car-image {
+            height: 220px;
+            background: #fff;
+        }
+
+        .single-car-list-item .content .car-list-service {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 12px;
+            column-gap: 12px;
+            margin-bottom: 70px;
+        }
+
         .single-car-list-item .car-image img {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: contain;
             display: block;
         }
@@ -104,7 +138,83 @@
             object-fit: cover;
             display: block;
         }
+
+        .whatsapp-fab {
+            position: fixed;
+            right: 26px;
+            bottom: 92px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            z-index: 9999;
+            transition: transform 0.2s ease;
+        }
+
+        .whatsapp-fab:hover {
+            transform: scale(1.08);
+        }
+
+        .whatsapp-fab i {
+            color: #fff;
+            font-size: 28px;
+        }
     </style>
+
+    <link rel="canonical" href="https://chalikocarihire.co.zm/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Chaliko Car Hire Limited">
+    <meta property="og:locale" content="en_ZM">
+    <meta property="og:title" content="Chaliko Car Hire Limited, Premium Car Rental in Zambia">
+    <meta property="og:description" content="Chaliko Car Hire Limited, Zambia's premier car rental company. Premium, fully insured vehicles available across Lusaka, Ndola, Livingstone and beyond.">
+    <meta property="og:url" content="https://chalikocarihire.co.zm/">
+    <meta property="og:image" content="https://chalikocarihire.co.zm/assets/images/banner/5.jpg">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Chaliko Car Hire Limited, Premium Car Rental in Zambia">
+    <meta name="twitter:description" content="Chaliko Car Hire Limited, Zambia's premier car rental company. Premium, fully insured vehicles available across Lusaka, Ndola, Livingstone and beyond.">
+    <meta name="twitter:image" content="https://chalikocarihire.co.zm/assets/images/banner/5.jpg">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutoRental",
+        "@id": "https://chalikocarihire.co.zm/#business",
+        "name": "Chaliko Car Hire Limited",
+        "url": "https://chalikocarihire.co.zm/",
+        "telephone": "+260979517732",
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia",
+        "email": "chalikocarhire@yahoo.com",
+        "image": "https://chalikocarihire.co.zm/assets/images/banner/5.jpg",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Plot No. 14, Manchinchi Road, Northmead",
+            "addressLocality": "Lusaka",
+            "addressCountry": "ZM"
+        },
+        "areaServed": [
+            { "@type": "City", "name": "Lusaka" },
+            { "@type": "City", "name": "Ndola" },
+            { "@type": "City", "name": "Kitwe" },
+            { "@type": "City", "name": "Livingstone" },
+            { "@type": "City", "name": "Kabwe" },
+            { "@type": "City", "name": "Chipata" }
+        ],
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "07:00",
+            "closes": "19:00"
+        }
+    }
+    </script>
 
 </head>
 
@@ -152,20 +262,20 @@
                         <div class="map-area">
                             <div class="icon"><i class="fa-sharp fa-solid fa-phone"></i></div>
                             <div class="text">
-                                <p>Call Us Now</p><a href="tel:+260971000000">+260 971 000 000</a>
+                                <p>Call Us Now</p><a href="tel:+260979517732">+260 979 517 732</a>
                             </div>
                         </div>
                         <div class="map-area">
                             <div class="icon"><i class="fa-solid fa-envelope"></i></div>
                             <div class="text">
                                 <p>Email Us</p><a
-                                    href="mailto:info@chalikocarihire.co.zm">info@chalikocarihire.co.zm</a>
+                                    href="mailto:chalikocarhire@yahoo.com">chalikocarhire@yahoo.com</a>
                             </div>
                         </div>
                         <div class="map-area">
                             <div class="icon"><i class="fa-sharp fa-solid fa-location-dot"></i></div>
                             <div class="text">
-                                <p>Our Location</p><a href="#">Cairo Road, Lusaka, Zambia</a>
+                                <p>Our Location</p><a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia" target="_blank" rel="noopener">No. 14, Manchinchi Rd., Lusaka</a>
                             </div>
                         </div>
                     </div>
@@ -289,13 +399,11 @@
                     <div class="select-wrapper">
                         <select name="car_type" class="mySelect">
                             <option value="" selected>Choose Car Type</option>
-                            <option value="economy">Economy</option>
-                            <option value="sedan">Sedan</option>
-                            <option value="suv">SUV</option>
-                            <option value="4x4">4x4 / Off-Road</option>
-                            <option value="pickup">Pickup Truck</option>
-                            <option value="van">Van / Minibus</option>
-                            <option value="luxury">Luxury</option>
+                            <option value="sedan">Sedans</option>
+                            <option value="hatchback">Hatchbacks</option>
+                            <option value="suv">SUVs</option>
+                            <option value="offroad">4x4 Vehicles</option>
+                            <option value="van">Buses &amp; Vans</option>
                         </select>
                         <span class="select-icon"><i class="fa-regular fa-chevron-down"></i></span>
                     </div>
@@ -406,27 +514,26 @@
             </div>
             <div class="rts-car-list-wrapper mt--50 mt_sm--30">
                 <div class="row g-5">
-                    <!-- Toyota Vitz -->
+                    <!-- Toyota Fortuner -->
                     <div class="col-lg-4 col-md-6">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Toyota+Vitz"><img src="assets/images/cars/vitz.jpg"
-                                        alt="Toyota Vitz"></a>
+                                <a href="book.html?car=Toyota+Fortuner"><img src="assets/images/cars/fortuner.png"
+                                        alt="Toyota Fortuner"></a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Vitz">Toyota Vitz</a></h3>
+                                <h3 class="title"><a href="book.html?car=Toyota+Fortuner">Toyota Fortuner</a></h3>
                                 <ul class="car-list-service">
-                                    <li><img src="assets/images/car-list/icon/4.svg" alt="icon"><span>5 Seats</span>
+                                    <li><img src="assets/images/car-list/icon/4.svg" alt="icon"><span>7 Seats</span>
                                     </li>
-                                    <li><img src="assets/images/car-list/icon/2.svg" alt="icon"><span>Petrol</span></li>
-                                    <li><img src="assets/images/car-list/icon/3.svg" alt="icon"><span>Manual</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="icon"><span>Economy</span>
+                                    <li><img src="assets/images/car-list/icon/2.svg" alt="icon"><span>Diesel</span></li>
+                                    <li><img src="assets/images/car-list/icon/3.svg" alt="icon"><span>Automatic</span>
                                     </li>
+                                    <li><img src="assets/images/car-list/icon/1.svg" alt="icon"><span>SUV</span></li>
                                 </ul>
-                                <div class="car-price">K80/ <span class="price-tag">Per Day</span></div>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Toyota+Vitz" class="link-icon">
+                                <a href="book.html?car=Toyota+Fortuner" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -435,11 +542,39 @@
                             </div>
                         </div>
                     </div>
-                    <!--
+                    <!-- Toyota Allion -->
                     <div class="col-lg-4 col-md-6">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Toyota+Hilux"><img src="assets/images/cars/hilux.jpeg"
+                                <a href="book.html?car=Toyota+Allion"><img src="assets/images/cars/allion.png"
+                                        alt="Toyota Allion"></a>
+                            </div>
+                            <div class="content">
+                                <h3 class="title"><a href="book.html?car=Toyota+Allion">Toyota Allion</a></h3>
+                                <ul class="car-list-service">
+                                    <li><img src="assets/images/car-list/icon/4.svg" alt="icon"><span>5 Seats</span>
+                                    </li>
+                                    <li><img src="assets/images/car-list/icon/2.svg" alt="icon"><span>Petrol</span></li>
+                                    <li><img src="assets/images/car-list/icon/3.svg" alt="icon"><span>Automatic</span>
+                                    </li>
+                                    <li><img src="assets/images/car-list/icon/1.svg" alt="icon"><span>Sedan</span></li>
+                                </ul>
+                            </div>
+                            <div class="inner">
+                                <a href="book.html?car=Toyota+Allion" class="link-icon">
+                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Toyota Hilux -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-car-list-item">
+                            <div class="car-image">
+                                <a href="book.html?car=Toyota+Hilux"><img src="assets/images/cars/hilux.png"
                                         alt="Toyota Hilux"></a>
                             </div>
                             <div class="content">
@@ -449,9 +584,8 @@
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="icon"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg" alt="icon"><span>Manual</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="icon"><span>Pickup</span></li>
+                                    <li><img src="assets/images/car-list/icon/1.svg" alt="icon"><span>4x4</span></li>
                                 </ul>
-                                <div class="car-price">K180/ <span class="price-tag">Per Day</span></div>
                             </div>
                             <div class="inner">
                                 <a href="book.html?car=Toyota+Hilux" class="link-icon">
@@ -463,127 +597,6 @@
                             </div>
                         </div>
                     </div>
-                    -->
-                    <!-- Toyota Corolla -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-car-list-item">
-                            <div class="car-image">
-                                <a href="book.html?car=Toyota+Corolla"><img src="assets/images/cars/corolla.jpeg"
-                                        alt="Toyota Corolla"></a>
-                            </div>
-                            <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Corolla">Toyota Corolla</a></h3>
-                                <ul class="car-list-service">
-                                    <li><img src="assets/images/car-list/icon/4.svg" alt="icon"><span>5 Seats</span>
-                                    </li>
-                                    <li><img src="assets/images/car-list/icon/2.svg" alt="icon"><span>Petrol</span></li>
-                                    <li><img src="assets/images/car-list/icon/3.svg" alt="icon"><span>Automatic</span>
-                                    </li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="icon"><span>Sedan</span></li>
-                                </ul>
-                                <div class="car-price">K100/ <span class="price-tag">Per Day</span></div>
-                            </div>
-                            <div class="inner">
-                                <a href="book.html?car=Toyota+Corolla" class="link-icon">
-                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Toyota RAV4 -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-car-list-item">
-                            <div class="car-image">
-                                <a href="book.html?car=Toyota+RAV4"><img src="assets/images/cars/rav4.jpeg"
-                                        alt="Toyota RAV4"></a>
-                            </div>
-                            <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+RAV4">Toyota RAV4</a></h3>
-                                <ul class="car-list-service">
-                                    <li><img src="assets/images/car-list/icon/4.svg" alt="icon"><span>5 Seats</span>
-                                    </li>
-                                    <li><img src="assets/images/car-list/icon/2.svg" alt="icon"><span>Petrol</span></li>
-                                    <li><img src="assets/images/car-list/icon/3.svg" alt="icon"><span>Automatic</span>
-                                    </li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="icon"><span>SUV</span></li>
-                                </ul>
-                                <div class="car-price">K150/ <span class="price-tag">Per Day</span></div>
-                            </div>
-                            <div class="inner">
-                                <a href="book.html?car=Toyota+RAV4" class="link-icon">
-                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Toyota Land Cruiser -->
-                    <!--
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-car-list-item">
-                            <div class="car-image">
-                                <a href="book.html?car=Toyota+Land+Cruiser"><img
-                                        src="assets/images/cars/landcruiser.webp" alt="Toyota Land Cruiser"></a>
-                            </div>
-                            <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Land+Cruiser">Toyota Land Cruiser</a>
-                                </h3>
-                                <ul class="car-list-service">
-                                    <li><img src="assets/images/car-list/icon/4.svg" alt="icon"><span>8 Seats</span>
-                                    </li>
-                                    <li><img src="assets/images/car-list/icon/2.svg" alt="icon"><span>Diesel</span></li>
-                                    <li><img src="assets/images/car-list/icon/3.svg" alt="icon"><span>Automatic</span>
-                                    </li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="icon"><span>4x4</span></li>
-                                </ul>
-                                <div class="car-price">K250/ <span class="price-tag">Per Day</span></div>
-                            </div>
-                            <div class="inner">
-                                <a href="book.html?car=Toyota+Land+Cruiser" class="link-icon">
-                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    -->
-                    <!--
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-car-list-item">
-                            <div class="car-image">
-                                <a href="book.html?car=Mercedes+C-Class"><img src="assets/images/cars/mercedes.jpg"
-                                        alt="Mercedes C-Class"></a>
-                            </div>
-                            <div class="content">
-                                <h3 class="title"><a href="book.html?car=Mercedes+C-Class">Mercedes C-Class</a></h3>
-                                <ul class="car-list-service">
-                                    <li><img src="assets/images/car-list/icon/4.svg" alt="icon"><span>5 Seats</span>
-                                    </li>
-                                    <li><img src="assets/images/car-list/icon/2.svg" alt="icon"><span>Petrol</span></li>
-                                    <li><img src="assets/images/car-list/icon/3.svg" alt="icon"><span>Automatic</span>
-                                    </li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="icon"><span>Luxury</span></li>
-                                </ul>
-                                <div class="car-price">K280/ <span class="price-tag">Per Day</span></div>
-                            </div>
-                            <div class="inner">
-                                <a href="book.html?car=Mercedes+C-Class" class="link-icon">
-                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    -->
                 </div>
                 <div class="rts-btn-wrapper">
                     <a href="fleet.html" class="rts__btn btn-primary">View Full Fleet</a>
@@ -754,7 +767,7 @@
                                 </div>
                                 <div class="why-choose-item-two">
                                     <div class="inner-icon"><div class="icon"><img src="assets/images/icon/why-4.svg" alt="icon"></div></div>
-                                    <div class="content"><h3 class="title">Instant Booking</h3><p class="desc">Reserve your vehicle in minutes. Fast confirmation — no waiting, no queues, no hassle.</p></div>
+                                    <div class="content"><h3 class="title">Instant Booking</h3><p class="desc">Reserve your vehicle in minutes. Fast confirmation, no waiting, no queues, no hassle.</p></div>
                                 </div>
                             </div>
                         </div>
@@ -816,7 +829,7 @@
                                             alt="Thandiwe Kapata"></div>
                                     <div class="author-content">
                                         <h3 class="author-name">Thandiwe Kapata</h3><span
-                                            class="author-role">Livingstone — Safari Experience</span>
+                                            class="author-role">Livingstone, Safari Experience</span>
                                     </div>
                                 </div>
                                 <div class="inner-icon">
@@ -835,7 +848,7 @@
                                     <li><i class="rt-icon-star"></i></li>
                                 </ul>
                                 <p class="desc">"Excellent service. The car was spotless and the booking process was
-                                    incredibly smooth. My go-to car hire company in Zambia — highly recommended to
+                                    incredibly smooth. My go-to car hire company in Zambia, highly recommended to
                                     everyone."</p>
                                 <div class="author-area">
                                     <div class="author-thumb"><img src="assets/images/testimonials/author-2.jpg"
@@ -867,8 +880,7 @@
                                     <div class="author-thumb"><img src="assets/images/testimonials/author-3.png"
                                             alt="James Tembo"></div>
                                     <div class="author-content">
-                                        <h3 class="author-name">James Tembo</h3><span class="author-role">Kitwe —
-                                            Corporate Client</span>
+                                        <h3 class="author-name">James Tembo</h3><span class="author-role">Kitwe, Corporate Client</span>
                                     </div>
                                 </div>
                                 <div class="inner-icon">
@@ -899,28 +911,30 @@
                     <div class="col-xl-5 col-lg-6">
                         <div class="rts-contact-form">
                             <h3 class="title">Get In Touch</h3>
-                            <form action="contact.html" class="contact-form-area">
+                            <form id="contact-form" action="mailer.php" method="post" class="contact-form-area">
+                                <input type="hidden" name="form_type" value="Quick Enquiry (Homepage)">
                                 <div class="single-input">
                                     <span class="icon"><i class="fa-regular fa-user"
                                             style="font-size:14px;color:#555;"></i></span>
-                                    <input type="text" name="name" placeholder="Your Name">
+                                    <input type="text" id="name" name="name" placeholder="Your Name" required>
                                 </div>
                                 <div class="single-input">
                                     <span class="icon"><i class="fa-regular fa-envelope"
                                             style="font-size:14px;color:#555;"></i></span>
-                                    <input type="email" name="email" placeholder="your@email.com">
+                                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
                                 </div>
                                 <div class="single-input">
                                     <span class="icon"><i class="fa-solid fa-phone"
                                             style="font-size:14px;color:#555;"></i></span>
-                                    <input type="text" name="phone" placeholder="+260 97X XXX XXX">
+                                    <input type="text" id="phone" name="phone" placeholder="+260 97X XXX XXX">
                                 </div>
                                 <div class="single-input">
                                     <span class="icon"><i class="fa-regular fa-comment"
                                             style="font-size:14px;color:#555;"></i></span>
-                                    <textarea name="message" placeholder="Your message..."></textarea>
+                                    <textarea id="message" name="message" placeholder="Your message..." required></textarea>
                                 </div>
                                 <button class="rts-btn-send" type="submit">Send Message</button>
+                                <div id="form-messages"></div>
                             </form>
                         </div>
                     </div>
@@ -967,7 +981,7 @@
                                     </div>
                                     <div id="item__three" class="accordion-collapse collapse"
                                         data-bs-parent="#rts-accordion">
-                                        <div class="accordion-body">Our minimum hire period is one day (24 hours).
+                                        <div class="accordion-body">Our minimum hire period is two days (48 hours).
                                             Weekly and monthly rates are available at a discount.</div>
                                     </div>
                                 </div>
@@ -981,9 +995,9 @@
                                     </div>
                                     <div id="item__four" class="accordion-collapse collapse"
                                         data-bs-parent="#rts-accordion">
-                                        <div class="accordion-body">No. Vehicles are provided with a full tank and must
-                                            be returned full. A fuel surcharge can be pre-paid at collection if
-                                            preferred.</div>
+                                        <div class="accordion-body">No. Vehicles must be returned at the same fuel
+                                            level they were given at pick-up. A fuel surcharge can be pre-paid at
+                                            collection if preferred.</div>
                                     </div>
                                 </div>
                                 <div class="accordion-item">
@@ -1016,9 +1030,9 @@
             <div class="cta-inner">
                 <h2 class="title two">Ready to hit the road? Call us now.</h2>
                 <div class="contact">
-                    <a href="tel:+260971000000">
+                    <a href="tel:+260979517732">
                         <img src="assets/images/cta/call.svg" alt="">
-                        +260 971 000 000
+                        +260 979 517 732
                     </a>
                 </div>
                 <img class="shape one" src="assets/images/cta/round.svg" alt="">
@@ -1039,10 +1053,10 @@
                         style="text-decoration:none;display:inline-flex;flex-direction:column;line-height:1.1;margin-bottom:20px;">
                         <span style="font-size:28px;font-weight:900;letter-spacing:4px;color:#fff;">CHALIKO</span>
                         <span
-                            style="font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:3px;text-transform:uppercase;">Car
+                            style="font-size:10px;color:#fff;letter-spacing:3px;text-transform:uppercase;">Car
                             Hire Limited</span>
                     </a>
-                    <p style="color:#94a3b8;font-size:14px;line-height:1.8;margin-bottom:28px;max-width:420px;">Zambia's trusted car
+                    <p style="color:#fff;font-size:14px;line-height:1.8;margin-bottom:28px;max-width:420px;">Zambia's trusted car
                         hire company. Premium insured vehicles available across Lusaka, Ndola, Kitwe, Livingstone, Kabwe
                         and Chipata.</p>
                     <!-- Social -->
@@ -1087,11 +1101,12 @@
                             </div>
                             <div>
                                 <p
-                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Call Us</p>
-                                <a href="tel:+260971000000"
-                                    style="color:#e2e8f0;font-size:15px;font-weight:600;text-decoration:none;">+260 971
-                                    000 000</a>
+                                <a href="tel:+260979517732"
+                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;">+260 979 517 732</a>
+                                <a href="tel:+260965517732"
+                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;margin-top:2px;">+260 965 517 732</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
@@ -1101,10 +1116,10 @@
                             </div>
                             <div>
                                 <p
-                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Email</p>
-                                <a href="mailto:info@chalikocarihire.co.zm"
-                                    style="color:#e2e8f0;font-size:14px;font-weight:600;text-decoration:none;">info@chalikocarihire.co.zm</a>
+                                <a href="mailto:chalikocarhire@yahoo.com"
+                                    style="color:#fff;font-size:14px;font-weight:600;text-decoration:none;">chalikocarhire@yahoo.com</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
@@ -1114,10 +1129,9 @@
                             </div>
                             <div>
                                 <p
-                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Location</p>
-                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Cairo Road, Lusaka,
-                                    Zambia</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia" target="_blank" rel="noopener" style="color:#fff;font-size:14px;font-weight:600;text-decoration:none;">Plot No. 14, Manchinchi Road, Northmead, Lusaka, Zambia</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
@@ -1127,9 +1141,9 @@
                             </div>
                             <div>
                                 <p
-                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Hours</p>
-                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Mon – Sat: 7:00 AM – 7:00
+                                <span style="color:#fff;font-size:14px;font-weight:600;">Mon – Sat: 7:00 AM – 7:00
                                     PM</span>
                             </div>
                         </li>
@@ -1144,14 +1158,14 @@
             <div class="container">
                 <div
                     style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:24px 0;">
-                    <p style="color:#475569;font-size:13px;margin:0;">&copy; 2026 Chaliko Car Hire Limited. All Rights
+                    <p style="color:#fff;font-size:13px;margin:0;">&copy; 2026 Chaliko Car Hire Limited. All Rights
                         Reserved..</p>
                     <div style="display:flex;gap:24px;">
-                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;"
-                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Privacy
+                        <a href="#" style="color:#fff;font-size:13px;text-decoration:none;"
+                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#fff'">Privacy
                             Policy</a>
-                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;"
-                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Terms of
+                        <a href="#" style="color:#fff;font-size:13px;text-decoration:none;"
+                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#fff'">Terms of
                             Use</a>
                     </div>
                 </div>
@@ -1183,6 +1197,11 @@
             </div>
         </div>
     </div>
+
+    <a href="https://wa.me/260965517732?text=Hi%20Chaliko%2C%20I%27d%20like%20to%20ask%20about..."
+        target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Chat with us on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <script src="assets/js/plugins/jquery.js"></script>
     <script src="assets/js/plugins/jquery-ui.js"></script>

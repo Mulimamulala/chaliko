@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Browse Chaliko's full fleet — economy cars, sedans, SUVs, 4x4s, pickups, vans and luxury vehicles for hire across Zambia.">
+        content="Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses &amp; vans for hire across Zambia.">
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.svg">
-    <title>Our Fleet — Chaliko Car Hire Limited</title>
+    <title>Our Fleet, Chaliko Car Hire Limited</title>
     <link rel="stylesheet" href="assets/css/plugins/plugins.css">
     <link rel="stylesheet" href="assets/css/plugins/magnifying-popup.css">
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
@@ -19,9 +19,43 @@
         }
     </style>
     <style>
+        .header-one .header-top .inner .get-touch-area {
+            gap: 32px;
+        }
+
+        .header-one .header-top .inner .get-touch-area .map-area .text a,
+        .header-one .header-top .inner .get-touch-area .map-area .text p {
+            white-space: nowrap;
+        }
+
+        .header-one .header-top .inner .button-area .rts__btn__txt-one,
+        .header-one .header-top .inner .button-area .rts__btn__txt-two {
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1440px) {
+            .header-one .header-top .inner .get-touch-area {
+                gap: 20px;
+            }
+        }
+    </style>
+    <style>
+        .single-car-list-item .car-image {
+            height: 220px;
+            background: #fff;
+        }
+
+        .single-car-list-item .content .car-list-service {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 12px;
+            column-gap: 12px;
+            margin-bottom: 70px;
+        }
+
         .single-car-list-item .car-image img {
             width: 100%;
-            height: auto;
+            height: 100%;
             object-fit: contain;
             display: block;
         }
@@ -82,7 +116,83 @@
         .copyright-area a {
             color: #9ca3af;
         }
+
+        .whatsapp-fab {
+            position: fixed;
+            right: 26px;
+            bottom: 92px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            z-index: 9999;
+            transition: transform 0.2s ease;
+        }
+
+        .whatsapp-fab:hover {
+            transform: scale(1.08);
+        }
+
+        .whatsapp-fab i {
+            color: #fff;
+            font-size: 28px;
+        }
     </style>
+
+    <link rel="canonical" href="https://chalikocarihire.co.zm/fleet.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Chaliko Car Hire Limited">
+    <meta property="og:locale" content="en_ZM">
+    <meta property="og:title" content="Our Fleet, Chaliko Car Hire Limited">
+    <meta property="og:description" content="Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses & vans for hire across Zambia.">
+    <meta property="og:url" content="https://chalikocarihire.co.zm/fleet.html">
+    <meta property="og:image" content="https://chalikocarihire.co.zm/assets/images/banner/5.jpg">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Our Fleet, Chaliko Car Hire Limited">
+    <meta name="twitter:description" content="Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses & vans for hire across Zambia.">
+    <meta name="twitter:image" content="https://chalikocarihire.co.zm/assets/images/banner/5.jpg">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutoRental",
+        "@id": "https://chalikocarihire.co.zm/#business",
+        "name": "Chaliko Car Hire Limited",
+        "url": "https://chalikocarihire.co.zm/",
+        "telephone": "+260979517732",
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia",
+        "email": "chalikocarhire@yahoo.com",
+        "image": "https://chalikocarihire.co.zm/assets/images/banner/5.jpg",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Plot No. 14, Manchinchi Road, Northmead",
+            "addressLocality": "Lusaka",
+            "addressCountry": "ZM"
+        },
+        "areaServed": [
+            { "@type": "City", "name": "Lusaka" },
+            { "@type": "City", "name": "Ndola" },
+            { "@type": "City", "name": "Kitwe" },
+            { "@type": "City", "name": "Livingstone" },
+            { "@type": "City", "name": "Kabwe" },
+            { "@type": "City", "name": "Chipata" }
+        ],
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "07:00",
+            "closes": "19:00"
+        }
+    }
+    </script>
 
 </head>
 
@@ -118,20 +228,20 @@
                         <div class="map-area">
                             <div class="icon"><i class="fa-sharp fa-solid fa-phone"></i></div>
                             <div class="text">
-                                <p>Call Us Now</p><a href="tel:+260971000000">+260 971 000 000</a>
+                                <p>Call Us Now</p><a href="tel:+260979517732">+260 979 517 732</a>
                             </div>
                         </div>
                         <div class="map-area">
                             <div class="icon"><i class="fa-solid fa-envelope"></i></div>
                             <div class="text">
                                 <p>Email Us</p><a
-                                    href="mailto:info@chalikocarihire.co.zm">info@chalikocarihire.co.zm</a>
+                                    href="mailto:chalikocarhire@yahoo.com">chalikocarhire@yahoo.com</a>
                             </div>
                         </div>
                         <div class="map-area">
                             <div class="icon"><i class="fa-sharp fa-solid fa-location-dot"></i></div>
                             <div class="text">
-                                <p>Our Location</p><a href="#">Cairo Road, Lusaka, Zambia</a>
+                                <p>Our Location</p><a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia" target="_blank" rel="noopener">No. 14, Manchinchi Rd., Lusaka</a>
                             </div>
                         </div>
                     </div>
@@ -202,7 +312,7 @@
                     <div class="breadcrumb-area-inner">
                         <h1 class="title">Our Fleet</h1>
                         <p class="desc" style="max-width:760px;margin:16px auto 0;color:#fff;opacity:0.9;">Choose the
-                            right vehicle for your journey — from executive sedans and family-friendly SUVs to rugged
+                            right vehicle for your journey, from executive sedans and family-friendly SUVs to rugged
                             4x4s and chauffeur-ready group transport.</p>
                         <ul class="breadcrumb">
                             <li><a href="index.html">Home</a></li>
@@ -234,15 +344,11 @@
                     <div class="rts-button-group filters-button-group mb--40"
                         style="display:flex;flex-wrap:nowrap;overflow-x:auto;gap:10px;padding-bottom:4px;justify-content:center;">
                         <button class="button is-checked" data-filter="*">All Vehicles</button>
-                        <button class="button" data-filter=".economy">Economy</button>
-                        <button class="button" data-filter=".sedan">Sedan</button>
-                        <button class="button" data-filter=".suv">SUV</button>
-                        <!--
-                        <button class="button" data-filter=".offroad">4x4 / Off-Road</button>
-                        <button class="button" data-filter=".pickup">Pickup Truck</button>
-                        <button class="button" data-filter=".van">Van</button>
-                        <button class="button" data-filter=".luxury">Luxury</button>
-                        -->
+                        <button class="button" data-filter=".sedan">Sedans</button>
+                        <button class="button" data-filter=".hatchback">Hatchbacks</button>
+                        <button class="button" data-filter=".suv">SUVs</button>
+                        <button class="button" data-filter=".offroad">4x4 Vehicles</button>
+                        <button class="button" data-filter=".van">Buses &amp; Vans</button>
                     </div>
                 </div>
             </div>
@@ -251,80 +357,16 @@
             <div class="ms-portfolio-filter-area main-isotop filter">
                 <div class="row g-4">
 
-                    <!-- 1. Toyota Vitz -->
-                    <div class="col-lg-4 col-md-6 element-item economy">
-                        <div class="single-car-list-item">
-                            <div class="car-image">
-                                <a href="book.html?car=Toyota+Vitz">
-                                    <img src="assets/images/cars/vitz.jpg" alt="Toyota Vitz">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Vitz">Toyota Vitz</a></h3>
-                                <ul class="car-list-service">
-                                    <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>5 Seats</span>
-                                    </li>
-                                    <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Petrol</span></li>
-                                    <li><img src="assets/images/car-list/icon/3.svg"
-                                            alt="transmission"><span>Manual</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Economy</span>
-                                    </li>
-                                </ul>
-                                <div class="car-price">K80/ <span class="price-tag">Per Day</span></div>
-                            </div>
-                            <div class="inner">
-                                <a href="book.html?car=Toyota+Vitz" class="link-icon">
-                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2. Suzuki Swift -->
-                    <div class="col-lg-4 col-md-6 element-item economy">
-                        <div class="single-car-list-item">
-                            <div class="car-image">
-                                <a href="book.html?car=Suzuki+Swift">
-                                    <img src="assets/images/cars/swift.jpeg" alt="Suzuki Swift">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h3 class="title"><a href="book.html?car=Suzuki+Swift">Suzuki Swift</a></h3>
-                                <ul class="car-list-service">
-                                    <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>5 Seats</span>
-                                    </li>
-                                    <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Petrol</span></li>
-                                    <li><img src="assets/images/car-list/icon/3.svg"
-                                            alt="transmission"><span>Manual</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Economy</span>
-                                    </li>
-                                </ul>
-                                <div class="car-price">K75/ <span class="price-tag">Per Day</span></div>
-                            </div>
-                            <div class="inner">
-                                <a href="book.html?car=Suzuki+Swift" class="link-icon">
-                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 3. Toyota Corolla -->
+                    <!-- 1. Toyota Allion -->
                     <div class="col-lg-4 col-md-6 element-item sedan">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Toyota+Corolla">
-                                    <img src="assets/images/cars/corolla.jpeg" alt="Toyota Corolla">
+                                <a href="book.html?car=Toyota+Allion">
+                                    <img src="assets/images/cars/allion.png" alt="Toyota Allion">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Corolla">Toyota Corolla</a></h3>
+                                <h3 class="title"><a href="book.html?car=Toyota+Allion">Toyota Allion</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>5 Seats</span>
                                     </li>
@@ -334,10 +376,9 @@
                                     <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Sedan</span>
                                     </li>
                                 </ul>
-                                <div class="car-price">K100/ <span class="price-tag">Per Day</span></div>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Toyota+Corolla" class="link-icon">
+                                <a href="book.html?car=Toyota+Allion" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -347,16 +388,16 @@
                         </div>
                     </div>
 
-                    <!-- 4. Honda Civic -->
+                    <!-- 2. Toyota Mark X -->
                     <div class="col-lg-4 col-md-6 element-item sedan">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Honda+Civic">
-                                    <img src="assets/images/cars/civic.jpeg" alt="Honda Civic">
+                                <a href="book.html?car=Toyota+Mark+X">
+                                    <img src="assets/images/cars/markx.png" alt="Toyota Mark X">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Honda+Civic">Honda Civic</a></h3>
+                                <h3 class="title"><a href="book.html?car=Toyota+Mark+X">Toyota Mark X</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>5 Seats</span>
                                     </li>
@@ -366,10 +407,9 @@
                                     <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Sedan</span>
                                     </li>
                                 </ul>
-                                <div class="car-price">K110/ <span class="price-tag">Per Day</span></div>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Honda+Civic" class="link-icon">
+                                <a href="book.html?car=Toyota+Mark+X" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -379,29 +419,28 @@
                         </div>
                     </div>
 
-                    <!-- 5. Toyota RAV4 -->
-                    <div class="col-lg-4 col-md-6 element-item suv">
+                    <!-- 3. Lexus IS250 -->
+                    <div class="col-lg-4 col-md-6 element-item sedan">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Toyota+RAV4">
-                                    <img src="assets/images/cars/rav4.jpeg" alt="Toyota RAV4">
+                                <a href="book.html?car=Lexus+IS250">
+                                    <img src="assets/images/cars/is250.png" alt="Lexus IS250">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+RAV4">Toyota RAV4</a></h3>
+                                <h3 class="title"><a href="book.html?car=Lexus+IS250">Lexus IS250</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>5 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Petrol</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Automatic</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>SUV</span>
+                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Sedan</span>
                                     </li>
                                 </ul>
-                                <div class="car-price">K150/ <span class="price-tag">Per Day</span></div>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Toyota+RAV4" class="link-icon">
+                                <a href="book.html?car=Lexus+IS250" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -411,62 +450,28 @@
                         </div>
                     </div>
 
-                    <!-- 6. Nissan X-Trail -->
-                    <div class="col-lg-4 col-md-6 element-item suv">
+                    <!-- 4. Honda Fit -->
+                    <div class="col-lg-4 col-md-6 element-item hatchback">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Nissan+X-Trail">
-                                    <img src="assets/images/cars/xtrail.jpeg" alt="Nissan X-Trail">
+                                <a href="book.html?car=Honda+Fit">
+                                    <img src="assets/images/cars/fit.png" alt="Honda Fit">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Nissan+X-Trail">Nissan X-Trail</a></h3>
+                                <h3 class="title"><a href="book.html?car=Honda+Fit">Honda Fit</a></h3>
                                 <ul class="car-list-service">
-                                    <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>7 Seats</span>
+                                    <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>5 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Petrol</span></li>
-                                    <li><img src="assets/images/car-list/icon/3.svg"
-                                            alt="transmission"><span>Automatic</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>SUV</span>
-                                    </li>
-                                </ul>
-                                <div class="car-price">K160/ <span class="price-tag">Per Day</span></div>
-                            </div>
-                            <div class="inner">
-                                <a href="book.html?car=Nissan+X-Trail" class="link-icon">
-                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 7. Toyota Land Cruiser -->
-                    <div class="col-lg-4 col-md-6 element-item offroad">
-                        <div class="single-car-list-item">
-                            <div class="car-image">
-                                <a href="book.html?car=Toyota+Land+Cruiser">
-                                    <img src="assets/images/cars/landcruiser.webp" alt="Toyota Land Cruiser">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Land+Cruiser">Toyota Land Cruiser</a>
-                                </h3>
-                                <ul class="car-list-service">
-                                    <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>8 Seats</span>
-                                    </li>
-                                    <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Automatic</span></li>
                                     <li><img src="assets/images/car-list/icon/1.svg"
-                                            alt="category"><span>4x4/Off-Road</span></li>
+                                            alt="category"><span>Hatchback</span></li>
                                 </ul>
-                                <div class="car-price">K250/ <span class="price-tag">Per Day</span></div>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Toyota+Land+Cruiser" class="link-icon">
+                                <a href="book.html?car=Honda+Fit" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -476,12 +481,12 @@
                         </div>
                     </div>
 
-                    <!-- 8. Mitsubishi Pajero -->
-                    <div class="col-lg-4 col-md-6 element-item offroad">
+                    <!-- 5. Mitsubishi Pajero -->
+                    <div class="col-lg-4 col-md-6 element-item suv">
                         <div class="single-car-list-item">
                             <div class="car-image">
                                 <a href="book.html?car=Mitsubishi+Pajero">
-                                    <img src="assets/images/cars/pajero.jpeg" alt="Mitsubishi Pajero">
+                                    <img src="assets/images/cars/pajero.png" alt="Mitsubishi Pajero">
                                 </a>
                             </div>
                             <div class="content">
@@ -492,10 +497,9 @@
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Automatic</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg"
-                                            alt="category"><span>4x4/Off-Road</span></li>
+                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>SUV</span>
+                                    </li>
                                 </ul>
-                                <div class="car-price">K210/ <span class="price-tag">Per Day</span></div>
                             </div>
                             <div class="inner">
                                 <a href="book.html?car=Mitsubishi+Pajero" class="link-icon">
@@ -508,12 +512,74 @@
                         </div>
                     </div>
 
-                    <!--
-                    <div class="col-lg-4 col-md-6 element-item pickup">
+                    <!-- 6. Mitsubishi Shogun -->
+                    <div class="col-lg-4 col-md-6 element-item suv">
+                        <div class="single-car-list-item">
+                            <div class="car-image">
+                                <a href="book.html?car=Mitsubishi+Shogun">
+                                    <img src="assets/images/cars/shogun.png" alt="Mitsubishi Shogun">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h3 class="title"><a href="book.html?car=Mitsubishi+Shogun">Mitsubishi Shogun</a></h3>
+                                <ul class="car-list-service">
+                                    <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>7 Seats</span>
+                                    </li>
+                                    <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
+                                    <li><img src="assets/images/car-list/icon/3.svg"
+                                            alt="transmission"><span>Automatic</span></li>
+                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>SUV</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="inner">
+                                <a href="book.html?car=Mitsubishi+Shogun" class="link-icon">
+                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7. Toyota Fortuner -->
+                    <div class="col-lg-4 col-md-6 element-item suv">
+                        <div class="single-car-list-item">
+                            <div class="car-image">
+                                <a href="book.html?car=Toyota+Fortuner">
+                                    <img src="assets/images/cars/fortuner.png" alt="Toyota Fortuner">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h3 class="title"><a href="book.html?car=Toyota+Fortuner">Toyota Fortuner</a></h3>
+                                <ul class="car-list-service">
+                                    <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>7 Seats</span>
+                                    </li>
+                                    <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
+                                    <li><img src="assets/images/car-list/icon/3.svg"
+                                            alt="transmission"><span>Automatic</span></li>
+                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>SUV</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="inner">
+                                <a href="book.html?car=Toyota+Fortuner" class="link-icon">
+                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 8. Toyota Hilux -->
+                    <div class="col-lg-4 col-md-6 element-item offroad">
                         <div class="single-car-list-item">
                             <div class="car-image">
                                 <a href="book.html?car=Toyota+Hilux">
-                                    <img src="assets/images/cars/hilux.jpeg" alt="Toyota Hilux">
+                                    <img src="assets/images/cars/hilux.png" alt="Toyota Hilux">
                                 </a>
                             </div>
                             <div class="content">
@@ -524,10 +590,9 @@
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Manual</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Pickup
-                                            Truck</span></li>
+                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>4x4</span>
+                                    </li>
                                 </ul>
-                                <div class="car-price">K180/ <span class="price-tag">Per Day</span></div>
                             </div>
                             <div class="inner">
                                 <a href="book.html?car=Toyota+Hilux" class="link-icon">
@@ -539,14 +604,13 @@
                             </div>
                         </div>
                     </div>
-                    -->
 
-                    <!--
-                    <div class="col-lg-4 col-md-6 element-item pickup">
+                    <!-- 9. Ford Ranger -->
+                    <div class="col-lg-4 col-md-6 element-item offroad">
                         <div class="single-car-list-item">
                             <div class="car-image">
                                 <a href="book.html?car=Ford+Ranger">
-                                    <img src="assets/images/cars/ranger.jpeg" alt="Ford Ranger">
+                                    <img src="assets/images/cars/ranger.png" alt="Ford Ranger">
                                 </a>
                             </div>
                             <div class="content">
@@ -557,10 +621,9 @@
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Automatic</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Pickup
-                                            Truck</span></li>
+                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>4x4</span>
+                                    </li>
                                 </ul>
-                                <div class="car-price">K200/ <span class="price-tag">Per Day</span></div>
                             </div>
                             <div class="inner">
                                 <a href="book.html?car=Ford+Ranger" class="link-icon">
@@ -572,18 +635,17 @@
                             </div>
                         </div>
                     </div>
-                    -->
 
-                    <!--
+                    <!-- 10. Toyota Quantum -->
                     <div class="col-lg-4 col-md-6 element-item van">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Toyota+Hiace+Van">
-                                    <img src="assets/images/cars/hiace.jpeg" alt="Toyota Hiace Van">
+                                <a href="book.html?car=Toyota+Quantum">
+                                    <img src="assets/images/cars/quantum.png" alt="Toyota Quantum">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Hiace+Van">Toyota Hiace Van</a></h3>
+                                <h3 class="title"><a href="book.html?car=Toyota+Quantum">Toyota Quantum</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>14 Seats</span>
                                     </li>
@@ -593,10 +655,9 @@
                                     <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Van</span>
                                     </li>
                                 </ul>
-                                <div class="car-price">K220/ <span class="price-tag">Per Day</span></div>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Toyota+Hiace+Van" class="link-icon">
+                                <a href="book.html?car=Toyota+Quantum" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -605,31 +666,29 @@
                             </div>
                         </div>
                     </div>
-                    -->
 
-                    <!--
-                    <div class="col-lg-4 col-md-6 element-item luxury">
+                    <!-- 11. Mitsubishi Rosa -->
+                    <div class="col-lg-4 col-md-6 element-item van">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Mercedes+C-Class">
-                                    <img src="assets/images/cars/mercedes.jpg" alt="Mercedes C-Class">
+                                <a href="book.html?car=Mitsubishi+Rosa">
+                                    <img src="assets/images/cars/rosa.png" alt="Mitsubishi Rosa">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Mercedes+C-Class">Mercedes C-Class</a></h3>
+                                <h3 class="title"><a href="book.html?car=Mitsubishi+Rosa">Mitsubishi Rosa</a></h3>
                                 <ul class="car-list-service">
-                                    <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>5 Seats</span>
+                                    <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>26 Seats</span>
                                     </li>
-                                    <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Petrol</span></li>
+                                    <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
-                                            alt="transmission"><span>Automatic</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Luxury</span>
+                                            alt="transmission"><span>Manual</span></li>
+                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Bus</span>
                                     </li>
                                 </ul>
-                                <div class="car-price">K280/ <span class="price-tag">Per Day</span></div>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Mercedes+C-Class" class="link-icon">
+                                <a href="book.html?car=Mitsubishi+Rosa" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -638,7 +697,6 @@
                             </div>
                         </div>
                     </div>
-                    -->
 
                 </div><!-- end row -->
             </div><!-- end ms-portfolio-filter-area -->
@@ -718,7 +776,7 @@
                         <h2 class="title">Can't find what you need?</h2>
                         <p>Our team is ready to help you find the perfect vehicle for your journey across Zambia.</p>
                         <div class="cta-btn-group">
-                            <a href="tel:+260971000000" class="rts-btn btn-primary">Call Us: +260 971 000 000</a>
+                            <a href="tel:+260979517732" class="rts-btn btn-primary">Call Us: +260 979 517 732</a>
                             <a href="contact.html" class="rts-btn btn-border">Send a Message</a>
                         </div>
                     </div>
@@ -740,10 +798,10 @@
                         style="text-decoration:none;display:inline-flex;flex-direction:column;line-height:1.1;margin-bottom:20px;">
                         <span style="font-size:28px;font-weight:900;letter-spacing:4px;color:#fff;">CHALIKO</span>
                         <span
-                            style="font-size:10px;color:rgba(255,255,255,0.45);letter-spacing:3px;text-transform:uppercase;">Car
+                            style="font-size:10px;color:#fff;letter-spacing:3px;text-transform:uppercase;">Car
                             Hire Limited</span>
                     </a>
-                    <p style="color:#94a3b8;font-size:14px;line-height:1.8;margin-bottom:28px;max-width:420px;">Zambia's trusted car
+                    <p style="color:#fff;font-size:14px;line-height:1.8;margin-bottom:28px;max-width:420px;">Zambia's trusted car
                         hire company. Premium insured vehicles available across Lusaka, Ndola, Kitwe, Livingstone, Kabwe
                         and Chipata.</p>
                     <!-- Social -->
@@ -788,11 +846,12 @@
                             </div>
                             <div>
                                 <p
-                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Call Us</p>
-                                <a href="tel:+260971000000"
-                                    style="color:#e2e8f0;font-size:15px;font-weight:600;text-decoration:none;">+260 971
-                                    000 000</a>
+                                <a href="tel:+260979517732"
+                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;">+260 979 517 732</a>
+                                <a href="tel:+260965517732"
+                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;margin-top:2px;">+260 965 517 732</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
@@ -802,10 +861,10 @@
                             </div>
                             <div>
                                 <p
-                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Email</p>
-                                <a href="mailto:info@chalikocarihire.co.zm"
-                                    style="color:#e2e8f0;font-size:14px;font-weight:600;text-decoration:none;">info@chalikocarihire.co.zm</a>
+                                <a href="mailto:chalikocarhire@yahoo.com"
+                                    style="color:#fff;font-size:14px;font-weight:600;text-decoration:none;">chalikocarhire@yahoo.com</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
@@ -815,10 +874,9 @@
                             </div>
                             <div>
                                 <p
-                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Location</p>
-                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Cairo Road, Lusaka,
-                                    Zambia</span>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia" target="_blank" rel="noopener" style="color:#fff;font-size:14px;font-weight:600;text-decoration:none;">Plot No. 14, Manchinchi Road, Northmead, Lusaka, Zambia</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
@@ -828,9 +886,9 @@
                             </div>
                             <div>
                                 <p
-                                    style="color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                                    style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Hours</p>
-                                <span style="color:#e2e8f0;font-size:14px;font-weight:600;">Mon – Sat: 7:00 AM – 7:00
+                                <span style="color:#fff;font-size:14px;font-weight:600;">Mon – Sat: 7:00 AM – 7:00
                                     PM</span>
                             </div>
                         </li>
@@ -845,14 +903,14 @@
             <div class="container">
                 <div
                     style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:24px 0;">
-                    <p style="color:#475569;font-size:13px;margin:0;">&copy; 2026 Chaliko Car Hire Limited. All Rights
+                    <p style="color:#fff;font-size:13px;margin:0;">&copy; 2026 Chaliko Car Hire Limited. All Rights
                         Reserved..</p>
                     <div style="display:flex;gap:24px;">
-                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;"
-                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Privacy
+                        <a href="#" style="color:#fff;font-size:13px;text-decoration:none;"
+                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#fff'">Privacy
                             Policy</a>
-                        <a href="#" style="color:#475569;font-size:13px;text-decoration:none;"
-                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#475569'">Terms of
+                        <a href="#" style="color:#fff;font-size:13px;text-decoration:none;"
+                            onmouseover="this.style.color='#FF3600'" onmouseout="this.style.color='#fff'">Terms of
                             Use</a>
                     </div>
                 </div>
@@ -884,13 +942,18 @@
                 </ul>
             </nav>
             <div class="mobile-contact mt--30">
-                <a href="tel:+260971000000" class="rts-btn btn-primary w-100 text-center">+260 971 000 000</a>
+                <a href="tel:+260979517732" class="rts-btn btn-primary w-100 text-center">+260 979 517 732</a>
             </div>
         </div>
     </div>
     <!-- End Mobile Sidebar -->
 
     <!-- Scripts -->
+    <a href="https://wa.me/260965517732?text=Hi%20Chaliko%2C%20I%27d%20like%20to%20ask%20about..."
+        target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Chat with us on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <script src="assets/js/plugins/jquery.js"></script>
     <script src="assets/js/plugins/jquery-ui.js"></script>
     <script src="assets/js/vendor/waw.js"></script>
