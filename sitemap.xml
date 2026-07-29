@@ -7,25 +7,25 @@
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://chalikocarihire.co.zm/fleet.html</loc>
+        <loc>https://chalikocarihire.co.zm/fleet</loc>
         <lastmod>2026-07-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://chalikocarihire.co.zm/book.html</loc>
+        <loc>https://chalikocarihire.co.zm/book</loc>
         <lastmod>2026-07-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://chalikocarihire.co.zm/about.html</loc>
+        <loc>https://chalikocarihire.co.zm/about</loc>
         <lastmod>2026-07-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://chalikocarihire.co.zm/contact.html</loc>
+        <loc>https://chalikocarihire.co.zm/contact</loc>
         <lastmod>2026-07-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>

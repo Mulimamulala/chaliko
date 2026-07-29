@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/rt-icon.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/site-custom.css">
     <style>
         .main-nav.active>a {
             color: #FF3600 !important;
@@ -42,15 +43,6 @@
     <style>
         .single-car-list-item .car-image {
             height: 220px;
-            background: #fff;
-        }
-
-        .single-car-list-item .content .car-list-service {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            row-gap: 12px;
-            column-gap: 12px;
-            margin-bottom: 70px;
         }
 
         .single-car-list-item .car-image img {
@@ -133,6 +125,14 @@
             transition: transform 0.2s ease;
         }
 
+        @media (max-width: 991px) {
+            .whatsapp-fab {
+                left: 22px;
+                right: auto;
+                bottom: 22px;
+            }
+        }
+
         .whatsapp-fab:hover {
             transform: scale(1.08);
         }
@@ -143,14 +143,14 @@
         }
     </style>
 
-    <link rel="canonical" href="https://chalikocarihire.co.zm/book.html">
+    <link rel="canonical" href="https://chalikocarihire.co.zm/book">
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Chaliko Car Hire Limited">
     <meta property="og:locale" content="en_ZM">
     <meta property="og:title" content="Book a Car, Chaliko Car Hire Limited">
     <meta property="og:description" content="Book a car with Chaliko Car Hire Limited. Reserve your vehicle online in minutes, fast confirmation within 2 hours.">
-    <meta property="og:url" content="https://chalikocarihire.co.zm/book.html">
+    <meta property="og:url" content="https://chalikocarihire.co.zm/book">
     <meta property="og:image" content="https://chalikocarihire.co.zm/assets/images/banner/5.jpg">
     <meta property="og:image:width" content="1920">
     <meta property="og:image:height" content="1080">
@@ -217,8 +217,6 @@
         </div>
         <div id="close" class="search-close-icon"><i class="far fa-times"></i></div>
     </div>
-    <div id="anywhere-home"></div>
-
     <!-- progress wrap -->
     <div class="progress-wrap">
         <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
@@ -228,17 +226,19 @@
         </svg>
     </div>
 
+    <div id="page-scale-wrapper">
+
     <!-- header area start -->
     <header class="header-one header-three header-inner header--sticky">
         <div class="header-top">
             <div class="container">
                 <div class="inner">
                     <div class="logo-area">
-                        <a href="index.html"
+                        <a href="/"
                             style="text-decoration:none;display:flex;flex-direction:column;line-height:1.2;">
-                            <span style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;">CHALIKO</span>
+                            <span style="font-size:22px;font-weight:900;letter-spacing:3px;color:#050B20;">CHALIKO</span>
                             <span
-                                style="font-size:9px;color:rgba(255,255,255,0.65);letter-spacing:2px;text-transform:uppercase;">Car
+                                style="font-size:9px;color:rgba(5,11,32,0.6);letter-spacing:2px;text-transform:uppercase;">Car
                                 Hire Limited</span>
                         </a>
                     </div>
@@ -266,7 +266,7 @@
                         </div>
                     </div>
                     <div class="button-area">
-                        <a href="book.html" class="rts__btn">
+                        <a href="/book" class="rts__btn">
                             <div class="rts__btn__wrap rts-btn-sm">
                                 <span class="rts__btn__txt-one">Book Now</span>
                                 <span class="rts__btn__txt-two">Book Now</span>
@@ -287,20 +287,20 @@
                         <div class="header-right d-block">
                             <div class="bottom d-flex align-items-center justify-content-between">
                                 <div class="logo-area">
-                                    <a href="index.html" style="text-decoration:none;">
+                                    <a href="/" style="text-decoration:none;">
                                         <span
-                                            style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;">CHALIKO</span>
+                                            style="font-size:22px;font-weight:900;letter-spacing:3px;color:#050B20;">CHALIKO</span>
                                     </a>
                                 </div>
                                 <div class="nav-area">
                                     <ul>
-                                        <li class="main-nav"><a class="main-menu" href="index.html">Home</a></li>
-                                        <li class="main-nav"><a class="main-menu" href="about.html">About Us</a></li>
-                                        <li class="main-nav"><a class="main-menu" href="fleet.html">Our Fleet</a></li>
-                                        <li class="main-nav active"><a class="main-menu" href="book.html">Book Now</a>
+                                        <li class="main-nav"><a class="main-menu" href="/">Home</a></li>
+                                        <li class="main-nav"><a class="main-menu" href="/about">About Us</a></li>
+                                        <li class="main-nav"><a class="main-menu" href="/fleet">Our Fleet</a></li>
+                                        <li class="main-nav active"><a class="main-menu" href="/book">Book Now</a>
                                         </li>
                                         <li class="main-nav"><a class="main-menu main-menu-ls"
-                                                href="contact.html">Contact</a></li>
+                                                href="/contact">Contact</a></li>
                                     </ul>
                                 </div>
                                 <div class="bottom-right">
@@ -333,7 +333,7 @@
                     <div class="breadcrumb-area-inner">
                         <h1 class="title">Book a Car</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="/">Home</a></li>
                             <li><i class="fa-regular fa-chevron-right"></i></li>
                             <li>Book a Car</li>
                         </ul>
@@ -357,7 +357,7 @@
                         <p style="opacity:0.65;margin-bottom:32px;">Fill in your details below. We'll confirm your
                             booking within 2 hours by phone or email.</p>
 
-                        <form id="contact-form" action="mailer.php" method="post">
+                        <form id="contact-form" action="/api/mailer" method="post">
                             <input type="hidden" name="form_type" value="Booking Request">
 
                             <!-- STEP 1: Vehicle & Dates -->
@@ -605,7 +605,7 @@
             <div class="cta-inner">
                 <h2 class="title">Browse our full fleet before you book.</h2>
                 <div class="contact">
-                    <a href="fleet.html">
+                    <a href="/fleet">
                         <img src="assets/images/cta/call.svg" alt="">
                         View Our Fleet
                     </a>
@@ -624,7 +624,7 @@
 
                 <!-- Brand column -->
                 <div class="col-lg-6 col-md-6">
-                    <a href="index.html"
+                    <a href="/"
                         style="text-decoration:none;display:inline-flex;flex-direction:column;line-height:1.1;margin-bottom:20px;">
                         <span style="font-size:28px;font-weight:900;letter-spacing:4px;color:#fff;">CHALIKO</span>
                         <span
@@ -749,26 +749,46 @@
     </footer>
     <!-- footer area end -->
 
+    </div>
+    <!-- /#page-scale-wrapper -->
+
     <!-- mobile sidebar -->
-    <div id="side-bar" class="side-bar header-two">
-        <button class="close-icon-menu">X</button>
-        <div class="mobile-menu-main">
-            <nav class="nav-main mainmenu-nav mt--30">
-                <ul class="mainmenu metismenu" id="mobile-menu-active">
-                    <li><a href="index.html" class="main">Home</a></li>
-                    <li><a href="about.html" class="main">About Us</a></li>
-                    <li><a href="fleet.html" class="main">Our Fleet</a></li>
-                    <li><a href="book.html" class="main">Book Now</a></li>
-                    <li><a href="contact.html" class="main">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="rts-social-style-one pl--20 mt--50">
-                <ul>
-                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                </ul>
+    <div id="menu-stage">
+        <div id="anywhere-home"></div>
+        <div id="side-bar" class="side-bar header-two">
+            <button class="close-icon-menu" aria-label="Close menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="mobile-menu-main">
+                <div class="mobile-menu-logo">
+                    <a href="/">
+                        <span class="brand-name">CHALIKO</span>
+                        <span class="brand-sub">Car Hire Limited</span>
+                    </a>
+                </div>
+                <nav class="nav-main mainmenu-nav">
+                    <ul class="mainmenu metismenu" id="mobile-menu-active">
+                        <li><a href="/" class="main">Home</a></li>
+                        <li><a href="/about" class="main">About Us</a></li>
+                        <li><a href="/fleet" class="main">Our Fleet</a></li>
+                        <li><a href="/book" class="main">Book Now</a></li>
+                        <li><a href="/contact" class="main">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-cta">
+                    <a href="tel:+260979517732" class="mobile-menu-phone">
+                        <i class="fa-sharp fa-solid fa-phone"></i> +260 979 517 732
+                    </a>
+                    <a href="/book" class="mobile-menu-book">Book Now</a>
+                </div>
+                <div class="mobile-menu-social">
+                    <ul>
+                        <li><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

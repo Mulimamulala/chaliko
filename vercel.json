@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/about.html", "destination": "/about", "permanent": true },
+    { "source": "/book.html", "destination": "/book", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/fleet.html", "destination": "/fleet", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/book", "destination": "/book.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/fleet", "destination": "/fleet.html" }
+  ]
+}

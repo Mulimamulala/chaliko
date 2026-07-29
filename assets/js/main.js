@@ -6,6 +6,12 @@
 (function ($) {
   'use strict';
 
+  // Fix iOS Safari's "first tap only triggers :hover, second tap fires the
+  // click" behavior on links/buttons that have hover-driven animations
+  // (e.g. .rts__btn text-swap, filter buttons, menu links). Binding a real
+  // touchstart listener on document is the standard remedy WebKit checks for.
+  document.addEventListener('touchstart', function () {}, { passive: true });
+
   var rtsJs = {
     m: function (e) {
       rtsJs.d();
@@ -437,22 +443,21 @@
     },
     sideMenu: function () {
       // collups menu side right
-      $(document).on('click', '#menu-btn', function () {
+      function openSideMenu() {
         $("#side-bar").addClass("show");
         $("#anywhere-home").addClass("show");
-      });
-      $(document).on('click', '.close-icon-menu', function () {
+        $("body").addClass("menu-open");
+      }
+      function closeSideMenu() {
         $("#side-bar").removeClass("show");
         $("#anywhere-home").removeClass("show");
-      });
-      $(document).on('click', '#anywhere-home', function () {
-        $("#side-bar").removeClass("show");
-        $("#anywhere-home").removeClass("show");
-      });
-      $(document).on('click', '.onepage .mainmenu li a', function () {
-        $("#side-bar").removeClass("show");
-        $("#anywhere-home").removeClass("show");
-      });
+        $("body").removeClass("menu-open");
+      }
+      $(document).on('click', '#menu-btn', openSideMenu);
+      $(document).on('click', '.close-icon-menu', closeSideMenu);
+      $(document).on('click', '#anywhere-home', closeSideMenu);
+      $(document).on('click', '.onepage .mainmenu li a', closeSideMenu);
+      $(document).on('click', '#side-bar .mainmenu li a', closeSideMenu);
     },
     niceSelect: function () {
       (function ($) {

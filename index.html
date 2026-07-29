@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/rt-icon.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/site-custom.css">
     <style>
         .main-nav.active>a {
             color: #FF3600 !important;
@@ -42,15 +43,6 @@
     <style>
         .single-car-list-item .car-image {
             height: 220px;
-            background: #fff;
-        }
-
-        .single-car-list-item .content .car-list-service {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            row-gap: 12px;
-            column-gap: 12px;
-            margin-bottom: 70px;
         }
 
         .single-car-list-item .car-image img {
@@ -58,6 +50,11 @@
             height: 100%;
             object-fit: contain;
             display: block;
+        }
+
+        .single-car-list-item .content .car-list-service {
+            justify-content: flex-start;
+            gap: 18px;
         }
 
         .rts-footer-area {
@@ -155,6 +152,14 @@
             transition: transform 0.2s ease;
         }
 
+        @media (max-width: 991px) {
+            .whatsapp-fab {
+                left: 22px;
+                right: auto;
+                bottom: 22px;
+            }
+        }
+
         .whatsapp-fab:hover {
             transform: scale(1.08);
         }
@@ -235,7 +240,6 @@
         </div>
         <div id="close" class="search-close-icon"><i class="far fa-times"></i></div>
     </div>
-    <div id="anywhere-home"></div>
     <div class="progress-wrap">
         <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
@@ -244,17 +248,19 @@
         </svg>
     </div>
 
+    <div id="page-scale-wrapper">
+
     <!-- header area start -->
     <header class="header-one header-three header--sticky">
         <div class="header-top">
             <div class="container">
                 <div class="inner">
                     <div class="logo-area">
-                        <a href="index.html"
+                        <a href="/"
                             style="text-decoration:none;display:flex;flex-direction:column;line-height:1.2;">
-                            <span style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;">CHALIKO</span>
+                            <span style="font-size:22px;font-weight:900;letter-spacing:3px;color:#050B20;">CHALIKO</span>
                             <span
-                                style="font-size:9px;color:rgba(255,255,255,0.65);letter-spacing:2px;text-transform:uppercase;">Car
+                                style="font-size:9px;color:rgba(5,11,32,0.6);letter-spacing:2px;text-transform:uppercase;">Car
                                 Hire Limited</span>
                         </a>
                     </div>
@@ -280,7 +286,7 @@
                         </div>
                     </div>
                     <div class="button-area">
-                        <a href="book.html" class="rts__btn">
+                        <a href="/book" class="rts__btn">
                             <div class="rts__btn__wrap rts-btn-sm">
                                 <span class="rts__btn__txt-one">Book Now</span>
                                 <span class="rts__btn__txt-two">Book Now</span>
@@ -301,19 +307,19 @@
                         <div class="header-right d-block">
                             <div class="bottom d-flex align-items-center justify-content-between">
                                 <div class="logo-area">
-                                    <a href="index.html" style="text-decoration:none;">
+                                    <a href="/" style="text-decoration:none;">
                                         <span
-                                            style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;">CHALIKO</span>
+                                            style="font-size:22px;font-weight:900;letter-spacing:3px;color:#050B20;">CHALIKO</span>
                                     </a>
                                 </div>
                                 <div class="nav-area">
                                     <ul>
-                                        <li class="main-nav active"><a class="main-menu" href="index.html">Home</a></li>
-                                        <li class="main-nav"><a class="main-menu" href="about.html">About Us</a></li>
-                                        <li class="main-nav"><a class="main-menu" href="fleet.html">Our Fleet</a></li>
-                                        <li class="main-nav"><a class="main-menu" href="book.html">Book Now</a></li>
+                                        <li class="main-nav active"><a class="main-menu" href="/">Home</a></li>
+                                        <li class="main-nav"><a class="main-menu" href="/about">About Us</a></li>
+                                        <li class="main-nav"><a class="main-menu" href="/fleet">Our Fleet</a></li>
+                                        <li class="main-nav"><a class="main-menu" href="/book">Book Now</a></li>
                                         <li class="main-nav"><a class="main-menu main-menu-ls"
-                                                href="contact.html">Contact</a></li>
+                                                href="/contact">Contact</a></li>
                                     </ul>
                                 </div>
                                 <div class="bottom-right">
@@ -357,12 +363,12 @@
         </div>
         <div class="container">
             <div class="banner-content-center-area">
-                <h1 class="banner-title rts-slide-anim">PREMIUM VEHICLES<br>FOR EVERY JOURNEY</h1>
+                <h1 class="banner-title rts-slide-anim">PREMIUM VEHICLES FOR EVERY JOURNEY</h1>
                 <p class="desc wow fadeInUp" data-wow-delay="0.9s">From city driving in Lusaka to rugged cross-country
                     expeditions across Zambia, Chaliko Car Hire delivers vehicles that promise uncompromised comfort,
                     reliability, and performance.</p>
                 <div class="banner-btn-area wow fadeInUp" data-wow-delay="1.2s">
-                    <a href="book.html" class="rts__btn">
+                    <a href="/book" class="rts__btn">
                         <div class="rts__btn__wrap">
                             <span class="rts__btn__txt-one">Reserve Your Vehicle</span>
                             <span class="rts__btn__txt-two">Reserve Your Vehicle</span>
@@ -372,7 +378,7 @@
                             <span class="rts__btn__icon-two"><i class="fa-light fa-arrow-right"></i></span>
                         </div>
                     </a>
-                    <a href="fleet.html" class="rts__btn">
+                    <a href="/fleet" class="rts__btn">
                         <div class="rts__btn__wrap two">
                             <span class="rts__btn__txt-one">Explore the Full Fleet</span>
                             <span class="rts__btn__txt-two">Explore the Full Fleet</span>
@@ -395,7 +401,7 @@
     <div class="rts-booking-from-area">
         <div class="container">
             <div class="booking-search-form booking-two">
-                <form action="fleet.html" method="get" accept-charset="utf-8">
+                <form action="/fleet" method="get" accept-charset="utf-8">
                     <div class="select-wrapper">
                         <select name="car_type" class="mySelect">
                             <option value="" selected>Choose Car Type</option>
@@ -461,7 +467,7 @@
                             <div class="single-category-item">
                                 <div class="icon"><img src="assets/images/icon/car-4.svg" alt="icon"></div>
                                 <div class="content">
-                                    <h3 class="title"><a href="fleet.html">Executive Vehicles & Sedans</a></h3><span
+                                    <h3 class="title"><a href="/fleet">Executive Vehicles & Sedans</a></h3><span
                                         class="sub-title">Refined style and smooth handling for urban commuting,
                                         corporate meetings, and airport transfers.</span>
                                 </div>
@@ -471,7 +477,7 @@
                             <div class="single-category-item">
                                 <div class="icon"><img src="assets/images/icon/car-3.svg" alt="icon"></div>
                                 <div class="content">
-                                    <h3 class="title"><a href="fleet.html">SUVs & Crossovers</a></h3><span
+                                    <h3 class="title"><a href="/fleet">SUVs & Crossovers</a></h3><span
                                         class="sub-title">Spacious, comfortable, and versatile, ideal for long-distance
                                         highway travel and family trips.</span>
                                 </div>
@@ -481,7 +487,7 @@
                             <div class="single-category-item">
                                 <div class="icon"><img src="assets/images/icon/car-5.svg" alt="icon"></div>
                                 <div class="content">
-                                    <h3 class="title"><a href="fleet.html">Heavy-Duty 4x4s & Off-Road</a></h3><span
+                                    <h3 class="title"><a href="/fleet">Heavy-Duty 4x4s & Off-Road</a></h3><span
                                         class="sub-title">Unmatched durability and traction engineered for rugged
                                         terrain, field operations, and safari routes.</span>
                                 </div>
@@ -491,7 +497,7 @@
                             <div class="single-category-item">
                                 <div class="icon"><img src="assets/images/icon/car-6.svg" alt="icon"></div>
                                 <div class="content">
-                                    <h3 class="title"><a href="fleet.html">Group & Chauffeur Services</a></h3><span
+                                    <h3 class="title"><a href="/fleet">Group & Chauffeur Services</a></h3><span
                                         class="sub-title">High-capacity passenger options paired with professional,
                                         experienced drivers for seamless group logistics.</span>
                                 </div>
@@ -518,22 +524,21 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Toyota+Fortuner"><img src="assets/images/cars/fortuner.png"
+                                <a href="/book?car=Toyota+Fortuner"><img src="assets/images/cars/fortuner.png"
                                         alt="Toyota Fortuner"></a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Fortuner">Toyota Fortuner</a></h3>
+                                <h3 class="title"><a href="/book?car=Toyota+Fortuner">Toyota Fortuner</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="icon"><span>7 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="icon"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg" alt="icon"><span>Automatic</span>
                                     </li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="icon"><span>SUV</span></li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Toyota+Fortuner" class="link-icon">
+                                <a href="/book?car=Toyota+Fortuner" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -546,22 +551,21 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Toyota+Allion"><img src="assets/images/cars/allion.png"
+                                <a href="/book?car=Toyota+Allion"><img src="assets/images/cars/allion.png"
                                         alt="Toyota Allion"></a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Allion">Toyota Allion</a></h3>
+                                <h3 class="title"><a href="/book?car=Toyota+Allion">Toyota Allion</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="icon"><span>5 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="icon"><span>Petrol</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg" alt="icon"><span>Automatic</span>
                                     </li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="icon"><span>Sedan</span></li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Toyota+Allion" class="link-icon">
+                                <a href="/book?car=Toyota+Allion" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -574,21 +578,20 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Toyota+Hilux"><img src="assets/images/cars/hilux.png"
+                                <a href="/book?car=Toyota+Hilux"><img src="assets/images/cars/hilux.png"
                                         alt="Toyota Hilux"></a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Hilux">Toyota Hilux</a></h3>
+                                <h3 class="title"><a href="/book?car=Toyota+Hilux">Toyota Hilux</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="icon"><span>5 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="icon"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg" alt="icon"><span>Manual</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="icon"><span>4x4</span></li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Toyota+Hilux" class="link-icon">
+                                <a href="/book?car=Toyota+Hilux" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -599,7 +602,7 @@
                     </div>
                 </div>
                 <div class="rts-btn-wrapper">
-                    <a href="fleet.html" class="rts__btn btn-primary">View Full Fleet</a>
+                    <a href="/fleet" class="rts__btn btn-primary">View Full Fleet</a>
                 </div>
             </div>
         </div>
@@ -615,7 +618,7 @@
                         <div class="about-right-content-area">
                             <div class="rts-section-title">
                                 <span class="subtitle wow fadeInUp" data-wow-delay="0.1s">About Chaliko</span>
-                                <h2 class="heading-title text-uppercase rts-slide-anim">Built on Trust,<br>Driven by
+                                <h2 class="heading-title text-uppercase rts-slide-anim">Built on Trust, Driven by
                                     <span>Service</span>
                                 </h2>
                             </div>
@@ -642,7 +645,7 @@
                                     </div>
                                 </div>
                             </div> -->
-                            <a href="about.html" class="rts__btn mt--45">
+                            <a href="/about" class="rts__btn mt--45">
                                 <div class="rts__btn__wrap">
                                     <span class="rts__btn__txt-one">About Us</span>
                                     <span class="rts__btn__txt-two">About Us</span>
@@ -686,40 +689,40 @@
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
                         <div class="single-process-item wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="image-area"><a href="fleet.html"><img src="assets/images/process/1.jpg"
+                            <div class="image-area"><a href="/fleet"><img src="assets/images/process/1.jpg"
                                         alt="Choose Vehicle"></a></div>
                             <div class="content">
-                                <h3 class="title"><a href="fleet.html">Choose Your Vehicle</a></h3>
+                                <h3 class="title"><a href="/fleet">Choose Your Vehicle</a></h3>
                             </div>
                             <div class="inner"><span class="count">1</span></div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="single-process-item wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="image-area"><a href="book.html"><img src="assets/images/process/2.jpg"
+                            <div class="image-area"><a href="/book"><img src="assets/images/process/2.jpg"
                                         alt="Submit Booking"></a></div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html">Submit a Booking</a></h3>
+                                <h3 class="title"><a href="/book">Submit a Booking</a></h3>
                             </div>
                             <div class="inner"><span class="count">2</span></div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="single-process-item wow fadeInUp" data-wow-delay="0.6s">
-                            <div class="image-area"><a href="contact.html"><img src="assets/images/process/3.jpg"
+                            <div class="image-area"><a href="/contact"><img src="assets/images/process/3.jpg"
                                         alt="Receive Confirmation"></a></div>
                             <div class="content">
-                                <h3 class="title"><a href="contact.html">Receive Confirmation</a></h3>
+                                <h3 class="title"><a href="/contact">Receive Confirmation</a></h3>
                             </div>
                             <div class="inner"><span class="count">3</span></div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="single-process-item wow fadeInUp" data-wow-delay="0.8s">
-                            <div class="image-area"><a href="fleet.html"><img src="assets/images/process/1.jpg"
+                            <div class="image-area"><a href="/fleet"><img src="assets/images/process/1.jpg"
                                         alt="Drive"></a></div>
                             <div class="content">
-                                <h3 class="title"><a href="fleet.html">Drive With Confidence</a></h3>
+                                <h3 class="title"><a href="/fleet">Drive With Confidence</a></h3>
                             </div>
                             <div class="inner"><span class="count">4</span></div>
                         </div>
@@ -911,7 +914,7 @@
                     <div class="col-xl-5 col-lg-6">
                         <div class="rts-contact-form">
                             <h3 class="title">Get In Touch</h3>
-                            <form id="contact-form" action="mailer.php" method="post" class="contact-form-area">
+                            <form id="contact-form" action="/api/mailer" method="post" class="contact-form-area">
                                 <input type="hidden" name="form_type" value="Quick Enquiry (Homepage)">
                                 <div class="single-input">
                                     <span class="icon"><i class="fa-regular fa-user"
@@ -1049,7 +1052,7 @@
 
                 <!-- Brand column -->
                 <div class="col-lg-6 col-md-6">
-                    <a href="index.html"
+                    <a href="/"
                         style="text-decoration:none;display:inline-flex;flex-direction:column;line-height:1.1;margin-bottom:20px;">
                         <span style="font-size:28px;font-weight:900;letter-spacing:4px;color:#fff;">CHALIKO</span>
                         <span
@@ -1174,26 +1177,46 @@
     </footer>
     <!-- footer area end -->
 
+    </div>
+    <!-- /#page-scale-wrapper -->
+
     <!-- mobile sidebar -->
-    <div id="side-bar" class="side-bar header-two">
-        <button class="close-icon-menu">X</button>
-        <div class="mobile-menu-main">
-            <nav class="nav-main mainmenu-nav mt--30">
-                <ul class="mainmenu metismenu" id="mobile-menu-active">
-                    <li><a href="index.html" class="main">Home</a></li>
-                    <li><a href="about.html" class="main">About Us</a></li>
-                    <li><a href="fleet.html" class="main">Our Fleet</a></li>
-                    <li><a href="book.html" class="main">Book Now</a></li>
-                    <li><a href="contact.html" class="main">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="rts-social-style-one pl--20 mt--50">
-                <ul>
-                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                </ul>
+    <div id="menu-stage">
+        <div id="anywhere-home"></div>
+        <div id="side-bar" class="side-bar header-two">
+            <button class="close-icon-menu" aria-label="Close menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="mobile-menu-main">
+                <div class="mobile-menu-logo">
+                    <a href="/">
+                        <span class="brand-name">CHALIKO</span>
+                        <span class="brand-sub">Car Hire Limited</span>
+                    </a>
+                </div>
+                <nav class="nav-main mainmenu-nav">
+                    <ul class="mainmenu metismenu" id="mobile-menu-active">
+                        <li><a href="/" class="main">Home</a></li>
+                        <li><a href="/about" class="main">About Us</a></li>
+                        <li><a href="/fleet" class="main">Our Fleet</a></li>
+                        <li><a href="/book" class="main">Book Now</a></li>
+                        <li><a href="/contact" class="main">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-cta">
+                    <a href="tel:+260979517732" class="mobile-menu-phone">
+                        <i class="fa-sharp fa-solid fa-phone"></i> +260 979 517 732
+                    </a>
+                    <a href="/book" class="mobile-menu-book">Book Now</a>
+                </div>
+                <div class="mobile-menu-social">
+                    <ul>
+                        <li><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

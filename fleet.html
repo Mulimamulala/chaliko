@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/rt-icon.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/site-custom.css">
     <style>
         .main-nav.active>a {
             color: #FF3600 !important;
@@ -42,15 +43,6 @@
     <style>
         .single-car-list-item .car-image {
             height: 220px;
-            background: #fff;
-        }
-
-        .single-car-list-item .content .car-list-service {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            row-gap: 12px;
-            column-gap: 12px;
-            margin-bottom: 70px;
         }
 
         .single-car-list-item .car-image img {
@@ -58,6 +50,11 @@
             height: 100%;
             object-fit: contain;
             display: block;
+        }
+
+        .single-car-list-item .content .car-list-service {
+            justify-content: flex-start;
+            gap: 18px;
         }
 
         .rts-footer-area {
@@ -133,6 +130,14 @@
             transition: transform 0.2s ease;
         }
 
+        @media (max-width: 991px) {
+            .whatsapp-fab {
+                left: 22px;
+                right: auto;
+                bottom: 22px;
+            }
+        }
+
         .whatsapp-fab:hover {
             transform: scale(1.08);
         }
@@ -141,23 +146,161 @@
             color: #fff;
             font-size: 28px;
         }
+
+        .filter-dropdown summary {
+            display: none;
+            list-style: none;
+        }
+
+        .filter-dropdown summary::-webkit-details-marker {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            .filter-dropdown summary {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 14px 18px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: 600;
+                margin-bottom: 16px;
+            }
+
+            .filter-dropdown[open] summary {
+                margin-bottom: 12px;
+            }
+
+            .filter-dropdown summary i {
+                color: #FF3600;
+                transition: transform 0.2s ease;
+            }
+
+            .filter-dropdown[open] summary i {
+                transform: rotate(180deg);
+            }
+
+            .filter-dropdown:not([open]) .filters-button-group {
+                display: none;
+            }
+
+            .filter-dropdown .filters-button-group {
+                flex-direction: column !important;
+                flex-wrap: nowrap !important;
+                overflow-x: visible !important;
+            }
+        }
+
+        /* Smooth out the theme's default header slide-in so it no longer
+           lags behind the pinned bar and exposes a gap underneath it. */
+        .header--sticky.sticky {
+            animation: fleetHeaderSmoothIn 0.3s ease both;
+        }
+
+        @keyframes fleetHeaderSmoothIn {
+            0% {
+                transform: translateY(-8px);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .fleet-filter-sticky {
+            background: #fff;
+            padding: 20px 0 10px;
+            transition: padding 0.25s ease;
+        }
+
+        .fleet-filter-sticky.is-pinned {
+            position: fixed;
+            left: 0;
+            width: 100%;
+            z-index: 90;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: top 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .fleet-filter-sticky-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .fleet-sticky-heading {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 800;
+            margin: 0 0 22px;
+            color: #1a1a1a;
+            transition: font-size 0.25s ease, margin-bottom 0.25s ease;
+        }
+
+        @media (min-width: 992px) {
+            .fleet-filter-sticky:not(.is-pinned) .fleet-sticky-heading {
+                text-align: left;
+            }
+        }
+
+        .fleet-filter-sticky.is-pinned .fleet-sticky-heading {
+            font-size: 22px;
+            margin-bottom: 14px;
+        }
+
+        .fleet-filter-spacer {
+            height: 0;
+        }
+
+        @media (max-width: 991px) {
+            .fleet-sticky-heading {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .single-car-list-item .content .car-list-service {
+                flex-wrap: wrap;
+                row-gap: 8px;
+            }
+
+            .single-car-list-item .content .car-list-service li:nth-child(3) {
+                flex-basis: 100%;
+            }
+        }
+
+        .rts-car-list-area.rts-section-gap {
+            padding-top: 210px;
+        }
+
+        @media (max-width: 991px) {
+            .rts-car-list-area.rts-section-gap {
+                padding-top: 100px;
+            }
+        }
     </style>
 
-    <link rel="canonical" href="https://chalikocarihire.co.zm/fleet.html">
+    <link rel="canonical" href="https://chalikocarihire.co.zm/fleet">
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Chaliko Car Hire Limited">
     <meta property="og:locale" content="en_ZM">
     <meta property="og:title" content="Our Fleet, Chaliko Car Hire Limited">
-    <meta property="og:description" content="Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses & vans for hire across Zambia.">
-    <meta property="og:url" content="https://chalikocarihire.co.zm/fleet.html">
+    <meta property="og:description"
+        content="Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses & vans for hire across Zambia.">
+    <meta property="og:url" content="https://chalikocarihire.co.zm/fleet">
     <meta property="og:image" content="https://chalikocarihire.co.zm/assets/images/banner/5.jpg">
     <meta property="og:image:width" content="1920">
     <meta property="og:image:height" content="1080">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Our Fleet, Chaliko Car Hire Limited">
-    <meta name="twitter:description" content="Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses & vans for hire across Zambia.">
+    <meta name="twitter:description"
+        content="Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses & vans for hire across Zambia.">
     <meta name="twitter:image" content="https://chalikocarihire.co.zm/assets/images/banner/5.jpg">
 
     <script type="application/ld+json">
@@ -210,17 +353,18 @@
         </svg>
     </div>
 
-    <!-- header area start -->
-    <header class="header-one header-three header-inner header--sticky">
+    <div id="page-scale-wrapper">
+
+        <!-- header area start -->
+        <header class="header-one header-three header-inner header--sticky">
         <div class="header-top">
             <div class="container">
                 <div class="inner">
                     <div class="logo-area">
-                        <a href="index.html"
-                            style="text-decoration:none;display:flex;flex-direction:column;line-height:1.2;">
-                            <span style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;">CHALIKO</span>
+                        <a href="/" style="text-decoration:none;display:flex;flex-direction:column;line-height:1.2;">
+                            <span style="font-size:22px;font-weight:900;letter-spacing:3px;color:#050B20;">CHALIKO</span>
                             <span
-                                style="font-size:9px;color:rgba(255,255,255,0.65);letter-spacing:2px;text-transform:uppercase;">Car
+                                style="font-size:9px;color:rgba(5,11,32,0.6);letter-spacing:2px;text-transform:uppercase;">Car
                                 Hire Limited</span>
                         </a>
                     </div>
@@ -234,19 +378,20 @@
                         <div class="map-area">
                             <div class="icon"><i class="fa-solid fa-envelope"></i></div>
                             <div class="text">
-                                <p>Email Us</p><a
-                                    href="mailto:chalikocarhire@yahoo.com">chalikocarhire@yahoo.com</a>
+                                <p>Email Us</p><a href="mailto:chalikocarhire@yahoo.com">chalikocarhire@yahoo.com</a>
                             </div>
                         </div>
                         <div class="map-area">
                             <div class="icon"><i class="fa-sharp fa-solid fa-location-dot"></i></div>
                             <div class="text">
-                                <p>Our Location</p><a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia" target="_blank" rel="noopener">No. 14, Manchinchi Rd., Lusaka</a>
+                                <p>Our Location</p><a
+                                    href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia"
+                                    target="_blank" rel="noopener">No. 14, Manchinchi Rd., Lusaka</a>
                             </div>
                         </div>
                     </div>
                     <div class="button-area">
-                        <a href="book.html" class="rts__btn">
+                        <a href="/book" class="rts__btn">
                             <div class="rts__btn__wrap rts-btn-sm">
                                 <span class="rts__btn__txt-one">Book Now</span>
                                 <span class="rts__btn__txt-two">Book Now</span>
@@ -267,20 +412,20 @@
                         <div class="header-right d-block">
                             <div class="bottom d-flex align-items-center justify-content-between">
                                 <div class="logo-area">
-                                    <a href="index.html" style="text-decoration:none;">
+                                    <a href="/" style="text-decoration:none;">
                                         <span
-                                            style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;">CHALIKO</span>
+                                            style="font-size:22px;font-weight:900;letter-spacing:3px;color:#050B20;">CHALIKO</span>
                                     </a>
                                 </div>
                                 <div class="nav-area">
                                     <ul>
-                                        <li class="main-nav"><a class="main-menu" href="index.html">Home</a></li>
-                                        <li class="main-nav"><a class="main-menu" href="about.html">About Us</a></li>
-                                        <li class="main-nav active"><a class="main-menu" href="fleet.html">Our Fleet</a>
+                                        <li class="main-nav"><a class="main-menu" href="/">Home</a></li>
+                                        <li class="main-nav"><a class="main-menu" href="/about">About Us</a></li>
+                                        <li class="main-nav active"><a class="main-menu" href="/fleet">Our Fleet</a>
                                         </li>
-                                        <li class="main-nav"><a class="main-menu" href="book.html">Book Now</a></li>
+                                        <li class="main-nav"><a class="main-menu" href="/book">Book Now</a></li>
                                         <li class="main-nav"><a class="main-menu main-menu-ls"
-                                                href="contact.html">Contact</a></li>
+                                                href="/contact">Contact</a></li>
                                     </ul>
                                 </div>
                                 <div class="bottom-right">
@@ -304,54 +449,38 @@
     </header>
     <!-- header area end -->
 
-    <!-- Breadcrumb -->
-    <section class="rts-breadcrumb-area breadcrumb-bg" data-bg-src="assets/images/banner/2.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-area-inner">
-                        <h1 class="title">Our Fleet</h1>
-                        <p class="desc" style="max-width:760px;margin:16px auto 0;color:#fff;opacity:0.9;">Choose the
-                            right vehicle for your journey, from executive sedans and family-friendly SUVs to rugged
-                            4x4s and chauffeur-ready group transport.</p>
-                        <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li><i class="fa-regular fa-chevron-right"></i></li>
-                            <li>Our Fleet</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Breadcrumb -->
+    <!-- Breadcrumb removed: heading + sticky filter bar sit directly below the nav -->
 
     <!-- Fleet Section -->
     <section class="rts-car-list-area rts-section-gap">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="rts-section-title-area text-center">
-                        <span class="pre-title">Vehicle Collection</span>
-                        <h2 class="title">Choose Your Vehicle</h2>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Filter Buttons -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="rts-button-group filters-button-group mb--40"
-                        style="display:flex;flex-wrap:nowrap;overflow-x:auto;gap:10px;padding-bottom:4px;justify-content:center;">
-                        <button class="button is-checked" data-filter="*">All Vehicles</button>
-                        <button class="button" data-filter=".sedan">Sedans</button>
-                        <button class="button" data-filter=".hatchback">Hatchbacks</button>
-                        <button class="button" data-filter=".suv">SUVs</button>
-                        <button class="button" data-filter=".offroad">4x4 Vehicles</button>
-                        <button class="button" data-filter=".van">Buses &amp; Vans</button>
+            <!-- Sticky: Heading + Filter (pins as one unit so the heading never hides under the nav) -->
+            <div class="fleet-filter-sticky">
+                <div class="fleet-filter-sticky-inner">
+                    <h2 class="fleet-sticky-heading">Choose Your Vehicle</h2>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <details class="filter-dropdown">
+                                <summary class="filter-dropdown-summary">
+                                    <span>Filter: <span class="filter-current">All Vehicles</span></span>
+                                    <i class="fa-regular fa-chevron-down"></i>
+                                </summary>
+                                <div class="rts-button-group filters-button-group mb--40"
+                                    style="display:flex;flex-wrap:nowrap;overflow-x:auto;gap:10px;padding-bottom:4px;justify-content:center;">
+                                    <button class="button is-checked" data-filter="*">All Vehicles</button>
+                                    <button class="button" data-filter=".sedan">Sedans</button>
+                                    <button class="button" data-filter=".hatchback">Hatchbacks</button>
+                                    <button class="button" data-filter=".suv">SUVs</button>
+                                    <button class="button" data-filter=".offroad">4x4 Vehicles</button>
+                                    <button class="button" data-filter=".van">Buses &amp; Vans</button>
+                                </div>
+                            </details>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="fleet-filter-spacer"></div>
 
             <!-- Vehicle Grid -->
             <div class="ms-portfolio-filter-area main-isotop filter">
@@ -361,24 +490,22 @@
                     <div class="col-lg-4 col-md-6 element-item sedan">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Toyota+Allion">
+                                <a href="/book?car=Toyota+Allion">
                                     <img src="assets/images/cars/allion.png" alt="Toyota Allion">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Allion">Toyota Allion</a></h3>
+                                <h3 class="title"><a href="/book?car=Toyota+Allion">Toyota Allion</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>5 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Petrol</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Automatic</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Sedan</span>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Toyota+Allion" class="link-icon">
+                                <a href="/book?car=Toyota+Allion" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -392,24 +519,22 @@
                     <div class="col-lg-4 col-md-6 element-item sedan">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Toyota+Mark+X">
+                                <a href="/book?car=Toyota+Mark+X">
                                     <img src="assets/images/cars/markx.png" alt="Toyota Mark X">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Mark+X">Toyota Mark X</a></h3>
+                                <h3 class="title"><a href="/book?car=Toyota+Mark+X">Toyota Mark X</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>5 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Petrol</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Automatic</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Sedan</span>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Toyota+Mark+X" class="link-icon">
+                                <a href="/book?car=Toyota+Mark+X" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -423,24 +548,22 @@
                     <div class="col-lg-4 col-md-6 element-item sedan">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Lexus+IS250">
+                                <a href="/book?car=Lexus+IS250">
                                     <img src="assets/images/cars/is250.png" alt="Lexus IS250">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Lexus+IS250">Lexus IS250</a></h3>
+                                <h3 class="title"><a href="/book?car=Lexus+IS250">Lexus IS250</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>5 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Petrol</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Automatic</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Sedan</span>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Lexus+IS250" class="link-icon">
+                                <a href="/book?car=Lexus+IS250" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -454,24 +577,22 @@
                     <div class="col-lg-4 col-md-6 element-item hatchback">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Honda+Fit">
+                                <a href="/book?car=Honda+Fit">
                                     <img src="assets/images/cars/fit.png" alt="Honda Fit">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Honda+Fit">Honda Fit</a></h3>
+                                <h3 class="title"><a href="/book?car=Honda+Fit">Honda Fit</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>5 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Petrol</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Automatic</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg"
-                                            alt="category"><span>Hatchback</span></li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Honda+Fit" class="link-icon">
+                                <a href="/book?car=Honda+Fit" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -485,24 +606,22 @@
                     <div class="col-lg-4 col-md-6 element-item suv">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Mitsubishi+Pajero">
+                                <a href="/book?car=Mitsubishi+Pajero">
                                     <img src="assets/images/cars/pajero.png" alt="Mitsubishi Pajero">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Mitsubishi+Pajero">Mitsubishi Pajero</a></h3>
+                                <h3 class="title"><a href="/book?car=Mitsubishi+Pajero">Mitsubishi Pajero</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>7 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Automatic</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>SUV</span>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Mitsubishi+Pajero" class="link-icon">
+                                <a href="/book?car=Mitsubishi+Pajero" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -516,24 +635,22 @@
                     <div class="col-lg-4 col-md-6 element-item suv">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Mitsubishi+Shogun">
+                                <a href="/book?car=Mitsubishi+Shogun">
                                     <img src="assets/images/cars/shogun.png" alt="Mitsubishi Shogun">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Mitsubishi+Shogun">Mitsubishi Shogun</a></h3>
+                                <h3 class="title"><a href="/book?car=Mitsubishi+Shogun">Mitsubishi Shogun</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>7 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Automatic</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>SUV</span>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Mitsubishi+Shogun" class="link-icon">
+                                <a href="/book?car=Mitsubishi+Shogun" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -547,24 +664,22 @@
                     <div class="col-lg-4 col-md-6 element-item suv">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Toyota+Fortuner">
+                                <a href="/book?car=Toyota+Fortuner">
                                     <img src="assets/images/cars/fortuner.png" alt="Toyota Fortuner">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Fortuner">Toyota Fortuner</a></h3>
+                                <h3 class="title"><a href="/book?car=Toyota+Fortuner">Toyota Fortuner</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>7 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Automatic</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>SUV</span>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Toyota+Fortuner" class="link-icon">
+                                <a href="/book?car=Toyota+Fortuner" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -578,24 +693,22 @@
                     <div class="col-lg-4 col-md-6 element-item offroad">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Toyota+Hilux">
+                                <a href="/book?car=Toyota+Hilux">
                                     <img src="assets/images/cars/hilux.png" alt="Toyota Hilux">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Hilux">Toyota Hilux</a></h3>
+                                <h3 class="title"><a href="/book?car=Toyota+Hilux">Toyota Hilux</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>5 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Manual</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>4x4</span>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Toyota+Hilux" class="link-icon">
+                                <a href="/book?car=Toyota+Hilux" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -609,24 +722,22 @@
                     <div class="col-lg-4 col-md-6 element-item offroad">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Ford+Ranger">
+                                <a href="/book?car=Ford+Ranger">
                                     <img src="assets/images/cars/ranger.png" alt="Ford Ranger">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Ford+Ranger">Ford Ranger</a></h3>
+                                <h3 class="title"><a href="/book?car=Ford+Ranger">Ford Ranger</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>5 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Automatic</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>4x4</span>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Ford+Ranger" class="link-icon">
+                                <a href="/book?car=Ford+Ranger" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -640,24 +751,22 @@
                     <div class="col-lg-4 col-md-6 element-item van">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Toyota+Quantum">
+                                <a href="/book?car=Toyota+Quantum">
                                     <img src="assets/images/cars/quantum.png" alt="Toyota Quantum">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Toyota+Quantum">Toyota Quantum</a></h3>
+                                <h3 class="title"><a href="/book?car=Toyota+Quantum">Toyota Quantum</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>14 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Manual</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Van</span>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Toyota+Quantum" class="link-icon">
+                                <a href="/book?car=Toyota+Quantum" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -671,24 +780,22 @@
                     <div class="col-lg-4 col-md-6 element-item van">
                         <div class="single-car-list-item">
                             <div class="car-image">
-                                <a href="book.html?car=Mitsubishi+Rosa">
+                                <a href="/book?car=Mitsubishi+Rosa">
                                     <img src="assets/images/cars/rosa.png" alt="Mitsubishi Rosa">
                                 </a>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="book.html?car=Mitsubishi+Rosa">Mitsubishi Rosa</a></h3>
+                                <h3 class="title"><a href="/book?car=Mitsubishi+Rosa">Mitsubishi Rosa</a></h3>
                                 <ul class="car-list-service">
                                     <li><img src="assets/images/car-list/icon/4.svg" alt="seats"><span>26 Seats</span>
                                     </li>
                                     <li><img src="assets/images/car-list/icon/2.svg" alt="fuel"><span>Diesel</span></li>
                                     <li><img src="assets/images/car-list/icon/3.svg"
                                             alt="transmission"><span>Manual</span></li>
-                                    <li><img src="assets/images/car-list/icon/1.svg" alt="category"><span>Bus</span>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="inner">
-                                <a href="book.html?car=Mitsubishi+Rosa" class="link-icon">
+                                <a href="/book?car=Mitsubishi+Rosa" class="link-icon">
                                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M2 0V1H8.295L0 9.295L0.705 10L9 1.705V8H10V0H2Z" fill="white" />
@@ -777,7 +884,7 @@
                         <p>Our team is ready to help you find the perfect vehicle for your journey across Zambia.</p>
                         <div class="cta-btn-group">
                             <a href="tel:+260979517732" class="rts-btn btn-primary">Call Us: +260 979 517 732</a>
-                            <a href="contact.html" class="rts-btn btn-border">Send a Message</a>
+                            <a href="/contact" class="rts-btn btn-border">Send a Message</a>
                         </div>
                     </div>
                 </div>
@@ -787,21 +894,21 @@
     <!-- End CTA Section -->
 
     <!-- Footer -->
-        <!-- footer area start -->
+    <!-- footer area start -->
     <footer style="background:#0f172a;padding:72px 0 0;">
         <div class="container">
             <div class="row g-5">
 
                 <!-- Brand column -->
                 <div class="col-lg-6 col-md-6">
-                    <a href="index.html"
+                    <a href="/"
                         style="text-decoration:none;display:inline-flex;flex-direction:column;line-height:1.1;margin-bottom:20px;">
                         <span style="font-size:28px;font-weight:900;letter-spacing:4px;color:#fff;">CHALIKO</span>
-                        <span
-                            style="font-size:10px;color:#fff;letter-spacing:3px;text-transform:uppercase;">Car
+                        <span style="font-size:10px;color:#fff;letter-spacing:3px;text-transform:uppercase;">Car
                             Hire Limited</span>
                     </a>
-                    <p style="color:#fff;font-size:14px;line-height:1.8;margin-bottom:28px;max-width:420px;">Zambia's trusted car
+                    <p style="color:#fff;font-size:14px;line-height:1.8;margin-bottom:28px;max-width:420px;">Zambia's
+                        trusted car
                         hire company. Premium insured vehicles available across Lusaka, Ndola, Kitwe, Livingstone, Kabwe
                         and Chipata.</p>
                     <!-- Social -->
@@ -849,9 +956,11 @@
                                     style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Call Us</p>
                                 <a href="tel:+260979517732"
-                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;">+260 979 517 732</a>
+                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;">+260
+                                    979 517 732</a>
                                 <a href="tel:+260965517732"
-                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;margin-top:2px;">+260 965 517 732</a>
+                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;margin-top:2px;">+260
+                                    965 517 732</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
@@ -876,7 +985,10 @@
                                 <p
                                     style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Location</p>
-                                <a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia" target="_blank" rel="noopener" style="color:#fff;font-size:14px;font-weight:600;text-decoration:none;">Plot No. 14, Manchinchi Road, Northmead, Lusaka, Zambia</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia"
+                                    target="_blank" rel="noopener"
+                                    style="color:#fff;font-size:14px;font-weight:600;text-decoration:none;">Plot No. 14,
+                                    Manchinchi Road, Northmead, Lusaka, Zambia</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
@@ -920,37 +1032,54 @@
     <!-- footer area end -->
     <!-- End Footer -->
 
+    </div>
+    <!-- /#page-scale-wrapper -->
+
     <!-- Mobile Sidebar -->
-    <div id="side-bar" class="side-bar header-two">
-        <button class="close-icon-menu" id="close-side-bar">
-            <i class="fa-solid fa-x"></i>
-        </button>
-        <div class="inner-main-wrapper-desk">
-            <div class="mobile-logo mb--30">
-                <a href="index.html">
-                    <span
-                        style="font-size:22px; font-weight:800; letter-spacing:2px; color:#fff; text-transform:uppercase;">CHALIKO</span>
-                </a>
-            </div>
-            <nav>
-                <ul class="metismenu" id="mobile-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li class="active"><a href="fleet.html">Fleet</a></li>
-                    <li><a href="book.html">Booking</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="mobile-contact mt--30">
-                <a href="tel:+260979517732" class="rts-btn btn-primary w-100 text-center">+260 979 517 732</a>
+    <div id="menu-stage">
+        <div id="anywhere-home"></div>
+        <div id="side-bar" class="side-bar header-two">
+            <button class="close-icon-menu" aria-label="Close menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="mobile-menu-main">
+                <div class="mobile-menu-logo">
+                    <a href="/">
+                        <span class="brand-name">CHALIKO</span>
+                        <span class="brand-sub">Car Hire Limited</span>
+                    </a>
+                </div>
+                <nav class="nav-main mainmenu-nav">
+                    <ul class="mainmenu metismenu" id="mobile-menu-active">
+                        <li><a href="/" class="main">Home</a></li>
+                        <li><a href="/about" class="main">About Us</a></li>
+                        <li><a href="/fleet" class="main">Our Fleet</a></li>
+                        <li><a href="/book" class="main">Book Now</a></li>
+                        <li><a href="/contact" class="main">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-cta">
+                    <a href="tel:+260979517732" class="mobile-menu-phone">
+                        <i class="fa-sharp fa-solid fa-phone"></i> +260 979 517 732
+                    </a>
+                    <a href="/book" class="mobile-menu-book">Book Now</a>
+                </div>
+                <div class="mobile-menu-social">
+                    <ul>
+                        <li><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a></li>
+                        <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
     <!-- End Mobile Sidebar -->
 
     <!-- Scripts -->
-    <a href="https://wa.me/260965517732?text=Hi%20Chaliko%2C%20I%27d%20like%20to%20ask%20about..."
-        target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Chat with us on WhatsApp">
+    <a href="https://wa.me/260965517732?text=Hi%20Chaliko%2C%20I%27d%20like%20to%20ask%20about..." target="_blank"
+        rel="noopener" class="whatsapp-fab" aria-label="Chat with us on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -970,6 +1099,63 @@
     <script src="assets/js/vendor/bootstrap.min.js"></script>
     <script src="assets/js/vendor/waypoint.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        (function () {
+            var details = document.querySelector('.filter-dropdown');
+            if (!details) return;
+            if (window.matchMedia('(min-width: 768px)').matches) {
+                details.setAttribute('open', '');
+            }
+            var currentLabel = details.querySelector('.filter-current');
+            details.querySelectorAll('button[data-filter]').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    currentLabel.textContent = btn.textContent;
+                    if (window.matchMedia('(max-width: 767px)').matches) {
+                        details.removeAttribute('open');
+                    }
+                });
+            });
+        })();
+
+        (function () {
+            var bar = document.querySelector('.fleet-filter-sticky');
+            var spacer = document.querySelector('.fleet-filter-spacer');
+            var header = document.querySelector('.header-inner');
+            if (!bar || !spacer || !header) return;
+
+            function onScroll() {
+                var headerHeight = header.offsetHeight;
+                if (!bar.classList.contains('is-pinned')) {
+                    if (bar.getBoundingClientRect().top <= headerHeight) {
+                        spacer.style.height = bar.offsetHeight + 'px';
+                        bar.style.top = headerHeight + 'px';
+                        bar.classList.add('is-pinned');
+                    }
+                } else {
+                    bar.style.top = headerHeight + 'px';
+                    if (spacer.getBoundingClientRect().top > headerHeight) {
+                        bar.classList.remove('is-pinned');
+                        bar.style.top = '';
+                        spacer.style.height = '0px';
+                    }
+                }
+            }
+
+            function onResize() {
+                var wasPinned = bar.classList.contains('is-pinned');
+                if (wasPinned) {
+                    bar.classList.remove('is-pinned');
+                    bar.style.top = '';
+                    spacer.style.height = '0px';
+                }
+                onScroll();
+            }
+
+            onScroll();
+            window.addEventListener('scroll', onScroll);
+            window.addEventListener('resize', onResize);
+        })();
+    </script>
 
 </body>
 
