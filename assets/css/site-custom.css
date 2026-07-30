@@ -85,8 +85,29 @@ body.menu-open #page-scale-wrapper {
 }
 
 /* ---- Logo / brand ---- */
+
+/* Dark-green rounded badge behind the CHALIKO wordmark, in every header state */
+.logo-badge {
+    display: inline-flex;
+    border-radius: 10px;
+    background: var(--color-logo-bg, #143628);
+    padding: 8px 18px;
+}
+
 .side-bar .mobile-menu-logo {
     margin-bottom: 30px;
+}
+
+.side-bar .mobile-menu-logo a.logo-badge {
+    padding: 10px 20px;
+}
+
+.side-bar .mobile-menu-logo a.logo-badge .brand-name {
+    color: #fff;
+}
+
+.side-bar .mobile-menu-logo a.logo-badge .brand-sub {
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .side-bar .mobile-menu-logo a {
@@ -100,7 +121,7 @@ body.menu-open #page-scale-wrapper {
     font-size: 26px;
     font-weight: 900;
     letter-spacing: 3px;
-    color: var(--color-heading, #050B20);
+    color: var(--color-heading, #143628);
 }
 
 .side-bar .mobile-menu-logo .brand-sub {
@@ -108,7 +129,7 @@ body.menu-open #page-scale-wrapper {
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(5, 11, 32, 0.55);
+    color: rgba(20, 54, 40, 0.55);
     margin-top: 3px;
 }
 
@@ -120,7 +141,7 @@ body.menu-open #page-scale-wrapper {
 }
 
 .side-bar .mainmenu li {
-    border-bottom: 1px solid rgba(5, 11, 32, 0.08);
+    border-bottom: 1px solid rgba(20, 54, 40, 0.08);
 }
 
 .side-bar .mainmenu li a {
@@ -128,7 +149,7 @@ body.menu-open #page-scale-wrapper {
     padding: 14px 2px;
     font-size: 18px;
     font-weight: 600;
-    color: var(--color-heading, #050B20);
+    color: var(--color-heading, #143628);
     text-decoration: none;
     transition: color 0.2s ease;
 }
@@ -151,7 +172,7 @@ body.menu-open #page-scale-wrapper {
     gap: 10px;
     font-weight: 700;
     font-size: 15px;
-    color: var(--color-heading, #050B20);
+    color: var(--color-heading, #143628);
     text-decoration: none;
 }
 
@@ -175,7 +196,7 @@ body.menu-open #page-scale-wrapper {
 .side-bar .mobile-menu-social {
     margin-top: auto;
     padding-top: 24px;
-    border-top: 1px solid rgba(5, 11, 32, 0.08);
+    border-top: 1px solid rgba(20, 54, 40, 0.08);
 }
 
 .side-bar .mobile-menu-social ul {
@@ -193,8 +214,8 @@ body.menu-open #page-scale-wrapper {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: rgba(5, 11, 32, 0.06);
-    color: var(--color-heading, #050B20);
+    background: rgba(20, 54, 40, 0.06);
+    color: var(--color-heading, #143628);
     transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -209,7 +230,7 @@ body.menu-open #page-scale-wrapper {
     background: var(--color-white, #fff);
     border-radius: 16px;
     padding: 40px;
-    box-shadow: 0 10px 30px rgba(5, 11, 32, 0.05);
+    box-shadow: 0 10px 30px rgba(20, 54, 40, 0.05);
 }
 
 .rts-faq__accordion.faq-centered .accordion .accordion-item.active {
