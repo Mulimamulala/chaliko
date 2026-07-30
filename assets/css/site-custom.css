@@ -202,3 +202,23 @@ body.menu-open #page-scale-wrapper {
     background: var(--color-primary, #FF3600);
     color: #fff;
 }
+
+.rts-faq__accordion.faq-centered {
+    margin-right: 0;
+    margin-left: 0;
+    background: var(--color-white, #fff);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(5, 11, 32, 0.05);
+}
+
+.rts-faq__accordion.faq-centered .accordion .accordion-item.active {
+    border: 1px solid rgba(85, 85, 85, 0.15);
+}
+
+@media (max-width: 767px) {
+    .rts-faq__accordion.faq-centered {
+        padding: 30px 20px;
+    }
+}
+
