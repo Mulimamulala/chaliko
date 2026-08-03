@@ -243,3 +243,34 @@ body.menu-open #page-scale-wrapper {
     }
 }
 
+/* ---- Fleet cards (index.html "Our Fleet" preview + fleet.html grid):
+   below the 1200px container breakpoint the card column narrows enough
+   that the seats/fuel/transmission row collides with the circular
+   "view" button pinned to the card's bottom-right corner, clipping the
+   last spec ("Automatic"). Wrap the row and give the 3rd item its own
+   line so nothing sits under the button. ---- */
+@media (max-width: 1199px) {
+    .single-car-list-item .content .car-list-service {
+        flex-wrap: wrap;
+        row-gap: 8px;
+    }
+
+    .single-car-list-item .content .car-list-service li:nth-child(3) {
+        flex-basis: 100%;
+    }
+}
+
+/* ---- Fleet grid at tablet widths (768px-991px): Bootstrap's col-md-6
+   packs cards 2-per-row here, so an odd vehicle count (any filtered
+   category, or the homepage's 3-car preview) leaves the last card
+   dangling next to a large empty gap. Drop to a single column in this
+   range only - col-lg-4 already gives 3-per-row from 992px up, where
+   the same-parity issue is far less visually obvious. ---- */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .rts-car-list-wrapper .col-md-6,
+    .ms-portfolio-filter-area .col-md-6 {
+        width: 100%;
+    }
+}
+
