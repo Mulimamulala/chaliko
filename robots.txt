@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chaliko-ssml.vercel.app/sitemap.xml
+Sitemap: https://chaliko.com/sitemap.xml
