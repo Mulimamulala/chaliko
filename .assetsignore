@@ -1,0 +1,10 @@
+node_modules
+api
+.claude
+gorental-doc
+.git
+.DS_Store
+package.json
+vercel.json
+.htaccess
+skills-lock.json
