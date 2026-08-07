@@ -15,7 +15,7 @@ const PARTIALS_DIR = path.join(ROOT, 'partials');
 const PAGES = [
   {
     file: 'index.html',
-    title: 'Chaliko Car Hire Limited, Premium Car Rental in Zambia',
+    title: 'Car Rental in Zambia | Chaliko Car Hire Limited',
     description:
       "Chaliko Car Hire Limited, Zambia's premier car rental company. Premium, fully insured vehicles available across Lusaka, Ndola, Livingstone and beyond.",
     url: 'https://chaliko.com/',
@@ -26,7 +26,7 @@ const PAGES = [
   },
   {
     file: 'about.html',
-    title: 'About Us, Chaliko Car Hire Limited',
+    title: 'About Chaliko Car Hire Limited | Car Hire in Zambia',
     description:
       "About Chaliko Car Hire Limited, Zambia's trusted car hire company serving clients across six cities with a premium fleet and exceptional service.",
     url: 'https://chaliko.com/about',
@@ -37,7 +37,7 @@ const PAGES = [
   },
   {
     file: 'book.html',
-    title: 'Book a Car, Chaliko Car Hire Limited',
+    title: 'Book a Car Online in Zambia | Chaliko Car Hire',
     description:
       'Book a car with Chaliko Car Hire Limited. Reserve your vehicle online in minutes, fast confirmation within 2 hours.',
     url: 'https://chaliko.com/book',
@@ -48,7 +48,7 @@ const PAGES = [
   },
   {
     file: 'contact.html',
-    title: 'Contact Us, Chaliko Car Hire Limited',
+    title: 'Contact Chaliko Car Hire Limited | Zambia',
     description:
       'Contact Chaliko Car Hire Limited. Call, email, or message us, we respond within 2 hours, Monday to Saturday.',
     url: 'https://chaliko.com/contact',
@@ -59,7 +59,7 @@ const PAGES = [
   },
   {
     file: 'fleet.html',
-    title: 'Our Fleet, Chaliko Car Hire Limited',
+    title: 'Our Fleet: Sedans, SUVs, 4x4s & Vans | Chaliko Car Hire',
     description:
       "Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses & vans for hire across Zambia.",
     url: 'https://chaliko.com/fleet',

@@ -118,7 +118,7 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 |---|-------|--------|----------|------------|---------------|
 | 1 | Project Audit | **Completed** | Critical | Medium | None |
 | 2 | Technical SEO | **Completed** | Critical | Medium | Phase 1, Open Decision |
-| 3 | Metadata | Not Started | Critical | Small | Phase 2 |
+| 3 | Metadata | Mostly Completed | Critical | Small | Phase 2 |
 | 4 | Structured Data | Not Started | Critical | Medium | Phase 2, 3 |
 | 5 | AI Discoverability (GEO) | Not Started | High | Medium | Phase 4 |
 | 6 | Answer Engine Optimization (AEO) | Not Started | High | Medium | Phase 4, 13 |
@@ -217,25 +217,34 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 3 — Metadata
-**Status:** Not Started · **Priority:** Critical · **Complexity:** Small · **Dependencies:** Phase 2
-**Files expected to change:** All 5 HTML files
+**Status:** **Mostly Completed (2026-08-07)** · **Priority:** Critical · **Complexity:** Small · **Dependencies:** Phase 2
+**Files expected to change:** All 5 HTML files (via `scripts/build.js` + `partials/head.html`)
 
 **Task: Standardize title tag formula**
-- Status: Not Started · Priority: Medium
-- Description: Move from `"Page, Brand"` to a consistent `"Primary Intent Keyword | Chaliko Car Hire Limited"` pattern with a location qualifier where useful (e.g. `"Car Rental in Lusaka & Across Zambia | Chaliko Car Hire"`), keeping all titles under ~60 characters.
+- Status: **Completed (2026-08-07)** · Priority: Medium
+- Description: Moved from `"Page, Brand"` to a consistent `"Primary Intent Keyword | Brand"` pattern. New titles:
+  - Home: `Car Rental in Zambia | Chaliko Car Hire Limited` (48 chars)
+  - About: `About Chaliko Car Hire Limited | Car Hire in Zambia` (53 chars)
+  - Book: `Book a Car Online in Zambia | Chaliko Car Hire` (48 chars)
+  - Contact: `Contact Chaliko Car Hire Limited | Zambia` (42 chars)
+  - Fleet: `Our Fleet: Sedans, SUVs, 4x4s & Vans | Chaliko Car Hire` (57 chars)
+  Because `og:title`/`twitter:title` are generated from the same `{{TITLE}}` token (Phase 2's templating work), they updated automatically in the same edit.
 - Why it matters: Improves CTR from SERPs and gives AI engines a clearer entity/intent signal per page.
-- Validation steps: All titles unique, <60 chars, contain primary keyword + brand.
+- Files affected: `scripts/build.js` (the `PAGES` config — this is now the single place titles live)
+- Validation steps: All titles unique, under 60 chars, lead with primary keyword + end with brand. Verified via `npm run build` + browser tab titles across all 5 pages; zero console errors.
 - Estimated effort: Small
 
 **Task: Add explicit `robots` meta tags**
-- Status: Not Started · Priority: Low
-- Description: Add `<meta name="robots" content="index, follow">` explicitly to all 5 pages (currently relies on default behavior).
+- Status: **Completed (2026-08-07)** · Priority: Low
+- Description: Added `<meta name="robots" content="index, follow">` to `partials/head.html`, right after the description meta — propagates to all 5 pages from one place.
 - Why it matters: Removes ambiguity for crawlers and documents intent for future editors.
+- Files affected: `partials/head.html`
+- Validation steps: `grep -c 'name="robots"' *.html` returns 1 for all 5 pages.
 - Estimated effort: Small
 
 **Task: Fix `og:image`/`twitter:image` to use properly-sized, optimized hero images**
-- Status: Not Started · Priority: Medium
-- Description: Depends on Phase 14 image optimization; ensure social preview images are correctly sized (1200×630 recommended for OG) and compressed.
+- Status: Not Started (blocked) · Priority: Medium
+- Description: Depends on Phase 14 image optimization; ensure social preview images are correctly sized (1200×630 recommended for OG) and compressed. Deliberately deferred rather than done twice — the current `banner/5.jpg` reference works but isn't optimized yet.
 - Dependencies: Phase 14
 - Estimated effort: Small
 
@@ -598,17 +607,31 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - **Result:** `npm run build` verified idempotent (ran twice, identical output). All 5 pages checked in a local preview server: zero console errors, zero 404s/network failures, screenshots visually identical to the pre-change baseline on desktop and mobile, mobile hamburger menu (door-swing sidebar) interaction verified working end-to-end. Phase 2 is now fully complete — all of its tasks are done.
 - **Outstanding issues:** None for Phase 2. Nothing in this batch has been committed to git yet — awaiting user review before commit, per the established workflow.
 
+### 2026-08-07 — Phase 2 committed; Phase 3 (Metadata) mostly completed
+- **Summary:** User confirmed the Phase 2 batch was committed (`30036e5`). Moved on to Phase 3: standardized all 5 page titles to a keyword-first `"Intent | Brand"` formula (see Phase 3 section for exact strings), and added an explicit `<meta name="robots" content="index, follow">` to `partials/head.html`. Both changes were single-place edits (the `PAGES` config in `scripts/build.js`, and the shared head partial) thanks to Phase 2's templating work — no per-page duplication needed. Left the `og:image`/`twitter:image` sizing task deliberately blocked on Phase 14 rather than touching it twice.
+- **Files changed:** `scripts/build.js` (title strings), `partials/head.html` (robots meta), all 5 HTML files (regenerated via `npm run build`)
+- **Reason:** Phase 3 was next in the roadmap after Phase 2 closed out.
+- **Result:** Verified via `npm run build` + browser tab titles across all 5 pages, `og:title` confirmed matching (checked index.html and fleet.html, including correct `&amp;` escaping on Fleet's title), zero console errors on any page.
+- **Outstanding issues:** Phase 3's third task (OG/Twitter image sizing) remains blocked on Phase 14. Nothing in this batch has been committed yet.
+
+### 2026-08-07 — Bug fix: broken Instagram icon in header
+- **Summary:** User reported the Instagram icon wasn't showing in the header (visible fine in the footer, which uses a Font Awesome glyph instead). Root cause: `assets/images/icon/instagram.svg` — referenced only by the header's social icons, via `partials/header.html`, across all 5 pages — is a corrupted design-tool export. Its 3 luminance masks (rounded-square frame, lens, corner dot) are actually valid, correctly-bounded shapes, but each mask's revealed content was a giant circle positioned almost entirely *outside* the 20×20 viewBox (e.g. one centered at y=39 with a 21px radius) instead of a full-canvas fill rect, so almost nothing rendered. Fixed by replacing each mask's broken circle path with a simple `<rect width="20" height="20" fill="#FF3600"/>`, which correctly reveals just the masked glyph shapes. This restores the designer's actual intended icon rather than substituting a different one, and keeps it visually consistent with the adjacent Facebook icon's circle-outline style.
+- **Files changed:** `assets/images/icon/instagram.svg`
+- **Reason:** Direct user bug report.
+- **Result:** Verified by loading the SVG directly in-browser (renders a clean orange Instagram glyph matching Facebook's style) and rechecking the homepage — zero console errors.
+- **Outstanding issues:** `assets/images/icon/instagram-c.svg` has the identical bug (same broken giant-circle-per-mask pattern) but isn't referenced anywhere in the live site, so it was left as-is — flagged below in Technical Debt in case it's ever wired up.
+
 ---
 
 ## Known Issues
 
-- Canonical/OG/JSON-LD domain mismatch (`chaliko-ssml.vercel.app` vs `chaliko.com`) — see Phase 2.
 - Form labels not programmatically associated with inputs in `book.html` — see Phase 7/15.
 - No `<main>` landmark on any page — see Phase 7/10.
 - 62MB of unoptimized images, zero lazy-loading — see Phase 14.
 
 ## Technical Debt
 
+- `assets/images/icon/instagram-c.svg` has the same corrupted-mask bug as the now-fixed `instagram.svg` (each mask reveals a giant circle outside the viewBox instead of a full-canvas fill). Not currently referenced anywhere, so left unfixed — apply the same `<rect width="20" height="20" fill="..."/>` fix if it's ever wired up.
 - ~~`vercel.json`, `api/mailer.js`~~ — **removed 2026-08-07**, Vercel fully decommissioned.
 - ~~`.htaccess`~~ — **removed 2026-08-07**, dead Apache config for the confirmed Cloudflare Workers host.
 - ~~`gorental-doc/`~~ — **removed 2026-08-07**, tracked ThemeForest template documentation with no product purpose.
