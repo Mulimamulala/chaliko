@@ -119,6 +119,7 @@ const PAGES = [
     headerInner: false,
     contactForm: true,
     isotope: true,
+    heroImage: 'assets/images/banner/5.webp',
     extraJsonLd: [faqPageJsonLd()],
   },
   {
@@ -131,6 +132,7 @@ const PAGES = [
     headerInner: true,
     contactForm: false,
     isotope: false,
+    heroImage: 'assets/images/banner/2.webp',
     extraJsonLd: [
       breadcrumbJsonLd([...HOME_BREADCRUMB, { name: 'About Us', url: 'https://chaliko.com/about' }]),
     ],
@@ -145,6 +147,7 @@ const PAGES = [
     headerInner: true,
     contactForm: true,
     isotope: true,
+    heroImage: 'assets/images/banner/2.webp',
     extraJsonLd: [
       breadcrumbJsonLd([...HOME_BREADCRUMB, { name: 'Book Now', url: 'https://chaliko.com/book' }]),
     ],
@@ -243,6 +246,9 @@ for (const page of PAGES) {
     DESCRIPTION: escapeHtml(page.description),
     URL: page.url,
     EXTRA_JSONLD: (page.extraJsonLd || []).join('\n'),
+    PRELOAD_HERO: page.heroImage
+      ? `    <link rel="preload" as="image" href="${page.heroImage}">`
+      : '',
   });
   content = replaceMarkerBlock(content, 'HEAD', headRendered);
 
@@ -258,8 +264,8 @@ for (const page of PAGES) {
   content = replaceMarkerBlock(content, 'FOOTER', footerPartial);
 
   const scriptsRendered = renderTemplate(scriptsTemplate, {
-    CONTACT_FORM_SCRIPT: page.contactForm ? '<script src="assets/js/plugins/contact-form.js"></script>' : '',
-    ISOTOPE_SCRIPT: page.isotope ? '<script src="assets/js/plugins/isotope.js"></script>' : '',
+    CONTACT_FORM_SCRIPT: page.contactForm ? '<script src="assets/js/plugins/contact-form.js" defer></script>' : '',
+    ISOTOPE_SCRIPT: page.isotope ? '<script src="assets/js/plugins/isotope.js" defer></script>' : '',
   })
     .split('\n')
     .filter((line) => line.trim() !== '')

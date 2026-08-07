@@ -118,24 +118,24 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 |---|-------|--------|----------|------------|---------------|
 | 1 | Project Audit | **Completed** | Critical | Medium | None |
 | 2 | Technical SEO | **Completed** | Critical | Medium | Phase 1, Open Decision |
-| 3 | Metadata | Mostly Completed | Critical | Small | Phase 2 |
+| 3 | Metadata | **Completed** | Critical | Small | Phase 2 |
 | 4 | Structured Data | **Completed** | Critical | Medium | Phase 2, 3 |
 | 5 | AI Discoverability (GEO) | Mostly Completed | High | Medium | Phase 4 |
 | 6 | Answer Engine Optimization (AEO) | Not Started | High | Medium | Phase 4, 13 |
 | 7 | Accessibility | Mostly Completed | Critical | Medium | Open Decision |
-| 8 | Performance Optimization | Not Started | Critical | Large | Open Decision |
+| 8 | Performance Optimization | **Mostly Completed** | Critical | Large | Open Decision |
 | 9 | Core Web Vitals | Not Started | Critical | Medium | Phase 8 |
 | 10 | Semantic HTML | **Completed** | High | Medium | Open Decision |
 | 11 | Internal Linking | Not Started | Medium | Small | Phase 13 |
 | 12 | Navigation | **Completed** | Medium | Small | Phase 10 |
 | 13 | Content Improvements | Not Started | High | Large | Open Decision |
-| 14 | Image Optimization | Not Started | Critical | Medium | None |
+| 14 | Image Optimization | **Completed** | Critical | Medium | None |
 | 15 | Forms | Mostly Completed | High | Small | Phase 7 |
 | 16 | Local SEO | Not Started | High | Small | Phase 4 |
 | 17 | Analytics | Not Started | High | Small | Manual: GA4/GSC access |
 | 18 | Security | **Completed** | High | Small | None |
 | 19 | Testing | Not Started | Medium | Medium | Phases 2–15 |
-| 20 | Deployment Readiness | Not Started | Critical | Small | Phase 18 |
+| 20 | Deployment Readiness | **Completed** | Critical | Small | Phase 18 |
 | 21 | Post-Deployment Checklist | Not Started | High | Small | Phase 20, Manual actions |
 
 ---
@@ -217,7 +217,7 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 3 — Metadata
-**Status:** **Mostly Completed (2026-08-07)** · **Priority:** Critical · **Complexity:** Small · **Dependencies:** Phase 2
+**Status:** **Completed (2026-08-07)** · **Priority:** Critical · **Complexity:** Small · **Dependencies:** Phase 2
 **Files expected to change:** All 5 HTML files (via `scripts/build.js` + `partials/head.html`)
 
 **Task: Standardize title tag formula**
@@ -243,9 +243,10 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - Estimated effort: Small
 
 **Task: Fix `og:image`/`twitter:image` to use properly-sized, optimized hero images**
-- Status: Not Started (blocked) · Priority: Medium
-- Description: Depends on Phase 14 image optimization; ensure social preview images are correctly sized (1200×630 recommended for OG) and compressed. Deliberately deferred rather than done twice — the current `banner/5.jpg` reference works but isn't optimized yet.
-- Dependencies: Phase 14
+- Status: **Completed (2026-08-07)** · Priority: Medium
+- Description: Generated a dedicated `assets/images/banner/5-og.jpg` at 1200×675 (standard OG aspect ratio), compressed to 188KB (down from the source `banner/5.jpg` at 516KB/1920×1080). Kept this as a JPG rather than WebP deliberately — social-preview crawlers (iMessage, WhatsApp, Slack unfurlers) have historically inconsistent WebP support for `og:image`, so JPG stays the safe choice there even though the rest of the site moved to WebP. Updated `og:image`/`og:image:width`/`og:image:height`/`twitter:image` in `partials/head.html` to the new file and correct dimensions. The JSON-LD `AutoRental.image` field (not a social-crawler-facing field, no compatibility concern) was pointed at `banner/5.webp` instead for the bandwidth saving.
+- Files affected: new `assets/images/banner/5-og.jpg`, `partials/head.html`
+- Validation steps: All 5 pages regenerated via `npm run build`; verified new dimensions/paths present in every page's `<head>`.
 - Estimated effort: Small
 
 ---
@@ -365,27 +366,34 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 8 — Performance Optimization
-**Status:** Not Started · **Priority:** Critical · **Complexity:** Large · **Dependencies:** Open Decision
+**Status:** **Mostly Completed (2026-08-07)** · **Priority:** Critical · **Complexity:** Large · **Dependencies:** Open Decision
 
 **Task: Minify and consolidate CSS**
-- Status: Not Started · Priority: Critical
-- Description: Minify the 23,788-line `assets/css/style.css`, audit `assets/css/plugins/plugins.css` (704KB) for unused plugin CSS, extract the duplicated per-page inline `<style>` blocks into `site-custom.css`.
-- Dependencies: Open Decision (Option A makes this a build step)
+- Status: **Mostly Completed (2026-08-07)** · Priority: Critical
+- Description: Minified `assets/css/style.css` (472KB → 384KB, ~19% smaller) and `assets/css/site-custom.css` (16KB → 8KB) using `clean-css-cli`, verified via a rule-count check (curly-brace count matched exactly pre/post minification, confirming no rules were silently dropped) before adopting. **`assets/css/plugins/plugins.css` (704KB) was deliberately left unminified** — it contains Swiper's modern nested CSS syntax (`&`-nesting), which `clean-css-cli` cannot parse correctly; a trial run produced dozens of "Invalid selector"/"Invalid property" warnings and would have silently corrupted the carousel styles for a ~1% size saving (704KB → 696KB, not worth the risk). Minifying it properly needs a nesting-aware tool (e.g. `lightningcss`) — left as a flagged remaining item, not a blind attempt.
+- Files affected: `assets/css/style.css`, `assets/css/site-custom.css`
+- Validation steps: Rebuilt and verified all 5 pages via `wrangler dev` in both the sandboxed test browser and a real Chrome browser — zero visual regressions, zero console errors.
 - Estimated effort: Medium
 
 **Task: Audit and trim the JS plugin stack**
-- Status: Not Started · Priority: High
-- Description: Determine which of the ~15 loaded plugins (GSAP, ScrollTrigger, Swiper, Isotope, Magnific Popup, Jarallax, SplitText, MetisMenu, Waypoint, jQuery UI, etc.) are actually used per page; remove unused ones; add `defer` to the rest.
+- Status: **Completed (2026-08-07)** · Priority: High
+- Description: Checked every one of the ~16 loaded plugins against actual usage in `main.js` (not assumed) before touching anything. Found and removed exactly one genuinely dead file: `assets/js/plugins/jarallax.js` (12KB) — a duplicate of the file actually loaded, `assets/js/vendor/jarallax.js` (32KB), never referenced by any `<script>` tag. Everything else checked out as real, load-bearing dependencies and was kept, including `waypoint.js` — it looked unused from `main.js` alone (no direct `Waypoint(...)` call), but `counter-up.js` internally calls the jQuery `.waypoint()` method to trigger the animated counters on scroll, so removing it would have silently broken the "10+ Years of Service" counter animation. Added `defer` to all 17 `<script>` tags in `partials/scripts.html` (and the `CONTACT_FORM_SCRIPT`/`ISOTOPE_SCRIPT` tokens in `scripts/build.js`) — safe here since they're already the last thing before `</body>` (execution order is unaffected), but `defer` lets the browser fetch all of them in parallel instead of one at a time.
+- Files affected: `assets/js/plugins/jarallax.js` (deleted), `partials/scripts.html`, `scripts/build.js`
+- Validation steps: Verified all 5 pages in a real Chrome browser — zero console errors, mobile menu/counters/carousels/datepicker all confirmed still working.
 - Estimated effort: Large
 
 **Task: Subset/replace Font Awesome**
-- Status: Not Started · Priority: High
-- Description: Reduce the 15MB, all-weight Font Awesome bundle to only the icons and weights actually used (or replace with inline SVGs for the small icon set in use).
+- Status: **Completed (2026-08-07)** · Priority: High
+- Description: Removed the `fa-duotone-900` `@font-face` declaration from `plugins.css` and deleted all 5 of its format files (`.eot`/`.svg`/`.ttf`/`.woff`/`.woff2`, 4MB total) — this was already confirmed unused via network trace during the Phase 2 cleanup and explicitly deferred to this phase. The other Font Awesome weight families (`fa-brands`/`fa-solid`/`fa-regular`/`fa-light`) remain, confirmed still actively used sitewide. Full per-icon subsetting (replacing the icon font with inline SVGs for just the ~15 glyphs actually used) was not attempted — that's a larger, higher-risk rework of every icon reference across 5 pages for a bundle that (after this cleanup) is no longer the single biggest weight offender; flagged as a future item, not silently skipped.
+- Files affected: `assets/css/plugins/plugins.css`, `assets/fonts/fa-duotone-900.*` (deleted)
+- Validation steps: Confirmed no page renders a broken icon glyph after the removal (grepped for `fa-duotone`/`fad` usage sitewide — none found, consistent with the original Phase 2 finding).
 - Estimated effort: Medium
 
 **Task: Add resource hints**
-- Status: Not Started · Priority: Low
-- Description: Add `preconnect`/`dns-prefetch` for the Resend API and any embedded Google Maps origin; `preload` for the LCP hero image/font.
+- Status: **Completed (2026-08-07)** · Priority: Low
+- Description: Added `<link rel="preconnect">` for `fonts.googleapis.com` and `fonts.gstatic.com` (the site's `style.css` `@import`s Google Fonts from both origins) to `partials/head.html`, applied sitewide. Added a per-page conditional `{{PRELOAD_HERO}}` token (new `heroImage` field in each page's config in `scripts/build.js`) that emits `<link rel="preload" as="image">` for the actual LCP-candidate image on that page — `banner/5.webp` on the homepage, `banner/2.webp` on About/Book (their breadcrumb hero), nothing on Contact/Fleet (no hero image on those pages). **Did not** add a `preconnect` for the Resend API as the original task description suggested — checked `src/worker.js` and confirmed the browser never talks to Resend directly; the Cloudflare Worker calls it server-side, so a client-side preconnect hint would do nothing. Also confirmed there's no embedded Google Maps iframe anywhere (just plain outbound links), so no Maps origin hint was needed either.
+- Files affected: `partials/head.html`, `scripts/build.js`
+- Validation steps: Verified the correct preload/preconnect tags appear per page after `npm run build`.
 - Estimated effort: Small
 
 ---
@@ -479,22 +487,28 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 14 — Image Optimization
-**Status:** Not Started · **Priority:** Critical · **Complexity:** Medium · **Dependencies:** None
+**Status:** **Completed (2026-08-07)** · **Priority:** Critical · **Complexity:** Medium · **Dependencies:** None
 
 **Task: Compress and convert oversized PNGs**
-- Status: Not Started · Priority: Critical
-- Description: Convert the largest offenders (`cars/quantum.png` 2.4MB, `cars/bg.png` 2.4MB, all of `cars/originals-with-background/*.png` at 1.2–1.5MB each) to compressed WebP/AVIF at appropriate display resolution.
-- Why it matters: This single change likely has the largest raw performance impact available in the entire roadmap — 62MB of images on a 5-page site is severe, especially for mobile users in the target market.
+- Status: **Completed (2026-08-07)** · Priority: Critical
+- Description: Before converting anything, re-audited actual image usage against every page (the same methodology as the Phase 2 dead-weight sweep) and found a second wave of dead weight that had been missed: `cars/originals-with-background/*.png` (11 files, 14MB, zero references), `cars/bg.png` (2.4MB) and `cars/fav.png` (1.4MB, zero references despite the plausible-sounding filenames), and `assets/images/fav.png`/`fav-transparent.png`/`fav-apple-touch-source.png` (3.3MB, zero references — the real favicon set lives in `assets/images/favicon/`). All deleted (~21MB) before any conversion work began. Then converted every actually-used oversized image to WebP: the 11 vehicle photos (`cars/*.png`, 824KB–2.4MB each) resized to a max width of 800px (comfortably covers their largest real display size at retina density) and compressed to WebP quality 82 — combined 11MB → ~460KB, a >95% reduction. The 3 homepage hero banner backgrounds (`banner/2.jpg`/`5.jpg`/`6.jpg`, 1920×1080, 388–516KB each) converted to WebP quality 78 (~200KB each). `about/4.jpg`, `process/1–3.jpg`, and `testimonials/author-1–3.jpg/png` also converted (all now under 75KB each). Total `assets/images` weight: **~62MB → 3.1MB**.
+- Why it matters: This was the single largest performance lever available — the 62MB baseline was severe for the target market's bandwidth-constrained mobile users, and roughly a third of it turned out to be dead files never even reachable by a live page.
+- Files affected: all `assets/images/cars/*.png`→`.webp`, `assets/images/banner/{2,5,6}.jpg`→`.webp` (plus a separately-generated `5-og.jpg`, see Phase 3), `assets/images/{about,process,testimonials}/*` → `.webp`, all now-orphaned originals deleted, every `<img src>`/`data-bg-src` reference updated across all 5 HTML files and `partials/head.html`
+- Validation steps: Crawled every `href`/`src`/`data-bg-src` referenced across all 5 built pages (96 URLs) against a local `wrangler dev` server — zero non-200 responses, both before and after deletion of the old originals. Verified visually via screenshots in both the sandboxed test browser and a real Chrome browser on all 5 pages — vehicle photos, hero banners, and the About page image all render correctly with no broken images or corrupted transparency.
 - Estimated effort: Medium
+- Implementation notes: Used `cwebp`/`sips` (already available on the machine, no new dependency). `originals-with-background` retained no purpose once confirmed unreferenced — it was the pre-background-removal source art for the vehicle cutouts, not something the live site ever served.
 
 **Task: Add `loading="lazy"` to all below-the-fold images**
-- Status: Not Started · Priority: Critical
-- Description: 0 of 49 images checked on `index.html`/`fleet.html` currently use lazy loading.
+- Status: **Completed (2026-08-07)** · Priority: Critical
+- Description: Added `loading="lazy"` to every content photo across all 5 pages (vehicle cards on `fleet.html`/`index.html`, the About photo, process-step photos, testimonial avatars). Deliberately **not** added to decorative icon SVGs (car-list icons, why-choose icons, brand logos) — they're a few hundred bytes each, lazy-loading them has no measurable benefit and would just be noise. One incidental win: the 3 testimonial author photos sit inside a `style="display:none"` section (testimonials are currently disabled site-wide, per existing `<!-- testimonials area removed -->` markup) — `loading="lazy"` on a never-visible element means the browser now never fetches those images at all, a small free savings on top of the lazy-loading itself.
+- Files affected: `index.html`, `about.html`, `fleet.html`
 - Estimated effort: Small
 
 **Task: Add explicit `width`/`height` to every `<img>`**
-- Status: Not Started · Priority: Critical
-- Dependencies: shared with Phase 9 CLS task
+- Status: **Completed (2026-08-07)** · Priority: Critical
+- Description: Added explicit `width`/`height` attributes (matching each image's real post-resize pixel dimensions) to every content `<img>` touched by the PNG/JPG→WebP conversion above, so the browser can reserve correct layout space before the image loads.
+- Dependencies: shared with Phase 9 CLS task — this covers the images touched in this phase; a full sitewide CLS pass (including icon SVGs and any images not touched here) remains Phase 9's job.
+- Files affected: `index.html`, `about.html`, `fleet.html`
 - Estimated effort: Medium
 
 ---
@@ -571,11 +585,13 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 20 — Deployment Readiness
-**Status:** Not Started · **Priority:** Critical · **Complexity:** Small · **Dependencies:** Phase 18
+**Status:** **Completed (2026-08-07)** · **Priority:** Critical · **Complexity:** Small · **Dependencies:** Phase 18
 
 **Task: Final dead-config cleanup confirmation**
-- Status: Not Started · Priority: Critical
-- Description: Confirm `vercel.json`/`api/mailer.js`/`.htaccess` removal (Phase 2) didn't break anything and that `wrangler.jsonc` deploy is fully self-sufficient.
+- Status: **Completed (2026-08-07)** · Priority: Critical
+- Description: Confirmed `vercel.json`, `api/mailer.js`, and `.htaccess` are all fully absent from the repository (not just unreferenced). Confirmed `wrangler.jsonc` is fully self-sufficient: `main: src/worker.js`, `build.command: npm run build`, and the `assets` block are the only deploy-relevant config, with no external dependency on anything removed. Confirmed `package.json` has zero dependencies (the `build` script is a single dependency-free Node script) and `npm run build` runs clean from a fresh checkout state.
+- Files affected: None (verification only)
+- Validation steps: `ls vercel.json api/mailer.js .htaccess` confirms none exist. `npm run build` re-run and confirmed idempotent. Full `wrangler dev` pass across all 5 pages in a real Chrome browser, zero console errors.
 - Estimated effort: Small
 
 ---
@@ -678,13 +694,25 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - **Result:** All 5 pages verified via browser automation with zero console errors, both on a plain static server and — critically for the security-headers work — through an actual `wrangler dev` run of the Cloudflare Worker (the static preview alone can't exercise `src/worker.js` at all). Mobile menu keyboard behavior (open/close, Escape, focus movement) verified end-to-end via scripted interaction, not just code review. All HTML tag balance (`<main>`, `<nav>`, `<article>`, `<header>`, `<footer>`, `<body>`, `<html>`) verified programmatically after every edit.
 - **Outstanding issues:** The white-on-orange persistent button-text contrast question (Phase 7) needs a user decision — see Known Issues. Phase 15's spam-protection task (honeypot/rate-limiting on `/api/mailer`) was correctly out of scope for this batch and remains not started. Nothing in this batch has been committed yet.
 
+### 2026-08-07 — Bing crawl-error fix, then Phases 8, 14, and 20 completed together
+- **Summary:** User reported a Bing Webmaster Tools site-scan error ("Http 400-499 errors, 1 page affected") and asked to batch Phases 8 (Performance), 14 (Image Optimization), and 20 (Deployment Readiness). Root-caused the Bing error first: `book.html` and `contact.html` both have `<form action="/api/mailer">`, and Bing's crawler follows form actions and probes them with a GET request — but `/api/mailer` only accepts POST and returns `405 Method Not Allowed` for GET, which falls in the reported 400–499 range. Fixed by adding `Disallow: /api/` to `robots.txt` so crawlers skip the endpoint entirely, rather than changing the endpoint's correct REST semantics.
+  - **Phase 14:** Before converting anything, re-audited image usage the same way Phase 2's dead-weight sweep did, and found ~21MB of images with zero live references that had been missed the first time (`cars/originals-with-background/*`, `cars/bg.png`, `cars/fav.png`, and three stray `assets/images/fav*.png` files not part of the real favicon set) — deleted first. Then converted every actually-used oversized image (11 vehicle photos, 3 hero banners, About/process/testimonial photos) to WebP with `cwebp`/`sips`, resizing the vehicle photos to a sane 800px max width. `assets/images` went from ~62MB to 3.1MB. Added `loading="lazy"` and explicit `width`/`height` to every touched `<img>`.
+  - **Phase 3 (unblocked by Phase 14):** Generated a properly-sized 1200×675 `banner/5-og.jpg` for `og:image`/`twitter:image` (kept as JPG, not WebP, for social-crawler compatibility), closing out Phase 3's last remaining task.
+  - **Phase 8:** Minified `style.css` and `site-custom.css` with `clean-css-cli` (verified rule-count parity before adopting); deliberately left `plugins.css` unminified after a trial run showed the tool corrupts Swiper's modern nested CSS syntax. Audited all ~16 loaded JS plugins against real usage (not assumed) — removed one confirmed-dead duplicate (`assets/js/plugins/jarallax.js`), kept everything else including `waypoint.js`, which turned out to be a real dependency of the counter-animation plugin despite no direct call in `main.js`. Added `defer` to all script tags. Removed the confirmed-unused `fa-duotone-900` Font Awesome font family (4MB across 5 format files, previously flagged in Phase 2 but deferred here). Added `preconnect` hints for Google Fonts and a per-page conditional `preload` hint for each page's actual LCP hero image.
+  - **Phase 20:** Confirmed `vercel.json`/`api/mailer.js`/`.htaccess` are fully absent and `wrangler.jsonc` is self-sufficient (no code changes needed, verification only).
+  - **False alarm investigated and ruled out:** While testing the Fleet page in the sandboxed browser tool used for verification, vehicle cards appeared to render in a single broken column instead of a 3-column grid, on both the local build and live production. Before shipping a fix, verified the same page in a genuine Chrome browser (via the separate Claude-in-Chrome tool) — it rendered a perfect 3-column grid with working category filters. The apparent bug was an artifact of the sandboxed test browser not painting CSS transitions until a trusted input event, not a real defect. A speculative `main.js` fix was written, tested, found not to work reliably even in the sandboxed tool, and fully reverted before this was discovered — `main.js`'s Isotope init code is unchanged from before this session.
+- **Files changed:** `robots.txt`; ~60 image files (converted/deleted, see Phase 14); `assets/css/style.css`, `assets/css/site-custom.css`, `assets/css/plugins/plugins.css` (font-face removal only); `assets/fonts/fa-duotone-900.*` (deleted); `assets/js/plugins/jarallax.js` (deleted); `partials/head.html`, `partials/scripts.html`; `scripts/build.js`; all 5 HTML files (regenerated via `npm run build`)
+- **Reason:** Direct user request to fix the Bing error and batch Phases 8/14/20.
+- **Result:** All 5 pages verified end-to-end in a real Chrome browser after every change (not just the sandboxed tool) — zero console errors, zero broken images, zero layout regressions. Full internal-link crawl (96 URLs: every `href`/`src`/`data-bg-src` across all 5 pages) returned zero non-200 responses both before and after the image-file deletions. `npm run build` re-confirmed idempotent.
+- **Outstanding issues:** `plugins.css` minification and full Font Awesome icon-subsetting remain as flagged Phase 8 follow-ups (see Technical Debt). Nothing in this batch has been committed yet.
+
 ---
 
 ## Known Issues
 
-- 62MB of unoptimized images, zero lazy-loading — see Phase 14.
 - **Needs a decision:** white text on solid brand-orange (`#FF3600`) background is used as the *persistent* style on a few high-visibility elements (`book.html`'s "Submit Booking Request" button, the "Need Help Booking?" sidebar card) — measured contrast is 3.63:1, below the 4.5:1 WCAG AA threshold for that text's size. Fixing it properly means darkening the orange used for button backgrounds specifically, which is a brand-color call — not changed without your sign-off. See Phase 7's color-contrast task for the full analysis and a candidate shade (`#CC2B00`, already used for small orange text elsewhere in this batch) that would pass at 4.5:1+ while staying in the same hue family.
 - `/api/mailer` has no spam protection (no honeypot, no rate limiting) — see Phase 15.
+- ~~62MB of unoptimized images, zero lazy-loading~~ — **resolved 2026-08-07**, see Phase 14 (now 3.1MB).
 
 ## Technical Debt
 
@@ -696,9 +724,11 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - ~~`gorental-doc/`~~ — **removed 2026-08-07**, tracked ThemeForest template documentation with no product purpose.
 - ~~Unused theme image categories, unused JS/CSS plugins, committed OS junk (`.DS_Store`/`Thumbs.db`)~~ — **removed 2026-08-07**, ~43MB of dead weight with zero live references; see Progress Log for the full file list.
 - ~~Duplicated inline `<style>` blocks and hand-duplicated head/header/footer/scripts across all 5 HTML pages~~ — **resolved 2026-08-07**. Option A (partials + `scripts/build.js`, wired into `wrangler.jsonc`'s `build.command`) implemented; see Phase 2 Progress Log.
-- No build pipeline despite SCSS source existing (`assets/scss/style.scss`) — compiled CSS is hand-committed and unminified.
-- `assets/css/plugins/plugins.css` (704KB) still declares an unused `fa-duotone-900` `@font-face` block — real Font Awesome usage sitewide (`fa-brands`/`fa-solid`/`fa-regular`/`fa-light`) is confirmed and those weights are correctly kept; duotone removal is a Phase 8 icon-subsetting task, not a blind deletion.
+- No build pipeline despite SCSS source existing (`assets/scss/style.scss`) — compiled CSS is hand-committed. `style.css`/`site-custom.css` are now minified (Phase 8), but the SCSS source itself still isn't compiled by any build step — future hand-edits to `style.css` and `assets/scss/style.scss` can drift out of sync.
+- ~~`assets/css/plugins/plugins.css` (704KB) still declares an unused `fa-duotone-900` `@font-face` block~~ — **removed 2026-08-07**, see Phase 8.
+- `assets/css/plugins/plugins.css` (704KB) remains unminified — it uses modern nested CSS syntax (`&`-nesting, from Swiper's source) that `clean-css-cli` cannot parse without corrupting the carousel styles. Minifying it safely needs a nesting-aware tool (e.g. `lightningcss`) — flagged for a future Phase 8 follow-up, not attempted blind.
 - Icon class syntax is inconsistent (`fa-solid`/`fa-regular`/`fa-brands` Font Awesome 6 syntax mixed with legacy `far`/`fas` Font Awesome 4/5 syntax in a few spots) — cosmetic/consistency issue, low priority, worth a pass during Phase 8 or 10.
+- Full Font Awesome icon-subsetting (replacing the icon font with inline SVGs for just the ~15 glyphs actually used) was not attempted — real remaining weight, but a larger, higher-risk rework of every icon reference across all 5 pages. Flagged as a future Phase 8 item.
 
 ## Future Improvements
 
@@ -737,7 +767,7 @@ _These cannot be performed by Claude and require the business/user to act direct
 - [x] `llms.txt` published.
 - [ ] Lighthouse scores ≥90 across all four categories, all pages, mobile.
 - [ ] WCAG 2.2 AA conformance verified (static + interactive testing).
-- [ ] Total image payload reduced by a large margin from the current 62MB baseline; all images lazy-loaded with explicit dimensions.
+- [x] Total image payload reduced by a large margin from the previous 62MB baseline (now 3.1MB); all content images lazy-loaded with explicit dimensions.
 - [x] Security headers present on all responses.
 - [ ] Analytics live and tracking key conversion events.
 - [ ] Google Search Console and Bing Webmaster Tools verified with sitemap submitted.
