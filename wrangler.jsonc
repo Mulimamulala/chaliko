@@ -5,5 +5,8 @@
   "assets": {
     "directory": "./",
     "binding": "ASSETS"
+  },
+  "build": {
+    "command": "npm run build"
   }
 }

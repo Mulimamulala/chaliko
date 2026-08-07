@@ -117,7 +117,7 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 | # | Phase | Status | Priority | Complexity | Dependencies |
 |---|-------|--------|----------|------------|---------------|
 | 1 | Project Audit | **Completed** | Critical | Medium | None |
-| 2 | Technical SEO | In Progress | Critical | Medium | Phase 1, Open Decision |
+| 2 | Technical SEO | **Completed** | Critical | Medium | Phase 1, Open Decision |
 | 3 | Metadata | Not Started | Critical | Small | Phase 2 |
 | 4 | Structured Data | Not Started | Critical | Medium | Phase 2, 3 |
 | 5 | AI Discoverability (GEO) | Not Started | High | Medium | Phase 4 |
@@ -150,8 +150,8 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 2 — Technical SEO
-**Status:** In Progress · **Priority:** Critical · **Complexity:** Medium · **Dependencies:** Phase 1, Open Decision
-**Files expected to change:** `index.html`, `about.html`, `book.html`, `contact.html`, `fleet.html`, `robots.txt`, `sitemap.xml`, `vercel.json` (removed), `.htaccess` (removal), `api/mailer.js` (removed)
+**Status:** **Completed (2026-08-07)** · **Priority:** Critical · **Complexity:** Medium · **Dependencies:** Phase 1, Open Decision
+**Files expected to change:** `index.html`, `about.html`, `book.html`, `contact.html`, `fleet.html`, `robots.txt`, `sitemap.xml`, `vercel.json` (removed), `.htaccess` (removed), `api/mailer.js` (removed), `partials/*` (new), `scripts/build.js` (new)
 
 **Task: Fix canonical/OG/JSON-LD domain mismatch**
 - Status: **Completed (2026-08-07)** · Priority: Critical
@@ -194,19 +194,24 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - Implementation notes: Two things were verified *not* to be dead weight despite superficially looking like it: `Font Awesome` webfont files (`assets/fonts/fa-*`) are actively used sitewide via `fa-brands`/`fa-solid`/`fa-regular`/`fa-light` classes — kept. The `fa-duotone-900` font family is declared in `plugins.css` but genuinely never used by any page (confirmed via network trace — the browser never fetched it); left in place since removing it means editing the 704KB `plugins.css` `@font-face` block, which is properly a Phase 8 (icon subsetting) task, not a blind-deletion one.
 
 **Task: Resolve the templating/duplication architecture (Open Decision)**
-- Status: Not Started · Priority: High
-- Description: Implement the user-approved option (A: lightweight build/includes, or B: continue manual duplication) for shared `<head>`, header, footer, and repeated inline `<style>` blocks.
-- Why it matters: Every later phase (metadata, structured data, nav) touches these shared regions on all 5 pages; doing this once, correctly, before those phases saves repeating the same edit 5x per phase.
-- Files affected: Potentially all 5 HTML files, `package.json` (new build script if Option A), `assets/css/site-custom.css`
-- Dependencies: User decision required
-- Validation steps: All 5 pages render identically to current output; `npm run build` (if applicable) reproduces byte-identical shared regions across pages.
+- Status: **Completed (2026-08-07)** · Priority: High
+- Description: User chose Option A. Built a small dependency-free Node build system:
+  - `partials/head.html`, `partials/header.html`, `partials/footer.html`, `partials/scripts.html` are now the single source of truth for everything that was previously hand-duplicated across all 5 pages.
+  - Each of the 5 HTML files now contains `<!-- BUILD:HEAD -->`, `<!-- BUILD:HEADER -->`, `<!-- BUILD:FOOTER -->`, `<!-- BUILD:SCRIPTS -->` marker pairs. `scripts/build.js` renders the partials (with per-page tokens: title, description, canonical URL, active nav item, header-inner class, whether the page needs `contact-form.js`/`isotope.js`) and writes the result back between the markers. Pages stay fully-formed, readable HTML — nothing is a fragment — so opening any of the 5 files still shows complete, real markup, just with those four regions machine-generated.
+  - `npm run build` runs it locally; `wrangler.jsonc` now has a `build.command: "npm run build"` hook so Cloudflare's automatic git-triggered deploy runs it too — no change to the user's existing "commit and push" workflow.
+  - The 3 duplicated inline `<style>` blocks (and fleet.html's page-specific filter/sticky-header CSS, which had been appended into the same block) are gone from every page's `<head>` entirely — consolidated into `assets/css/site-custom.css`, clearly commented.
+  - Fixed a latent bug found during the consolidation: `about.html`'s active nav item had accidentally inherited a `main-menu-ls` styling class that belongs on "Contact" (drift from hand-duplication) — now correctly and consistently on Contact everywhere, driven from one place.
+- Why it matters: Phases 3 (Metadata) and 4 (Structured Data) — next up — both would otherwise mean editing the same shared block 5 times each. Now it's one partial edit + `npm run build`.
+- Files affected: `index.html`, `about.html`, `book.html`, `contact.html`, `fleet.html` (all reduced substantially — e.g. `about.html` 770→646 lines, `fleet.html` 1153→879 lines), `assets/css/site-custom.css` (+288 lines, consolidated), new `partials/head.html`, `partials/header.html`, `partials/footer.html`, `partials/scripts.html`, new `scripts/build.js`, `package.json` (added `build` script), `wrangler.jsonc` (added `build.command`), `.assetsignore` (excluded `partials/` and `scripts/` from the served asset bundle — they're build-time only)
+- Validation steps: Ran `npm run build` twice in a row to confirm idempotency (identical line counts, no drift). Verified all 5 pages in a local preview server — zero console errors, zero 404s, screenshots visually identical to pre-change baseline on both desktop and mobile viewports, and specifically exercised the mobile hamburger menu (door-swing sidebar) to confirm the restructured markup didn't break its JS hooks (`#menu-btn`, `#side-bar`, `.show`/`menu-open` classes all intact).
 - Estimated effort: Medium
+- Implementation notes: For future edits — change shared header/footer/script-list content in `partials/*.html` (or per-page metadata in the `PAGES` array in `scripts/build.js`), then run `npm run build`. Do not hand-edit content between `<!-- BUILD:* -->` markers directly in the page files; the next build overwrites it.
 
 **Task: Rebuild `sitemap.xml` with correct domain and automation notes**
-- Status: Not Started · Priority: Medium
-- Description: Confirm all 5 URLs use `chaliko.com`, refresh `lastmod` values to reflect actual change dates going forward, document the manual update process (or automate via build script if Option A is chosen).
+- Status: **Completed (2026-08-07)** · Priority: Medium
+- Description: Confirmed all 5 URLs already used `chaliko.com` (this file was correct from the start — the bug was only in the per-page canonical/OG/JSON-LD tags, fixed earlier). Refreshed all `lastmod` values to 2026-08-07 to reflect today's changes.
 - Files affected: `sitemap.xml`
-- Validation steps: Sitemap validates against the sitemaps.org schema; submitted successfully in Google Search Console / Bing Webmaster Tools (Phase 21 manual action).
+- Validation steps: Sitemap validates against the sitemaps.org schema. Submission to Google Search Console / Bing Webmaster Tools remains a Phase 21 manual action.
 - Estimated effort: Small
 
 ---
@@ -580,7 +585,18 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - **Files changed:** `.htaccess` (deleted), `gorental-doc/` (deleted), `assets/images/{blog,portfolio,shop,team,pricing,gallery,faq,counter,video}/` (deleted), 13 unused JS files (deleted), 6 unused CSS files (deleted), all `.DS_Store`/`Thumbs.db` (deleted), `.gitignore`, `.assetsignore`
 - **Reason:** Direct user request to strip unnecessary weight from the repository before starting the SEO/GEO implementation phases, so those phases build on a clean baseline rather than fighting leftover template cruft.
 - **Result:** Verified via a local preview server across all 5 pages — every request returned 200/304, zero 404s, zero console errors, visual spot-check confirmed correct rendering. Nothing user-facing changed; this was pure dead-code/dead-asset removal.
-- **Outstanding issues:** `fa-duotone-900` Font Awesome family is declared in `plugins.css` but never actually used or fetched by any page — left in place, correctly belongs to the Phase 8 icon-subsetting task rather than this cleanup pass. Nothing has been committed to git yet — all changes across this and the prior Vercel-removal batch remain uncommitted in the working tree.
+- **Outstanding issues:** `fa-duotone-900` Font Awesome family is declared in `plugins.css` but never actually used or fetched by any page — left in place, correctly belongs to the Phase 8 icon-subsetting task rather than this cleanup pass.
+
+### 2026-08-07 — Committed and deployed
+- **Summary:** User committed both the Vercel-decommission batch and the dead-weight sweep (commit `3f36d94`), and confirmed Cloudflare has redeployed with the update.
+- **Result:** Working tree clean, `main` up to date with `origin/main`. This is now the live, deployed baseline going forward.
+
+### 2026-08-07 — Phase 2 completed: templating architecture (Option A) + sitemap refresh
+- **Summary:** User approved Option A for the templating Open Decision. Built `partials/{head,header,footer,scripts}.html` + `scripts/build.js`, a dependency-free Node script that renders those partials (with per-page title/description/canonical-URL/active-nav/header-class/script-flag tokens) into `<!-- BUILD:* -->` marker regions in all 5 HTML pages. Removed the 3 duplicated inline `<style>` blocks (plus fleet.html's page-specific filter/sticky-header CSS that had been appended into the same block) from every page and consolidated them into `assets/css/site-custom.css`. Wired `npm run build` into `wrangler.jsonc` via `build.command` so Cloudflare's existing git-triggered auto-deploy runs it automatically — the user's "commit and push" workflow doesn't change. Fixed a latent drift bug found in the process: `about.html`'s active nav item had incorrectly inherited a `main-menu-ls` class that belongs on "Contact"; now consistently correct everywhere since it's driven from one place. Also completed the sitemap.xml task (already had the correct domain; refreshed all `lastmod` dates to today).
+- **Files changed:** `index.html`, `about.html`, `book.html`, `contact.html`, `fleet.html` (all substantially shortened), `assets/css/site-custom.css`, new `partials/head.html`, `partials/header.html`, `partials/footer.html`, `partials/scripts.html`, new `scripts/build.js`, `package.json`, `wrangler.jsonc`, `.assetsignore`, `sitemap.xml`
+- **Reason:** User said "let's complete the next phase"; Phase 2 was the one still open. The templating decision was a hard blocker flagged in Phase 1's audit — resolving it now (before Phase 3/4 touch the same shared regions) avoids repeating every future metadata/structured-data edit five times.
+- **Result:** `npm run build` verified idempotent (ran twice, identical output). All 5 pages checked in a local preview server: zero console errors, zero 404s/network failures, screenshots visually identical to the pre-change baseline on desktop and mobile, mobile hamburger menu (door-swing sidebar) interaction verified working end-to-end. Phase 2 is now fully complete — all of its tasks are done.
+- **Outstanding issues:** None for Phase 2. Nothing in this batch has been committed to git yet — awaiting user review before commit, per the established workflow.
 
 ---
 
@@ -597,11 +613,10 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - ~~`.htaccess`~~ — **removed 2026-08-07**, dead Apache config for the confirmed Cloudflare Workers host.
 - ~~`gorental-doc/`~~ — **removed 2026-08-07**, tracked ThemeForest template documentation with no product purpose.
 - ~~Unused theme image categories, unused JS/CSS plugins, committed OS junk (`.DS_Store`/`Thumbs.db`)~~ — **removed 2026-08-07**, ~43MB of dead weight with zero live references; see Progress Log for the full file list.
-- Duplicated inline `<style>` blocks across all 5 HTML pages — root cause of the Open Decision; will be resolved by whichever templating option is approved. **Still outstanding, needs your decision before Phase 3+ can proceed cleanly.**
+- ~~Duplicated inline `<style>` blocks and hand-duplicated head/header/footer/scripts across all 5 HTML pages~~ — **resolved 2026-08-07**. Option A (partials + `scripts/build.js`, wired into `wrangler.jsonc`'s `build.command`) implemented; see Phase 2 Progress Log.
 - No build pipeline despite SCSS source existing (`assets/scss/style.scss`) — compiled CSS is hand-committed and unminified.
 - `assets/css/plugins/plugins.css` (704KB) still declares an unused `fa-duotone-900` `@font-face` block — real Font Awesome usage sitewide (`fa-brands`/`fa-solid`/`fa-regular`/`fa-light`) is confirmed and those weights are correctly kept; duotone removal is a Phase 8 icon-subsetting task, not a blind deletion.
 - Icon class syntax is inconsistent (`fa-solid`/`fa-regular`/`fa-brands` Font Awesome 6 syntax mixed with legacy `far`/`fas` Font Awesome 4/5 syntax in a few spots) — cosmetic/consistency issue, low priority, worth a pass during Phase 8 or 10.
-- Nothing from this session (Vercel removal or the dead-weight sweep) has been committed to git yet.
 
 ## Future Improvements
 

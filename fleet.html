@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
+    <!-- BUILD:HEAD -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses &amp; vans for hire across Zambia.">
+    <meta name="description" content="Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses &amp; vans for hire across Zambia.">
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="icon" type="image/png" href="assets/images/favicon/favicon-16x16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="assets/images/favicon/favicon-32x32.png" sizes="32x32">
@@ -20,275 +20,6 @@
     <link rel="stylesheet" href="assets/fonts/rt-icon.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/site-custom.css">
-    <style>
-        .main-nav.active>a {
-            color: #FF3600 !important;
-        }
-    </style>
-    <style>
-        .header-one .header-top .inner .get-touch-area {
-            gap: 32px;
-        }
-
-        .header-one .header-top .inner .get-touch-area .map-area .text a,
-        .header-one .header-top .inner .get-touch-area .map-area .text p {
-            white-space: nowrap;
-        }
-
-        .header-one .header-top .inner .button-area .rts__btn__txt-one,
-        .header-one .header-top .inner .button-area .rts__btn__txt-two {
-            white-space: nowrap;
-        }
-
-        @media (max-width: 1440px) {
-            .header-one .header-top .inner .get-touch-area {
-                gap: 20px;
-            }
-        }
-    </style>
-    <style>
-        .single-car-list-item .car-image {
-            height: 220px;
-        }
-
-        .single-car-list-item .car-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        .single-car-list-item .content .car-list-service {
-            justify-content: flex-start;
-            gap: 18px;
-        }
-
-        .rts-footer-area {
-            background: #111827 !important;
-            background-image: none !important;
-        }
-
-        .rts-footer-area * {
-            color: #e5e7eb;
-        }
-
-        .rts-footer-area a {
-            color: #d1d5db;
-        }
-
-        .rts-footer-area a:hover {
-            color: #FF3600;
-        }
-
-        .rts-footer-area .title {
-            color: #ffffff !important;
-        }
-
-        .rts-footer-area .desc {
-            color: #9ca3af;
-        }
-
-        .footer-contact-grid {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-contact-grid li {
-            margin-bottom: 20px;
-        }
-
-        @media (min-width: 992px) {
-            .footer-contact-grid {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                column-gap: 24px;
-                row-gap: 24px;
-            }
-
-            .footer-contact-grid li {
-                margin-bottom: 0;
-            }
-        }
-
-        .copyright-area {
-            background: #0e2a1e !important;
-        }
-
-        .copyright-area p,
-        .copyright-area a {
-            color: #9ca3af;
-        }
-
-        .whatsapp-fab {
-            position: fixed;
-            right: 26px;
-            bottom: 92px;
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            background: #25D366;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-            z-index: 9999;
-            transition: transform 0.2s ease;
-        }
-
-        @media (max-width: 991px) {
-            .whatsapp-fab {
-                left: 22px;
-                right: auto;
-                bottom: 22px;
-            }
-        }
-
-        .whatsapp-fab:hover {
-            transform: scale(1.08);
-        }
-
-        .whatsapp-fab i {
-            color: #fff;
-            font-size: 28px;
-        }
-
-        .filter-dropdown summary {
-            display: none;
-            list-style: none;
-        }
-
-        .filter-dropdown summary::-webkit-details-marker {
-            display: none;
-        }
-
-        @media (max-width: 767px) {
-            .filter-dropdown summary {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 14px 18px;
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                cursor: pointer;
-                font-weight: 600;
-                margin-bottom: 16px;
-            }
-
-            .filter-dropdown[open] summary {
-                margin-bottom: 12px;
-            }
-
-            .filter-dropdown summary i {
-                color: #FF3600;
-                transition: transform 0.2s ease;
-            }
-
-            .filter-dropdown[open] summary i {
-                transform: rotate(180deg);
-            }
-
-            .filter-dropdown:not([open]) .filters-button-group {
-                display: none;
-            }
-
-            .filter-dropdown .filters-button-group {
-                flex-direction: column !important;
-                flex-wrap: nowrap !important;
-                overflow-x: visible !important;
-            }
-        }
-
-        /* Smooth out the theme's default header slide-in so it no longer
-           lags behind the pinned bar and exposes a gap underneath it. */
-        .header--sticky.sticky {
-            animation: fleetHeaderSmoothIn 0.3s ease both;
-        }
-
-        @keyframes fleetHeaderSmoothIn {
-            0% {
-                transform: translateY(-8px);
-                opacity: 0.6;
-            }
-
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .fleet-filter-sticky {
-            background: #fff;
-            padding: 20px 0 10px;
-            transition: padding 0.25s ease;
-        }
-
-        .fleet-filter-sticky.is-pinned {
-            position: fixed;
-            left: 0;
-            width: 100%;
-            z-index: 90;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: top 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .fleet-filter-sticky-inner {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .fleet-sticky-heading {
-            text-align: center;
-            font-size: 40px;
-            font-weight: 800;
-            margin: 0 0 22px;
-            color: #1a1a1a;
-            transition: font-size 0.25s ease, margin-bottom 0.25s ease;
-        }
-
-        @media (min-width: 992px) {
-            .fleet-filter-sticky:not(.is-pinned) .fleet-sticky-heading {
-                text-align: left;
-            }
-        }
-
-        .fleet-filter-sticky.is-pinned .fleet-sticky-heading {
-            font-size: 22px;
-            margin-bottom: 14px;
-        }
-
-        .fleet-filter-spacer {
-            height: 0;
-        }
-
-        @media (max-width: 991px) {
-            .fleet-sticky-heading {
-                font-size: 30px;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .single-car-list-item .content .car-list-service {
-                flex-wrap: wrap;
-                row-gap: 8px;
-            }
-
-            .single-car-list-item .content .car-list-service li:nth-child(3) {
-                flex-basis: 100%;
-            }
-        }
-
-        .rts-car-list-area.rts-section-gap {
-            padding-top: 210px;
-        }
-
-        @media (max-width: 991px) {
-            .rts-car-list-area.rts-section-gap {
-                padding-top: 100px;
-            }
-        }
-    </style>
 
     <link rel="canonical" href="https://chaliko.com/fleet">
 
@@ -296,8 +27,7 @@
     <meta property="og:site_name" content="Chaliko Car Hire Limited">
     <meta property="og:locale" content="en_ZM">
     <meta property="og:title" content="Our Fleet, Chaliko Car Hire Limited">
-    <meta property="og:description"
-        content="Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses & vans for hire across Zambia.">
+    <meta property="og:description" content="Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses &amp; vans for hire across Zambia.">
     <meta property="og:url" content="https://chaliko.com/fleet">
     <meta property="og:image" content="https://chaliko.com/assets/images/banner/5.jpg">
     <meta property="og:image:width" content="1920">
@@ -305,8 +35,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Our Fleet, Chaliko Car Hire Limited">
-    <meta name="twitter:description"
-        content="Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses & vans for hire across Zambia.">
+    <meta name="twitter:description" content="Browse Chaliko's full fleet, sedans, hatchbacks, SUVs, 4x4 vehicles, and buses &amp; vans for hire across Zambia.">
     <meta name="twitter:image" content="https://chaliko.com/assets/images/banner/5.jpg">
 
     <script type="application/ld+json">
@@ -342,6 +71,7 @@
         }
     }
     </script>
+<!-- /BUILD:HEAD -->
 
 </head>
 
@@ -362,12 +92,14 @@
     <div id="page-scale-wrapper">
 
         <!-- header area start -->
-        <header class="header-one header-three header-inner header--sticky">
+        <!-- BUILD:HEADER -->
+    <header class="header-one header-three header-inner header--sticky">
         <div class="header-top">
             <div class="container">
                 <div class="inner">
                     <div class="logo-area">
-                        <a href="/" class="logo-badge" style="text-decoration:none;display:flex;flex-direction:column;line-height:1.2;">
+                        <a href="/" class="logo-badge"
+                            style="text-decoration:none;display:flex;flex-direction:column;line-height:1.2;">
                             <span style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;">CHALIKO</span>
                             <span
                                 style="font-size:9px;color:rgba(255,255,255,0.75);letter-spacing:2px;text-transform:uppercase;">Car
@@ -384,15 +116,14 @@
                         <div class="map-area">
                             <div class="icon"><i class="fa-solid fa-envelope"></i></div>
                             <div class="text">
-                                <p>Email Us</p><a href="mailto:chalikocarhire@yahoo.com">chalikocarhire@yahoo.com</a>
+                                <p>Email Us</p><a
+                                    href="mailto:chalikocarhire@yahoo.com">chalikocarhire@yahoo.com</a>
                             </div>
                         </div>
                         <div class="map-area">
                             <div class="icon"><i class="fa-sharp fa-solid fa-location-dot"></i></div>
                             <div class="text">
-                                <p>Our Location</p><a
-                                    href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia"
-                                    target="_blank" rel="noopener">No. 14, Manchinchi Rd., Lusaka</a>
+                                <p>Our Location</p><a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia" target="_blank" rel="noopener">No. 14, Manchinchi Rd., Lusaka</a>
                             </div>
                         </div>
                     </div>
@@ -425,13 +156,11 @@
                                 </div>
                                 <div class="nav-area">
                                     <ul>
-                                        <li class="main-nav"><a class="main-menu" href="/">Home</a></li>
-                                        <li class="main-nav"><a class="main-menu" href="/about">About Us</a></li>
-                                        <li class="main-nav active"><a class="main-menu" href="/fleet">Our Fleet</a>
-                                        </li>
-                                        <li class="main-nav"><a class="main-menu" href="/book">Book Now</a></li>
-                                        <li class="main-nav"><a class="main-menu main-menu-ls"
-                                                href="/contact">Contact</a></li>
+                                    <li class="main-nav"><a class="main-menu" href="/">Home</a></li>
+                                    <li class="main-nav"><a class="main-menu" href="/about">About Us</a></li>
+                                    <li class="main-nav active"><a class="main-menu" href="/fleet">Our Fleet</a></li>
+                                    <li class="main-nav"><a class="main-menu" href="/book">Book Now</a></li>
+                                    <li class="main-nav"><a class="main-menu main-menu-ls" href="/contact">Contact</a></li>
                                     </ul>
                                 </div>
                                 <div class="bottom-right">
@@ -441,7 +170,8 @@
                                             <li><a href="https://www.instagram.com/chalikocarhire2024/" target="_blank" rel="noopener" aria-label="Instagram"><img src="assets/images/icon/instagram.svg" alt=""></a></li>
                                         </ul>
                                     </div>
-                                    <div class="menu-btn" id="menu-btn"><i class="fa-sharp fa-regular fa-bars"></i>
+                                    <div class="menu-btn" id="menu-btn">
+                                        <i class="fa-sharp fa-regular fa-bars"></i>
                                     </div>
                                 </div>
                             </div>
@@ -451,6 +181,7 @@
             </div>
         </div>
     </header>
+<!-- /BUILD:HEADER -->
     <!-- header area end -->
 
     <!-- Breadcrumb removed: heading + sticky filter bar sit directly below the nav -->
@@ -898,7 +629,7 @@
     <!-- End CTA Section -->
 
     <!-- Footer -->
-    <!-- footer area start -->
+    <!-- BUILD:FOOTER -->
     <footer style="background:#143628;padding:72px 0 0;">
         <div class="container">
             <div class="row g-5">
@@ -908,11 +639,11 @@
                     <a href="/"
                         style="text-decoration:none;display:inline-flex;flex-direction:column;line-height:1.1;margin-bottom:20px;">
                         <span style="font-size:28px;font-weight:900;letter-spacing:4px;color:#fff;">CHALIKO</span>
-                        <span style="font-size:10px;color:#fff;letter-spacing:3px;text-transform:uppercase;">Car
+                        <span
+                            style="font-size:10px;color:#fff;letter-spacing:3px;text-transform:uppercase;">Car
                             Hire Limited</span>
                     </a>
-                    <p style="color:#fff;font-size:14px;line-height:1.8;margin-bottom:28px;max-width:420px;">Zambia's
-                        trusted car
+                    <p style="color:#fff;font-size:14px;line-height:1.8;margin-bottom:28px;max-width:420px;">Zambia's trusted car
                         hire company. Premium insured vehicles available across Lusaka, Ndola, Kitwe, Livingstone, Kabwe
                         and Chipata.</p>
                     <!-- Social -->
@@ -950,11 +681,9 @@
                                     style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Call Us</p>
                                 <a href="tel:+260979517732"
-                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;">+260
-                                    979 517 732</a>
+                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;">+260 979 517 732</a>
                                 <a href="tel:+260965517732"
-                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;margin-top:2px;">+260
-                                    965 517 732</a>
+                                    style="color:#fff;font-size:15px;font-weight:600;text-decoration:none;display:block;margin-top:2px;">+260 965 517 732</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
@@ -979,10 +708,7 @@
                                 <p
                                     style="color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
                                     Location</p>
-                                <a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia"
-                                    target="_blank" rel="noopener"
-                                    style="color:#fff;font-size:14px;font-weight:600;text-decoration:none;">Plot No. 14,
-                                    Manchinchi Road, Northmead, Lusaka, Zambia</a>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Plot+No.+14%2C+Manchinchi+Road%2C+Northmead%2C+Lusaka%2C+Zambia" target="_blank" rel="noopener" style="color:#fff;font-size:14px;font-weight:600;text-decoration:none;">Plot No. 14, Manchinchi Road, Northmead, Lusaka, Zambia</a>
                             </div>
                         </li>
                         <li style="display:flex;gap:14px;align-items:flex-start;">
@@ -1024,12 +750,11 @@
         </div>
     </footer>
     <!-- footer area end -->
-    <!-- End Footer -->
 
     </div>
     <!-- /#page-scale-wrapper -->
 
-    <!-- Mobile Sidebar -->
+    <!-- mobile sidebar -->
     <div id="menu-stage">
         <div id="anywhere-home"></div>
         <div id="side-bar" class="side-bar header-two">
@@ -1067,14 +792,14 @@
             </div>
         </div>
     </div>
-    <!-- End Mobile Sidebar -->
 
-    <!-- Scripts -->
-    <a href="https://wa.me/260965517732?text=Hi%20Chaliko!%20I%20visited%20your%20website%20and%20I%27d%20like%20to%20know%20your%20car%20rental%20prices%20and%20which%20vehicles%20are%20currently%20available." target="_blank"
-        rel="noopener" class="whatsapp-fab" aria-label="Chat with us on WhatsApp">
+    <a href="https://wa.me/260965517732?text=Hi%20Chaliko!%20I%20visited%20your%20website%20and%20I%27d%20like%20to%20know%20your%20car%20rental%20prices%20and%20which%20vehicles%20are%20currently%20available."
+        target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Chat with us on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+<!-- /BUILD:FOOTER -->
 
+    <!-- BUILD:SCRIPTS -->
     <script src="assets/js/plugins/jquery.js"></script>
     <script src="assets/js/plugins/jquery-ui.js"></script>
     <script src="assets/js/vendor/waw.js"></script>
@@ -1091,6 +816,7 @@
     <script src="assets/js/vendor/bootstrap.min.js"></script>
     <script src="assets/js/vendor/waypoint.js"></script>
     <script src="assets/js/main.js"></script>
+<!-- /BUILD:SCRIPTS -->
     <script>
         (function () {
             var details = document.querySelector('.filter-dropdown');

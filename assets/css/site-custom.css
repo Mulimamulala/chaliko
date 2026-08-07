@@ -274,3 +274,291 @@ body.menu-open #page-scale-wrapper {
     }
 }
 
+/* ============================================================
+   Moved out of per-page inline <style> blocks (2026-08-07) as part
+   of the templating cleanup — these were previously hand-copied
+   into the <head> of all 5 pages and had already started to drift
+   (some pages were missing rules others had). Single source of
+   truth now; harmless on pages whose markup doesn't use a given
+   selector.
+   ============================================================ */
+
+.main-nav.active>a {
+    color: #FF3600 !important;
+}
+
+.header-one .header-top .inner .get-touch-area {
+    gap: 32px;
+}
+
+.header-one .header-top .inner .get-touch-area .map-area .text a,
+.header-one .header-top .inner .get-touch-area .map-area .text p {
+    white-space: nowrap;
+}
+
+.header-one .header-top .inner .button-area .rts__btn__txt-one,
+.header-one .header-top .inner .button-area .rts__btn__txt-two {
+    white-space: nowrap;
+}
+
+@media (max-width: 1440px) {
+    .header-one .header-top .inner .get-touch-area {
+        gap: 20px;
+    }
+}
+
+.single-car-list-item .car-image {
+    height: 220px;
+}
+
+.single-car-list-item .car-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.single-car-list-item .content .car-list-service {
+    justify-content: flex-start;
+    gap: 18px;
+}
+
+.rts-footer-area {
+    background: #111827 !important;
+    background-image: none !important;
+}
+
+.rts-footer-area * {
+    color: #e5e7eb;
+}
+
+.rts-footer-area a {
+    color: #d1d5db;
+}
+
+.rts-footer-area a:hover {
+    color: #FF3600;
+}
+
+.rts-footer-area .title {
+    color: #ffffff !important;
+}
+
+.rts-footer-area .desc {
+    color: #9ca3af;
+}
+
+.footer-contact-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact-grid li {
+    margin-bottom: 20px;
+}
+
+@media (min-width: 992px) {
+    .footer-contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 24px;
+        row-gap: 24px;
+    }
+
+    .footer-contact-grid li {
+        margin-bottom: 0;
+    }
+}
+
+.copyright-area {
+    background: #0e2a1e !important;
+}
+
+.copyright-area p,
+.copyright-area a {
+    color: #9ca3af;
+}
+
+.why-choose-image-left-area .inner-image-one .overlay-image,
+.why-choose-image-left-area .inner-image-two .overlay-image {
+    width: 258px;
+    height: 149px;
+    overflow: hidden;
+}
+
+.why-choose-image-left-area .overlay-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.why-choose-image-left-area .image-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.whatsapp-fab {
+    position: fixed;
+    right: 26px;
+    bottom: 92px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    z-index: 9999;
+    transition: transform 0.2s ease;
+}
+
+@media (max-width: 991px) {
+    .whatsapp-fab {
+        left: 22px;
+        right: auto;
+        bottom: 22px;
+    }
+}
+
+.whatsapp-fab:hover {
+    transform: scale(1.08);
+}
+
+.whatsapp-fab i {
+    color: #fff;
+    font-size: 28px;
+}
+
+/* ---- Fleet page only: filter dropdown + sticky filter bar ---- */
+
+.filter-dropdown summary {
+    display: none;
+    list-style: none;
+}
+
+.filter-dropdown summary::-webkit-details-marker {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .filter-dropdown summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 18px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+
+    .filter-dropdown[open] summary {
+        margin-bottom: 12px;
+    }
+
+    .filter-dropdown summary i {
+        color: #FF3600;
+        transition: transform 0.2s ease;
+    }
+
+    .filter-dropdown[open] summary i {
+        transform: rotate(180deg);
+    }
+
+    .filter-dropdown:not([open]) .filters-button-group {
+        display: none;
+    }
+
+    .filter-dropdown .filters-button-group {
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        overflow-x: visible !important;
+    }
+}
+
+/* Smooth out the theme's default header slide-in so it no longer
+   lags behind the pinned bar and exposes a gap underneath it. */
+.header--sticky.sticky {
+    animation: fleetHeaderSmoothIn 0.3s ease both;
+}
+
+@keyframes fleetHeaderSmoothIn {
+    0% {
+        transform: translateY(-8px);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fleet-filter-sticky {
+    background: #fff;
+    padding: 20px 0 10px;
+    transition: padding 0.25s ease;
+}
+
+.fleet-filter-sticky.is-pinned {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 90;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: top 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fleet-filter-sticky-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.fleet-sticky-heading {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 800;
+    margin: 0 0 22px;
+    color: #1a1a1a;
+    transition: font-size 0.25s ease, margin-bottom 0.25s ease;
+}
+
+@media (min-width: 992px) {
+    .fleet-filter-sticky:not(.is-pinned) .fleet-sticky-heading {
+        text-align: left;
+    }
+}
+
+.fleet-filter-sticky.is-pinned .fleet-sticky-heading {
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+
+.fleet-filter-spacer {
+    height: 0;
+}
+
+@media (max-width: 991px) {
+    .fleet-sticky-heading {
+        font-size: 30px;
+    }
+}
+
+.rts-car-list-area.rts-section-gap {
+    padding-top: 210px;
+}
+
+@media (max-width: 991px) {
+    .rts-car-list-area.rts-section-gap {
+        padding-top: 100px;
+    }
+}
+
