@@ -126,9 +126,9 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 | 8 | Performance Optimization | **Mostly Completed** | Critical | Large | Open Decision |
 | 9 | Core Web Vitals | Not Started | Critical | Medium | Phase 8 |
 | 10 | Semantic HTML | **Completed** | High | Medium | Open Decision |
-| 11 | Internal Linking | Not Started | Medium | Small | Phase 13 |
+| 11 | Internal Linking | Mostly Completed | Medium | Small | Phase 13 |
 | 12 | Navigation | **Completed** | Medium | Small | Phase 10 |
-| 13 | Content Improvements | Not Started | High | Large | Open Decision |
+| 13 | Content Improvements | Mostly Completed | High | Large | Open Decision |
 | 14 | Image Optimization | **Completed** | Critical | Medium | None |
 | 15 | Forms | Mostly Completed | High | Small | Phase 7 |
 | 16 | Local SEO | Not Started | High | Small | Phase 4 |
@@ -212,6 +212,14 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - Description: Confirmed all 5 URLs already used `chaliko.com` (this file was correct from the start — the bug was only in the per-page canonical/OG/JSON-LD tags, fixed earlier). Refreshed all `lastmod` values to 2026-08-07 to reflect today's changes.
 - Files affected: `sitemap.xml`
 - Validation steps: Sitemap validates against the sitemaps.org schema. Submission to Google Search Console / Bing Webmaster Tools remains a Phase 21 manual action.
+- Estimated effort: Small
+
+**Task: Add a custom branded 404 page**
+- Status: **Completed (2026-08-07)** · Priority: Medium
+- Description: No `404.html` existed and `wrangler.jsonc`'s `assets` block had no `not_found_handling` set, so broken/mistyped URLs fell through to Cloudflare's bare default 404 (or, in local preview, the `serve` package's generic unstyled one) — no branding, no navigation, no way back into the site. Added a standalone `404.html` at the repo root (deliberately hand-written, not routed through `scripts/build.js`'s partial system, since a 404 page needs `noindex` and simpler markup than the rest of the site) matching the site's visual language: dark-green header with the CHALIKO logo, a large "404" mark, a link to Home, a link row to all 7 real pages (the original 4 plus the 3 new location/use-case landing pages below), and a direct `tel:` call link. Set `"not_found_handling": "404-page"` in `wrangler.jsonc`'s `assets` block, which tells Cloudflare Workers to serve this file (with a real 404 status) for any unmatched path.
+- Why it matters: A production business site with broken/typo'd links (very plausible here, given the new long-slug landing pages) was previously showing visitors a dead end with no branding or way back — a real conversion and trust loss, and something Google's crawler also sees as a poor-quality error experience.
+- Files affected: new `404.html`, `wrangler.jsonc`
+- Validation steps: Loaded `/404.html` directly in a local preview server — renders correctly, zero console errors, all 7 links resolve. The `not_found_handling` config itself can only be fully verified against Cloudflare's actual routing after deploy (local `serve`-based preview doesn't emulate it) — flagged as a post-deploy spot-check, not assumed.
 - Estimated effort: Small
 
 ---
@@ -438,11 +446,18 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 11 — Internal Linking
-**Status:** Not Started · **Priority:** Medium · **Complexity:** Small · **Dependencies:** Phase 13
+**Status:** Mostly Completed (2026-08-07) · **Priority:** Medium · **Complexity:** Small · **Dependencies:** Phase 13
 
 **Task: Link fleet vehicles to FAQ/booking context**
 - Status: Not Started · Priority: Medium
 - Description: Once per-vehicle content/FAQ content exists (Phase 6/13), add contextual internal links between fleet listings, booking, and relevant FAQ answers.
+- Estimated effort: Small
+
+**Task: Cross-link the new location/use-case landing pages from existing pages**
+- Status: **Completed (2026-08-07)** · Priority: Medium
+- Description: Added contextual links into the 3 new Phase 13 landing pages (see below) from pages that already mention the relevant topic in real, existing copy — not new claims, just linking existing sentences: `index.html`'s "Nationwide Coverage" card (the word "Livingstone" → `/car-rental-livingstone`), `about.html`'s "Our Story" paragraph (same), and a new short paragraph added to `fleet.html` right above the vehicle grid linking to both `/car-hire-lusaka-airport` and `/4x4-rental-zambia`. Deliberately did **not** add links inside the homepage's Swiper category carousel (`.category-slider`) — that markup is carousel-sensitive and already has its own `/fleet` links on each card title; editing text inside carousel slides risked destabilizing Swiper's JS/layout for a marginal gain. The 3 new landing pages also cross-link each other and back to `/fleet`/`/book` in their own body content.
+- Files affected: `index.html`, `about.html`, `fleet.html`
+- Validation steps: Verified via local preview that all new links resolve (200) and render correctly; zero console errors on the 3 edited pages.
 - Estimated effort: Small
 
 ---
@@ -466,7 +481,22 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 13 — Content Improvements
-**Status:** Not Started · **Priority:** High · **Complexity:** Large · **Dependencies:** Open Decision
+**Status:** Mostly Completed (2026-08-07) · **Priority:** High · **Complexity:** Large · **Dependencies:** Open Decision
+
+**Task: Build dedicated location/use-case landing pages**
+- Status: **Completed (2026-08-07)** · Priority: High
+- Description: Built 3 new landing pages targeting high-intent, unbranded search terms the 5 core pages don't specifically target, per a marketing SEO plan the user provided:
+  - `/car-hire-lusaka-airport` — targets "car hire Lusaka airport" intent. Content: arrival/pickup flow (book with flight details → 30% deposit → self-drive or chauffeur pickup), the real documents/deposit/age requirements already published in the site's FAQ, and vehicle-category recommendations (sedans for business travel, SUVs for groups) linking to `/fleet` and `/4x4-rental-zambia`.
+  - `/car-rental-livingstone` — targets "car rental Livingstone"/Victoria Falls tourist intent. Content: reuses the real, already-published Livingstone/Victoria Falls testimonial (Thandiwe Kapata) verbatim from `index.html` rather than inventing a new one, the real cross-border-travel FAQ fact (prior approval + fee required), and 4x4/SUV vehicle recommendations with real specs.
+  - `/4x4-rental-zambia` — targets "4x4 rental Zambia"/safari intent. Content: a 5-vehicle spec grid (Pajero, Shogun, Fortuner, Hilux, Ranger) using the exact seats/fuel/transmission data already in `scripts/build.js`'s `VEHICLES` array (no data invented), each card linking to `/book?car=...` (an existing, already-supported query-param pre-fill on the booking form). Mentions Chipata as the gateway town to South Luangwa National Park as plain geography, not as an added service-area claim beyond the 6 cities already in `areaServed`.
+  
+  Each page was built by hand (not via `scripts/build.js` body-content generation — only the shared head/header/footer/scripts regions run through the existing partial system, same as the 5 original pages) and added to the `PAGES` array in `scripts/build.js` with unique title/description/canonical/`BreadcrumbList` JSON-LD/hero-image-preload, following the exact same conventions as the 5 existing pages. **Not** added to the primary 5-item nav (deliberately kept curated) — reached via internal links (see Phase 11) and the sitemap instead.
+  
+  **What was deliberately left out, to avoid fabricating facts:** no pricing/rates on any of the 3 pages (matches the site's existing, deliberate no-pricing stance — see Phase 4's `Vehicle` vs `Product`/`Offer` decision); no specific airport-to-office drive time (unverified); no claim of a physical desk/counter at the airport (not confirmed); no new FAQPage JSON-LD on these pages (the existing FAQPage schema already lives on `index.html` with real content — did not duplicate/risk drift by re-declaring it elsewhere).
+- Why it matters: Directly implements the highest-priority item from the user-supplied SEO plan — dedicated landing pages for location- and use-case-specific search intent that the 5 generic pages don't target individually. Also gives Phase 5's "structure fleet content for extraction" task a real, live example (the 4x4 page's spec grid) ahead of a full sitewide rollout.
+- Files affected: new `car-hire-lusaka-airport.html`, `car-rental-livingstone.html`, `4x4-rental-zambia.html`, `scripts/build.js` (3 new `PAGES` entries), `sitemap.xml` (3 new URLs, priority 0.8)
+- Validation steps: `npm run build` regenerated all 8 pages cleanly. Verified all 8 URLs return 200 in a local preview server (`serve .`), zero console errors, zero broken asset/image requests (checked via network request log) on all 3 new pages. Confirmed every fact used (deposit %, documents required, minimum age, cross-border policy, vehicle specs, testimonial text/attribution) matches word-for-word/number-for-number against existing published content — nothing new was asserted.
+- Estimated effort: Large
 
 **Task: Write FAQ content**
 - Status: Not Started · Priority: High
@@ -597,11 +627,12 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 21 — Post-Deployment Checklist
-**Status:** Not Started · **Priority:** High · **Complexity:** Small · **Dependencies:** Phase 20, Manual Actions
+**Status:** In Progress (2026-08-07) · **Priority:** High · **Complexity:** Small · **Dependencies:** Phase 20, Manual Actions
 
 **Task: Submit sitemap to Google Search Console and Bing Webmaster Tools**
-- Status: Not Started · Priority: High
-- Dependencies: Manual Action
+- Status: Partially Completed (2026-08-07) · Priority: High
+- Description: User confirmed (2026-08-07) they've added the site to Google Search Console. Bing Webmaster Tools submission still outstanding.
+- Dependencies: Manual Action — Bing Webmaster Tools still needed (Bing's index also feeds Yahoo and, partially, DuckDuckGo, so no separate submission needed for those).
 - Estimated effort: Small
 
 **Task: Monitor Rich Results and Core Web Vitals reports**
@@ -706,6 +737,14 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - **Result:** All 5 pages verified end-to-end in a real Chrome browser after every change (not just the sandboxed tool) — zero console errors, zero broken images, zero layout regressions. Full internal-link crawl (96 URLs: every `href`/`src`/`data-bg-src` across all 5 pages) returned zero non-200 responses both before and after the image-file deletions. `npm run build` re-confirmed idempotent.
 - **Outstanding issues:** `plugins.css` minification and full Font Awesome icon-subsetting remain as flagged Phase 8 follow-ups (see Technical Debt). Nothing in this batch has been committed yet.
 
+### 2026-08-07 — Landing pages (Phase 13), internal linking (Phase 11), and a custom 404 page
+- **Summary:** User supplied a marketing-authored SEO action plan and asked to both merge it into this roadmap and start building the highest-priority item immediately: dedicated location/use-case landing pages. Cross-checked the plan against work already done here — structured data (`AutoRental` schema, item 1 in their plan) and metadata optimization (item 2) were already complete from earlier phases; the location-page item (their Priority 2) was the real gap, so built it. Built 3 new pages — `/car-hire-lusaka-airport`, `/car-rental-livingstone`, `/4x4-rental-zambia` — using only facts already published elsewhere on the site (deposit %, document/age requirements, real testimonial, real vehicle specs, real cross-border policy, real service-area cities); deliberately omitted pricing, drive times, and any airport-desk claim that isn't already verified/published. Wired all 3 into `scripts/build.js`'s existing partial/templating system (same head/header/footer/scripts pipeline as the 5 original pages) and `sitemap.xml`. Added internal links from `index.html`, `about.html`, and `fleet.html` into the new pages, reusing/linking existing sentences rather than adding new copy (Phase 11). Separately, user asked about 404 handling — found none existed (`wrangler.jsonc` had no `not_found_handling`, so broken links hit Cloudflare's bare default) — built a branded `404.html` and wired `"not_found_handling": "404-page"`.
+  - Also researched, at the user's request, whether the site can rank for the bare word "Chaliko" (not just "Chaliko car hire") — live search confirmed `site:chaliko.com` currently returns **zero** indexed results (Phase 21's GSC sitemap submission, still a Manual Action, hasn't happened yet), and the bare word "Chaliko" is dominated by unrelated entities (an Instagram user, a Twitch streamer, chess players, a clothing brand) that on-page work cannot outrank — flagged to the user as a realistic-expectations note, not something further code changes can fix. User separately reported having added the domain to Google Search Console themselves; advised submitting `sitemap.xml` once via the Sitemaps section (covers all 8 URLs) rather than manually requesting indexing per-page.
+- **Files changed:** new `car-hire-lusaka-airport.html`, `car-rental-livingstone.html`, `4x4-rental-zambia.html`, `404.html`; `scripts/build.js`, `sitemap.xml`, `wrangler.jsonc`, `index.html`, `about.html`, `fleet.html`
+- **Reason:** Direct user request ("merge into plan.md and start building now"), followed by two clarifying questions (404 handling, bare-brand-term ranking) addressed inline.
+- **Result:** `npm run build` regenerates all 8 pages cleanly. All 8 real URLs plus `/404.html` verified in a local preview server — 200 status, zero console errors, zero broken asset/image requests. Master Checklist updated: Phase 11 → Mostly Completed, Phase 13 → Mostly Completed.
+- **Outstanding issues:** Phase 13's other two tasks (FAQ expansion, per-vehicle pricing content) remain blocked on the same Manual Action as before (business must supply policy/pricing answers). Nothing in this batch has been committed or deployed yet — the 3 new pages and the 404 page are not live on `chaliko.com` until pushed.
+
 ---
 
 ## Known Issues
@@ -741,8 +780,8 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 
 _These cannot be performed by Claude and require the business/user to act directly:_
 
-- **Google Search Console** — verify `chaliko.com` (verification file already present at `googledc9467f5538943e0.html`, but property/domain needs to be added and sitemap submitted in the GSC dashboard).
-- **Bing Webmaster Tools** — add and verify `chaliko.com`, submit sitemap.
+- ~~**Google Search Console**~~ — **done (2026-08-07)**, user confirmed the site was added to GSC. (Not yet independently verified that the sitemap itself was submitted within GSC, vs. just the property being added — worth a quick double-check in the GSC dashboard's Sitemaps section.)
+- **Bing Webmaster Tools** — add and verify `chaliko.com`, submit sitemap. Still outstanding.
 - **Domain/DNS** — confirm `chaliko.com` DNS is actually pointed at the Cloudflare Workers deployment (not verified as part of this audit — code-level confirmation only).
 - **Google Business Profile** — claim/verify the Lusaka location for Local SEO (Phase 16).
 - **GA4 property** — create or grant access so Phase 17 analytics can be installed.

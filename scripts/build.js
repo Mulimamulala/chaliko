@@ -181,6 +181,60 @@ const PAGES = [
       vehicleListJsonLd(),
     ],
   },
+  {
+    file: 'car-hire-lusaka-airport.html',
+    title: 'Car Hire at Lusaka Airport | Chaliko Car Hire Limited',
+    description:
+      'Arriving at Kenneth Kaunda International Airport? Chaliko Car Hire offers self-drive and chauffeur-driven vehicle hire from Lusaka. Call +260 979 517 732.',
+    url: 'https://chaliko.com/car-hire-lusaka-airport',
+    activeNav: null,
+    headerInner: true,
+    contactForm: false,
+    isotope: false,
+    heroImage: 'assets/images/banner/6.webp',
+    extraJsonLd: [
+      breadcrumbJsonLd([
+        ...HOME_BREADCRUMB,
+        { name: 'Car Hire Lusaka Airport', url: 'https://chaliko.com/car-hire-lusaka-airport' },
+      ]),
+    ],
+  },
+  {
+    file: 'car-rental-livingstone.html',
+    title: 'Car Rental in Livingstone & Victoria Falls | Chaliko',
+    description:
+      "Self-drive and chauffeur-driven car rental in Livingstone, Zambia. Explore Victoria Falls with Chaliko's fully insured fleet. Call +260 979 517 732.",
+    url: 'https://chaliko.com/car-rental-livingstone',
+    activeNav: null,
+    headerInner: true,
+    contactForm: false,
+    isotope: false,
+    heroImage: 'assets/images/banner/2.webp',
+    extraJsonLd: [
+      breadcrumbJsonLd([
+        ...HOME_BREADCRUMB,
+        { name: 'Car Rental Livingstone', url: 'https://chaliko.com/car-rental-livingstone' },
+      ]),
+    ],
+  },
+  {
+    file: '4x4-rental-zambia.html',
+    title: '4x4 & SUV Rental in Zambia | Chaliko Car Hire',
+    description:
+      'Hire a 4x4 in Zambia for safari and off-road travel. Toyota Hilux, Fortuner, Mitsubishi Pajero & Shogun, fully insured, self-drive or chauffeur-driven.',
+    url: 'https://chaliko.com/4x4-rental-zambia',
+    activeNav: null,
+    headerInner: true,
+    contactForm: false,
+    isotope: false,
+    heroImage: 'assets/images/banner/6.webp',
+    extraJsonLd: [
+      breadcrumbJsonLd([
+        ...HOME_BREADCRUMB,
+        { name: '4x4 Rental Zambia', url: 'https://chaliko.com/4x4-rental-zambia' },
+      ]),
+    ],
+  },
 ];
 
 const NAV_LINKS = [
