@@ -119,8 +119,8 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 | 1 | Project Audit | **Completed** | Critical | Medium | None |
 | 2 | Technical SEO | **Completed** | Critical | Medium | Phase 1, Open Decision |
 | 3 | Metadata | Mostly Completed | Critical | Small | Phase 2 |
-| 4 | Structured Data | Mostly Completed | Critical | Medium | Phase 2, 3 |
-| 5 | AI Discoverability (GEO) | Not Started | High | Medium | Phase 4 |
+| 4 | Structured Data | **Completed** | Critical | Medium | Phase 2, 3 |
+| 5 | AI Discoverability (GEO) | Mostly Completed | High | Medium | Phase 4 |
 | 6 | Answer Engine Optimization (AEO) | Not Started | High | Medium | Phase 4, 13 |
 | 7 | Accessibility | Not Started | Critical | Medium | Open Decision |
 | 8 | Performance Optimization | Not Started | Critical | Large | Open Decision |
@@ -251,12 +251,12 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 4 — Structured Data
-**Status:** **Mostly Completed (2026-08-07)** · **Priority:** Critical · **Complexity:** Medium · **Dependencies:** Phase 2, 3
+**Status:** **Completed (2026-08-07)** · **Priority:** Critical · **Complexity:** Medium · **Dependencies:** Phase 2, 3
 **Files expected to change:** `partials/head.html`, `scripts/build.js`, all 5 HTML files (regenerated)
 
 **Task: Fix and consolidate `AutoRental`/`LocalBusiness` JSON-LD**
 - Status: **Completed (2026-08-07)** · Priority: Critical
-- Description: `@id`/`url`/`image` were already corrected to `chaliko.com` in Phase 2. Added a `sameAs` array linking the real Facebook and Instagram profiles. `priceRange` intentionally omitted — no pricing tiers are published anywhere on the site (Manual Action, still open).
+- Description: `@id`/`url`/`image` were already corrected to `chaliko.com` in Phase 2. Added a `sameAs` array linking the real Facebook and Instagram profiles. `priceRange` intentionally omitted — no pricing is published anywhere on the site, and the user has decided not to pursue publishing it (see below).
 - Files affected: `partials/head.html` (single shared block — edited once, applies to all 5 pages)
 - Validation steps: All 5 pages' JSON-LD parsed with `JSON.parse` — valid on every page. `sameAs` confirmed present on all 5.
 - Estimated effort: Small
@@ -269,11 +269,11 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - Estimated effort: Small
 
 **Task: Add per-vehicle structured data**
-- Status: **Completed for specs, blocked for pricing (2026-08-07)** · Priority: High
-- Description: Added an `ItemList` of 11 `Vehicle` entities to `fleet.html`, using the exact seats/fuel/transmission specs already published in the fleet page's own markup (Toyota Allion, Mark X, Lexus IS250, Honda Fit, Mitsubishi Pajero, Shogun, Fortuner, Hilux, Ford Ranger, Toyota Quantum, Mitsubishi Rosa) — no data invented. Deliberately used schema.org `Vehicle` rather than `Product`/`Offer`, since `Offer` schema expects a `price` and none is published; adding one now would either fail Rich Results validation (missing required field) or require fabricating a number. Ready to upgrade to `Product`/`Offer` with real `priceRange`/per-vehicle rates the moment the business supplies them.
+- Status: **Completed for specs; pricing upgrade won't do (2026-08-07)** · Priority: High
+- Description: Added an `ItemList` of 11 `Vehicle` entities to `fleet.html`, using the exact seats/fuel/transmission specs already published in the fleet page's own markup (Toyota Allion, Mark X, Lexus IS250, Honda Fit, Mitsubishi Pajero, Shogun, Fortuner, Hilux, Ford Ranger, Toyota Quantum, Mitsubishi Rosa) — no data invented. Deliberately used schema.org `Vehicle` rather than `Product`/`Offer`, since `Offer` schema expects a `price` and none is published. **User decided (2026-08-07) not to pursue the priced `Product`/`Offer` upgrade** — the `Vehicle` specs schema is the final state for this task, not an interim one.
 - Why it matters: Lets AI answer engines extract "what cars does Chaliko rent, how many seats, what fuel/transmission" as structured facts rather than parsing prose — the core GEO win from this phase.
 - Files affected: `scripts/build.js` (`VEHICLES` array + `vehicleListJsonLd()`)
-- Dependencies: Manual Action — per-vehicle daily rates still not provided; pricing remains out of scope until supplied.
+- Dependencies: None remaining.
 - Validation steps: Valid JSON confirmed; spot-checked first vehicle entry (Toyota Allion — 5 seats, Petrol, Automatic) matches the fleet page exactly.
 - Estimated effort: Medium
 
@@ -285,26 +285,26 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - Validation steps: Valid JSON confirmed; content cross-checked word-for-word against the visible accordion in `index.html`.
 - Estimated effort: Small
 
-**Task: Add `Review`/`AggregateRating` schema**
-- Status: Not Started (blocked) · Priority: Low
-- Dependencies: Manual Action — confirm actual customer review source/count with business; do not fabricate ratings.
-- Estimated effort: Small
-
 ---
 
 ### Phase 5 — AI Discoverability (GEO)
-**Status:** Not Started · **Priority:** High · **Complexity:** Medium · **Dependencies:** Phase 4
+**Status:** **Mostly Completed (2026-08-07)** · **Priority:** High · **Complexity:** Medium · **Dependencies:** Phase 4
 
 **Task: Add `llms.txt`**
-- Status: Not Started · Priority: Medium
-- Description: Add a root-level `llms.txt` describing Chaliko's business, service area, and key pages in plain, LLM-friendly language, per the emerging convention.
-- Files affected: new `llms.txt`
+- Status: **Completed (2026-08-07)** · Priority: Medium
+- Description: Added a root-level `llms.txt` (served automatically — root files aren't excluded by `.assetsignore`) describing Chaliko's business, service area, hours, contact, full fleet list, and the site's existing FAQ content in plain, LLM-friendly Markdown, per the llmstxt.org convention. Also added a comment pointer to it from `robots.txt` (`# llms.txt: https://chaliko.com/llms.txt`), a convention some crawlers/engines look for. Included an explicit "Notes for AI assistants" section stating no reviews/ratings and no pricing are published, specifically to prevent an LLM from hallucinating a rating or price that doesn't exist on the site.
+- Why it matters: `llms.txt` is the emerging convention AI answer/generative engines look for to get a concise, authoritative summary of a site instead of having to parse full HTML — directly supports the GEO goal.
+- Files affected: new `llms.txt`, `robots.txt`
+- Validation steps: Verified `/llms.txt` serves correctly (200, correct content) via a local preview server; confirmed every fact in it (phone, address, hours, email, WhatsApp, fleet specs, FAQ text) matches the live JSON-LD and visible page content word-for-word/number-for-number.
 - Estimated effort: Small
 
 **Task: Ensure factual consistency across all machine-readable surfaces**
-- Status: Not Started · Priority: High
-- Description: Cross-check that phone, address, hours, and service-area facts match exactly across JSON-LD, visible page text, `llms.txt`, and (once claimed) Google Business Profile — AI engines cross-reference these for confidence.
-- Dependencies: Manual Action — Google Business Profile claim/verification (Phase 21).
+- Status: **Mostly Completed (2026-08-07)** · Priority: High
+- Description: Cross-checked phone, address, hours, service-area, email, and WhatsApp facts across JSON-LD, visible page text (all 5 pages), and the new `llms.txt`. Found and fixed one real gap: the shared JSON-LD `telephone` field only listed the primary number (`+260979517732`), while every page's visible footer/contact block also publishes a second, real number (`+260965517732`, the same one used for WhatsApp) — the JSON-LD just wasn't reflecting data already live on the site. Changed `telephone` from a single string to a two-item array (schema.org's `telephone` property accepts multiple values) in `partials/head.html`, so it now matches the visible content exactly. Everything else (address, hours `Mon–Sat 7:00 AM–7:00 PM`/Sunday closed, email, WhatsApp number, service-area cities, social links) was already fully consistent — no other discrepancies found.
+- Why it matters: AI engines and rich-results parsers cross-reference structured data against visible page text for confidence; any mismatch (even a merely-incomplete field, not a wrong one) weakens that signal.
+- Files affected: `partials/head.html`, all 5 HTML files (regenerated via `npm run build`)
+- Dependencies: The Google Business Profile cross-check portion remains blocked on Manual Action (Phase 21) — GBP hasn't been claimed yet, so there's nothing to cross-check against there yet.
+- Validation steps: All 5 pages' JSON-LD re-validated as parseable JSON after the change (`node -e` parse check, zero errors). Grepped every phone/address/hours/email/WhatsApp occurrence across all 5 pages and confirmed they agree with the JSON-LD and `llms.txt`. Local preview server: zero console errors on reload.
 - Estimated effort: Small
 
 **Task: Structure fleet/pricing content for extraction**
@@ -635,6 +635,27 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - **Result:** Every JSON-LD block on every page validated as parseable JSON via a Node script (`AutoRental` + the new blocks — `FAQPage` on Home, `BreadcrumbList` on About/Book/Contact/Fleet, plus `ItemList` on Fleet). Spot-checked the Fleet `ItemList`'s first entry against the page's own markup (Toyota Allion — 5 seats, Petrol, Automatic — exact match). All 5 pages checked in a live preview: zero console errors. `npm run build` re-run confirmed byte-identical output (idempotent).
 - **Outstanding issues:** `Review`/`AggregateRating` schema remains blocked (Manual Action — needs a real review source from the business). Per-vehicle pricing remains blocked (Manual Action) — the `Vehicle` entities are ready to become priced `Product`/`Offer` entities the moment rates are supplied. Nothing in this batch has been committed yet.
 
+### 2026-08-07 — Footer cleanup: removed placeholder legal links, centered copyright, fixed typo
+- **Summary:** User asked to remove the "Privacy Policy"/"Terms of Use" footer links (both were dead `href="#"` placeholders, not real pages), center the copyright line now that it's the only element in that row, and fix a stray double period ("Reserved..").
+- **Files changed:** `partials/footer.html` (single shared source — applies to all 5 pages), all 5 HTML files (regenerated via `npm run build`)
+- **Reason:** Direct user request.
+- **Result:** Verified via `grep` (zero matches for "Privacy Policy"/"Terms of Use" across all 5 built pages) and a computed-style check (`justify-content: center` confirmed on the containing row) and direct text extraction (single "Reserved." confirmed). Zero console errors on reload.
+- **Outstanding issues:** None. This was included in the same commit as the Phase 4 structured data batch (`5702676`).
+
+### 2026-08-07 — Phase 4 closed out: dropped Review/AggregateRating and the per-vehicle pricing upgrade
+- **Summary:** User declined to pursue customer reviews for now and asked to remove that task completely, and separately said "we are not going to do Per-vehicle structured data." Since the `Vehicle` specs `ItemList` was already live/committed and has real standalone GEO value with no downside, asked the user to clarify scope before deleting shipped code — confirmed they meant dropping the *pending pricing upgrade* (`Product`/`Offer` with rates), not removing the already-shipped specs schema. Updated Phase 4 accordingly: `Review`/`AggregateRating` task removed from the roadmap outright (nothing was ever built, so no code to revert); the per-vehicle structured data task is now marked fully complete with the pricing upgrade explicitly marked "won't do" rather than "blocked." Phase 4 status changed from "Mostly Completed" to **Completed** — everything remaining was either finished or explicitly declined by the user, nothing is genuinely outstanding anymore.
+- **Files changed:** `plan.md` only — no code changes, since the live `Vehicle` schema was kept as-is.
+- **Reason:** Direct user request to close out Phase 4's two remaining items.
+- **Result:** Phase 4 is fully closed. `fleet.html`'s `Vehicle` `ItemList` (specs only, no pricing) remains live and unchanged.
+- **Outstanding issues:** None for Phase 4.
+
+### 2026-08-07 — Phase 5 mostly completed: `llms.txt` published, JSON-LD/visible-content consistency pass
+- **Summary:** User asked to move to the next phase; Phase 4 was fully closed, so this was Phase 5 (AI Discoverability / GEO). Published a root-level `llms.txt` (Markdown, per the llmstxt.org convention) summarizing the business, service area, hours, contact details, full fleet specs, and the site's existing FAQ content, plus an explicit note telling AI assistants not to infer pricing or reviews since neither is published — a direct hedge against hallucination on exactly the two facts most likely to be guessed wrong. Added a comment pointer to it from `robots.txt`. Then did the factual-consistency cross-check task: compared phone, address, hours, email, WhatsApp, and service-area facts across all 5 pages' JSON-LD, visible content, and the new `llms.txt`. Found one real gap — the shared JSON-LD `telephone` field only had the primary number even though a second real number is published site-wide (same one used for WhatsApp) — and fixed it by making `telephone` a two-item array in `partials/head.html` (schema.org supports multiple values for this field). Everything else checked out already consistent. The third Phase 5 task (structuring fleet/pricing content for extraction) remains correctly blocked on Phase 13 content work, per its original dependency.
+- **Files changed:** new `llms.txt`, `robots.txt`, `partials/head.html`, all 5 HTML files (regenerated via `npm run build`)
+- **Reason:** Phase 5 was next in the roadmap after Phase 4 closed; both completed tasks had no open dependencies (the GBP portion of the consistency task is separately tracked as still blocked).
+- **Result:** All 5 pages' JSON-LD re-validated as parseable JSON after the `telephone` change. `/llms.txt` verified serving correctly via a local preview server. Grepped every phone/address/hours/email/WhatsApp occurrence sitewide and confirmed agreement with JSON-LD and the new `llms.txt`. Zero console errors on reload of the homepage.
+- **Outstanding issues:** Phase 5's third task (structuring fleet/pricing content in clean HTML tables) stays blocked on Phase 13. The GBP portion of the consistency task stays blocked on the Phase 21 manual claim/verification. Nothing in this batch has been committed yet.
+
 ---
 
 ## Known Issues
@@ -672,8 +693,6 @@ _These cannot be performed by Claude and require the business/user to act direct
 - **Google Business Profile** — claim/verify the Lusaka location for Local SEO (Phase 16).
 - **GA4 property** — create or grant access so Phase 17 analytics can be installed.
 - **Business policy answers** — insurance terms, cancellation policy, accepted payment methods (beyond what the homepage FAQ already states), driver's licence requirements, professional-driver terms — needed to expand FAQ content further (Phase 6/13) without fabrication.
-- **Vehicle daily rates** — specs (seats/fuel/transmission) are now published and marked up in structured data (Phase 4); daily rental rates specifically are still not published anywhere, needed to upgrade Fleet's `Vehicle` structured data to priced `Product`/`Offer` entities and for Rich Results pricing eligibility.
-- **Customer reviews** — a real review source/count is needed before `Review`/`AggregateRating` schema (Phase 4) can be added; do not fabricate ratings.
 
 ## Validation Checklist
 
@@ -691,7 +710,7 @@ _These cannot be performed by Claude and require the business/user to act direct
 - [ ] Zero dead/conflicting hosting configuration in the repository.
 - [ ] Structured data covers business identity, breadcrumbs, and fleet — passing Rich Results Test.
 - [ ] FAQ content live with `FAQPage` schema.
-- [ ] `llms.txt` published.
+- [x] `llms.txt` published.
 - [ ] Lighthouse scores ≥90 across all four categories, all pages, mobile.
 - [ ] WCAG 2.2 AA conformance verified (static + interactive testing).
 - [ ] Total image payload reduced by a large margin from the current 62MB baseline; all images lazy-loaded with explicit dimensions.
