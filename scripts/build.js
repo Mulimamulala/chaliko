@@ -202,12 +202,14 @@ function renderTemplate(template, tokens) {
 function renderNavItems(activeKey) {
   return NAV_LINKS.map((link) => {
     const liClasses = ['main-nav'];
-    if (link.key === activeKey) liClasses.push('active');
+    const isActive = link.key === activeKey;
+    if (isActive) liClasses.push('active');
     const aClasses = ['main-menu'];
     // "Contact" has always carried this extra class in the original design
     // (last-item styling hook), independent of which page is active.
     if (link.key === 'contact') aClasses.push('main-menu-ls');
-    return `                                    <li class="${liClasses.join(' ')}"><a class="${aClasses.join(' ')}" href="${link.href}">${link.label}</a></li>`;
+    const ariaCurrent = isActive ? ' aria-current="page"' : '';
+    return `                                    <li class="${liClasses.join(' ')}"><a class="${aClasses.join(' ')}" href="${link.href}"${ariaCurrent}>${link.label}</a></li>`;
   }).join('\n');
 }
 

@@ -444,20 +444,26 @@
     sideMenu: function () {
       // collups menu side right
       function openSideMenu() {
-        $("#side-bar").addClass("show");
+        $("#side-bar").addClass("show").removeAttr("inert").attr("aria-hidden", "false");
         $("#anywhere-home").addClass("show");
         $("body").addClass("menu-open");
+        $("#menu-btn").attr("aria-expanded", "true");
+        $("#side-bar .close-icon-menu").trigger("focus");
       }
       function closeSideMenu() {
-        $("#side-bar").removeClass("show");
+        $("#side-bar").removeClass("show").attr("inert", "").attr("aria-hidden", "true");
         $("#anywhere-home").removeClass("show");
         $("body").removeClass("menu-open");
+        $("#menu-btn").attr("aria-expanded", "false").trigger("focus");
       }
       $(document).on('click', '#menu-btn', openSideMenu);
       $(document).on('click', '.close-icon-menu', closeSideMenu);
       $(document).on('click', '#anywhere-home', closeSideMenu);
       $(document).on('click', '.onepage .mainmenu li a', closeSideMenu);
       $(document).on('click', '#side-bar .mainmenu li a', closeSideMenu);
+      $(document).on('keydown', function (event) {
+        if (event.key === 'Escape' && $("#side-bar").hasClass("show")) closeSideMenu();
+      });
     },
     niceSelect: function () {
       (function ($) {

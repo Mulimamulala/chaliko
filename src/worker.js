@@ -146,17 +146,48 @@ async function handleMailer(request, env) {
     }
 }
 
+const SECURITY_HEADERS = {
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'DENY',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=()',
+    'Content-Security-Policy': [
+        "default-src 'self'",
+        "script-src 'self' 'unsafe-inline'",
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+        "img-src 'self' data:",
+        "font-src 'self' data: https://fonts.gstatic.com",
+        "connect-src 'self'",
+        "base-uri 'self'",
+        "form-action 'self'",
+        "object-src 'none'",
+        "frame-ancestors 'none'",
+    ].join('; '),
+};
+
+function withSecurityHeaders(response) {
+    const headers = new Headers(response.headers);
+    for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
+        headers.set(name, value);
+    }
+    return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers,
+    });
+}
+
 export default {
     async fetch(request, env, ctx) {
         const url = new URL(request.url);
 
         if (url.pathname === '/api/mailer') {
             if (request.method === 'POST') {
-                return handleMailer(request, env);
+                return withSecurityHeaders(await handleMailer(request, env));
             }
-            return new Response('Method not allowed', { status: 405 });
+            return withSecurityHeaders(new Response('Method not allowed', { status: 405 }));
         }
 
-        return env.ASSETS.fetch(request);
+        return withSecurityHeaders(await env.ASSETS.fetch(request));
     },
 };

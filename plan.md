@@ -122,18 +122,18 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 | 4 | Structured Data | **Completed** | Critical | Medium | Phase 2, 3 |
 | 5 | AI Discoverability (GEO) | Mostly Completed | High | Medium | Phase 4 |
 | 6 | Answer Engine Optimization (AEO) | Not Started | High | Medium | Phase 4, 13 |
-| 7 | Accessibility | Not Started | Critical | Medium | Open Decision |
+| 7 | Accessibility | Mostly Completed | Critical | Medium | Open Decision |
 | 8 | Performance Optimization | Not Started | Critical | Large | Open Decision |
 | 9 | Core Web Vitals | Not Started | Critical | Medium | Phase 8 |
-| 10 | Semantic HTML | Not Started | High | Medium | Open Decision |
+| 10 | Semantic HTML | **Completed** | High | Medium | Open Decision |
 | 11 | Internal Linking | Not Started | Medium | Small | Phase 13 |
-| 12 | Navigation | Not Started | Medium | Small | Phase 10 |
+| 12 | Navigation | **Completed** | Medium | Small | Phase 10 |
 | 13 | Content Improvements | Not Started | High | Large | Open Decision |
 | 14 | Image Optimization | Not Started | Critical | Medium | None |
-| 15 | Forms | Not Started | High | Small | Phase 7 |
+| 15 | Forms | Mostly Completed | High | Small | Phase 7 |
 | 16 | Local SEO | Not Started | High | Small | Phase 4 |
 | 17 | Analytics | Not Started | High | Small | Manual: GA4/GSC access |
-| 18 | Security | Not Started | High | Small | None |
+| 18 | Security | **Completed** | High | Small | None |
 | 19 | Testing | Not Started | Medium | Medium | Phases 2–15 |
 | 20 | Deployment Readiness | Not Started | Critical | Small | Phase 18 |
 | 21 | Post-Deployment Checklist | Not Started | High | Small | Phase 20, Manual actions |
@@ -332,28 +332,34 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 7 — Accessibility
-**Status:** Not Started · **Priority:** Critical · **Complexity:** Medium · **Dependencies:** Open Decision
+**Status:** **Mostly Completed (2026-08-07)** · **Priority:** Critical · **Complexity:** Medium · **Dependencies:** Open Decision
 
 **Task: Add `<main>` landmark and skip-to-content link**
-- Status: Not Started · Priority: Critical
-- Description: Wrap primary page content in `<main id="main-content">` on all 5 pages; add a visually-hidden-until-focused skip link as the first focusable element.
-- Validation steps: axe DevTools / Lighthouse a11y audit shows landmark present; keyboard Tab from page load lands on skip link first.
+- Status: **Completed (2026-08-07)** · Priority: Critical
+- Description: Wrapped each page's real content (between the header and footer `BUILD:*` regions) in `<main id="main-content">` on all 5 pages — hand-edited per file since the wrapped content differs per page and isn't part of a shared partial. Added `<a href="#main-content" class="skip-link">Skip to main content</a>` as the very first element inside `<body>` on all 5 pages, styled in `assets/css/site-custom.css` (off-screen until focused, then slides into view).
+- Files affected: `index.html`, `about.html`, `book.html`, `contact.html`, `fleet.html`, `assets/css/site-custom.css`
+- Validation steps: Verified via browser automation that the skip link is the first focusable element on the page and that exactly one balanced `<main>`/`</main>` pair exists on every page (Node-script tag-balance check). Zero console errors on reload.
 - Estimated effort: Small
 
 **Task: Fix form label association**
-- Status: Not Started · Priority: Critical
-- Description: Add matching `id`/`for` pairs to every input/label in `book.html` and `contact.html` (currently only 1 of ~11 pairs correctly wired in `book.html`).
-- Validation steps: Screen reader (VoiceOver/NVDA) announces correct label for every field; automated audit (axe) reports zero label violations.
+- Status: **Completed (2026-08-07)** · Priority: Critical
+- Description: `book.html` — added `id`/`for` pairs to all 10 remaining fields (vehicle, pickup_date, return_date, pickup_location, dropoff_location, full_name, phone, email, licence_no, notes); `add_driver` and `email`'s `id` already existed. `contact.html` had **zero** `<label>` elements at all (relied on placeholder text + icons only) — added visually-hidden `<label for="...">` (using Bootstrap's built-in `.visually-hidden` utility, already present in the vendor bundle) for all 4 fields (name, email, phone, message), preserving the existing icon-only visual design.
+- Files affected: `book.html`, `contact.html`
+- Validation steps: Scripted DOM check (`document.querySelector('label[for="ID"]')` for every non-hidden form field) confirms 100% label coverage on both forms. Zero console errors.
 - Estimated effort: Small
 
 **Task: Verify color contrast**
-- Status: Not Started · Priority: High
-- Description: Run automated contrast checks on brand orange (`#FF3600`) against dark green backgrounds (`#143628`, `#111827`) and all text/background pairs sitewide.
+- Status: **Mostly Completed (2026-08-07)** · Priority: High
+- Description: Computed WCAG contrast ratios (relative-luminance formula) for every text/background color pair actually used sitewide, not just the two colors flagged in the original audit. Found and fixed two real, verified small-text failures: (1) `#888` secondary/caption text on white (3.54:1, needs 4.5:1) — replaced with `#767676` (4.54:1) across 8 occurrences in `book.html`/`contact.html`; (2) brand orange `#FF3600` used as small (12–16px) text color in `book.html` (Step 1/Step 2 section labels, the "01/02/03" requirement badges — 3.63:1/3.34:1, needs 4.5:1) — replaced with a darker in-family shade `#CC2B00` (5.37:1/4.94:1) for those specific text instances only. Icons and borders using `#FF3600` were left untouched — non-text elements only need 3:1 (Non-text Contrast, SC 1.4.11) and already pass at 3.63:1. Confirmed the audit's original concern — orange text directly on the dark-green backgrounds (`#143628`/`#111827`) — doesn't actually occur anywhere in the live markup (searched all 5 pages; no such pairing exists in practice).
+- Files affected: `book.html`, `contact.html`
+- **Not fixed — flagged for a decision:** White text on solid brand-orange background is used as the *persistent* (not just hover) style on a few elements — most notably `book.html`'s "Submit Booking Request" button and the "Need Help Booking?" sidebar card. Measured contrast is 3.63:1, which fails the 4.5:1 normal-text threshold (the text is 18px/700, just under the 18.66px cutoff that would qualify it as "large text" needing only 3:1). The site's outline-style `.rts__btn.btn-primary` buttons elsewhere are unaffected — their resting state is dark-gray text on transparent/white (7.46:1, passes easily) and only *hover* (not focus) briefly shows white-on-orange, which is a much smaller concern. Fixing the persistent cases properly means darkening the brand orange itself for button backgrounds, which is a brand-color decision — flagged rather than changed unilaterally. See Known Issues.
 - Estimated effort: Small
 
 **Task: Keyboard and screen-reader interaction pass**
-- Status: Not Started · Priority: High
-- Description: Manually verify mobile menu, any modals/popups (Magnific Popup is in use), and the booking form are fully keyboard-operable with no focus traps.
+- Status: **Completed (2026-08-07)** · Priority: High
+- Description: Found and fixed a real, confirmed keyboard-accessibility bug in the mobile hamburger menu: `#menu-btn` was a `<div>` with only a `click` handler (not focusable, not operable via Enter/Space, no accessible name) — converted to a real `<button type="button">` with `aria-label="Open menu"`, `aria-controls="side-bar"`, `aria-expanded`. The `#side-bar` mobile panel itself stayed in the tab order at all times even while visually off-screen (`right:-100%`, not `visibility:hidden`) — meaning keyboard users (even on desktop, where the hamburger trigger is hidden entirely) would tab through ~9 invisible menu links before reaching real content. Fixed by adding `inert aria-hidden="true"` by default on `#side-bar`, toggled off/on together with the existing `.show` class in `assets/js/main.js`'s `sideMenu()` function. Also added: Escape-to-close, focus moves to the panel's close button on open and returns to the trigger on close, and wrapped the desktop nav in `<nav aria-label="Primary">` (it had no landmark at all previously) with `aria-label="Mobile"` added to the existing mobile `<nav>`. Investigated the separate `.search-input-area` overlay (also always in the DOM) — confirmed it correctly uses `visibility:hidden` by default (which *does* remove it from the tab order, unlike the mobile menu's approach), and further confirmed it has **no trigger anywhere** in the current header/footer markup, so it's unreachable by mouse or keyboard alike — left as-is and flagged as dead code rather than "fixed" (see Technical Debt).
+- Files affected: `partials/header.html`, `partials/footer.html`, `assets/js/main.js`, `assets/css/site-custom.css`
+- Validation steps: Verified end-to-end via browser automation on a mobile viewport: clicking the trigger opens the menu (`show` class added, `inert` removed, `aria-expanded="true"`, focus moves to the close button); pressing Escape closes it (`inert` restored, `aria-expanded="false"`, focus returns to the trigger). Zero console errors across all 5 pages.
 - Estimated effort: Medium
 
 ---
@@ -405,16 +411,20 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 10 — Semantic HTML
-**Status:** Not Started · **Priority:** High · **Complexity:** Medium · **Dependencies:** Open Decision
+**Status:** **Completed (2026-08-07)** · **Priority:** High · **Complexity:** Medium · **Dependencies:** Open Decision
 
 **Task: Introduce proper landmark structure**
-- Status: Not Started · Priority: High
-- Description: `<header>`/`<nav>`/`<main>`/`<footer>` on every page (currently missing `<main>` entirely); convert generic `<section>`/`<div>` blocks to `<article>` where content is self-contained (e.g. each vehicle card, each testimonial).
+- Status: **Completed (2026-08-07)** · Priority: High
+- Description: `<main>` added on all 5 pages (see Phase 7). Desktop nav wrapped in `<nav aria-label="Primary">` (was a bare `<div>` with no landmark at all); mobile nav's existing `<nav>` got `aria-label="Mobile"` to disambiguate the two. Converted the repeated, self-contained card patterns to `<article>`: all 11 vehicle cards in `fleet.html`'s grid, the 3 vehicle-preview cards in `index.html`'s homepage carousel, and the 3 testimonial cards in `index.html` (17 conversions total). Used a small depth-tracking script (not a blind find/replace) to correctly match each opening `<div class="...">` with its true corresponding closing tag, since several of these blocks contain nested `<div>`s.
+- Files affected: `partials/header.html`, `index.html`, `fleet.html`
+- Validation steps: Verified balanced `<article>` open/close counts (6 in `index.html`, 11 in `fleet.html`) via a Node script. Visual screenshot check confirmed the fleet grid and homepage carousel render identically to before. Zero console errors.
 - Estimated effort: Medium
 
 **Task: Fix heading hierarchy**
-- Status: Not Started · Priority: Medium
-- Description: Verify H1→H2→H3 nesting is logical and non-skipping on every page (initial check found reasonable H2/H3 counts on `index.html`; needs a full hierarchy audit, not just counts).
+- Status: **Completed (2026-08-07)** · Priority: Medium
+- Description: Audited the real (comment-stripped, since several sections are HTML-commented-out leftovers) heading sequence on all 5 pages, not just counts. Found and fixed 3 genuine skips: (1) `book.html` — 5 headings (Step 1, Step 2, "Why Book With Chaliko?", "Need Help Booking?", "Hire Requirements") were `<h4>` directly after the page's only `<h2>` with no intervening `<h3>` — bumped all 5 to `<h3>`. (2) `fleet.html` — the page jumped straight from `<h1>` to 11× `<h3>` vehicle-card titles with no `<h2>` in between; added a `<h2 class="visually-hidden">Available Vehicles</h2>` immediately before the grid (present for the accessibility tree/outline, no visual change) and bumped the 3 "Hire Requirements" sub-heading `<h4>`s to `<h3>`. (3) `partials/footer.html` — the shared footer's "Get In Touch" heading was `<h4>`, which caused a skip on **every page** (each page's body content ends at `<h2>` or `<h3>` before the footer starts fresh) — bumped to `<h2>` (footer is a distinct landmark starting its own heading sequence, and `<h2>` is never a skip regardless of what precedes it). Verified `index.html`, `about.html`, and `contact.html` had no skips in their own body content already.
+- Files affected: `book.html`, `fleet.html`, `partials/footer.html`
+- Validation steps: Re-ran the comment-stripped heading-order audit after the fixes — no remaining skips on any of the 5 pages. Visual check confirmed no styling regressions (heading appearance is controlled by inline `style`/class, not tag name).
 - Estimated effort: Small
 
 ---
@@ -430,15 +440,19 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 12 — Navigation
-**Status:** Not Started · **Priority:** Medium · **Complexity:** Small · **Dependencies:** Phase 10
+**Status:** **Completed (2026-08-07)** · **Priority:** Medium · **Complexity:** Small · **Dependencies:** Phase 10
 
 **Task: Add `aria-current="page"` to active nav item**
-- Status: Not Started · Priority: Low
+- Status: **Completed (2026-08-07)** · Priority: Low
+- Description: Added to `renderNavItems()` in `scripts/build.js` — the desktop nav link matching the page's `activeNav` token now gets `aria-current="page"` alongside its existing `.active` class. The mobile nav (in `partials/footer.html`) doesn't track active-page state at all (it's a single static partial shared byte-for-byte across all 5 pages, unlike the desktop nav which is templated per page) — making it page-aware would mean templating the footer too, which is a larger change than this task calls for; left as a known gap, not urgent since the desktop nav (and the page's own `<title>`/`<h1>`) already communicate current location.
+- Files affected: `scripts/build.js`
+- Validation steps: Verified via `npm run build` that the active link on each of the 5 pages carries `aria-current="page"` and no other link does.
 - Estimated effort: Small
 
 **Task: Verify mobile menu accessibility**
-- Status: Not Started · Priority: Medium
-- Dependencies: Phase 7
+- Status: **Completed (2026-08-07)** · Priority: Medium
+- Description: Same work as the Phase 7 keyboard/screen-reader task (mobile menu `inert`/`aria-hidden`/`aria-expanded` toggling, Escape-to-close, focus management, real `<button>` trigger) — tracked once there, executed once, linked here since it directly satisfies this task too.
+- Dependencies: Phase 7 (done)
 - Estimated effort: Small
 
 ---
@@ -486,7 +500,7 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 15 — Forms
-**Status:** Not Started · **Priority:** High · **Complexity:** Small · **Dependencies:** Phase 7
+**Status:** Mostly Completed (2026-08-07) · **Priority:** High · **Complexity:** Small · **Dependencies:** Phase 7
 
 **Task: Add spam protection to `/api/mailer`**
 - Status: Not Started · Priority: High
@@ -495,8 +509,8 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - Estimated effort: Small
 
 **Task: Fix label association**
-- Status: Not Started · Priority: Critical
-- Description: Same underlying work as the Phase 7 accessibility task — tracked once, executed once.
+- Status: **Completed (2026-08-07)** · Priority: Critical
+- Description: Same underlying work as the Phase 7 accessibility task — tracked once, executed once. See Phase 7 for details.
 - Estimated effort: Small
 
 ---
@@ -532,12 +546,13 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 18 — Security
-**Status:** Not Started · **Priority:** High · **Complexity:** Small · **Dependencies:** None
+**Status:** **Completed (2026-08-07)** · **Priority:** High · **Complexity:** Small · **Dependencies:** None
 
 **Task: Add security headers via the Cloudflare Worker**
-- Status: Not Started · Priority: High
-- Description: Set `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY` or a CSP `frame-ancestors`, `Referrer-Policy: strict-origin-when-cross-origin`, a baseline `Content-Security-Policy`, and `Permissions-Policy`.
-- Files affected: `src/worker.js`
+- Status: **Completed (2026-08-07)** · Priority: High
+- Description: Added a `withSecurityHeaders()` wrapper in `src/worker.js` applied to every response the Worker returns (both `/api/mailer` and all static pages/assets), setting `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()`, and a `Content-Security-Policy` (`default-src 'self'`, with `'unsafe-inline'` on `script-src`/`style-src` since the site has genuine inline `<script>`/`onmouseover`/`style=""` usage throughout with no build step to add nonces; `style-src`/`font-src` additionally allow `fonts.googleapis.com`/`fonts.gstatic.com` since `style.css` `@import`s Google Fonts; `frame-ancestors 'none'`, `object-src 'none'`, `base-uri 'self'`, `form-action 'self'`). **Discovered and fixed a real deployment gap in the process:** Cloudflare's Assets binding serves static-file requests directly, bypassing the Worker's `fetch()` handler entirely by default — so the new headers were only reaching the `/api/mailer` route, not any actual page. Added `"run_worker_first": true` to the `assets` block in `wrangler.jsonc` so the Worker always runs first and can apply headers to every response, falling through to `env.ASSETS.fetch()` for anything that isn't `/api/mailer`.
+- Files affected: `src/worker.js`, `wrangler.jsonc`
+- Validation steps: Ran the site through `wrangler dev` (not just the static preview server, which doesn't exercise the Worker at all) and confirmed via `curl -I` that all of `/`, `/about`, `/book`, `/contact`, `/fleet`, `/sitemap.xml`, `/robots.txt`, `/llms.txt`, and `/api/mailer` return the full header set. Loaded all 5 pages fresh (cache-busted) through `wrangler dev` in-browser and confirmed zero CSP violations and zero console errors — including the Google Fonts `@import`, GSAP/ScrollTrigger, jQuery, Isotope, and the fleet-page inline filter script, all of which needed to keep working under the new policy. Did not trigger a live form submission (would send a real email via Resend using live credentials) — instead confirmed by code review that `contact-form.js` posts via `$.ajax` to the form's own same-origin `action` (`/api/mailer`), which `connect-src 'self'`/`form-action 'self'` correctly permit.
 - Estimated effort: Small
 
 ---
@@ -656,16 +671,25 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - **Result:** All 5 pages' JSON-LD re-validated as parseable JSON after the `telephone` change. `/llms.txt` verified serving correctly via a local preview server. Grepped every phone/address/hours/email/WhatsApp occurrence sitewide and confirmed agreement with JSON-LD and the new `llms.txt`. Zero console errors on reload of the homepage.
 - **Outstanding issues:** Phase 5's third task (structuring fleet/pricing content in clean HTML tables) stays blocked on Phase 13. The GBP portion of the consistency task stays blocked on the Phase 21 manual claim/verification. Nothing in this batch has been committed yet.
 
+### 2026-08-07 — Structure batch: Phases 7, 10, 12, 15 (labels), and 18 completed together
+- **Summary:** User asked to batch several of the next phases together to move faster. Scoped the batch to everything genuinely unblocked with no manual-action dependency: Accessibility (7), Semantic HTML (10), Navigation (12), the form-label half of Forms (15), and Security headers (18) — all touching overlapping code (page structure, the mobile menu, headings), so doing them together avoided reopening the same files repeatedly. Full details are under each phase's own section above; summary of what shipped: `<main>` landmark + skip link on all 5 pages; full form label association on `book.html` (10 fields) and `contact.html` (4 fields, which had *no* labels at all before); a color-contrast audit that fixed two real small-text failures (`#888`→`#767676`, and brand orange used as small text →`#CC2B00`) while flagging the brand's persistent white-on-orange button text as a decision for the user rather than changing it unilaterally; a real keyboard-trap bug fixed in the mobile menu (`#menu-btn` was an unfocusable `<div>`, `#side-bar` stayed tabbable while off-screen) via a real `<button>`, `inert`/`aria-hidden` toggling, Escape-to-close, and focus management; `<nav>` landmarks added to both desktop and mobile navigation; heading-hierarchy skips fixed in `book.html`, `fleet.html`, and the shared footer; 17 repeated card elements converted to `<article>`; `aria-current="page"` added to the active nav link; and security headers (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy) added via a wrapper in `src/worker.js` — which surfaced and fixed a real gap where Cloudflare's Assets binding was serving pages directly and bypassing the Worker entirely, fixed via `run_worker_first: true` in `wrangler.jsonc`.
+- **Files changed:** `index.html`, `about.html`, `book.html`, `contact.html`, `fleet.html`, `partials/header.html`, `partials/footer.html`, `assets/css/site-custom.css`, `assets/js/main.js`, `scripts/build.js`, `src/worker.js`, `wrangler.jsonc`
+- **Reason:** Direct user request to batch phases for speed, following a scope-confirmation question (offered three batch sizes; user chose the smallest/lowest-risk one: the fully-unblocked structure-related phases, deferring images and the JS/CSS performance trim to their own review passes).
+- **Result:** All 5 pages verified via browser automation with zero console errors, both on a plain static server and — critically for the security-headers work — through an actual `wrangler dev` run of the Cloudflare Worker (the static preview alone can't exercise `src/worker.js` at all). Mobile menu keyboard behavior (open/close, Escape, focus movement) verified end-to-end via scripted interaction, not just code review. All HTML tag balance (`<main>`, `<nav>`, `<article>`, `<header>`, `<footer>`, `<body>`, `<html>`) verified programmatically after every edit.
+- **Outstanding issues:** The white-on-orange persistent button-text contrast question (Phase 7) needs a user decision — see Known Issues. Phase 15's spam-protection task (honeypot/rate-limiting on `/api/mailer`) was correctly out of scope for this batch and remains not started. Nothing in this batch has been committed yet.
+
 ---
 
 ## Known Issues
 
-- Form labels not programmatically associated with inputs in `book.html` — see Phase 7/15.
-- No `<main>` landmark on any page — see Phase 7/10.
 - 62MB of unoptimized images, zero lazy-loading — see Phase 14.
+- **Needs a decision:** white text on solid brand-orange (`#FF3600`) background is used as the *persistent* style on a few high-visibility elements (`book.html`'s "Submit Booking Request" button, the "Need Help Booking?" sidebar card) — measured contrast is 3.63:1, below the 4.5:1 WCAG AA threshold for that text's size. Fixing it properly means darkening the orange used for button backgrounds specifically, which is a brand-color call — not changed without your sign-off. See Phase 7's color-contrast task for the full analysis and a candidate shade (`#CC2B00`, already used for small orange text elsewhere in this batch) that would pass at 4.5:1+ while staying in the same hue family.
+- `/api/mailer` has no spam protection (no honeypot, no rate limiting) — see Phase 15.
 
 ## Technical Debt
 
+- The `.search-input-area` search overlay (present on 4 of 5 pages, not `fleet.html`) has no trigger anywhere in the current header/footer markup — it's unreachable by mouse or keyboard. It's already correctly excluded from the tab order (`visibility:hidden` by default, unlike the mobile menu's old bug), so it's not an accessibility issue, just dead UI. Worth removing entirely in a future cleanup pass, or wiring up a real search trigger if search is ever wanted.
+- `assets/css/site-custom.css` still carries `.rts-footer-area`/`.copyright-area` rules (light-gray-on-dark colors) left over from before the Phase 2 footer consolidation — confirmed those classes aren't used by any live page's markup anymore. Harmless (dead CSS, not a live contrast issue) but worth pruning in a future cleanup pass.
 - `assets/images/icon/instagram-c.svg` has the same corrupted-mask bug as the now-fixed `instagram.svg` (each mask reveals a giant circle outside the viewBox instead of a full-canvas fill). Not currently referenced anywhere, so left unfixed — apply the same `<rect width="20" height="20" fill="..."/>` fix if it's ever wired up.
 - ~~`vercel.json`, `api/mailer.js`~~ — **removed 2026-08-07**, Vercel fully decommissioned.
 - ~~`.htaccess`~~ — **removed 2026-08-07**, dead Apache config for the confirmed Cloudflare Workers host.
@@ -714,7 +738,7 @@ _These cannot be performed by Claude and require the business/user to act direct
 - [ ] Lighthouse scores ≥90 across all four categories, all pages, mobile.
 - [ ] WCAG 2.2 AA conformance verified (static + interactive testing).
 - [ ] Total image payload reduced by a large margin from the current 62MB baseline; all images lazy-loaded with explicit dimensions.
-- [ ] Security headers present on all responses.
+- [x] Security headers present on all responses.
 - [ ] Analytics live and tracking key conversion events.
 - [ ] Google Search Console and Bing Webmaster Tools verified with sitemap submitted.
 - [ ] `plan.md` fully up to date with every phase's final status.

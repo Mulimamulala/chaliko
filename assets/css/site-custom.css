@@ -562,3 +562,35 @@ body.menu-open #page-scale-wrapper {
     }
 }
 
+/* ============================================================
+   Accessibility (Phase 7/10/12)
+   ============================================================ */
+
+/* #menu-btn is a real <button> now (for keyboard operability) -
+   strip default browser button chrome so it keeps its original look. */
+#menu-btn.menu-btn {
+    border: none;
+    padding: 0;
+    font: inherit;
+}
+
+/* Skip-to-content link: visually hidden until it receives focus. */
+.skip-link {
+    position: absolute;
+    top: -48px;
+    left: 8px;
+    z-index: 100000;
+    background: #FF3600;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 8px;
+    color: #fff;
+}
+
