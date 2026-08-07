@@ -12,6 +12,102 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const PARTIALS_DIR = path.join(ROOT, 'partials');
 
+// Real, currently-published vehicle specs (seats/fuel/transmission), taken
+// directly from fleet.html's car-list-service markup. No pricing is included
+// because none is published on the site yet (Manual Action — see plan.md).
+const VEHICLES = [
+  { name: 'Toyota Allion', seats: 5, fuel: 'Petrol', transmission: 'Automatic' },
+  { name: 'Toyota Mark X', seats: 5, fuel: 'Petrol', transmission: 'Automatic' },
+  { name: 'Lexus IS250', seats: 5, fuel: 'Petrol', transmission: 'Automatic' },
+  { name: 'Honda Fit', seats: 5, fuel: 'Petrol', transmission: 'Automatic' },
+  { name: 'Mitsubishi Pajero', seats: 7, fuel: 'Diesel', transmission: 'Automatic' },
+  { name: 'Mitsubishi Shogun', seats: 7, fuel: 'Diesel', transmission: 'Automatic' },
+  { name: 'Toyota Fortuner', seats: 7, fuel: 'Diesel', transmission: 'Automatic' },
+  { name: 'Toyota Hilux', seats: 5, fuel: 'Diesel', transmission: 'Manual' },
+  { name: 'Ford Ranger', seats: 5, fuel: 'Diesel', transmission: 'Automatic' },
+  { name: 'Toyota Quantum', seats: 14, fuel: 'Diesel', transmission: 'Manual' },
+  { name: 'Mitsubishi Rosa', seats: 26, fuel: 'Diesel', transmission: 'Manual' },
+];
+
+// Real FAQ content, taken directly from the published accordion on index.html.
+const FAQS = [
+  {
+    question: 'Do I need a credit card to book?',
+    answer:
+      'We accept mobile money (MTN/Airtel), bank transfer, cash at pick-up, and debit or credit cards. A 30% deposit is required to confirm your reservation.',
+  },
+  {
+    question: 'What documents do I need to hire?',
+    answer:
+      "You'll need: a valid driver's licence (Zambian or international), a national ID or passport, and funds for the security deposit. Minimum age is 23 years.",
+  },
+  {
+    question: 'What is the minimum rental period?',
+    answer: 'Our minimum hire period is two days (48 hours). Weekly and monthly rates are available at a discount.',
+  },
+  {
+    question: 'Is fuel included in the rental price?',
+    answer:
+      'No. Vehicles must be returned at the same fuel level they were given at pick-up. A fuel surcharge can be pre-paid at collection if preferred.',
+  },
+  {
+    question: 'Can I drive to other countries?',
+    answer:
+      'Cross-border travel requires prior approval and an additional fee. Please inform us when booking if you plan to travel outside Zambia.',
+  },
+];
+
+function jsonLdScript(obj) {
+  return `    <script type="application/ld+json">\n${JSON.stringify(obj, null, 4)}\n    </script>`;
+}
+
+function breadcrumbJsonLd(items) {
+  return jsonLdScript({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  });
+}
+
+function vehicleListJsonLd() {
+  return jsonLdScript({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Chaliko Car Hire Fleet',
+    itemListElement: VEHICLES.map((v, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Vehicle',
+        name: v.name,
+        brand: { '@type': 'Brand', name: v.name.split(' ')[0] },
+        vehicleSeatingCapacity: v.seats,
+        fuelType: v.fuel,
+        vehicleTransmission: v.transmission,
+      },
+    })),
+  });
+}
+
+function faqPageJsonLd() {
+  return jsonLdScript({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  });
+}
+
+const HOME_BREADCRUMB = [{ name: 'Home', url: 'https://chaliko.com/' }];
+
 const PAGES = [
   {
     file: 'index.html',
@@ -23,6 +119,7 @@ const PAGES = [
     headerInner: false,
     contactForm: true,
     isotope: true,
+    extraJsonLd: [faqPageJsonLd()],
   },
   {
     file: 'about.html',
@@ -34,6 +131,9 @@ const PAGES = [
     headerInner: true,
     contactForm: false,
     isotope: false,
+    extraJsonLd: [
+      breadcrumbJsonLd([...HOME_BREADCRUMB, { name: 'About Us', url: 'https://chaliko.com/about' }]),
+    ],
   },
   {
     file: 'book.html',
@@ -45,6 +145,9 @@ const PAGES = [
     headerInner: true,
     contactForm: true,
     isotope: true,
+    extraJsonLd: [
+      breadcrumbJsonLd([...HOME_BREADCRUMB, { name: 'Book Now', url: 'https://chaliko.com/book' }]),
+    ],
   },
   {
     file: 'contact.html',
@@ -56,6 +159,9 @@ const PAGES = [
     headerInner: true,
     contactForm: true,
     isotope: false,
+    extraJsonLd: [
+      breadcrumbJsonLd([...HOME_BREADCRUMB, { name: 'Contact', url: 'https://chaliko.com/contact' }]),
+    ],
   },
   {
     file: 'fleet.html',
@@ -67,6 +173,10 @@ const PAGES = [
     headerInner: true,
     contactForm: false,
     isotope: true,
+    extraJsonLd: [
+      breadcrumbJsonLd([...HOME_BREADCRUMB, { name: 'Our Fleet', url: 'https://chaliko.com/fleet' }]),
+      vehicleListJsonLd(),
+    ],
   },
 ];
 
@@ -130,6 +240,7 @@ for (const page of PAGES) {
     TITLE: escapeHtml(page.title),
     DESCRIPTION: escapeHtml(page.description),
     URL: page.url,
+    EXTRA_JSONLD: (page.extraJsonLd || []).join('\n'),
   });
   content = replaceMarkerBlock(content, 'HEAD', headRendered);
 

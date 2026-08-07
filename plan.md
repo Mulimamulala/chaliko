@@ -119,7 +119,7 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 | 1 | Project Audit | **Completed** | Critical | Medium | None |
 | 2 | Technical SEO | **Completed** | Critical | Medium | Phase 1, Open Decision |
 | 3 | Metadata | Mostly Completed | Critical | Small | Phase 2 |
-| 4 | Structured Data | Not Started | Critical | Medium | Phase 2, 3 |
+| 4 | Structured Data | Mostly Completed | Critical | Medium | Phase 2, 3 |
 | 5 | AI Discoverability (GEO) | Not Started | High | Medium | Phase 4 |
 | 6 | Answer Engine Optimization (AEO) | Not Started | High | Medium | Phase 4, 13 |
 | 7 | Accessibility | Not Started | Critical | Medium | Open Decision |
@@ -251,35 +251,42 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 ---
 
 ### Phase 4 — Structured Data
-**Status:** Not Started · **Priority:** Critical · **Complexity:** Medium · **Dependencies:** Phase 2, 3
-**Files expected to change:** All 5 HTML files
+**Status:** **Mostly Completed (2026-08-07)** · **Priority:** Critical · **Complexity:** Medium · **Dependencies:** Phase 2, 3
+**Files expected to change:** `partials/head.html`, `scripts/build.js`, all 5 HTML files (regenerated)
 
 **Task: Fix and consolidate `AutoRental`/`LocalBusiness` JSON-LD**
-- Status: Not Started · Priority: Critical
-- Description: Correct `@id`/`url`/`image` to `chaliko.com`; add `sameAs` array linking Facebook and Instagram profiles; add `priceRange` if pricing tier info is available (Manual Action — confirm with business).
-- Files affected: All 5 pages (same block, currently duplicated)
-- Validation steps: Google Rich Results Test passes with zero errors/warnings.
+- Status: **Completed (2026-08-07)** · Priority: Critical
+- Description: `@id`/`url`/`image` were already corrected to `chaliko.com` in Phase 2. Added a `sameAs` array linking the real Facebook and Instagram profiles. `priceRange` intentionally omitted — no pricing tiers are published anywhere on the site (Manual Action, still open).
+- Files affected: `partials/head.html` (single shared block — edited once, applies to all 5 pages)
+- Validation steps: All 5 pages' JSON-LD parsed with `JSON.parse` — valid on every page. `sameAs` confirmed present on all 5.
 - Estimated effort: Small
 
 **Task: Add `BreadcrumbList` schema**
-- Status: Not Started · Priority: Medium
-- Description: Add breadcrumb structured data reflecting Home > [Page] hierarchy on About, Book, Contact, Fleet.
+- Status: **Completed (2026-08-07)** · Priority: Medium
+- Description: Added `Home > [Page]` breadcrumb JSON-LD to About, Book, Contact, and Fleet (Home omitted — it's the root, a breadcrumb there is redundant). Implemented via a new `{{EXTRA_JSONLD}}` token in `partials/head.html` and a `breadcrumbJsonLd()` helper in `scripts/build.js`, so each page just declares its breadcrumb trail as data rather than hand-writing JSON-LD markup.
+- Files affected: `partials/head.html`, `scripts/build.js`
+- Validation steps: Verified valid JSON and correct `@type: BreadcrumbList` on all 4 pages via a Node parse check.
 - Estimated effort: Small
 
 **Task: Add per-vehicle structured data**
-- Status: Not Started · Priority: High
-- Description: For each vehicle listed on `fleet.html`/`index.html` (Toyota Allion, Mark X, Lexus IS250, Honda Fit, Mitsubishi Pajero/Shogun, etc.), add `Vehicle` or `Product`/`Offer`-style structured data with seats, fuel type, and rate if available.
-- Why it matters: This is a direct, high-value GEO signal — it lets AI answer engines extract "what cars does Chaliko rent and for what" as structured facts rather than needing to parse prose.
-- Dependencies: Manual Action — confirm per-vehicle daily rates with business (not currently published on the site).
+- Status: **Completed for specs, blocked for pricing (2026-08-07)** · Priority: High
+- Description: Added an `ItemList` of 11 `Vehicle` entities to `fleet.html`, using the exact seats/fuel/transmission specs already published in the fleet page's own markup (Toyota Allion, Mark X, Lexus IS250, Honda Fit, Mitsubishi Pajero, Shogun, Fortuner, Hilux, Ford Ranger, Toyota Quantum, Mitsubishi Rosa) — no data invented. Deliberately used schema.org `Vehicle` rather than `Product`/`Offer`, since `Offer` schema expects a `price` and none is published; adding one now would either fail Rich Results validation (missing required field) or require fabricating a number. Ready to upgrade to `Product`/`Offer` with real `priceRange`/per-vehicle rates the moment the business supplies them.
+- Why it matters: Lets AI answer engines extract "what cars does Chaliko rent, how many seats, what fuel/transmission" as structured facts rather than parsing prose — the core GEO win from this phase.
+- Files affected: `scripts/build.js` (`VEHICLES` array + `vehicleListJsonLd()`)
+- Dependencies: Manual Action — per-vehicle daily rates still not provided; pricing remains out of scope until supplied.
+- Validation steps: Valid JSON confirmed; spot-checked first vehicle entry (Toyota Allion — 5 seats, Petrol, Automatic) matches the fleet page exactly.
 - Estimated effort: Medium
 
 **Task: Add `FAQPage` schema**
-- Status: Not Started · Priority: High
-- Dependencies: Phase 13 (FAQ content must exist first)
-- Estimated effort: Small (once content exists)
+- Status: **Completed (2026-08-07)** · Priority: High
+- Description: Originally blocked on Phase 13 FAQ content — but `index.html` already has a real, published 5-question FAQ accordion (booking payment methods, required documents, minimum rental period, fuel policy, cross-border travel), so this was unblocked without waiting on Phase 13. Marked up verbatim via the same `{{EXTRA_JSONLD}}` mechanism.
+- Files affected: `scripts/build.js` (`FAQS` array + `faqPageJsonLd()`)
+- Dependencies: None (content already existed — Phase 13 dependency turned out to be moot for this specific content)
+- Validation steps: Valid JSON confirmed; content cross-checked word-for-word against the visible accordion in `index.html`.
+- Estimated effort: Small
 
 **Task: Add `Review`/`AggregateRating` schema**
-- Status: Not Started · Priority: Low
+- Status: Not Started (blocked) · Priority: Low
 - Dependencies: Manual Action — confirm actual customer review source/count with business; do not fabricate ratings.
 - Estimated effort: Small
 
@@ -621,6 +628,13 @@ This roadmap defaults to **Option A** for Phase 1 (recommended — it's the stan
 - **Result:** Verified by loading the SVG directly in-browser (renders a clean orange Instagram glyph matching Facebook's style) and rechecking the homepage — zero console errors.
 - **Outstanding issues:** `assets/images/icon/instagram-c.svg` has the identical bug (same broken giant-circle-per-mask pattern) but isn't referenced anywhere in the live site, so it was left as-is — flagged below in Technical Debt in case it's ever wired up.
 
+### 2026-08-07 — Phase 4 mostly completed: structured data (sameAs, breadcrumbs, vehicle specs, FAQ)
+- **Summary:** User confirmed the icon fix was committed and pushed, then asked for the next phase. Implemented 4 of Phase 4's 5 tasks using only real, already-published data — no fabrication: (1) added a `sameAs` array (Facebook + Instagram) to the shared `AutoRental` JSON-LD; (2) added `BreadcrumbList` schema to About/Book/Contact/Fleet; (3) added an `ItemList` of 11 `Vehicle` entities to `fleet.html` using the exact seats/fuel/transmission specs already on the page (deliberately used `Vehicle` rather than `Product`/`Offer`, since `Offer` schema wants a price and none is published — avoids either a Rich Results validation gap or fabricating a number); (4) added `FAQPage` schema on `index.html` — this was originally listed as blocked on Phase 13, but `index.html` already has a real, live 5-question FAQ accordion, so it was unblocked and shipped now instead of waiting. Extended the build system with a new `{{EXTRA_JSONLD}}` token in `partials/head.html` plus `breadcrumbJsonLd()`, `vehicleListJsonLd()`, and `faqPageJsonLd()` helpers in `scripts/build.js`, so each page just declares data (a breadcrumb trail, or nothing) rather than hand-writing per-page JSON-LD.
+- **Files changed:** `partials/head.html`, `scripts/build.js`, all 5 HTML files (regenerated via `npm run build`)
+- **Reason:** Phase 4 was next in the roadmap; the FAQ and vehicle-spec content already existing on the site meant two of its tasks didn't actually need to wait on their originally-assumed blockers.
+- **Result:** Every JSON-LD block on every page validated as parseable JSON via a Node script (`AutoRental` + the new blocks — `FAQPage` on Home, `BreadcrumbList` on About/Book/Contact/Fleet, plus `ItemList` on Fleet). Spot-checked the Fleet `ItemList`'s first entry against the page's own markup (Toyota Allion — 5 seats, Petrol, Automatic — exact match). All 5 pages checked in a live preview: zero console errors. `npm run build` re-run confirmed byte-identical output (idempotent).
+- **Outstanding issues:** `Review`/`AggregateRating` schema remains blocked (Manual Action — needs a real review source from the business). Per-vehicle pricing remains blocked (Manual Action) — the `Vehicle` entities are ready to become priced `Product`/`Offer` entities the moment rates are supplied. Nothing in this batch has been committed yet.
+
 ---
 
 ## Known Issues
@@ -657,10 +671,9 @@ _These cannot be performed by Claude and require the business/user to act direct
 - **Domain/DNS** — confirm `chaliko.com` DNS is actually pointed at the Cloudflare Workers deployment (not verified as part of this audit — code-level confirmation only).
 - **Google Business Profile** — claim/verify the Lusaka location for Local SEO (Phase 16).
 - **GA4 property** — create or grant access so Phase 17 analytics can be installed.
-- **Business policy answers** — insurance terms, cancellation policy, accepted payment methods, driver's licence requirements, professional-driver terms — needed to write accurate FAQ content (Phase 6/13) without fabrication.
-- **Vehicle pricing/specs** — daily rates and specs per vehicle are not currently published anywhere in the codebase; needed for Phase 4/13 structured data and fleet content.
-- **`gorental-doc/` removal confirmation** — confirm it's safe to delete (Phase 2).
-- **Templating architecture Open Decision** — Option A (lightweight build/includes) vs Option B (continue manual duplication) — see "Open Decision" above.
+- **Business policy answers** — insurance terms, cancellation policy, accepted payment methods (beyond what the homepage FAQ already states), driver's licence requirements, professional-driver terms — needed to expand FAQ content further (Phase 6/13) without fabrication.
+- **Vehicle daily rates** — specs (seats/fuel/transmission) are now published and marked up in structured data (Phase 4); daily rental rates specifically are still not published anywhere, needed to upgrade Fleet's `Vehicle` structured data to priced `Product`/`Offer` entities and for Rich Results pricing eligibility.
+- **Customer reviews** — a real review source/count is needed before `Review`/`AggregateRating` schema (Phase 4) can be added; do not fabricate ratings.
 
 ## Validation Checklist
 
