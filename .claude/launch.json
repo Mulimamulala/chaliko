@@ -7,6 +7,12 @@
       "runtimeArgs": ["serve", "."],
       "port": 5501,
       "autoPort": true
+    },
+    {
+      "name": "chaliko-worker",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["wrangler", "dev", "--port", "8787"],
+      "port": 8787
     }
   ]
 }

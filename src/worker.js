@@ -6,7 +6,6 @@ const LABELS = {
     pickup_location: 'Pick-Up Location',
     dropoff_location: 'Drop-Off Location',
     add_driver: 'Professional Driver Requested',
-    licence_no: "Driver's Licence No.",
     payment_method: 'Payment Method',
     subject: 'Subject',
     car: 'Car',
@@ -89,7 +88,27 @@ function buildHtmlBody(formType, name, email, rows) {
     </div>`;
 }
 
+function isTrustedOrigin(request) {
+    const siteOrigin = new URL(request.url).origin;
+    const origin = request.headers.get('origin');
+    if (origin) return origin === siteOrigin;
+    const referer = request.headers.get('referer');
+    if (referer) {
+        try {
+            return new URL(referer).origin === siteOrigin;
+        } catch {
+            return false;
+        }
+    }
+    // No Origin/Referer at all is unusual for a browser form POST; treat as untrusted.
+    return false;
+}
+
 async function handleMailer(request, env) {
+    if (!isTrustedOrigin(request)) {
+        return new Response('Forbidden', { status: 403 });
+    }
+
     const contentType = request.headers.get('content-type') || '';
     let body = {};
     if (contentType.includes('application/json')) {
@@ -97,6 +116,11 @@ async function handleMailer(request, env) {
     } else {
         const formData = await request.formData();
         body = Object.fromEntries(formData.entries());
+    }
+
+    // Honeypot: a real visitor never fills this hidden field, only bots do.
+    if (field(body, 'website')) {
+        return new Response("Thank you! Your message has been sent - we'll be in touch within 2 hours.", { status: 200 });
     }
 
     const name = singleLine(stripTags(field(body, 'full_name') || field(body, 'name')));
@@ -151,9 +175,12 @@ const SECURITY_HEADERS = {
     'X-Frame-Options': 'DENY',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
     'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=()',
+    'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+    'Cross-Origin-Opener-Policy': 'same-origin',
+    'Cross-Origin-Resource-Policy': 'same-origin',
     'Content-Security-Policy': [
         "default-src 'self'",
-        "script-src 'self' 'unsafe-inline'",
+        "script-src 'self'",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
         "img-src 'self' data:",
         "font-src 'self' data: https://fonts.gstatic.com",

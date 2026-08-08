@@ -265,6 +265,7 @@
 
                         <form id="contact-form" action="/api/mailer" method="post">
                             <input type="hidden" name="form_type" value="Booking Request">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
 
                             <!-- STEP 1: Vehicle & Dates -->
                             <h3
@@ -369,16 +370,10 @@
                                     <input type="tel" id="phone" name="phone" placeholder="+260 97X XXX XXX" required
                                         style="width:100%;padding:14px 16px;border:1px solid #ddd;border-radius:8px;font-size:14px;">
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <label for="email" style="font-weight:600;margin-bottom:6px;display:block;">Email Address
                                         *</label>
                                     <input type="email" id="email" name="email" placeholder="you@example.com" required
-                                        style="width:100%;padding:14px 16px;border:1px solid #ddd;border-radius:8px;font-size:14px;">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="licence_no" style="font-weight:600;margin-bottom:6px;display:block;">Driver's Licence
-                                        Number *</label>
-                                    <input type="text" id="licence_no" name="licence_no" placeholder="e.g. ZM-12345678" required
                                         style="width:100%;padding:14px 16px;border:1px solid #ddd;border-radius:8px;font-size:14px;">
                                 </div>
                                 <div class="col-md-12">
@@ -547,17 +542,11 @@
                     <!-- Social -->
                     <div style="display:flex;gap:10px;">
                         <a href="https://www.facebook.com/ChalikoCarHire/" target="_blank" rel="noopener"
-                            aria-label="Facebook"
-                            style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
-                            onmouseover="this.style.background='#FF3600'"
-                            onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                            aria-label="Facebook" class="social-icon">
                             <i class="fa-brands fa-facebook-f" style="color:#fff;font-size:13px;"></i>
                         </a>
                         <a href="https://www.instagram.com/chalikocarhire2024/" target="_blank" rel="noopener"
-                            aria-label="Instagram"
-                            style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;transition:background 0.2s;"
-                            onmouseover="this.style.background='#FF3600'"
-                            onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                            aria-label="Instagram" class="social-icon">
                             <i class="fa-brands fa-instagram" style="color:#fff;font-size:13px;"></i>
                         </a>
                     </div>
