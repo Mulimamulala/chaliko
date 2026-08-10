@@ -94,6 +94,19 @@ function vehicleListJsonLd() {
   });
 }
 
+function serviceJsonLd({ name, description, url, serviceType, areaServed }) {
+  return jsonLdScript({
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name,
+    description,
+    url,
+    serviceType,
+    areaServed,
+    provider: { '@id': 'https://chaliko.com/#business' },
+  });
+}
+
 function faqPageJsonLd() {
   return jsonLdScript({
     '@context': 'https://schema.org',
@@ -197,6 +210,14 @@ const PAGES = [
         ...HOME_BREADCRUMB,
         { name: 'Car Hire Lusaka Airport', url: 'https://chaliko.com/car-hire-lusaka-airport' },
       ]),
+      serviceJsonLd({
+        name: 'Car Hire at Lusaka Airport',
+        description:
+          'Self-drive and chauffeur-driven vehicle hire serving Kenneth Kaunda International Airport and Lusaka, Zambia.',
+        url: 'https://chaliko.com/car-hire-lusaka-airport',
+        serviceType: 'Car Rental',
+        areaServed: { '@type': 'Airport', name: 'Kenneth Kaunda International Airport' },
+      }),
     ],
   },
   {
@@ -215,6 +236,14 @@ const PAGES = [
         ...HOME_BREADCRUMB,
         { name: 'Car Rental Livingstone', url: 'https://chaliko.com/car-rental-livingstone' },
       ]),
+      serviceJsonLd({
+        name: 'Car Rental in Livingstone & Victoria Falls',
+        description:
+          'Self-drive and chauffeur-driven car rental serving Livingstone and Victoria Falls, Zambia.',
+        url: 'https://chaliko.com/car-rental-livingstone',
+        serviceType: 'Car Rental',
+        areaServed: { '@type': 'City', name: 'Livingstone' },
+      }),
     ],
   },
   {
@@ -233,6 +262,14 @@ const PAGES = [
         ...HOME_BREADCRUMB,
         { name: '4x4 Rental Zambia', url: 'https://chaliko.com/4x4-rental-zambia' },
       ]),
+      serviceJsonLd({
+        name: '4x4 & SUV Rental in Zambia',
+        description:
+          'Self-drive and chauffeur-driven 4x4 and SUV rental for safari and off-road travel across Zambia.',
+        url: 'https://chaliko.com/4x4-rental-zambia',
+        serviceType: '4x4 and SUV Rental',
+        areaServed: { '@type': 'Country', name: 'Zambia' },
+      }),
     ],
   },
 ];
