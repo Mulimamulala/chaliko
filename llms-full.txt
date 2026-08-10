@@ -4,13 +4,28 @@
 
 Vehicles are self-drive or chauffeur-driven, fully insured, and available for daily, weekly, and monthly hire. Bookings are made online or by phone/WhatsApp; a 30% deposit confirms a reservation.
 
-## Pages
+## Company Background & Story
 
-- [Home](https://chaliko.com/): Company overview, fleet highlights, service area, and FAQ.
-- [Fleet](https://chaliko.com/fleet): Full list of available vehicles with seating capacity, fuel type, and transmission.
-- [Book Now](https://chaliko.com/book): Online booking form.
-- [About](https://chaliko.com/about): Company background and service details.
-- [Contact](https://chaliko.com/contact): Phone, email, WhatsApp, and office location/hours.
+Chaliko Car Hire Limited was founded with one clear goal: *to make reliable and affordable vehicle rental accessible to every Zambian and visitor to our beautiful country.* Over the years, we have grown from a humble fleet into one of Zambia's most trusted car hire companies, serving clients across six major cities and beyond.
+
+We serve individuals, families, corporate clients, NGOs, and tourists. We deliver tailored solutions for every need, whether it is a quick city commute or a cross-country safari adventure. Our team is dedicated to ensuring that every client drives away with confidence and peace of mind.
+
+From our base in Lusaka, we operate across Ndola, Kitwe, Livingstone, Kabwe, and Chipata. Wherever your journey takes you in Zambia, Chaliko is with you every kilometer of the way.
+
+## Our Mission & Values
+
+- **Our Mission:** To provide safe, reliable, and affordable vehicle hire that empowers clients to travel with confidence across Zambia.
+- **Our Vision:** To become Zambia's leading car hire company, renowned for exceptional service, vehicle quality, and customer care.
+- **Integrity:** Transparent pricing, honest communication, no hidden charges, ever. We mean what we say and deliver what we promise.
+- **Excellence:** We hold the highest standards for vehicle maintenance, cleanliness, and service at every touchpoint, from booking to drop-off.
+- **Safety First:** Every vehicle is comprehensively insured and regularly serviced. Your safety is paramount, we never compromise on it.
+- **Community:** As a proudly Zambian business, we are committed to the local economy and the communities we serve across every city we operate in.
+
+## What Sets Us Apart
+- **Recognised Service Quality:** Acknowledged by clients and peers alike for consistently outstanding service across all locations. Our reputation is built on results, not promises.
+- **Thorough Vehicle Inspections:** Every vehicle undergoes a strict multi-point safety and mechanical inspection before it is handed over to you.
+- **Flexible Rental Plans:** Whether you need a car for 48 hours or a full year, our packages adapt to your specific timeline and requirements.
+- **Countrywide Support:** With a strong presence in Lusaka, Ndola, Kitwe, Livingstone, Kabwe, and Chipata, help is never far away if you need it.
 
 ## Business facts
 
