@@ -24,7 +24,10 @@ audit and was verified but not rewritten.
 | Bing indexing | 🟡 Verified crawlable and indexable via live test; homepage indexing requested |
 | Yandex indexing | ⏳ Sitemap queued for processing (Yandex states up to 1–2 weeks) |
 | Analytics (GA4) | ✅ Installed 2026-08-13 — measurement ID `G-JDEMWKYS7H`, confirmed live in Realtime report |
-| Google Business Profile | ✅ Already exists, verified, active ("Chaliko Car Hire", 4.2★, 18 reviews) |
+| Google Business Profile | ✅ Verified, active ("Chaliko Car Hire", 4.2★, 18 reviews). Phone + hours corrected 2026-08-13 to match the site (see §13) |
+| Lighthouse SEO score | ✅ **100/100** (mobile and desktop), verified via PageSpeed Insights 2026-08-13 |
+| Lighthouse Performance score | 🟡 Desktop 88/100, **mobile 60/100** (up from 59 at session start) — see §12 for what's been fixed and what's still open |
+| NAP consistency (Google/Bing/Yandex) | ✅ Google fixed; Bing already auto-synced from Google; no Yandex listing exists (not a relevant market) — see §13 |
 
 ---
 
@@ -216,3 +219,47 @@ automated instead:
 These are headless — no browser/login needed — so they run without you
 present. You'll be notified if a routine finds something worth a look
 (e.g., a broken sitemap URL or a page that dropped out of `site:` results).
+
+---
+
+## 13. Lighthouse Scores & Performance Work (2026-08-13)
+
+Checked via PageSpeed Insights (Google's Lighthouse tool) at your request.
+
+| Category | Before | After | Notes |
+|---|---|---|---|
+| SEO | 100/100 | 100/100 | Already perfect, mobile and desktop — no gaps found. |
+| Accessibility | 93/100 | 93/100 | Not touched this session. |
+| Best Practices | 92/100 | 92/100 | Not touched this session. |
+| Performance (desktop) | 85 | 88 | |
+| Performance (mobile) | 59 | 60 | Mobile is the one that matters most (Google ranks mobile-first) — still the weak spot. |
+| Agentic Browsing (new Lighthouse category) | 2/3 | 2/3 | One failing check: "Accessibility tree is not well-formed" — not investigated this session. |
+
+**Fixed (safe, zero visual/functional risk — verified in browser, no console errors):**
+1. Google Fonts CSS now loads non-blocking (preload+onload pattern, same technique already used elsewhere in the codebase) instead of blocking first paint.
+2. `ga4.js` now loads with `defer` instead of blocking.
+3. Static assets (`/assets/*`) now get `Cache-Control: public, max-age=3600, stale-while-revalidate=86400` instead of `max-age=0` on every request. Kept to 1 hour (not longer) because filenames aren't cache-busted/hashed — a longer TTL risks serving a stale asset to a returning visitor after a deploy.
+4. Resized 15 fleet/process/about images from 800–900px wide (only ever displayed at 250–380px in the responsive grid) down to 700px — ~170KB saved, no visible quality loss, verified by viewing the resized files and the live fleet page. Updated the `width`/`height` HTML attributes to match (aspect ratio unchanged, so no layout shift).
+
+**Found but not yet touched — the real remaining gap:**
+The site's own CSS/JS is the dominant cost: `plugins.css` (703KB raw / ~120KB over the wire with Brotli), `style.css` (384KB / ~48KB compressed), `bootstrap.min.css` (192KB), plus ~833KB of JS (jQuery UI alone is 253KB). Lighthouse specifically flags:
+- **Reduce unused CSS** — ~183 KiB estimated savings
+- **Reduce unused JavaScript** — ~152 KiB estimated savings
+- **Render-blocking requests** — ~4,260 ms estimated savings on mobile (the single biggest lever)
+- **Use efficient cache lifetimes** — Lighthouse wants a much longer TTL than the 1-hour cap above; doing that safely needs cache-busted asset URLs (e.g. a build-time version query param), which wasn't implemented this session
+
+This is template/theme code (jQuery, jQuery UI, Bootstrap, GSAP, Swiper, isotope, jarallax, and others bundled by the purchased HTML theme) — trimming it safely requires figuring out what's actually used on which page and testing every interactive feature (sliders, popups, menus, date pickers, the contact form) so nothing breaks on a live booking site. You asked me to tackle this after the safe fixes; it's still in progress — nothing has been changed in the theme bundle itself yet.
+
+---
+
+## 14. NAP Consistency Check (2026-08-13)
+
+Per your request, checked Google/Bing/Yandex against the website (confirmed as the source of truth: name "Chaliko Car Hire Limited", address "Plot No. 14, Manchinchi Road, Northmead, Lusaka, Zambia", phone +260 979 517 732 primary / +260 965 517 732 secondary, hours Mon–Sat 7:00 AM–7:00 PM, closed Sunday).
+
+| Platform | Before | Fixed? |
+|---|---|---|
+| **Google Business Profile** | Phone showed the secondary/WhatsApp number (096 5517732) as the only number. Hours showed Mon–Fri 8am–5pm, Sat 8am–12:30pm — didn't match the website's 7am–7pm at all. Address already correctly included "Northmead" (a false alarm from the summary card, which just abbreviates it). | ✅ Fixed both — added 097 9517732 as primary phone (kept 096 5517732 as an additional number), and set Mon–Sat 07:00–19:00 with Sunday closed. Both edits submitted, pending Google's review (~10 min). |
+| **Bing Places** | A listing already existed and was already verified. Used Bing's "Import from Google Business Profile" feature (after you approved the OAuth grant) rather than re-entering everything by hand. | ✅ Already synced correctly after the GBP fix — name, address, phone (097 9517732), hours (Mon–Sat 7AM–7PM), and website all match. No manual edits needed. Listing shows "Pending publish," Bing's normal 7–12 day ETA for any change. |
+| **Yandex** | Checked Yandex Maps — no business listing exists for Chaliko at all. | ➖ Not created. Yandex Maps has essentially no relevant user base in Zambia (it's a Russia/CIS-focused product) — matches the original brief's own guidance to skip citations without a meaningful reason. Flagging this as a deliberate skip, not an oversight. |
+
+**What I didn't touch:** email address (not listed on any of the three platforms — the site doesn't appear to have a public contact email field set on Google Business Profile either, so nothing to sync there; worth adding to GBP directly if you want one listed).
