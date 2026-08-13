@@ -192,10 +192,16 @@ const SECURITY_HEADERS = {
     ].join('; '),
 };
 
-function withSecurityHeaders(response) {
+function withSecurityHeaders(response, request) {
     const headers = new Headers(response.headers);
     for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
         headers.set(name, value);
+    }
+    // Static assets (CSS/JS/images/fonts) aren't cache-busted with a hash, so
+    // this stays short enough that a deploy is visible to returning visitors
+    // within the hour rather than serving stale-until-manual-refresh.
+    if (request && new URL(request.url).pathname.startsWith('/assets/')) {
+        headers.set('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
     }
     return new Response(response.body, {
         status: response.status,
@@ -210,11 +216,11 @@ export default {
 
         if (url.pathname === '/api/mailer') {
             if (request.method === 'POST') {
-                return withSecurityHeaders(await handleMailer(request, env));
+                return withSecurityHeaders(await handleMailer(request, env), request);
             }
-            return withSecurityHeaders(new Response('Method not allowed', { status: 405 }));
+            return withSecurityHeaders(new Response('Method not allowed', { status: 405 }), request);
         }
 
-        return withSecurityHeaders(await env.ASSETS.fetch(request));
+        return withSecurityHeaders(await env.ASSETS.fetch(request), request);
     },
 };
