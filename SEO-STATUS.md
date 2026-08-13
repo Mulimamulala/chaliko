@@ -233,13 +233,14 @@ Checked via PageSpeed Insights (Google's Lighthouse tool) at your request.
 | Best Practices | 92/100 | 92/100 | Not touched this session. |
 | Performance (desktop) | 85 | 88 | |
 | Performance (mobile) | 59 | 60 | Mobile is the one that matters most (Google ranks mobile-first) — still the weak spot. |
-| Agentic Browsing (new Lighthouse category) | 2/3 | 2/3 | One failing check: "Accessibility tree is not well-formed" — not investigated this session. |
+| Agentic Browsing (new Lighthouse category) | 2/3 | ✅ **3/3** | Fixed — see item 5 below. |
 
 **Fixed (safe, zero visual/functional risk — verified in browser, no console errors):**
 1. Google Fonts CSS now loads non-blocking (preload+onload pattern, same technique already used elsewhere in the codebase) instead of blocking first paint.
 2. `ga4.js` now loads with `defer` instead of blocking.
 3. Static assets (`/assets/*`) now get `Cache-Control: public, max-age=3600, stale-while-revalidate=86400` instead of `max-age=0` on every request. Kept to 1 hour (not longer) because filenames aren't cache-busted/hashed — a longer TTL risks serving a stale asset to a returning visitor after a deploy.
 4. Resized 15 fleet/process/about images from 800–900px wide (only ever displayed at 250–380px in the responsive grid) down to 700px — ~170KB saved, no visible quality loss, verified by viewing the resized files and the live fleet page. Updated the `width`/`height` HTML attributes to match (aspect ratio unchanged, so no layout shift).
+5. Fixed the failing "Links must have discernible text" audit: each fleet card's "book this car" link was an icon-only `<a>` (just an inline SVG arrow, no text), across 19 occurrences in `index.html`, `fleet.html`, and `4x4-rental-zambia.html`. Added `aria-label="Book {Car Name}"` to each, derived programmatically from the link's own `href` so it can't drift out of sync with the visible car name. This was the "Accessibility tree is not well-formed" failure — confirmed fixed, Agentic Browsing now 3/3 on `/fleet`.
 
 **Found but not yet touched — the real remaining gap:**
 The site's own CSS/JS is the dominant cost: `plugins.css` (703KB raw / ~120KB over the wire with Brotli), `style.css` (384KB / ~48KB compressed), `bootstrap.min.css` (192KB), plus ~833KB of JS (jQuery UI alone is 253KB). Lighthouse specifically flags:
