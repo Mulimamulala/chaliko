@@ -3,4 +3,3 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://chaliko.com/sitemap.xml
-llms.txt: https://chaliko.com/llms.txt
