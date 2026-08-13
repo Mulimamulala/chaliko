@@ -180,11 +180,11 @@ const SECURITY_HEADERS = {
     'Cross-Origin-Resource-Policy': 'same-origin',
     'Content-Security-Policy': [
         "default-src 'self'",
-        "script-src 'self' https://www.googletagmanager.com",
+        "script-src 'self' https://www.googletagmanager.com https://static.cloudflareinsights.com",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
         "img-src 'self' data:",
         "font-src 'self' data: https://fonts.gstatic.com",
-        "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com",
+        "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://cloudflareinsights.com",
         "base-uri 'self'",
         "form-action 'self'",
         "object-src 'none'",
