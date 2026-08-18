@@ -13,6 +13,6 @@
   },
   "vars": {
     "NOTIFY_FROM": "Chaliko Website <bookings@chaliko.com>",
-    "NOTIFY_EMAILS": "chalikocarhire@yahoo.com,mulimamulala4@gmail.com"
+    "NOTIFY_EMAILS": "chalikocarhire@yahoo.com"
   }
 }
