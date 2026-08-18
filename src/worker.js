@@ -135,7 +135,7 @@ async function handleMailer(request, env) {
     const subject = `Chaliko Car Hire - ${formType} from ${name}`;
     const rows = buildDetailRows(body);
 
-    const recipients = (env.NOTIFY_EMAILS || 'mulimamulala4@gmail.com')
+    const recipients = (env.NOTIFY_EMAILS || 'chalikocarhire@yahoo.com')
         .split(',')
         .map((addr) => addr.trim())
         .filter(Boolean);
