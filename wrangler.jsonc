@@ -10,5 +10,9 @@
   },
   "build": {
     "command": "npm run build"
+  },
+  "vars": {
+    "NOTIFY_FROM": "Chaliko Website <bookings@chaliko.com>",
+    "NOTIFY_EMAILS": "chalikocarhire@yahoo.com,mulimamulala4@gmail.com"
   }
 }
