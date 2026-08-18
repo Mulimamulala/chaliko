@@ -5,7 +5,8 @@
 url("./rt-icon.woff?fa01aae5d25e80092e59d42cdfef7e67") format("woff"),
 url("./rt-icon.eot?fa01aae5d25e80092e59d42cdfef7e67#iefix") format("embedded-opentype"),
 url("./rt-icon.ttf?fa01aae5d25e80092e59d42cdfef7e67") format("truetype"),
-url("./rt-icon.svg?fa01aae5d25e80092e59d42cdfef7e67#rt-icon") format("svg")
+url("./rt-icon.svg?fa01aae5d25e80092e59d42cdfef7e67#rt-icon") format("svg");
+    font-display: swap;
 }
 
 i[class^="rt-icon-"]:before, i[class*=" rt-icon-"]:before {

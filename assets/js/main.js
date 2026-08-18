@@ -27,12 +27,14 @@
       rtsJs.metismenu();
       rtsJs.splitText();
       rtsJs.wowActive();
-      rtsJs.swiperActive();
+      // Swiper/jQuery UI datepicker are only loaded on pages that use them
+      // (see scripts/build.js) - guard so pages without them don't throw.
+      if (typeof Swiper !== 'undefined') rtsJs.swiperActive();
       rtsJs.stickyHeader();
       rtsJs.backToTopInit();
+      rtsJs.whatsappFabVisibility();
       rtsJs.sideMenu();
       rtsJs.niceSelect();
-      rtsJs.vedioActivation();
       rtsJs.videoActive();
       rtsJs.menuCurrentLink();
       rtsJs.preloader();
@@ -40,15 +42,14 @@
       rtsJs.jarallax();
       rtsJs.searchOption();
       rtsJs.mesonaryTab();
-      rtsJs.magnificPopupActive();
-      rtsJs.datePicker();
-      rtsJs.containerResize();
+      if ($.fn.datepicker) rtsJs.datePicker();
     },
     metismenu: function () {
       $('#mobile-menu-active').metisMenu();
     },
     splitText: function (e) {
       if ($(".rts-slide-anim").length) {
+        gsap.registerPlugin(ScrollTrigger);
         let animatedTextElements = document.querySelectorAll(".rts-slide-anim");
 
         animatedTextElements.forEach((element) => {
@@ -441,6 +442,23 @@
 
       });
     },
+    whatsappFabVisibility: function () {
+      // The FAB is fixed-position, so it can land directly on top of an
+      // in-page CTA (e.g. the intro-section "Book Your Vehicle" button) at
+      // whatever scroll position the page happens to stop at. Fading it out
+      // while the page is actively moving means it's only present - and
+      // tappable - once the user has actually stopped to look at the screen.
+      var fab = document.querySelector('.whatsapp-fab');
+      if (!fab) return;
+      var hideTimer;
+      window.addEventListener('scroll', function () {
+        fab.classList.add('is-scrolling');
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(function () {
+          fab.classList.remove('is-scrolling');
+        }, 450);
+      }, { passive: true });
+    },
     sideMenu: function () {
       // collups menu side right
       function openSideMenu() {
@@ -526,17 +544,6 @@
         });
       }(jQuery));
     },
-    vedioActivation: function () {
-      $(document).ready(function () {
-        $('.popup-youtube, .popup-video').magnificPopup({
-          type: 'iframe',
-          mainClass: 'mfp-fade',
-          removalDelay: 160,
-          preloader: false,
-          fixedContentPos: false
-        });
-      });
-    },
     menuCurrentLink: function () {
       var currentPage = location.pathname.split("/"),
         current = currentPage[currentPage.length - 1];
@@ -579,9 +586,23 @@
         var isotope = $(".main-isotop");
 
         if (isotope.length) {
+          // The category filter's <details> only has native show/hide CSS for
+          // the mobile accordion (<768px); at wider widths nothing toggles the
+          // `open` attribute, so the browser keeps the filter buttons collapsed
+          // and unreachable. Force it open whenever the desktop layout is active.
+          var filterDropdown = document.querySelector(".filter-dropdown");
+          if (filterDropdown) {
+            var syncFilterDropdown = function () {
+              if (window.innerWidth >= 768) filterDropdown.open = true;
+            };
+            syncFilterDropdown();
+            window.addEventListener("resize", syncFilterDropdown);
+          }
+
           var iso = new Isotope(".filter", {
             itemSelector: ".element-item",
             layoutMode: "fitRows",
+            percentPosition: true,
             fitRows: {
               equalheight: true,
             },
@@ -656,36 +677,9 @@
         });
       });
     },
-    magnificPopupActive: function () {
-      /* magnificPopup img view */
-      $('.gallery-image').magnificPopup({
-        type: 'image',
-        gallery: {
-          enabled: true
-        }
-      });
-    },
     datePicker: function () {
       $(document).ready(function () {
         $(".datepicker09").datepicker();
-      });
-    },
-    containerResize: function () {
-      $(document).ready(function () {
-        gsap.registerPlugin(ScrollTrigger);
-        var $videoArea = $(".rts-video-wrapper");
-        gsap.set($videoArea, { scale: 0.9 });
-        gsap.to($videoArea, {
-          scale: 1,
-          ease: "power1.out",
-          scrollTrigger: {
-            trigger: $videoArea,
-            start: "top bottom",
-            end: "top top",
-            scrub: true,
-            markers: false,
-          },
-        });
       });
     },
   }

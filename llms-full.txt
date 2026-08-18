@@ -4,6 +4,17 @@
 
 Vehicles are self-drive or chauffeur-driven, fully insured, and available for daily, weekly, and monthly hire. Bookings are made online or by phone/WhatsApp; a 30% deposit confirms a reservation.
 
+## Pages
+
+- [Home](https://chaliko.com/): Company overview, fleet highlights, service area, and FAQ.
+- [Fleet](https://chaliko.com/fleet): Full list of available vehicles with seating capacity, fuel type, and transmission.
+- [Book Now](https://chaliko.com/book): Online booking form.
+- [About](https://chaliko.com/about): Company background and service details.
+- [Contact](https://chaliko.com/contact): Phone, email, WhatsApp, and office location/hours.
+- [Car Hire at Lusaka Airport](https://chaliko.com/car-hire-lusaka-airport): Self-drive and chauffeur-driven vehicle hire for arrivals at Kenneth Kaunda International Airport.
+- [Car Rental in Livingstone](https://chaliko.com/car-rental-livingstone): Vehicle hire for Victoria Falls and the Livingstone area, including cross-border travel notes.
+- [4x4 & SUV Rental in Zambia](https://chaliko.com/4x4-rental-zambia): 4x4 and SUV hire for safari and off-road travel.
+
 ## Company Background & Story
 
 Chaliko Car Hire Limited was founded with one clear goal: *to make reliable and affordable vehicle rental accessible to every Zambian and visitor to our beautiful country.* Over the years, we have grown from a humble fleet into one of Zambia's most trusted car hire companies, serving clients across six major cities and beyond.

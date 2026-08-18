@@ -27,8 +27,6 @@
     <meta name="theme-color" content="#143628">
     <title>Car Rental in Zambia | Chaliko Car Hire Limited</title>
     <link rel="stylesheet" href="assets/css/plugins/plugins.css">
-    <link rel="preload" as="style" href="assets/css/plugins/magnifying-popup.css" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/css/plugins/magnifying-popup.css"></noscript>
     <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/rt-icon.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -59,7 +57,6 @@
         "name": "Chaliko Car Hire Limited",
         "description": "Zambia's trusted car hire company offering fully insured sedans, SUVs, 4x4 vehicles, and buses for daily, weekly, or monthly self-drive rental across Lusaka, Ndola, Kitwe, Livingstone, Kabwe, and Chipata.",
         "foundingDate": "2014",
-        "priceRange": "$$",
         "currenciesAccepted": "ZMW, USD",
         "paymentAccepted": "Cash, Bank Transfer, Mobile Money",
         "numberOfEmployees": {"@type": "QuantitativeValue", "minValue": 10},
@@ -327,7 +324,8 @@
             <div class="booking-search-form booking-two">
                 <form action="/fleet" method="get" accept-charset="utf-8">
                     <div class="select-wrapper">
-                        <select name="car_type" class="mySelect">
+                        <label for="home-search-car-type" class="visually-hidden">Choose Car Type</label>
+                        <select id="home-search-car-type" name="car_type" class="mySelect">
                             <option value="" selected>Choose Car Type</option>
                             <option value="sedan">Sedans</option>
                             <option value="hatchback">Hatchbacks</option>
@@ -340,7 +338,8 @@
                 </form>
                 <form class="select-2" action="#" method="get" accept-charset="utf-8">
                     <div class="select-wrapper">
-                        <select name="pickup_location" class="my_select2">
+                        <label for="home-search-pickup-location" class="visually-hidden">Pick Up Location</label>
+                        <select id="home-search-pickup-location" name="pickup_location" class="my_select2">
                             <option value="" selected>Pick Up Location</option>
                             <option value="lusaka">Lusaka</option>
                             <option value="ndola">Ndola</option>
@@ -353,11 +352,13 @@
                     </div>
                 </form>
                 <form class="select-2" action="#" method="get" accept-charset="utf-8">
-                    <input type="text" class="datepicker09" name="pickup_date" placeholder="Pick Up Date">
+                    <label for="home-search-pickup-date" class="visually-hidden">Pick Up Date</label>
+                    <input type="text" id="home-search-pickup-date" class="datepicker09" name="pickup_date" placeholder="Pick Up Date">
                     <span class="icon"><img src="assets/images/icon/date-picker.svg" alt="Pick-up date icon"></span>
                 </form>
                 <form class="select-2" action="#" method="get" accept-charset="utf-8">
-                    <input type="text" class="datepicker09" name="return_date" placeholder="Return Date">
+                    <label for="home-search-return-date" class="visually-hidden">Return Date</label>
+                    <input type="text" id="home-search-return-date" class="datepicker09" name="return_date" placeholder="Return Date">
                     <span class="icon"><img src="assets/images/icon/date-picker.svg" alt="Return date icon"></span>
                 </form>
                 <button type="button" id="home-search-btn" class="rts__btn btn-primary">
@@ -654,175 +655,6 @@
     </section>
     <!-- process area end -->
 
-    <!-- why choose area start -->
-    <!-- <section class="rts-why-choose-area rts-section-gapTop">
-        <div class="container">
-            <div class="why-choose-wrapper">
-                <div class="row gy-5 gy-xl-0 align-items-center">
-                    <div class="col-xl-6">
-                        <div class="why-choose-image-left-area">
-                            <div class="inner-image-one">
-                                <div class="inner-image"><div class="overlay-image"><img src="assets/images/why-choose/2.webp" alt="car"></div></div>
-                            </div>
-                            <div class="image-area"><img src="assets/images/why-choose/1.webp" alt="car"></div>
-                            <div class="inner-image-two">
-                                <div class="inner-image"><div class="overlay-image"><img src="assets/images/why-choose/3.webp" alt="car"></div></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="why-choose-content-right-area">
-                            <div class="rts-section-title">
-                                <span class="subtitle wow fadeInUp" data-wow-delay="0.1s">Why Choose Chaliko</span>
-                                <h2 class="heading-title text-uppercase rts-slide-anim">Why Choose <span>Us</span></h2>
-                            </div>
-                            <div class="why-choose-item-wrapper">
-                                <div class="why-choose-item-two">
-                                    <div class="inner-icon"><div class="icon"><img src="assets/images/icon/why-1.svg" alt="icon"></div></div>
-                                    <div class="content"><h3 class="title">Fully Insured Fleet</h3><p class="desc">Every vehicle is comprehensively insured. Drive with total peace of mind across every road in Zambia.</p></div>
-                                </div>
-                                <div class="why-choose-item-two">
-                                    <div class="inner-icon"><div class="icon"><img src="assets/images/icon/why-2.svg" alt="icon"></div></div>
-                                    <div class="content"><h3 class="title">Nationwide Coverage</h3><p class="desc">Operating across Lusaka, Ndola, Kitwe, <a href="/car-rental-livingstone" style="color:inherit;text-decoration:underline;">Livingstone</a>, Kabwe and Chipata. We go wherever Zambia takes you.</p></div>
-                                </div>
-                                <div class="why-choose-item-two">
-                                    <div class="inner-icon"><div class="icon"><img src="assets/images/icon/why-3.svg" alt="icon"></div></div>
-                                    <div class="content"><h3 class="title">Immaculate Vehicles</h3><p class="desc">Meticulously inspected and serviced before every hire. You always receive a clean, roadworthy car.</p></div>
-                                </div>
-                                <div class="why-choose-item-two">
-                                    <div class="inner-icon"><div class="icon"><img src="assets/images/icon/why-4.svg" alt="icon"></div></div>
-                                    <div class="content"><h3 class="title">Instant Booking</h3><p class="desc">Reserve your vehicle in minutes. Fast confirmation, no waiting, no queues, no hassle.</p></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- why choose area end -->
-
-    <!-- brand area start -->
-    <!-- <div class="rts-brand-area rts-section-gap">
-        <div class="container">
-            <div class="rts-section-title text-center mb--40">
-                <span class="subtitle">Vehicle Brands in Our Fleet</span>
-            </div>
-            <div class="rts-brand-wrappper">
-                <div class="single-brand wow fadeInUp" data-wow-delay="0.2s"><img src="assets/images/brand/1.svg"
-                        alt="Toyota"></div>
-                <div class="single-brand wow fadeInUp" data-wow-delay="0.4s"><img src="assets/images/brand/2.svg"
-                        alt="Suzuki"></div>
-                <div class="single-brand wow fadeInUp" data-wow-delay="0.6s"><img src="assets/images/brand/3.svg"
-                        alt="Honda"></div>
-                <div class="single-brand wow fadeInUp" data-wow-delay="0.8s"><img src="assets/images/brand/4.svg"
-                        alt="Nissan"></div>
-                <div class="single-brand wow fadeInUp" data-wow-delay="1s"><img src="assets/images/brand/5.svg"
-                        alt="Ford"></div>
-                <div class="single-brand wow fadeInUp" data-wow-delay="1.2s"><img src="assets/images/brand/6.svg"
-                        alt="Mercedes"></div>
-            </div>
-        </div>
-    </div> -->
-    <!-- brand area end -->
-
-    <!-- testimonials area removed -->
-    <section class="rts-testiomonials-area testimonials-area-three rts-section-gap bg-gray" style="display:none">
-        <div class="container">
-            <div class="rts-section-title text-center">
-                <span class="subtitle wow fadeInUp" data-wow-delay="0.1s">Testimonial</span>
-                <h2 class="heading-title text-uppercase rts-slide-anim">WHAT OUR <span>CLIENTS</span> ARE SAYING</h2>
-            </div>
-            <div class="rts-testimonials-slide-wrapper mt--70 mt_sm--30">
-                <div class="swiper rts-testimonials-item-slider">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <article class="single-testimonials-item">
-                                <ul class="star-rating">
-                                    <li><i class="rt-icon-star"></i></li>
-                                    <li><i class="rt-icon-star"></i></li>
-                                    <li><i class="rt-icon-star"></i></li>
-                                    <li><i class="rt-icon-star"></i></li>
-                                    <li><i class="rt-icon-star"></i></li>
-                                </ul>
-                                <p class="desc">"Chaliko is in a class of its own. The Land Cruiser we hired for our
-                                    Victoria Falls safari was immaculate, the team was professional, and the whole
-                                    process was seamless. We wouldn't rent from anyone else in Zambia."</p>
-                                <div class="author-area">
-                                    <div class="author-thumb"><img src="assets/images/testimonials/author-1.webp"
-                                            alt="Thandiwe Kapata" width="200" height="200" loading="lazy"></div>
-                                    <div class="author-content">
-                                        <h3 class="author-name">Thandiwe Kapata</h3><span
-                                            class="author-role">Livingstone, Safari Experience</span>
-                                    </div>
-                                </div>
-                                <div class="inner-icon">
-                                    <div class="icon"><img src="assets/images/testimonials/icon/qoute-sm-4.svg"
-                                            alt="Quotation mark icon"></div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="swiper-slide">
-                            <article class="single-testimonials-item">
-                                <ul class="star-rating">
-                                    <li><i class="rt-icon-star"></i></li>
-                                    <li><i class="rt-icon-star"></i></li>
-                                    <li><i class="rt-icon-star"></i></li>
-                                    <li><i class="rt-icon-star"></i></li>
-                                    <li><i class="rt-icon-star"></i></li>
-                                </ul>
-                                <p class="desc">"Excellent service. The car was spotless and the booking process was
-                                    incredibly smooth. My go-to car hire company in Zambia, highly recommended to
-                                    everyone."</p>
-                                <div class="author-area">
-                                    <div class="author-thumb"><img src="assets/images/testimonials/author-2.webp"
-                                            alt="Bwalya Mulenga" width="200" height="200" loading="lazy"></div>
-                                    <div class="author-content">
-                                        <h3 class="author-name">Bwalya Mulenga</h3><span
-                                            class="author-role">Lusaka</span>
-                                    </div>
-                                </div>
-                                <div class="inner-icon">
-                                    <div class="icon"><img src="assets/images/testimonials/icon/qoute-sm-4.svg"
-                                            alt="Quotation mark icon"></div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="swiper-slide">
-                            <article class="single-testimonials-item">
-                                <ul class="star-rating">
-                                    <li><i class="rt-icon-star"></i></li>
-                                    <li><i class="rt-icon-star"></i></li>
-                                    <li><i class="rt-icon-star"></i></li>
-                                    <li><i class="rt-icon-star"></i></li>
-                                    <li><i class="rt-icon-star"></i></li>
-                                </ul>
-                                <p class="desc">"Professional team and well-maintained vehicles. The corporate account
-                                    service is exactly what our company needed. Quick booking, friendly staff, and very
-                                    fair rates."</p>
-                                <div class="author-area">
-                                    <div class="author-thumb"><img src="assets/images/testimonials/author-3.webp"
-                                            alt="James Tembo" width="200" height="200" loading="lazy"></div>
-                                    <div class="author-content">
-                                        <h3 class="author-name">James Tembo</h3><span class="author-role">Kitwe, Corporate Client</span>
-                                    </div>
-                                </div>
-                                <div class="inner-icon">
-                                    <div class="icon"><img src="assets/images/testimonials/icon/qoute-sm-4.svg"
-                                            alt="Quotation mark icon"></div>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="rts-testimonials-pagination-wrapper-three" data-bg-src="assets/images/banner/bg-shape.svg">
-            <div class="rts-testimonials-dot"></div>
-        </div>
-    </section>
-    <!-- testimonials area end -->
-
     <!-- FAQ area start -->
     <section class="rts-faq-area rts-section-gap">
         <div class="container">
@@ -839,21 +671,25 @@
                                 <input type="hidden" name="form_type" value="Quick Enquiry (Homepage)">
                                 <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
                                 <div class="single-input">
+                                    <label for="name" class="visually-hidden">Your Name</label>
                                     <span class="icon"><i class="fa-regular fa-user"
                                             style="font-size:14px;color:#555;"></i></span>
                                     <input type="text" id="name" name="name" placeholder="Your Name" required>
                                 </div>
                                 <div class="single-input">
+                                    <label for="email" class="visually-hidden">Email Address</label>
                                     <span class="icon"><i class="fa-regular fa-envelope"
                                             style="font-size:14px;color:#555;"></i></span>
                                     <input type="email" id="email" name="email" placeholder="your@email.com" required>
                                 </div>
                                 <div class="single-input">
+                                    <label for="phone" class="visually-hidden">Phone Number</label>
                                     <span class="icon"><i class="fa-solid fa-phone"
                                             style="font-size:14px;color:#555;"></i></span>
                                     <input type="text" id="phone" name="phone" placeholder="+260 97X XXX XXX">
                                 </div>
                                 <div class="single-input">
+                                    <label for="message" class="visually-hidden">Message</label>
                                     <span class="icon"><i class="fa-regular fa-comment"
                                             style="font-size:14px;color:#555;"></i></span>
                                     <textarea id="message" name="message" placeholder="Your message..." required></textarea>
@@ -986,7 +822,7 @@
                         hire company. Premium insured vehicles available across Lusaka, Ndola, Kitwe, Livingstone, Kabwe
                         and Chipata.</p>
                     <!-- Social -->
-                    <div style="display:flex;gap:10px;">
+                    <div style="display:flex;gap:10px;margin-bottom:24px;">
                         <a href="https://www.facebook.com/ChalikoCarHire/" target="_blank" rel="noopener"
                             aria-label="Facebook" class="social-icon">
                             <i class="fa-brands fa-facebook-f" style="color:#fff;font-size:13px;"></i>
@@ -996,6 +832,9 @@
                             <i class="fa-brands fa-instagram" style="color:#fff;font-size:13px;"></i>
                         </a>
                     </div>
+                    <p style="font-size:13px;margin:0;">
+                        <a href="/car-hire-lusaka-airport" class="footer-explore-link">Airport Pickup</a><span style="color:rgba(255,255,255,0.3);margin:0 10px;">&middot;</span><a href="/car-rental-livingstone" class="footer-explore-link">Livingstone</a><span style="color:rgba(255,255,255,0.3);margin:0 10px;">&middot;</span><a href="/4x4-rental-zambia" class="footer-explore-link">4x4 &amp; SUV Rental</a>
+                    </p>
                 </div>
 
                 <!-- Contact Info -->
@@ -1135,8 +974,6 @@
     <script src="assets/js/vendor/jarallax.js" defer></script>
     <script src="assets/js/vendor/split-text.js" defer></script>
     <script src="assets/js/plugins/smooth-scroll.js" defer></script>
-    <script src="assets/js/plugins/magnifying-popup.js" defer></script>
-    <script src="assets/js/plugins/isotope.js" defer></script>
     <script src="assets/js/plugins/gsap.js" defer></script>
     <script src="assets/js/plugins/scroll-trigger.js" defer></script>
     <script src="assets/js/vendor/bootstrap.min.js" defer></script>

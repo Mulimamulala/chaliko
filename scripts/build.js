@@ -131,7 +131,13 @@ const PAGES = [
     activeNav: 'home',
     headerInner: false,
     contactForm: true,
-    isotope: true,
+    // The homepage's fleet teaser is a plain grid, not an Isotope filter -
+    // only fleet.html actually uses isotope.js.
+    isotope: false,
+    // jQuery UI (datepicker) and Swiper (hero/testimonial/category sliders)
+    // are only used on the homepage - keep them off every other page.
+    jqueryUi: true,
+    swiper: true,
     heroImage: 'assets/images/banner/5.webp',
     extraJsonLd: [faqPageJsonLd()],
   },
@@ -145,6 +151,8 @@ const PAGES = [
     headerInner: true,
     contactForm: false,
     isotope: false,
+    jqueryUi: false,
+    swiper: false,
     heroImage: 'assets/images/banner/2.webp',
     extraJsonLd: [
       breadcrumbJsonLd([...HOME_BREADCRUMB, { name: 'About Us', url: 'https://chaliko.com/about' }]),
@@ -159,7 +167,11 @@ const PAGES = [
     activeNav: 'book',
     headerInner: true,
     contactForm: true,
-    isotope: true,
+    // book.html links out to /fleet rather than embedding an isotope grid -
+    // confirmed no .main-isotop markup on this page.
+    isotope: false,
+    jqueryUi: false,
+    swiper: false,
     heroImage: 'assets/images/banner/2.webp',
     extraJsonLd: [
       breadcrumbJsonLd([...HOME_BREADCRUMB, { name: 'Book Now', url: 'https://chaliko.com/book' }]),
@@ -175,6 +187,8 @@ const PAGES = [
     headerInner: true,
     contactForm: true,
     isotope: false,
+    jqueryUi: false,
+    swiper: false,
     extraJsonLd: [
       breadcrumbJsonLd([...HOME_BREADCRUMB, { name: 'Contact', url: 'https://chaliko.com/contact' }]),
     ],
@@ -189,6 +203,8 @@ const PAGES = [
     headerInner: true,
     contactForm: false,
     isotope: true,
+    jqueryUi: false,
+    swiper: false,
     extraJsonLd: [
       breadcrumbJsonLd([...HOME_BREADCRUMB, { name: 'Our Fleet', url: 'https://chaliko.com/fleet' }]),
       vehicleListJsonLd(),
@@ -204,6 +220,8 @@ const PAGES = [
     headerInner: true,
     contactForm: false,
     isotope: false,
+    jqueryUi: false,
+    swiper: false,
     heroImage: 'assets/images/banner/6.webp',
     extraJsonLd: [
       breadcrumbJsonLd([
@@ -230,6 +248,8 @@ const PAGES = [
     headerInner: true,
     contactForm: false,
     isotope: false,
+    jqueryUi: false,
+    swiper: false,
     heroImage: 'assets/images/banner/2.webp',
     extraJsonLd: [
       breadcrumbJsonLd([
@@ -256,6 +276,8 @@ const PAGES = [
     headerInner: true,
     contactForm: false,
     isotope: false,
+    jqueryUi: false,
+    swiper: false,
     heroImage: 'assets/images/banner/6.webp',
     extraJsonLd: [
       breadcrumbJsonLd([
@@ -357,6 +379,8 @@ for (const page of PAGES) {
   const scriptsRendered = renderTemplate(scriptsTemplate, {
     CONTACT_FORM_SCRIPT: page.contactForm ? '<script src="assets/js/plugins/contact-form.js" defer></script>' : '',
     ISOTOPE_SCRIPT: page.isotope ? '<script src="assets/js/plugins/isotope.js" defer></script>' : '',
+    JQUERY_UI_SCRIPT: page.jqueryUi ? '<script src="assets/js/plugins/jquery-ui.js" defer></script>' : '',
+    SWIPER_SCRIPT: page.swiper ? '<script src="assets/js/plugins/swiper.js" defer></script>' : '',
   })
     .split('\n')
     .filter((line) => line.trim() !== '')
