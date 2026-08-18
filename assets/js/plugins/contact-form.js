@@ -14,10 +14,10 @@
     // Get the messages div.
     var formMessages = $('#form-messages');
 
-    // --- Toast notification -------------------------------------------
-    // Injected once per page so submissions get a visible, animated
-    // confirmation instead of relying solely on the easy-to-miss inline
-    // #form-messages text below the submit button.
+    // --- Confirmation popup ---------------------------------------------
+    // A small centered card confirms the submission so it can't be missed,
+    // instead of relying solely on the easy-to-miss inline #form-messages
+    // text below the submit button.
     var TOAST_STYLE_ID = 'cf-toast-styles';
     var TOAST_AUTO_DISMISS_MS = 6000;
     var toastTimer = null;
@@ -26,39 +26,44 @@
         if (document.getElementById(TOAST_STYLE_ID)) return;
 
         var css = [
-            '.cf-toast-wrap{position:fixed;top:16px;left:16px;right:16px;z-index:999999;',
-            'display:flex;flex-direction:column;align-items:center;pointer-events:none;}',
+            '.cf-toast-wrap{position:fixed;inset:0;z-index:999999;display:flex;',
+            'align-items:center;justify-content:center;padding:16px;',
+            'pointer-events:none;box-sizing:border-box;}',
 
-            '.cf-toast{pointer-events:auto;display:flex;align-items:flex-start;gap:12px;',
-            'width:100%;max-width:420px;background:#fff;color:#143628;border-radius:10px;',
-            'box-shadow:0 12px 32px rgba(20,54,40,0.18);padding:14px 16px;',
-            'font-family:inherit;font-size:14px;line-height:1.45;box-sizing:border-box;',
-            'border-left:4px solid #143628;opacity:0;transform:translateY(-16px);',
-            'transition:opacity .28s ease,transform .28s ease;}',
+            '.cf-toast{pointer-events:auto;display:flex;flex-direction:column;',
+            'align-items:center;gap:14px;width:100%;max-width:280px;',
+            'background:#fff;color:#143628;border-radius:16px;',
+            'box-shadow:0 16px 48px rgba(20,54,40,0.22);padding:32px 24px;',
+            'font-family:inherit;box-sizing:border-box;text-align:center;',
+            'opacity:0;transform:scale(.9);',
+            'transition:opacity .22s ease,transform .22s ease;}',
 
-            '.cf-toast.cf-toast--show{opacity:1;transform:translateY(0);}',
-            '.cf-toast.cf-toast--error{border-left-color:#c62828;}',
+            '.cf-toast.cf-toast--show{opacity:1;transform:scale(1);}',
 
-            '.cf-toast__icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;',
-            'display:flex;align-items:center;justify-content:center;font-size:12px;',
-            'font-weight:700;color:#fff;background:#143628;margin-top:1px;}',
-            '.cf-toast--error .cf-toast__icon{background:#c62828;}',
+            '.cf-toast__title{font-size:17px;font-weight:700;margin:0;}',
+            '.cf-toast__detail{font-size:13px;font-weight:400;color:#6b7280;',
+            'margin:-6px 0 0;word-break:break-word;}',
 
-            '.cf-toast__body{flex:1;font-weight:500;word-break:break-word;}',
+            /* Animated tick (success). */
+            '.cf-tick{width:60px;height:60px;flex-shrink:0;}',
+            '.cf-tick__circle{fill:none;stroke:#1f8a4c;stroke-width:2;',
+            'stroke-dasharray:152;stroke-dashoffset:152;',
+            'animation:cfCircle .45s ease-out forwards;}',
+            '.cf-tick__check{fill:none;stroke:#1f8a4c;stroke-width:3;',
+            'stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:36;',
+            'stroke-dashoffset:36;animation:cfCheck .35s .4s ease-out forwards;}',
+            '@keyframes cfCircle{to{stroke-dashoffset:0;}}',
+            '@keyframes cfCheck{to{stroke-dashoffset:0;}}',
 
-            '.cf-toast__close{flex-shrink:0;background:none;border:none;cursor:pointer;',
-            'font-size:18px;line-height:1;color:#9aa39c;padding:0;margin:0;}',
-            '.cf-toast__close:hover,.cf-toast__close:focus{color:#143628;}',
-
-            /* Tablet and up: anchor top-right with a fixed width instead of a
-               full-bleed banner. */
-            '@media (min-width:641px){',
-            '.cf-toast-wrap{left:auto;right:24px;top:24px;align-items:flex-end;}',
-            '.cf-toast{width:380px;}',
-            '}',
+            /* Simple mark (error) — scales in with the card, no draw effect. */
+            '.cf-toast__icon--error{width:60px;height:60px;flex-shrink:0;',
+            'border-radius:50%;background:#fdecea;color:#c62828;',
+            'font-size:28px;font-weight:700;display:flex;align-items:center;',
+            'justify-content:center;}',
 
             '@media (prefers-reduced-motion: reduce){',
             '.cf-toast{transition:opacity .01ms linear;}',
+            '.cf-tick__circle,.cf-tick__check{animation:none;stroke-dashoffset:0;}',
             '}'
         ].join('');
 
@@ -78,6 +83,11 @@
         return $wrap;
     }
 
+    var TICK_SVG = '<svg class="cf-tick" viewBox="0 0 52 52" aria-hidden="true">' +
+        '<circle class="cf-tick__circle" cx="26" cy="26" r="24"/>' +
+        '<path class="cf-tick__check" d="M14 27l7 7 16-16"/>' +
+        '</svg>';
+
     function showToast(message, isError) {
         var $wrap = getToastWrap();
         $wrap.empty();
@@ -88,17 +98,20 @@
         }
 
         var $toast = $('<div class="cf-toast" role="status"></div>');
-        if (isError) $toast.addClass('cf-toast--error');
 
-        var $icon = $('<span class="cf-toast__icon" aria-hidden="true"></span>').text(isError ? '!' : '✓');
-        var $body = $('<span class="cf-toast__body"></span>').text(message);
-        var $close = $('<button type="button" class="cf-toast__close" aria-label="Dismiss notification">&times;</button>');
+        if (isError) {
+            $toast.append($('<span class="cf-toast__icon--error" aria-hidden="true">!</span>'));
+            $toast.append($('<p class="cf-toast__title">Message not sent</p>'));
+            $toast.append($('<p class="cf-toast__detail"></p>').text(message));
+        } else {
+            $toast.append($(TICK_SVG));
+            $toast.append($('<p class="cf-toast__title">Message sent</p>'));
+        }
 
-        $close.on('click', function () {
+        $toast.on('click', function () {
             dismissToast($toast);
         });
 
-        $toast.append($icon, $body, $close);
         $wrap.append($toast);
 
         // Force a reflow so the transition to the "show" state actually animates.
