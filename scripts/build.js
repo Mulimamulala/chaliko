@@ -126,7 +126,7 @@ const PAGES = [
     file: 'index.html',
     title: 'Car Rental in Zambia | Chaliko Car Hire Limited',
     description:
-      "Chaliko Car Hire Limited, Zambia's premier car rental company. Premium, fully insured vehicles available across Lusaka, Ndola, Livingstone and beyond.",
+      "Chaliko Car Hire Limited, Zambia's premier car rental company. Premium, fully insured vehicles based in Lusaka, available for hire across Zambia.",
     url: 'https://chaliko.com/',
     activeNav: 'home',
     headerInner: false,
@@ -145,7 +145,7 @@ const PAGES = [
     file: 'about.html',
     title: 'About Chaliko Car Hire Limited | Car Hire in Zambia',
     description:
-      "About Chaliko Car Hire Limited, Zambia's trusted car hire company serving clients across six cities with a premium fleet and exceptional service.",
+      "About Chaliko Car Hire Limited, Zambia's trusted car hire company based in Lusaka, serving clients across Zambia with a premium fleet and exceptional service.",
     url: 'https://chaliko.com/about',
     activeNav: 'about',
     headerInner: true,
@@ -240,9 +240,9 @@ const PAGES = [
   },
   {
     file: 'car-rental-livingstone.html',
-    title: 'Car Rental in Livingstone & Victoria Falls | Chaliko',
+    title: 'Car Hire for Livingstone & Victoria Falls | Chaliko',
     description:
-      "Self-drive and chauffeur-driven car rental in Livingstone, Zambia. Explore Victoria Falls with Chaliko's fully insured fleet. Call +260 979 517 732.",
+      "Hire a self-drive or chauffeur-driven vehicle from Lusaka for your trip to Livingstone and Victoria Falls, Zambia. Fully insured fleet. Call +260 979 517 732.",
     url: 'https://chaliko.com/car-rental-livingstone',
     activeNav: null,
     headerInner: true,
@@ -254,12 +254,12 @@ const PAGES = [
     extraJsonLd: [
       breadcrumbJsonLd([
         ...HOME_BREADCRUMB,
-        { name: 'Car Rental Livingstone', url: 'https://chaliko.com/car-rental-livingstone' },
+        { name: 'Livingstone & Victoria Falls', url: 'https://chaliko.com/car-rental-livingstone' },
       ]),
       serviceJsonLd({
-        name: 'Car Rental in Livingstone & Victoria Falls',
+        name: 'Car Hire for Livingstone & Victoria Falls',
         description:
-          'Self-drive and chauffeur-driven car rental serving Livingstone and Victoria Falls, Zambia.',
+          'Self-drive or chauffeur-driven vehicle hire based in Lusaka, for client-arranged trips to Livingstone and Victoria Falls, Zambia. Chaliko has no branch in Livingstone; accommodation, entry fees, and other costs on the ground are arranged separately by the client.',
         url: 'https://chaliko.com/car-rental-livingstone',
         serviceType: 'Car Rental',
         areaServed: { '@type': 'City', name: 'Livingstone' },
