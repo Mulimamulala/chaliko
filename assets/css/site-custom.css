@@ -32,3 +32,15 @@
         letter-spacing: 2px;
     }
 }
+
+/* Header contact strip: on laptop widths the full address doesn't fit on one
+   line and pushed the "Book Now" button off-screen, so let it wrap. Above
+   1440px it fits on one line; below 992px the strip is hidden. */
+@media (max-width: 1440px) {
+    .header-one .header-top .inner .get-touch-area .map-area:last-child .text a {
+        white-space: normal;
+        display: block;
+        max-width: 190px;
+        line-height: 1.3;
+    }
+}
