@@ -30,7 +30,9 @@ function escapeHtml(value) {
     return value
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 }
 
 function buildDetailRows(body) {
@@ -104,32 +106,124 @@ function isTrustedOrigin(request) {
     return false;
 }
 
-async function handleMailer(request, env) {
-    if (!isTrustedOrigin(request)) {
-        return new Response('Forbidden', { status: 403 });
+// --- Mailer limits ----------------------------------------------------------
+// The forms are small; anything bigger than this is not a real visitor.
+const MAX_BODY_BYTES = 16 * 1024;
+const MAX_NAME_LENGTH = 100;
+const MAX_EMAIL_LENGTH = 254;
+const MAX_FIELD_LENGTH = 300;
+const MAX_LONG_FIELD_LENGTH = 5000; // message / notes
+const LONG_FIELDS = new Set(['message', 'notes']);
+
+// Only these subjects can appear in the notification email. Anything else a
+// client sends is replaced with the generic label rather than echoed.
+const FORM_TYPES = new Set(['Booking Request', 'Contact Message', 'Quick Enquiry (Homepage)']);
+
+// Stricter than "anything@anything.tld": no quotes, angle brackets, commas,
+// semicolons or whitespace, so the address can't smuggle extra recipients or
+// display names into reply_to.
+const EMAIL_PATTERN = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)+$/;
+
+const MSG_SENT = "Thank you! Your message has been sent - we'll be in touch within 2 hours.";
+const MSG_INVALID = 'Oops! There was a problem with your submission. Please complete the form and try again.';
+const MSG_FAILED = "Oops! Something went wrong and we couldn't send your message. Please call us instead.";
+const MSG_RATE_LIMITED = 'Too many messages in a short time. Please wait a minute and try again, or call us.';
+
+function textResponse(body, status, extraHeaders) {
+    return new Response(body, {
+        status,
+        headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store', ...extraHeaders },
+    });
+}
+
+// Removes characters that have meaning inside an email display name
+// ("Name" <addr>) plus control characters, then trims and caps the length.
+function safeDisplayName(value) {
+    return value
+        .replace(/[\u0000-\u001F\u007F"<>,;:\\@()[\]]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .slice(0, MAX_NAME_LENGTH);
+}
+
+// Caps every submitted string so one oversized field can't bloat the email.
+function capFields(body) {
+    const capped = {};
+    for (const [key, value] of Object.entries(body)) {
+        if (typeof value !== 'string') continue;
+        const max = LONG_FIELDS.has(key) ? MAX_LONG_FIELD_LENGTH : MAX_FIELD_LENGTH;
+        capped[key] = value.slice(0, max);
     }
+    return capped;
+}
+
+async function readBody(request) {
+    const declared = Number(request.headers.get('content-length') || 0);
+    if (declared > MAX_BODY_BYTES) return { error: 413 };
+
+    // Read as text with a hard cap (content-length can be absent or wrong).
+    const raw = await request.text();
+    if (raw.length > MAX_BODY_BYTES) return { error: 413 };
 
     const contentType = request.headers.get('content-type') || '';
-    let body = {};
-    if (contentType.includes('application/json')) {
-        body = await request.json();
-    } else {
-        const formData = await request.formData();
-        body = Object.fromEntries(formData.entries());
+    try {
+        if (contentType.includes('application/json')) {
+            const parsed = JSON.parse(raw);
+            if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return { error: 400 };
+            return { body: parsed };
+        }
+        return { body: Object.fromEntries(new URLSearchParams(raw).entries()) };
+    } catch {
+        return { error: 400 };
     }
+}
+
+async function isRateLimited(request, env) {
+    // Bound in wrangler.jsonc ("ratelimits"). Absent in plain local dev, in
+    // which case the check is skipped rather than blocking every request.
+    if (!env.MAILER_LIMITER) return false;
+    const ip = request.headers.get('cf-connecting-ip') || 'unknown';
+    try {
+        const { success } = await env.MAILER_LIMITER.limit({ key: ip });
+        return !success;
+    } catch (err) {
+        console.error('rate limiter error:', err);
+        return false; // fail open: never lose a genuine booking over a limiter fault
+    }
+}
+
+async function handleMailer(request, env) {
+    if (!isTrustedOrigin(request)) {
+        return textResponse('Forbidden', 403);
+    }
+
+    if (await isRateLimited(request, env)) {
+        return textResponse(MSG_RATE_LIMITED, 429, { 'Retry-After': '60' });
+    }
+
+    const { body: rawBody, error } = await readBody(request);
+    if (error === 413) return textResponse(MSG_INVALID, 413);
+    if (error) return textResponse(MSG_INVALID, 400);
+    const body = capFields(rawBody);
 
     // Honeypot: a real visitor never fills this hidden field, only bots do.
+    // Reply as if it worked so bots get no signal.
     if (field(body, 'website')) {
-        return new Response("Thank you! Your message has been sent - we'll be in touch within 2 hours.", { status: 200 });
+        return textResponse(MSG_SENT, 200);
     }
 
-    const name = singleLine(stripTags(field(body, 'full_name') || field(body, 'name')));
+    const name = safeDisplayName(stripTags(field(body, 'full_name') || field(body, 'name')));
     const email = field(body, 'email');
-    const formType = stripTags(field(body, 'form_type')) || 'Website Message';
+    const requestedType = singleLine(stripTags(field(body, 'form_type')));
+    const formType = FORM_TYPES.has(requestedType) ? requestedType : 'Website Message';
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!name || !emailPattern.test(email)) {
-        return new Response('Oops! There was a problem with your submission. Please complete the form and try again.', { status: 400 });
+    if (!name || email.length > MAX_EMAIL_LENGTH || !EMAIL_PATTERN.test(email)) {
+        return textResponse(MSG_INVALID, 400);
+    }
+
+    if (!env.RESEND_API_KEY) {
+        console.error('mailer error: RESEND_API_KEY is not set');
+        return textResponse(MSG_FAILED, 500);
     }
 
     const subject = `Chaliko Car Hire - ${formType} from ${name}`;
@@ -151,7 +245,7 @@ async function handleMailer(request, env) {
             body: JSON.stringify({
                 from,
                 to: recipients,
-                reply_to: `${name} <${email}>`,
+                reply_to: `"${name}" <${email}>`,
                 subject,
                 text: buildTextBody(formType, name, email, rows),
                 html: buildHtmlBody(formType, name, email, rows),
@@ -159,14 +253,14 @@ async function handleMailer(request, env) {
         });
 
         if (!resendRes.ok) {
-            console.error('Resend error:', await resendRes.text());
-            return new Response("Oops! Something went wrong and we couldn't send your message. Please call us instead.", { status: 500 });
+            console.error('Resend error:', resendRes.status, await resendRes.text());
+            return textResponse(MSG_FAILED, 502);
         }
 
-        return new Response("Thank you! Your message has been sent - we'll be in touch within 2 hours.", { status: 200 });
+        return textResponse(MSG_SENT, 200);
     } catch (err) {
         console.error('mailer error:', err);
-        return new Response("Oops! Something went wrong and we couldn't send your message. Please call us instead.", { status: 500 });
+        return textResponse(MSG_FAILED, 502);
     }
 }
 
@@ -218,7 +312,7 @@ export default {
             if (request.method === 'POST') {
                 return withSecurityHeaders(await handleMailer(request, env), request);
             }
-            return withSecurityHeaders(new Response('Method not allowed', { status: 405 }), request);
+            return withSecurityHeaders(textResponse('Method not allowed', 405, { Allow: 'POST' }), request);
         }
 
         return withSecurityHeaders(await env.ASSETS.fetch(request), request);

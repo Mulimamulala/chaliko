@@ -134,9 +134,8 @@ const PAGES = [
     // The homepage's fleet teaser is a plain grid, not an Isotope filter -
     // only fleet.html actually uses isotope.js.
     isotope: false,
-    // jQuery UI (datepicker) and Swiper (hero/testimonial/category sliders)
-    // are only used on the homepage - keep them off every other page.
-    jqueryUi: true,
+    // Swiper (hero/testimonial/category sliders) is only used on the
+    // homepage - keep it off every other page.
     swiper: true,
     heroImage: 'assets/images/banner/5.webp',
     extraJsonLd: [faqPageJsonLd()],
@@ -151,7 +150,6 @@ const PAGES = [
     headerInner: true,
     contactForm: false,
     isotope: false,
-    jqueryUi: false,
     swiper: false,
     heroImage: 'assets/images/banner/2.webp',
     extraJsonLd: [
@@ -170,7 +168,6 @@ const PAGES = [
     // book.html links out to /fleet rather than embedding an isotope grid -
     // confirmed no .main-isotop markup on this page.
     isotope: false,
-    jqueryUi: false,
     swiper: false,
     heroImage: 'assets/images/banner/2.webp',
     extraJsonLd: [
@@ -187,7 +184,6 @@ const PAGES = [
     headerInner: true,
     contactForm: true,
     isotope: false,
-    jqueryUi: false,
     swiper: false,
     extraJsonLd: [
       breadcrumbJsonLd([...HOME_BREADCRUMB, { name: 'Contact', url: 'https://chaliko.com/contact' }]),
@@ -203,7 +199,6 @@ const PAGES = [
     headerInner: true,
     contactForm: false,
     isotope: true,
-    jqueryUi: false,
     swiper: false,
     extraJsonLd: [
       breadcrumbJsonLd([...HOME_BREADCRUMB, { name: 'Our Fleet', url: 'https://chaliko.com/fleet' }]),
@@ -220,7 +215,6 @@ const PAGES = [
     headerInner: true,
     contactForm: false,
     isotope: false,
-    jqueryUi: false,
     swiper: false,
     heroImage: 'assets/images/banner/6.webp',
     extraJsonLd: [
@@ -248,7 +242,6 @@ const PAGES = [
     headerInner: true,
     contactForm: false,
     isotope: false,
-    jqueryUi: false,
     swiper: false,
     heroImage: 'assets/images/banner/2.webp',
     extraJsonLd: [
@@ -276,7 +269,6 @@ const PAGES = [
     headerInner: true,
     contactForm: false,
     isotope: false,
-    jqueryUi: false,
     swiper: false,
     heroImage: 'assets/images/banner/6.webp',
     extraJsonLd: [
@@ -376,11 +368,27 @@ for (const page of PAGES) {
 
   content = replaceMarkerBlock(content, 'FOOTER', footerPartial);
 
+  // Page-specific plugins are included only when the page's own markup uses
+  // them, so adding e.g. a .counter or .wow element later pulls the script in
+  // automatically instead of relying on a hand-maintained flag.
+  const uses = {
+    wow: /class="[^"]*\bwow\b/.test(content),
+    counter: /class="[^"]*\bcounter\b/.test(content),
+    slideAnim: content.includes('rts-slide-anim'),
+  };
+
   const scriptsRendered = renderTemplate(scriptsTemplate, {
     CONTACT_FORM_SCRIPT: page.contactForm ? '<script src="assets/js/plugins/contact-form.js" defer></script>' : '',
     ISOTOPE_SCRIPT: page.isotope ? '<script src="assets/js/plugins/isotope.js" defer></script>' : '',
-    JQUERY_UI_SCRIPT: page.jqueryUi ? '<script src="assets/js/plugins/jquery-ui.js" defer></script>' : '',
     SWIPER_SCRIPT: page.swiper ? '<script src="assets/js/plugins/swiper.js" defer></script>' : '',
+    WOW_SCRIPT: uses.wow ? '<script src="assets/js/vendor/waw.js" defer></script>' : '',
+    // counter-up depends on Waypoints to start counting when scrolled into view.
+    COUNTER_UP_SCRIPT: uses.counter ? '<script src="assets/js/plugins/counter-up.js" defer></script>' : '',
+    WAYPOINT_SCRIPT: uses.counter ? '<script src="assets/js/vendor/waypoint.js" defer></script>' : '',
+    SPLIT_TEXT_SCRIPT: uses.slideAnim ? '<script src="assets/js/vendor/split-text.js" defer></script>' : '',
+    GSAP_SCRIPTS: uses.slideAnim
+      ? '<script src="assets/js/plugins/gsap.js" defer></script>\n    <script src="assets/js/plugins/scroll-trigger.js" defer></script>'
+      : '',
   })
     .split('\n')
     .filter((line) => line.trim() !== '')

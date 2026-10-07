@@ -25,10 +25,12 @@
     },
     methods: function (e) {
       rtsJs.metismenu();
-      rtsJs.splitText();
-      rtsJs.wowActive();
-      // Swiper/jQuery UI datepicker are only loaded on pages that use them
-      // (see scripts/build.js) - guard so pages without them don't throw.
+      // Animation/counter plugins are only loaded on pages that use them
+      // (see scripts/build.js), so each init checks its library exists.
+      if (typeof gsap !== 'undefined' && typeof SplitText !== 'undefined') rtsJs.splitText();
+      if (typeof WOW !== 'undefined') rtsJs.wowActive();
+      // Swiper is only loaded on pages that use it (see scripts/build.js) -
+      // guard so pages without it don't throw.
       if (typeof Swiper !== 'undefined') rtsJs.swiperActive();
       rtsJs.stickyHeader();
       rtsJs.backToTopInit();
@@ -38,11 +40,9 @@
       rtsJs.videoActive();
       rtsJs.menuCurrentLink();
       rtsJs.preloader();
-      rtsJs.counterUp();
-      rtsJs.jarallax();
+      if ($.fn.counterUp) rtsJs.counterUp();
       rtsJs.searchOption();
       rtsJs.mesonaryTab();
-      if ($.fn.datepicker) rtsJs.datePicker();
     },
     metismenu: function () {
       $('#mobile-menu-active').metisMenu();
@@ -81,22 +81,6 @@
           });
         });
       }
-    },
-    jarallax: function (e) {
-      $(document).ready(function () {
-        // Function to detect if the device is mobile
-        function isMobileDevice() {
-          return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
-
-        // Initialize jarallax only if it's not a mobile device
-        if (!isMobileDevice()) {
-          $('.jarallax').jarallax();
-        } else {
-          console.log('Jarallax skipped on mobile devices');
-        }
-      });
-
     },
     wowActive: function () {
       new WOW().init();
@@ -675,11 +659,6 @@
           $(this).addClass("is-checked");
           event.preventDefault();
         });
-      });
-    },
-    datePicker: function () {
-      $(document).ready(function () {
-        $(".datepicker09").datepicker();
       });
     },
   }
